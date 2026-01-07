@@ -1,0 +1,42 @@
+.certificates-container {
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+}
+
+.certificates-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--text-color);
+}
+
+.certificates-empty-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--gray-text);
+    margin-top: -80px;
+    /* Visual offset to center nicely */
+}
+
+.cert-empty-icon {
+    margin-bottom: 24px;
+    color: #9ca3af;
+}
+
+.certificates-empty-state h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0 0 12px 0;
+}
+
+.certificates-empty-state p {
+    font-size: 14px;
+    max-width: 400px;
+    line-height: 1.6;
+}

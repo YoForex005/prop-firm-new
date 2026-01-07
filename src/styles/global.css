@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg-color: #f7f9fc;
+    --sidebar-bg: #ffffff;
+    --header-bg: #ffffff;
+    --card-bg: #ffffff;
+    --primary-color: #3b5bdb;
+    --text-color: #1d1d1f;
+    --gray-text: #86868b;
+    --border-radius: 16px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Placeholder for specific page imports, global utility classes */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.top-banner {
+    background: linear-gradient(90deg, #9b5cf4 0%, #6e45e2 100%);
+    color: white;
+    text-align: center;
+    padding: 8px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.content-body {
+    padding: 24px 32px;
+}

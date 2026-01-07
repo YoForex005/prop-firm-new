@@ -1,0 +1,224 @@
+.accounts-container {
+    display: flex;
+    height: calc(100vh - 40px);
+    /* Adjust for global padding/margins if needed */
+    background-color: var(--bg-color);
+    gap: 24px;
+}
+
+/* Inner Sidebar (Left Panel) */
+.accounts-sidebar {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: transparent;
+    border-right: 1px solid #eee;
+    /* Optional, maybe just space */
+    padding-right: 20px;
+    flex-shrink: 0;
+}
+
+.profile-mini {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #eee;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #555;
+    font-size: 16px;
+}
+
+.profile-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.collapse-icon {
+    margin-left: auto;
+    color: var(--gray-text);
+    cursor: pointer;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-blue-block {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(59, 91, 219, 0.3);
+}
+
+.btn-prize-block {
+    background-color: #0d6efd;
+    /* Brighter blue for prize? using primary for now */
+    background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.filters-row {
+    display: flex;
+    gap: 8px;
+}
+
+.filter-chip {
+    background: white;
+    border: 1px solid #e0e0e0;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--gray-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.view-toggles {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    /* Or center? Screenshot shows right aligned generally */
+    margin-top: 10px;
+}
+
+.view-toggle-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--gray-text);
+}
+
+.empty-list-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 60px;
+    color: var(--gray-text);
+}
+
+.empty-icon {
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.empty-list-state p {
+    font-size: 13px;
+    max-width: 200px;
+    line-height: 1.5;
+}
+
+/* Main Area (Right Panel) */
+.accounts-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-selection-card {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px dotted #ccc;
+    /* Dotted border as per screenshot */
+    text-align: center;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.selection-icon {
+    width: 64px;
+    height: 64px;
+    background-color: #f7f9fc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: #888;
+}
+
+.empty-selection-card h3 {
+    font-size: 18px;
+    margin: 0 0 12px 0;
+    color: var(--text-color);
+}
+
+.empty-selection-card p {
+    font-size: 14px;
+    color: var(--gray-text);
+    line-height: 1.5;
+    margin-bottom: 32px;
+}
+
+.simulated-box {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    width: 100%;
+}
+
+.simulated-text {
+    font-size: 12px;
+    color: var(--gray-text);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.btn-buy-small {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}

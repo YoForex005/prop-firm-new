@@ -1,0 +1,233 @@
+.affiliate-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.affiliate-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Referral Code Section */
+.referral-section {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    padding: 24px;
+}
+
+.referral-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+.referral-desc {
+    font-size: 13px;
+    color: var(--gray-text);
+    margin: 0 0 20px 0;
+}
+
+.referral-inputs {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    background: #f9fafb;
+    flex: 1;
+}
+
+.input-group input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    font-size: 13px;
+    color: var(--text-color);
+    outline: none;
+}
+
+.copy-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--gray-text);
+    display: flex;
+    align-items: center;
+}
+
+.input-group-short {
+    flex: 0 0 200px;
+}
+
+.commission-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 8px;
+    padding: 12px 16px;
+}
+
+.info-text {
+    font-size: 13px;
+    color: #0369a1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-visit {
+    background: white;
+    border: 1px solid #e0e0e0;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Stats Section */
+.stats-container {
+    display: flex;
+    gap: 24px;
+}
+
+.chart-area {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.tabs-row {
+    display: flex;
+    gap: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.tab-btn {
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    background: transparent;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray-text);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+}
+
+.tab-btn.active {
+    color: var(--text-color);
+    font-weight: 600;
+    border-bottom-color: var(--text-color);
+    background: #f3f4f6;
+    /* Optional light bg for tab feel */
+    border-radius: 6px 6px 0 0;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chart-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.toggle-group {
+    display: flex;
+    background: #f3f4f6;
+    padding: 2px;
+    border-radius: 6px;
+}
+
+.toggle-btn {
+    padding: 4px 12px;
+    font-size: 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 4px;
+    color: var(--gray-text);
+}
+
+.toggle-btn.active {
+    background: var(--primary-color);
+    color: white;
+    font-weight: 500;
+}
+
+.chart-placeholder {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-text);
+    text-align: center;
+}
+
+.chart-placeholder p {
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+.stats-sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.stat-card-white {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.stat-title {
+    font-size: 13px;
+    color: var(--gray-text);
+    margin-bottom: 8px;
+}
+
+.stat-val-large {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-color);
+}

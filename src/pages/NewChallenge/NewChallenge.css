@@ -1,0 +1,296 @@
+.new-challenge-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.logo-small {
+    width: 24px;
+    height: 24px;
+    display: none;
+}
+
+.new-challenge-container h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.challenge-layout {
+    display: flex;
+    gap: 40px;
+}
+
+.challenge-config {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.challenge-summary-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.config-section h3,
+.summary-section h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: var(--text-color);
+}
+
+.section-desc {
+    font-size: 13px;
+    color: var(--gray-text);
+    margin: 0 0 16px 0;
+}
+
+/* Radio Cards */
+.radio-group-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.radio-card {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 140px;
+}
+
+.radio-card:hover {
+    border-color: #bbb;
+}
+
+.radio-card.active {
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.radio-circle {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio-card.active .radio-circle {
+    border-color: var(--primary-color);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+.radio-card span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Highlight Section (Custom Rules) */
+.highlight-section {
+    background-color: #f0f4ff;
+    border: 1px solid #dbe4ff;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.custom-rules-header {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.icon-wrapper {
+    color: var(--primary-color);
+    margin-top: 2px;
+}
+
+.rules-options .rule-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle-group {
+    display: flex;
+    gap: 16px;
+}
+
+.toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.toggle-btn.active {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.tag {
+    font-size: 11px;
+    color: var(--gray-text);
+    margin-left: 4px;
+}
+
+.price-tag {
+    font-size: 11px;
+    color: var(--gray-text);
+    margin-left: 4px;
+}
+
+/* Account Size Grid */
+.size-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+/* Order Summary */
+.order-summary-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    /* Stronger shadow */
+}
+
+.order-summary-card h3 {
+    font-size: 16px;
+    margin-bottom: 24px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.summary-meta {
+    font-size: 13px;
+    color: var(--gray-text);
+    margin-bottom: 24px;
+}
+
+.summary-divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 24px 0;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.total-price {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Coupon */
+.coupon-input-group {
+    display: flex;
+    gap: 8px;
+}
+
+.coupon-input-group input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    outline: none;
+}
+
+.coupon-input-group button {
+    padding: 10px 16px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Terms Checkbox */
+.terms-box {
+    background-color: #f9f9f9;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.terms-list {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 12px;
+    color: var(--gray-text);
+    line-height: 1.6;
+}
+
+.terms-list a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.btn-checkout {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(59, 91, 219, 0.3);
+}
