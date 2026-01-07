@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sliders } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { flexyService } from '../../services/flexyService';
 import './NewChallenge.css';
 
 function NewChallenge() {
+    const location = useLocation();
+    const navigate = useNavigate();
     const [step, setStep] = useState('two-step');
     const [model, setModel] = useState('funding-pips');
     const [size, setSize] = useState('100000');
     const [platform, setPlatform] = useState('mt5');
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        if (location.state?.mode === 'free-trial') {
+            setStep('free-trial');
+        }
+    }, [location.state]);
 
     const prices = {
         '5000': 32,
@@ -17,6 +28,47 @@ function NewChallenge() {
     };
 
     const currentPrice = prices[size] || 0;
+
+    const handleCheckout = async () => {
+        if (step === 'free-trial') {
+            try {
+                setIsLoading(true);
+                const timestamp = new Date().getTime();
+                const dummyUser = {
+                    name: `Demo User ${timestamp}`,
+                    email: `demo${timestamp}@test.com`,
+                    mobile: `9${String(timestamp).slice(0, 9)}`,
+                    country: 'INDIA',
+                    password: 'DemoUser@123'
+                };
+
+                const account = await flexyService.createFreeTrial(dummyUser);
+
+                // Save to localStorage for Dashboard to pickup
+                const challengeData = {
+                    ...account,
+                    status: 'Active',
+                    balance: '100000',
+                    type: 'Free Trial',
+                    tier: 'Standard',
+                    created: new Date().toISOString()
+                };
+                localStorage.setItem('activeChallenge', JSON.stringify(challengeData));
+
+                alert(`Free Trial Created Successfully!\n\nLogin: ${account.login}\nPassword: ${account.password}\nServer: ${account.server}`);
+                navigate('/');
+            } catch (error) {
+                console.error(error);
+                alert('Failed to create Free Trial account. Please try again. ' + error.message);
+            } finally {
+                setIsLoading(false);
+            }
+        } else {
+            // Logic for regular payment flow
+            alert('Proceeding to payment gateway...');
+            // navigate('/payment'); // Example
+        }
+    };
 
     return (
         <div className="new-challenge-container">
@@ -43,6 +95,10 @@ function NewChallenge() {
                             <label className={`radio-card ${step === 'zero' ? 'active' : ''}`} onClick={() => setStep('zero')}>
                                 <div className="radio-circle">{step === 'zero' && <div className="dot"></div>}</div>
                                 <span>Zero</span>
+                            </label>
+                            <label className={`radio-card ${step === 'free-trial' ? 'active' : ''}`} onClick={() => setStep('free-trial')}>
+                                <div className="radio-circle">{step === 'free-trial' && <div className="dot"></div>}</div>
+                                <span>Free Trial</span>
                             </label>
                         </div>
                     </div>
@@ -144,8 +200,8 @@ function NewChallenge() {
                     <div className="order-summary-card">
                         <h3>Order Summary</h3>
                         <div className="summary-row">
-                            <span>${parseInt(size).toLocaleString()}.00 — {step === 'two-step' ? 'Two Step' : 'One Step'} {model === 'funding-pips' ? 'FundingPips' : 'Pro'}</span>
-                            <span className="price">${currentPrice}.00</span>
+                            <span>${parseInt(size).toLocaleString()}.00 — {step === 'free-trial' ? 'Free Trial' : (step === 'two-step' ? 'Two Step' : (step === 'zero' ? 'Zero' : 'One Step'))} {model === 'funding-pips' ? 'FundingPips' : 'Pro'}</span>
+                            <span className="price">${step === 'free-trial' ? 0 : currentPrice}.00</span>
                         </div>
                         <div className="summary-meta">
                             Platform: {platform === 'metatrader' ? 'MetaTrader 5' : 'MatchTrader'}
@@ -155,7 +211,7 @@ function NewChallenge() {
 
                         <div className="summary-total">
                             <span>Total</span>
-                            <span className="total-price">${currentPrice}.00</span>
+                            <span className="total-price">${step === 'free-trial' ? 0 : currentPrice}.00</span>
                         </div>
 
                         <div className="terms-box">
@@ -172,7 +228,9 @@ function NewChallenge() {
                             </ul>
                         </div>
 
-                        <button className="btn-checkout">Continue to Payment</button>
+                        <button className="btn-checkout" onClick={handleCheckout} disabled={isLoading}>
+                            {isLoading ? 'Processing...' : (step === 'free-trial' ? 'Start Free Trial' : 'Continue to Payment')}
+                        </button>
                     </div>
                 </div>
             </div>
