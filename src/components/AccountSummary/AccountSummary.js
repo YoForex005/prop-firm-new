@@ -25,10 +25,6 @@ function AccountSummary() {
     }
 
     return (
-<<<<<<< HEAD
-        <div className="account-summary-card">
-            <div>No data available</div>
-=======
         <div className="card account-summary" style={{ textAlign: 'left', padding: '20px' }}>
             <h3 style={{ marginTop: 0, marginBottom: '15px' }}>Active Challenge</h3>
             <div className="account-details">
@@ -64,7 +60,6 @@ function AccountSummary() {
                     {challenge.status}
                 </div>
             </div>
->>>>>>> 2379fea68ff36624c4d10e3effef4a43116341cb
         </div>
     );
 }
