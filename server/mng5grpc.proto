@@ -1,0 +1,3488 @@
+syntax = "proto3";
+package mng5grpc;
+option go_package = "git.mtapi.io/root/grpc-proto.git/mng5grpc/go";
+import "google/protobuf/timestamp.proto";
+
+service Main {
+// Delete order
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "ticket": "0" <br>
+// }
+  rpc OrderDelete (OrderDeleteRequest) returns (OrderDeleteReply);
+// Modify pending order
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "ticket": "0" <br>
+// }
+  rpc OrderModify (OrderModifyRequest) returns (OrderModifyReply);
+// Modify deal
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "ticket": "0" <br>
+// }
+  rpc DealModify (DealModifyRequest) returns (DealModifyReply);
+// Server timezone details
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc ServerTimezone (ServerTimezoneRequest) returns (ServerTimezoneReply);
+// Get summary for symbol
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "symbol": "EURUSD" <br>
+// }
+  rpc SummaryGet (SummaryGetRequest) returns (SummaryGetReply);
+// Get summary for all symbols
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc SummaryGetAll (SummaryGetAllRequest) returns (SummaryGetAllReply);
+// Opened orders.
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "logins": "" <br>
+// }
+  rpc Orders (OrdersRequest) returns (OrdersReply);
+    // Last tick details
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc TickLast (TickLastRequest) returns (TickLastReply);
+    // Last tick details
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "symbol": "EURUSD" <br>
+// }
+  rpc TickStat (TickStatRequest) returns (TickStatReply);
+  // Tick history
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "symbol": "EURUSD" <br>
+//  "from": "2023-7-04T00:00:00", <br>
+//  "to": "2023-7-05T00:00:00" <br>
+// }
+  rpc TickHistory (TickHistoryRequest) returns (TickHistoryReply);
+// Symbol quote and trade sessions
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "symbol": "EURUSD" <br>
+// }
+  rpc SymbolSessions (SymbolSessionsRequest) returns (SymbolSessionsReply);
+// All user groups
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc UserGroups (UserGroupsRequest) returns (UserGroupsReply);
+  // Symbol groups for user group
+// <br> [Example] <br>
+// { <br>
+//  "id": "{{id}}" <br>
+// }
+  rpc SymbolGroupsForUserGroup (SymbolGroupsForUserGroupRequest) returns (SymbolGroupsForUserGroupReply);
+    // Check user password
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "type": "USER_PASS_MAIN", <br>
+//  "login": "1003", <br>
+//  "password": "somepassword" <br>
+// }
+  rpc UserPasswordCheck (UserPasswordCheckRequest) returns (UserPasswordCheckReply);
+// Change user passsord
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "type": "USER_PASS_MAIN", <br>
+//  "login": "1003", <br>
+//  "password": "somepassword" <br>
+// }
+  rpc UserPasswordChange (UserPasswordChangeRequest) returns (UserPasswordChangeReply);
+// Modify deal
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "ticket": "199", <br>
+//  "stoploss": "0", <br>
+//  "takeprofit": "0" <br>
+// }
+  rpc ModifyDeal (ModifyDealRequest) returns (ModifyDealReply);
+// Modify order
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "ticket": "199", <br>
+//  "price": "0", <br>
+//  "stoploss": "0", <br>
+//  "takeprofit": "0" <br>
+// }
+  rpc ModifyOrder (ModifyOrderRequest) returns (ModifyOrderReply);
+// Accounts Balance, Equity,Profit, etc
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+// Symbols
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc SymbolsList (SymbolsListRequest) returns (SymbolsListReply);
+// Subscribe symbol for real time quotes and get results via /events socket connection
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "symbol": "EURUSD", <br>
+//  "interval": "0" <br>
+// }
+  rpc Subscribe (SubscribeRequest) returns (SubscribeReply);
+  // Unsubscribe symbol for real time quotes and get results via /events or /OnQuote websocket
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt4mng", <br>
+//  "symbol": "EURUSD" <br>
+// }
+  rpc Unsubscribe (UnsubscribeRequest) returns (UnsubscribeReply);
+// Subscribe several symbols for real time quotes and get results via /events or /OnQuote websocket
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt4mng" <br>
+// }
+  rpc SubscribeMany (SubscribeManyRequest) returns (SubscribeManyReply);
+// Unsubscribe several symbols for real time quotes and get results via /events or /OnQuote websocket
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt4mng" <br>
+// }
+  rpc UnsubscribeMany (UnsubscribeManyRequest) returns (UnsubscribeManyReply);
+
+// Accounts Balance, Equity,Profit, etc
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc SymbolsParams (SymbolsParamsRequest) returns (SymbolsParamsReply);
+// Accounts Balance, Equity,Profit, etc
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "login": "1000" <br>
+// }
+  rpc SymbolGroups (SymbolGroupsRequest) returns (SymbolGroupsReply);
+  // Set symbol group execution
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "userGroup": "real\real", <br>
+//  "symbolGroup": "crypto\*", <br>
+//  "execution": "Market" <br>
+// }
+  rpc SymbolGroupExecutionSet (SymbolGroupExecutionSetRequest) returns (SymbolGroupExecutionSetReply);
+// OHLC history
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "symbol": "EURUSD", <br>
+//  "from": "2023-7-04T00:00:00", <br>
+//  "to": "2023-7-05T00:00:00" <br>
+// }
+  rpc ChartRequest (ChartRequestRequest) returns (ChartRequestReply);
+// OHLC history
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "symbol": "EURUSD", <br>
+//  "from": "2023-7-04T00:00:00", <br>
+//  "to": "2023-7-05T00:00:00" <br>
+// }
+  rpc ChartRequestSlim (ChartRequestRequest) returns (ChartRequestSlimReply);
+// Simple test without parameters
+  rpc Ping (PingRequest) returns (PingReply);
+// Connect to account with user, password, host, port.
+// <br> [Example] <br>
+// { <br>
+//  "user": "1002", <br>
+//  "password": "pqcbkl7j", <br>
+//  "server": "13.41.64.21" <br>
+// }
+  rpc Connect (ConnectRequest) returns (ConnectReply);
+// Accounts Balance, Equity,Profit, etc
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "login": "0" <br>
+// }
+  rpc AccountsSummary (AccountsSummaryRequest) returns (AccountsSummaryReply);
+// Accounts Balance, Equity,Profit, etc
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc AccountsList (AccountsRequest) returns (AccountsReply);
+// Accounts Balance, Equity,Profit, etc
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc AccountsOnline (AccountsOnlineRequest) returns (AccountsOnlineReply);
+// Accounts Balance, Equity,Profit, etc
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "login": "1" <br>
+// }
+  rpc AccountDetails (AccountDetailsRequest) returns (AccountDetailsReply);
+// Accounts details. If logins not specifed reutns details for all accoungts.
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc AccountDetailsMany (AccountDetailsManyRequest) returns (AccountDetailsManyReply);
+// Accounts Balance, Equity,Profit, etc
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "login": "1" <br>
+// }
+  rpc UserDetails (UserDetailsRequest) returns (UserDetailsReply);
+// Accounts details. If logins not specifed reutns details for all accoungts.
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc UserDetailsMany (UserDetailsManyRequest) returns (UserDetailsManyReply);
+// Send market or pending order
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "login": "", <br>
+//  "symbol": "", <br>
+//  "operation": "", <br>
+//  "lots": "", <br>
+//  "price": "0", <br>
+//  "slippage": "0", <br>
+//  "stoploss": "0", <br>
+//  "takeprofit": "0" <br>
+// }
+  rpc OrderSend (OrderSendRequest) returns (OrderSendReply);
+// Close market or pending order
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "ticket": "", <br>
+//  "lots": "0", <br>
+//  "price": "0", <br>
+//  "slippage": "0" <br>
+// }
+  rpc OrderClose (OrderCloseRequest) returns (OrderCloseReply);
+// Create new user. Need to specify at least first and last name, group and leverage.
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "master_pass": "", <br>
+//  "investor_pass": "", <br>
+//  "enabled": "", <br>
+//  "user": "" <br>
+// }
+  rpc AccountCreate (AccountCreateRequest) returns (AccountCreateReply);
+// Delete account
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "login": "1" <br>
+// }
+  rpc AccountDelete (AccountDeleteRequest) returns (AccountDeleteReply);
+// Create new user. Need to specify at least first and last name, group and leverage.
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "enabled": "", <br>
+//  "user": "" <br>
+// }
+  rpc AccountUpdate (AccountUpdateRequest) returns (AccountUpdateReply);
+// Deposit/withdraw
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "login": "", <br>
+//  "amount": "", <br>
+//  "comment": "", <br>
+//  "credit": "False" <br>
+// }
+  rpc Deposit (DepositRequest) returns (DepositReply);
+// Opened positions.
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc Positions (PositionsRequest) returns (PositionsReply);
+// Poition list in MT4 format.
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc PositionsMT4Format (PositionsMT4FormatRequest) returns (PositionsMT4FormatReply);
+// Order history
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "login": "1" <br>
+//  "from": "2023-7-04T00:00:00", <br>
+//  "to": "2023-7-05T00:00:00" <br>
+// }
+  rpc PendingOrderHistory (PendingOrderHistoryRequest) returns (PendingOrderHistoryReply);
+// Order history
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "login": "1" <br>
+// }
+  rpc DealHistory (DealHistoryRequest) returns (DealHistoryReply);
+// Order history
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "login": "1" <br>
+// }
+  rpc PositionHistoryMT4Format (PositionHistoryMT4FormatRequest) returns (PositionHistoryMT4FormatReply);
+// Get Trade Journal.
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "mode": "MTLogModeStd" <br>
+// }
+  rpc TradeJournal (TradeJournalRequest) returns (TradeJournalReply);
+// Check Connection.
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc Health (HealthRequest) returns (HealthReply);
+  rpc SymbolGet (SymbolGetRequest) returns (SymbolGetReply);
+   // Cancell all streams
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt4mng" <br>
+// }
+  rpc CancellAllStreams (CancellAllStreamsRequest) returns (CancellAllStreamsReply);
+// Disconnect
+// <br> [Example] <br>
+// { <br>
+//  "id": "" <br>
+// }
+  rpc Disconnect (DisconnectRequest) returns (DisconnectReply);
+
+}
+
+// [Example]
+// {
+//  "id": ""
+// }
+message CancellAllStreamsRequest {
+    // Token returned by 'Connect' method [Required]
+  string id = 1; 
+}
+
+message CancellAllStreamsReply {
+  string result = 1;
+  Error error = 2;
+}
+
+// [Example]
+// {
+//  "id": ""
+// }
+message DisconnectRequest{
+  string id = 1; // Token returned by 'Connect' method [Required]
+}
+
+message DisconnectReply {
+  string result = 1;
+  Error error = 2;
+}
+
+
+
+message Error
+{
+  MTRetCode code = 1;
+  string message = 2;
+  string stackTrace = 3;
+}
+
+// [Example]
+// {
+//  "id": "{{id}}"
+// }
+message SymbolGroupsForUserGroupRequest {
+  string id = 1;
+  string group = 2;
+}
+
+message SymbolGroupsForUserGroupReply {
+  repeated ConGroupSymbol result = 1;
+  Error error = 2;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message ServerTimezoneRequest {
+  string id = 1;
+}
+
+message ConTime {
+  bool Daylight = 1;
+  int32 TimeZone = 2;
+  string TimeServer = 3;
+  int32 DaylightState = 4;
+}
+
+message ServerTimezoneReply {
+  ConTime result = 1;
+  Error error = 2;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "userGroup": "real\real",
+//  "symbolGroup": "crypto\*",
+//  "execution": "Market"
+// }
+message SymbolGroupExecutionSetRequest {
+  string id = 1;
+  // User group path [Required]
+  string userGroup = 2;
+  // Symbol group path [Required]
+  string symbolGroup = 3;
+  // Execution mode [Required]
+  ExecutionMode execution = 4;
+}
+
+message SymbolGroupExecutionSetReply {
+  string result = 1;
+  Error error = 2;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "ticket": "0"
+// }
+message OrderDeleteRequest {
+  string id = 1;
+  uint64 ticket = 2;
+}
+
+message OrderDeleteReply {
+  string result = 1;
+  Error error = 2;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "ticket": "0"
+// }
+message OrderModifyRequest {
+  string id = 1;
+  uint64 ticket = 2;
+  double stoploss = 3;
+  double takeprofit = 4;
+  double price = 5;
+}
+
+message OrderModifyReply {
+  string result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "ticket": "0"
+// }
+message DealModifyRequest {
+  string id = 1;
+  uint64 ticket = 2;
+  double stoploss = 3;
+  double takeprofit = 4;
+}
+
+message DealModifyReply {
+  string result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "symbol": "EURUSD"
+// }
+message SummaryGetRequest {
+  string id = 1;
+  string symbol = 2;
+}
+
+message Summary {
+  string Symbol = 1;
+  uint32 Digits = 2;
+  uint32 PositionClients = 3;
+  uint32 PositionCoverage = 4;
+  uint64 VolumeBuyClients = 5;
+  uint64 VolumeBuyCoverage = 6;
+  uint64 VolumeSellClients = 7;
+  uint64 VolumeSellCoverage = 8;
+  double VolumeNet = 9;
+  double PriceBuyClients = 10;
+  double PriceBuyCoverage = 11;
+  double PriceSellClients = 12;
+  double PriceSellCoverage = 13;
+  double ProfitClients = 14;
+  double ProfitCoverage = 15;
+  double ProfitFullClients = 16;
+  double ProfitFullCoverage = 17;
+  double ProfitUncovered = 18;
+  double ProfitUncoveredFull = 19;
+  uint64 VolumeBuyClientsExt = 20;
+  uint64 VolumeBuyCoverageExt = 21;
+  uint64 VolumeSellClientsExt = 22;
+  uint64 VolumeSellCoverageExt = 23;
+}
+
+message SummaryGetReply {
+  Summary result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message SummaryGetAllRequest {
+  string id = 1;
+}
+
+message SummaryGetAllReply {
+  repeated Summary result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "logins": ""
+// }
+message OrdersRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Logins
+  repeated uint64 logins = 2;
+}
+
+message OrdersReply {
+  repeated Order result = 1;
+  Error error = 2;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message TickLastRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Symbols
+  repeated string symbols = 2;
+}
+
+message MTTickShort {
+  int64 datetime = 1;
+  double bid = 2;
+  double ask = 3;
+  double last = 4;
+  uint64 volume = 5;
+  int64 datetime_msc = 6;
+  EnTickShortFlags flags = 7;
+  uint64 volume_ext = 8;
+  repeated uint32 reserved = 9;
+}
+
+enum EnTickShortFlags {
+  EnTickShortFlags_NONE = 0;
+  EnTickShortFlags_RAW = 1;
+  EnTickShortFlags_BID = 2;
+  EnTickShortFlags_ASK = 4;
+  EnTickShortFlags_VOLUME = 16;
+  EnTickShortFlags_BUY = 32;
+  EnTickShortFlags_SELL = 64;
+}
+
+message TickShort {
+  string symbol = 1;
+  int64 datetime = 2;
+  double bid = 3;
+  double ask = 4;
+  double last = 5;
+  uint64 volume = 6;
+  int64 datetime_msc = 7;
+  uint64 volume_ext = 8;
+}
+
+message TickLastReply {
+  repeated TickShort result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "symbol": "EURUSD"
+// }
+message TickStatRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Symbol
+  repeated string symbols = 2;
+}
+
+message MTTickStat {
+  string symbol = 1;
+  int64 datetime = 2;
+  double bid_high = 3;
+  double bid_low = 4;
+  double ask_high = 5;
+  double ask_low = 6;
+  double last_high = 7;
+  double last_low = 8;
+  uint64 vol_high = 9;
+  uint64 vol_low = 10;
+  uint64 trade_deals = 11;
+  uint64 trade_volume = 12;
+  uint64 trade_turnover = 13;
+  uint64 trade_interest = 14;
+  uint64 trade_buy_orders = 15;
+  uint64 trade_buy_volume = 16;
+  uint64 trade_sell_orders = 17;
+  uint64 trade_sell_volume = 18;
+  uint64 trade_volume_ext = 19;
+  uint64 trade_buy_volume_ext = 20;
+  uint64 trade_sell_volume_ext = 21;
+  uint64 vol_high_ext = 22;
+  uint64 vol_low_ext = 23;
+  repeated int32 trade_reserved = 24;
+  int64 datetime_msc = 25;
+  double price_open = 26;
+  double price_close = 27;
+  double price_aw = 28;
+  double price_obsolete = 29;
+  double price_volatility = 30;
+  double price_theoretical = 31;
+  double price_greeks_delta = 32;
+  double price_greeks_theta = 33;
+  double price_greeks_gamma = 34;
+  double price_greeks_vega = 35;
+  double price_greeks_rho = 36;
+  double price_greeks_omega = 37;
+  double price_sensitivity = 38;
+  repeated int32 price_reserved = 39;
+}
+
+message TickStatReply {
+  repeated MTTickStat result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "symbol": "EURUSD"
+// }
+message SymbolSessionsRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Symbol
+  repeated string symbols = 2;
+}
+
+message QuoteAndTradeSessions {
+  string Symbol = 1;
+  WeekSessions Quote = 2;
+  WeekSessions Trade = 3;
+}
+
+message WeekSessions {
+  repeated ConSymbolSession Sunday = 1;
+  repeated ConSymbolSession Monday = 2;
+  repeated ConSymbolSession Tuesday = 3;
+  repeated ConSymbolSession Wednesday = 4;
+  repeated ConSymbolSession Thursday = 5;
+  repeated ConSymbolSession Friday = 6;
+  repeated ConSymbolSession Saturday = 7;
+}
+
+message ConSymbolSession {
+  uint32 Open = 1;
+  uint32 OpenHours = 2;
+  uint32 OpenMinutes = 3;
+  uint32 Close = 4;
+  uint32 CloseHours = 5;
+  uint32 CloseMinutes = 6;
+}
+
+message SymbolSessionsReply {
+  repeated QuoteAndTradeSessions result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message UserGroupsRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  bool assignSymbolGroups = 2;
+}
+
+message ConGroup {
+  uint32 CommissionTotal = 1;
+  uint32 SymbolGroupsTotal = 2;
+  uint32 MarginFreeProfitMode = 3;
+  EnMarginMode MarginMode = 4;
+  EnAuthOTPMode AuthOTPMode = 5;
+  EnTransferMode TradeTransferMode = 6;
+  EnMarginFlagsGroup MarginFlags = 7;
+  uint32 LimitPositions = 8;
+  string ReportsEmail = 9;
+  uint32 DemoInactivityPeriod = 10;
+  string Group = 11;
+  uint64 Server = 12;
+  EnPermissionsFlags PermissionsFlags = 13;
+  EnAuthMode AuthMode = 14;
+  uint32 AuthPasswordMin = 15;
+  string Company = 16;
+  string CompanyPage = 17;
+  string CompanyEmail = 18;
+  string CompanySupportPage = 19;
+  string CompanySupportEmail = 20;
+  string CompanyCatalog = 21;
+  string CompanyDepositPage = 22;
+  string CompanyWithdrawalPage = 23;
+  string Currency = 24;
+  uint32 CurrencyDigits = 25;
+  EnReportsMode ReportsMode = 26;
+  EnReportsFlags ReportsFlags = 27;
+  string ReportsSMTP = 28;
+  string ReportsSMTPLogin = 29;
+  string ReportsSMTPPass = 30;
+  EnNewsMode NewsMode = 31;
+  string NewsCategory = 32;
+  MTRetCode NewsLangClear = 33;
+  uint32 NewsLangTotal = 34;
+  EnMailMode MailMode = 35;
+  EnTradeFlagsGroup TradeFlags = 36;
+  double TradeInterestrate = 37;
+  double TradeVirtualCredit = 38;
+  EnFreeMarginMode MarginFreeMode = 39;
+  EnStopOutMode MarginSOMode = 40;
+  double MarginCall = 41;
+  double MarginStopOut = 42;
+  uint32 DemoLeverage = 43;
+  double DemoDeposit = 44;
+  EnHistoryLimit LimitHistory = 45;
+  uint32 LimitOrders = 46;
+  uint32 LimitSymbols = 47;
+  repeated ConGroupSymbol SymbolGroups = 48;
+}
+
+enum EnMarginMode {
+  EnMarginMode_MARGIN_MODE_RETAIL = 0;
+  EnMarginMode_MARGIN_MODE_EXCHANGE_DISCOUNT = 1;
+  EnMarginMode_MARGIN_MODE_RETAIL_HEDGED = 2;
+}
+
+enum EnAuthOTPMode {
+  EnAuthOTPMode_AUTH_OTP_DISABLED = 0;
+  EnAuthOTPMode_AUTH_OTP_TOTP_SHA256 = 1;
+}
+
+enum EnTransferMode {
+  EnTransferMode_TRANSFER_MODE_DISABLED = 0;
+  EnTransferMode_TRANSFER_MODE_NAME = 1;
+  EnTransferMode_TRANSFER_MODE_GROUP = 2;
+  EnTransferMode_TRANSFER_MODE_NAME_GROUP = 3;
+}
+
+enum EnMarginFlagsGroup {
+  EnMarginFlagsGroup_MARGIN_FLAGS_NONE = 0;
+  EnMarginFlagsGroup_MARGIN_FLAGS_CLEAR_ACC = 1;
+}
+
+enum EnPermissionsFlags {
+  EnPermissionsFlags_PERMISSION_NONE = 0;
+  EnPermissionsFlags_PERMISSION_CERT_CONFIRM = 1;
+  EnPermissionsFlags_PERMISSION_ENABLE_CONNECTION = 2;
+  EnPermissionsFlags_PERMISSION_RESET_PASSWORD = 4;
+  EnPermissionsFlags_PERMISSION_FORCED_OTP_USAGE = 8;
+  EnPermissionsFlags_PERMISSION_RISK_WARNING = 16;
+  EnPermissionsFlags_PERMISSION_REGULATION_PROTECT = 32;
+  EnPermissionsFlags_PERMISSION_NOTIFY_DEALS = 64;
+  EnPermissionsFlags_PERMISSION_NOTIFY_ORDERS = 128;
+  EnPermissionsFlags_PERMISSION_NOTIFY_BALANCES = 256;
+  EnPermissionsFlags_PERMISSION_NOTIFY_ALL = 448;
+  EnPermissionsFlags_PERMISSION_ALL = 511;
+}
+
+enum EnAuthMode {
+  EnAuthMode_AUTH_STANDARD = 0;
+  EnAuthMode_AUTH_RSA1024 = 1;
+  EnAuthMode_AUTH_RSA2048 = 2;
+  EnAuthMode_AUTH_RSA_CUSTOM = 3;
+}
+
+enum EnReportsMode {
+  EnReportsMode_REPORTS_DISABLED = 0;
+  EnReportsMode_REPORTS_STANDARD = 1;
+}
+
+enum EnReportsFlags {
+  EnReportsFlags_REPORTSFLAGS_NONE = 0;
+  EnReportsFlags_REPORTSFLAGS_EMAIL = 1;
+  EnReportsFlags_REPORTSFLAGS_SUPPORT = 2;
+  EnReportsFlags_REPORTSFLAGS_STATEMENTS = 4;
+  EnReportsFlags_REPORTSFLAGS_ALL = 5;
+}
+
+enum EnNewsMode {
+  EnNewsMode_NEWS_MODE_DISABLED = 0;
+  EnNewsMode_NEWS_MODE_HEADERS = 1;
+  EnNewsMode_NEWS_MODE_FULL = 2;
+}
+
+
+enum EnMailMode {
+  EnMailMode_MAIL_MODE_DISABLED = 0;
+  EnMailMode_MAIL_MODE_FULL = 1;
+}
+
+enum EnTradeFlagsGroup {
+  EnTradeFlagsGroup_TRADEFLAGS_NONE = 0;
+  EnTradeFlagsGroup_TRADEFLAGS_SWAPS = 1;
+  EnTradeFlagsGroup_TRADEFLAGS_TRAILING = 2;
+  EnTradeFlagsGroup_TRADEFLAGS_EXPERTS = 4;
+  EnTradeFlagsGroup_TRADEFLAGS_EXPIRATION = 8;
+  EnTradeFlagsGroup_TRADEFLAGS_SIGNALS_ALL = 16;
+  EnTradeFlagsGroup_TRADEFLAGS_SIGNALS_OWN = 32;
+  EnTradeFlagsGroup_TRADEFLAGS_SO_COMPENSATION = 64;
+  EnTradeFlagsGroup_TRADEFLAGS_SO_FULLY_HEDGED = 128;
+  EnTradeFlagsGroup_TRADEFLAGS_FIFO_CLOSE = 256;
+  EnTradeFlagsGroup_TRADEFLAGS_HEDGE_PROHIBIT = 512;
+  EnTradeFlagsGroup_TRADEFLAGS_DEAL_COST = 1024;
+  EnTradeFlagsGroup_TRADEFLAGS_SO_COMPENSATION_CREDIT = 2048;
+  EnTradeFlagsGroup_TRADEFLAGS_DEFAULT = 31;
+  EnTradeFlagsGroup_TRADEFLAGS_ALL = 4095;
+}
+
+enum EnFreeMarginMode {
+  EnFreeMarginMode_FREE_MARGIN_NOT_USE_PL = 0;
+  EnFreeMarginMode_FREE_MARGIN_USE_PL = 1;
+  EnFreeMarginMode_FREE_MARGIN_PROFIT = 2;
+  EnFreeMarginMode_FREE_MARGIN_LOSS = 3;
+}
+
+enum EnStopOutMode {
+  EnStopOutMode_STOPOUT_PERCENT = 0;
+  EnStopOutMode_STOPOUT_MONEY = 1;
+}
+
+enum EnHistoryLimit {
+  EnHistoryLimit_TRADE_HISTORY_ALL = 0;
+  EnHistoryLimit_TRADE_HISTORY_MONTHS_1 = 1;
+  EnHistoryLimit_TRADE_HISTORY_MONTHS_3 = 2;
+  EnHistoryLimit_TRADE_HISTORY_MONTHS_6 = 3;
+  EnHistoryLimit_TRADE_HISTORY_YEAR_1 = 4;
+  EnHistoryLimit_TRADE_HISTORY_YEAR_2 = 5;
+  EnHistoryLimit_TRADE_HISTORY_YEAR_3 = 6;
+}
+
+message UserGroupsReply {
+  repeated ConGroup result = 1;
+  Error error = 2;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "type": "USER_PASS_MAIN",
+//  "login": "1003",
+//  "password": "somepassword"
+// }
+message UserPasswordCheckRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Type [Required]
+  UsersPasswords type = 2;
+  // Login [Required]
+  uint64 login = 3;
+  // Password. Example: ehj4bod [Required]
+  string password = 4;
+}
+
+message UserPasswordCheckReply {
+  string result = 1;
+  Error error = 2;
+}
+
+enum UsersPasswords
+{
+    USER_PASS_MAIN = 0;
+    USER_PASS_INVESTOR = 1;
+    USER_PASS_API = 2;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "type": "USER_PASS_MAIN",
+//  "login": "1003",
+//  "password": "somepassword"
+// }
+message UserPasswordChangeRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Type [Required]
+  UsersPasswords type = 2;
+  // Login [Required]
+  uint64 login = 3;
+  // Password. Example: ehj4bod [Required]
+  string password = 4;
+}
+
+message UserPasswordChangeReply {
+  string result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "ticket": "199",
+//  "stoploss": "0",
+//  "takeprofit": "0"
+// }
+message ModifyDealRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Ticket [Required]
+  uint64 ticket = 2;
+  // Stop loss
+  double stoploss = 3;
+  // Take profit
+  double takeprofit = 4;
+}
+
+message ModifyDealReply {
+  TradeResult result = 1;
+  Error error = 2;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "ticket": "199",
+//  "price": "0",
+//  "stoploss": "0",
+//  "takeprofit": "0"
+// }
+message ModifyOrderRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Ticket [Required]
+  uint64 ticket = 2;
+  // Order price
+  double price = 3;
+  // Stop loss
+  double stoploss = 4;
+  // Take profit
+  double takeprofit = 5;
+}
+
+message ModifyOrderReply {
+  TradeResult result = 1;
+  Error error = 2;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message SymbolsParamsRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+}
+
+message ConSymbol {
+  double PriceStrike = 1;
+  double MarginRateLiquidity = 2;
+  double FaceValue = 3;
+  double AccruedInterest = 4;
+  EnSpliceType SpliceType = 5;
+  EnSpliceTimeType SpliceTimeType = 6;
+  uint32 SpliceTimeDays = 7;
+  double MarginHedged = 8;
+  double MarginRateCurrency = 9;
+  uint32 FilterGap = 10;
+  uint32 FilterGapTicks = 11;
+  EnChartMode ChartMode = 12;
+  uint32 IEFlags = 13;
+  uint64 VolumeMinExt = 14;
+  uint64 VolumeMaxExt = 15;
+  uint64 VolumeStepExt = 16;
+  uint64 VolumeLimitExt = 17;
+  uint64 IEVolumeMaxExt = 18;
+  string Category = 19;
+  string Exchange = 20;
+  string CFI = 21;
+  EnSectors Sector = 22;
+  EnIndustries Industry = 23;
+  string Country = 24;
+  uint32 SubscriptionsDelay = 25;
+  uint32 SwapYearDays = 26;
+  uint32 SwapFlags = 27;
+  double SwapRateSunday = 28;
+  double SwapRateMonday = 29;
+  double SwapRateTuesday = 30;
+  double SwapRateWednesday = 31;
+  double SwapRateThursday = 32;
+  double SwapRateFriday = 33;
+  double SwapRateSaturday = 34;
+  int32 FreezeLevel = 35;
+  uint32 QuotesTimeout = 36;
+  uint64 VolumeMin = 37;
+  uint64 VolumeMax = 38;
+  uint64 VolumeStep = 39;
+  uint64 VolumeLimit = 40;
+  EnMarginFlags MarginFlags = 41;
+  double MarginInitial = 42;
+  double MarginMaintenance = 43;
+  double MarginLong = 44;
+  double MarginShort = 45;
+  double MarginLimit = 46;
+  double MarginStop = 47;
+  double MarginStopLimit = 48;
+  uint32 SwapMode = 49;
+  double SwapLong = 50;
+  double SwapShort = 51;
+  uint32 Swap3Day = 52;
+  int64 TimeStart = 53;
+  int64 TimeExpiration = 54;
+  uint32 REFlags = 55;
+  uint32 RETimeout = 56;
+  uint32 IECheckMode = 57;
+  uint32 IETimeout = 58;
+  uint32 IESlipProfit = 59;
+  uint32 IESlipLosing = 60;
+  uint64 IEVolumeMax = 61;
+  double PriceSettle = 62;
+  double PriceLimitMax = 63;
+  double PriceLimitMin = 64;
+  EnTradeFlags TradeFlags = 65;
+  EnOrderFlags OrderFlags = 66;
+  EnOptionMode OptionsMode = 67;
+  string Symbol = 68;
+  string Path = 69;
+  string ISIN = 70;
+  string Description = 71;
+  string International = 72;
+  string Basis = 73;
+  string Source = 74;
+  string Page = 75;
+  string CurrencyBase = 76;
+  uint32 CurrencyBaseDigits = 77;
+  string CurrencyProfit = 78;
+  uint32 CurrencyProfitDigits = 79;
+  string CurrencyMargin = 80;
+  uint32 CurrencyMarginDigits = 81;
+  uint32 Color = 82;
+  uint32 ColorBackground = 83;
+  uint32 Digits = 84;
+  double Point = 85;
+  double Multiply = 86;
+  EnTickFlagsSym TickFlags = 87;
+  uint32 TickBookDepth = 88;
+  uint32 FilterSoft = 89;
+  uint32 FilterSoftTicks = 90;
+  uint32 FilterHard = 91;
+  uint32 FilterHardTicks = 92;
+  uint32 FilterDiscard = 93;
+  uint32 FilterSpreadMax = 94;
+  uint32 FilterSpreadMin = 95;
+  EnTradeMode TradeMode = 96;
+  EnCalcMode CalcMode = 97;
+  EnExecutionMode ExecMode = 98;
+  EnGTCMode GTCMode = 99;
+  EnFillingFlags FillFlags = 100;
+  EnExpirationFlags ExpirFlags = 101;
+  uint32 Spread = 102;
+  int32 SpreadBalance = 103;
+  int32 SpreadDiff = 104;
+  int32 SpreadDiffBalance = 105;
+  double TickValue = 106;
+  double TickSize = 107;
+  double ContractSize = 108;
+  int32 StopsLevel = 109;
+}
+
+enum EnSpliceType {
+  EnSpliceType_SPLICE_NONE = 0;
+  EnSpliceType_SPLICE_UNADJUSTED = 1;
+  EnSpliceType_SPLICE_ADJUSTED = 2;
+}
+
+enum EnSpliceTimeType {
+  EnSpliceTimeType_SPLICE_TIME_EXPIRATION = 0;
+}
+
+enum EnChartMode {
+  EnChartMode_CHART_MODE_BID_PRICE = 0;
+  EnChartMode_CHART_MODE_LAST_PRICE = 1;
+  EnChartMode_CHART_MODE_OLD = 255;
+}
+
+enum EnSectors {
+  EnSectors_SECTOR_UNDEFINED = 0;
+  EnSectors_SECTOR_BASIC_MATERIALS = 1;
+  EnSectors_SECTOR_COMMUNICATION_SERVICES = 2;
+  EnSectors_SECTOR_CONSUMER_CYCLICAL = 3;
+  EnSectors_SECTOR_CONSUMER_DEFENSIVE = 4;
+  EnSectors_SECTOR_ENERGY = 5;
+  EnSectors_SECTOR_FINANCIAL = 6;
+  EnSectors_SECTOR_HEALTHCARE = 7;
+  EnSectors_SECTOR_INDUSTRIALS = 8;
+  EnSectors_SECTOR_REAL_ESTATE = 9;
+  EnSectors_SECTOR_TECHNOLOGY = 10;
+  EnSectors_SECTOR_UTILITIES = 11;
+  EnSectors_SECTOR_CURRENCY = 12;
+  EnSectors_SECTOR_CURRENCY_CRYPTO = 13;
+  EnSectors_SECTOR_INDEXES = 14;
+  EnSectors_SECTOR_COMMODITIES = 15;
+}
+
+enum EnIndustries {
+  EnIndustries_INDUSTRY_UNDEFINED = 0;
+  EnIndustries_INDUSTRY_AGRICULTURAL_INPUTS = 1;
+  EnIndustries_INDUSTRY_ALUMINIUM = 2;
+  EnIndustries_INDUSTRY_BUILDING_MATERIALS = 3;
+  EnIndustries_INDUSTRY_CHEMICALS = 4;
+  EnIndustries_INDUSTRY_COKING_COAL = 5;
+  EnIndustries_INDUSTRY_COPPER = 6;
+  EnIndustries_INDUSTRY_GOLD = 7;
+  EnIndustries_INDUSTRY_LUMBER_WOOD = 8;
+  EnIndustries_INDUSTRY_INDUSTRIAL_METALS = 9;
+  EnIndustries_INDUSTRY_PRECIOUS_METALS = 10;
+  EnIndustries_INDUSTRY_PAPER = 11;
+  EnIndustries_INDUSTRY_SILVER = 12;
+  EnIndustries_INDUSTRY_SPECIALTY_CHEMICALS = 13;
+  EnIndustries_INDUSTRY_STEEL = 14;
+  EnIndustries_INDUSTRY_BASIC_MATERIALS_END = 50;
+  EnIndustries_INDUSTRY_ADVERTISING = 51;
+  EnIndustries_INDUSTRY_BROADCASTING = 52;
+  EnIndustries_INDUSTRY_GAMING_MULTIMEDIA = 53;
+  EnIndustries_INDUSTRY_ENTERTAINMENT = 54;
+  EnIndustries_INDUSTRY_INTERNET_CONTENT = 55;
+  EnIndustries_INDUSTRY_PUBLISHING = 56;
+  EnIndustries_INDUSTRY_TELECOM = 57;
+  EnIndustries_INDUSTRY_COMMUNICATION_END = 100;
+  EnIndustries_INDUSTRY_APPAREL_MANUFACTURING = 101;
+  EnIndustries_INDUSTRY_APPAREL_RETAIL = 102;
+  EnIndustries_INDUSTRY_AUTO_MANUFACTURERS = 103;
+  EnIndustries_INDUSTRY_AUTO_PARTS = 104;
+  EnIndustries_INDUSTRY_AUTO_DEALERSHIP = 105;
+  EnIndustries_INDUSTRY_DEPARTMENT_STORES = 106;
+  EnIndustries_INDUSTRY_FOOTWEAR_ACCESSORIES = 107;
+  EnIndustries_INDUSTRY_FURNISHINGS = 108;
+  EnIndustries_INDUSTRY_GAMBLING = 109;
+  EnIndustries_INDUSTRY_HOME_IMPROV_RETAIL = 110;
+  EnIndustries_INDUSTRY_INTERNET_RETAIL = 111;
+  EnIndustries_INDUSTRY_LEISURE = 112;
+  EnIndustries_INDUSTRY_LODGING = 113;
+  EnIndustries_INDUSTRY_LUXURY_GOODS = 114;
+  EnIndustries_INDUSTRY_PACKAGING_CONTAINERS = 115;
+  EnIndustries_INDUSTRY_PERSONAL_SERVICES = 116;
+  EnIndustries_INDUSTRY_RECREATIONAL_VEHICLES = 117;
+  EnIndustries_INDUSTRY_RESIDENT_CONSTRUCTION = 118;
+  EnIndustries_INDUSTRY_RESORTS_CASINOS = 119;
+  EnIndustries_INDUSTRY_RESTAURANTS = 120;
+  EnIndustries_INDUSTRY_SPECIALTY_RETAIL = 121;
+  EnIndustries_INDUSTRY_TEXTILE_MANUFACTURING = 122;
+  EnIndustries_INDUSTRY_TRAVEL_SERVICES = 123;
+  EnIndustries_INDUSTRY_CONSUMER_CYCL_END = 150;
+  EnIndustries_INDUSTRY_BEVERAGES_BREWERS = 151;
+  EnIndustries_INDUSTRY_BEVERAGES_NON_ALCO = 152;
+  EnIndustries_INDUSTRY_BEVERAGES_WINERIES = 153;
+  EnIndustries_INDUSTRY_CONFECTIONERS = 154;
+  EnIndustries_INDUSTRY_DISCOUNT_STORES = 155;
+  EnIndustries_INDUSTRY_EDUCATION_TRAINIG = 156;
+  EnIndustries_INDUSTRY_FARM_PRODUCTS = 157;
+  EnIndustries_INDUSTRY_FOOD_DISTRIBUTION = 158;
+  EnIndustries_INDUSTRY_GROCERY_STORES = 159;
+  EnIndustries_INDUSTRY_HOUSEHOLD_PRODUCTS = 160;
+  EnIndustries_INDUSTRY_PACKAGED_FOODS = 161;
+  EnIndustries_INDUSTRY_TOBACCO = 162;
+  EnIndustries_INDUSTRY_CONSUMER_DEF_END = 200;
+  EnIndustries_INDUSTRY_OIL_GAS_DRILLING = 201;
+  EnIndustries_INDUSTRY_OIL_GAS_EP = 202;
+  EnIndustries_INDUSTRY_OIL_GAS_EQUIPMENT = 203;
+  EnIndustries_INDUSTRY_OIL_GAS_INTEGRATED = 204;
+  EnIndustries_INDUSTRY_OIL_GAS_MIDSTREAM = 205;
+  EnIndustries_INDUSTRY_OIL_GAS_REFINING = 206;
+  EnIndustries_INDUSTRY_THERMAL_COAL = 207;
+  EnIndustries_INDUSTRY_URANIUM = 208;
+  EnIndustries_INDUSTRY_ENERGY_END = 250;
+  EnIndustries_INDUSTRY_EXCHANGE_TRADED_FUND = 251;
+  EnIndustries_INDUSTRY_ASSETS_MANAGEMENT = 252;
+  EnIndustries_INDUSTRY_BANKS_DIVERSIFIED = 253;
+  EnIndustries_INDUSTRY_BANKS_REGIONAL = 254;
+  EnIndustries_INDUSTRY_CAPITAL_MARKETS = 255;
+  EnIndustries_INDUSTRY_CLOSE_END_FUND_DEBT = 256;
+  EnIndustries_INDUSTRY_CLOSE_END_FUND_EQUITY = 257;
+  EnIndustries_INDUSTRY_CLOSE_END_FUND_FOREIGN = 258;
+  EnIndustries_INDUSTRY_CREDIT_SERVICES = 259;
+  EnIndustries_INDUSTRY_FINANCIAL_CONGLOMERATE = 260;
+  EnIndustries_INDUSTRY_FINANCIAL_DATA_EXCHANGE = 261;
+  EnIndustries_INDUSTRY_INSURANCE_BROKERS = 262;
+  EnIndustries_INDUSTRY_INSURANCE_DIVERSIFIED = 263;
+  EnIndustries_INDUSTRY_INSURANCE_LIFE = 264;
+  EnIndustries_INDUSTRY_INSURANCE_PROPERTY = 265;
+  EnIndustries_INDUSTRY_INSURANCE_REINSURANCE = 266;
+  EnIndustries_INDUSTRY_INSURANCE_SPECIALTY = 267;
+  EnIndustries_INDUSTRY_MORTGAGE_FINANCE = 268;
+  EnIndustries_INDUSTRY_SHELL_COMPANIES = 269;
+  EnIndustries_INDUSTRY_FINANCIAL_END = 300;
+  EnIndustries_INDUSTRY_BIOTECHNOLOGY = 301;
+  EnIndustries_INDUSTRY_DIAGNOSTICS_RESEARCH = 302;
+  EnIndustries_INDUSTRY_DRUGS_MANUFACTURERS = 303;
+  EnIndustries_INDUSTRY_DRUGS_MANUFACTURERS_SPEC = 304;
+  EnIndustries_INDUSTRY_HEALTHCARE_PLANS = 305;
+  EnIndustries_INDUSTRY_HEALTH_INFORMATION = 306;
+  EnIndustries_INDUSTRY_MEDICAL_FACILITIES = 307;
+  EnIndustries_INDUSTRY_MEDICAL_DEVICES = 308;
+  EnIndustries_INDUSTRY_MEDICAL_DISTRIBUTION = 309;
+  EnIndustries_INDUSTRY_MEDICAL_INSTRUMENTS = 310;
+  EnIndustries_INDUSTRY_PHARM_RETAILERS = 311;
+  EnIndustries_INDUSTRY_HEALTHCARE_END = 350;
+  EnIndustries_INDUSTRY_AEROSPACE_DEFENSE = 351;
+  EnIndustries_INDUSTRY_AIRLINES = 352;
+  EnIndustries_INDUSTRY_AIRPORTS_SERVICES = 353;
+  EnIndustries_INDUSTRY_BUILDING_PRODUCTS = 354;
+  EnIndustries_INDUSTRY_BUSINESS_EQUIPMENT = 355;
+  EnIndustries_INDUSTRY_CONGLOMERATES = 356;
+  EnIndustries_INDUSTRY_CONSULTING_SERVICES = 357;
+  EnIndustries_INDUSTRY_ELECTRICAL_EQUIPMENT = 358;
+  EnIndustries_INDUSTRY_ENGINEERING_CONSTRUCTION = 359;
+  EnIndustries_INDUSTRY_FARM_HEAVY_MACHINERY = 360;
+  EnIndustries_INDUSTRY_INDUSTRIAL_DISTRIBUTION = 361;
+  EnIndustries_INDUSTRY_INFRASTRUCTURE_OPERATIONS = 362;
+  EnIndustries_INDUSTRY_FREIGHT_LOGISTICS = 363;
+  EnIndustries_INDUSTRY_MARINE_SHIPPING = 364;
+  EnIndustries_INDUSTRY_METAL_FABRICATION = 365;
+  EnIndustries_INDUSTRY_POLLUTION_CONTROL = 366;
+  EnIndustries_INDUSTRY_RAILROADS = 367;
+  EnIndustries_INDUSTRY_RENTAL_LEASING = 368;
+  EnIndustries_INDUSTRY_SECURITY_PROTECTION = 369;
+  EnIndustries_INDUSTRY_SPEALITY_BUSINESS_SERVICES = 370;
+  EnIndustries_INDUSTRY_SPEALITY_MACHINERY = 371;
+  EnIndustries_INDUSTRY_STUFFING_EMPLOYMENT = 372;
+  EnIndustries_INDUSTRY_TOOLS_ACCESSORIES = 373;
+  EnIndustries_INDUSTRY_TRUCKING = 374;
+  EnIndustries_INDUSTRY_WASTE_MANAGEMENT = 375;
+  EnIndustries_INDUSTRY_INDUSTRIALS_END = 400;
+  EnIndustries_INDUSTRY_REAL_ESTATE_DEVELOPMENT = 401;
+  EnIndustries_INDUSTRY_REAL_ESTATE_DIVERSIFIED = 402;
+  EnIndustries_INDUSTRY_REAL_ESTATE_SERVICES = 403;
+  EnIndustries_INDUSTRY_REIT_DIVERSIFIED = 404;
+  EnIndustries_INDUSTRY_REIT_HEALTCARE = 405;
+  EnIndustries_INDUSTRY_REIT_HOTEL_MOTEL = 406;
+  EnIndustries_INDUSTRY_REIT_INDUSTRIAL = 407;
+  EnIndustries_INDUSTRY_REIT_MORTAGE = 408;
+  EnIndustries_INDUSTRY_REIT_OFFICE = 409;
+  EnIndustries_INDUSTRY_REIT_RESIDENTAL = 410;
+  EnIndustries_INDUSTRY_REIT_RETAIL = 411;
+  EnIndustries_INDUSTRY_REIT_SPECIALITY = 412;
+  EnIndustries_INDUSTRY_REAL_ESTATE_END = 450;
+  EnIndustries_INDUSTRY_COMMUNICATION_EQUIPMENT = 451;
+  EnIndustries_INDUSTRY_COMPUTER_HARDWARE = 452;
+  EnIndustries_INDUSTRY_CONSUMER_ELECTRONICS = 453;
+  EnIndustries_INDUSTRY_ELECTRONIC_COMPONENTS = 454;
+  EnIndustries_INDUSTRY_ELECTRONIC_DISTRIBUTION = 455;
+  EnIndustries_INDUSTRY_IT_SERVICES = 456;
+  EnIndustries_INDUSTRY_SCIENTIFIC_INSTRUMENTS = 457;
+  EnIndustries_INDUSTRY_SEMICONDUCTOR_EQUIPMENT = 458;
+  EnIndustries_INDUSTRY_SEMICONDUCTORS = 459;
+  EnIndustries_INDUSTRY_SOFTWARE_APPLICATION = 460;
+  EnIndustries_INDUSTRY_SOFTWARE_INFRASTRUCTURE = 461;
+  EnIndustries_INDUSTRY_SOLAR = 462;
+  EnIndustries_INDUSTRY_TECHNOLOGY_END = 500;
+  EnIndustries_INDUSTRY_UTILITIES_DIVERSIFIED = 501;
+  EnIndustries_INDUSTRY_UTILITIES_POWERPRODUCERS = 502;
+  EnIndustries_INDUSTRY_UTILITIES_RENEWABLE = 503;
+  EnIndustries_INDUSTRY_UTILITIES_REGULATED_ELECTRIC = 504;
+  EnIndustries_INDUSTRY_UTILITIES_REGULATED_GAS = 505;
+  EnIndustries_INDUSTRY_UTILITIES_REGULATED_WATER = 506;
+  EnIndustries_INDUSTRY_UTILITIES_END = 550;
+  EnIndustries_INDUSTRY_COMMODITIES_AGRICULTURAL = 551;
+  EnIndustries_INDUSTRY_COMMODITIES_ENERGY = 552;
+  EnIndustries_INDUSTRY_COMMODITIES_METALS = 553;
+  EnIndustries_INDUSTRY_COMMODITIES_PRECIOUS = 554;
+  EnIndustries_INDUSTRY_COMMODITIES_END = 600;
+}
+
+enum EnMarginFlags {
+  EnMarginFlags_MARGIN_FLAGS_NONE = 0;
+  EnMarginFlags_MARGIN_FLAGS_CHECK_PROCESS = 1;
+  EnMarginFlags_MARGIN_FLAGS_CHECK_SLTP = 2;
+  EnMarginFlags_MARGIN_FLAGS_HEDGE_LARGE_LEG = 4;
+  EnMarginFlags_MARGIN_FLAGS_EXCLUDE_PL = 8;
+  EnMarginFlags_MARGIN_FLAGS_ALL = 15;
+}
+
+enum EnTradeFlags {
+  EnTradeFlags_TRADE_FLAGS_NONE = 0;
+  EnTradeFlags_TRADE_FLAGS_PROFIT_BY_MARKET = 1;
+  EnTradeFlags_TRADE_FLAGS_ALLOW_SIGNALS = 2;
+  EnTradeFlags_TRADE_FLAGS_ALL = 3;
+}
+
+enum EnOrderFlags {
+  EnOrderFlags_ORDER_FLAGS_NONE = 0;
+  EnOrderFlags_ORDER_FLAGS_MARKET = 1;
+  EnOrderFlags_ORDER_FLAGS_LIMIT = 2;
+  EnOrderFlags_ORDER_FLAGS_STOP = 4;
+  EnOrderFlags_ORDER_FLAGS_STOP_LIMIT = 8;
+  EnOrderFlags_ORDER_FLAGS_SL = 16;
+  EnOrderFlags_ORDER_FLAGS_TP = 32;
+  EnOrderFlags_ORDER_FLAGS_CLOSEBY = 64;
+  EnOrderFlags_ORDER_FLAGS_ALL = 127;
+}
+
+enum EnOptionMode {
+  EnOptionMode_OPTION_MODE_EUROPEAN_CALL = 0;
+  EnOptionMode_OPTION_MODE_EUROPEAN_PUT = 1;
+  EnOptionMode_OPTION_MODE_AMERICAN_CALL = 2;
+  EnOptionMode_OPTION_MODE_AMERICAN_PUT = 3;
+}
+
+enum EnTickFlagsSym {
+      EnTickFlagsSym_TICK_NONE = 0;
+  EnTickFlagsSym_TICK_REALTIME = 1;
+  EnTickFlagsSym_TICK_COLLECTRAW = 2;
+  EnTickFlagsSym_TICK_FEED_STATS = 4;
+  EnTickFlagsSym_TICK_NEGATIVE_PRICES = 8;
+  EnTickFlagsSym_TICK_ALL = 15;
+}
+
+enum EnTradeMode {
+  EnTradeMode_TRADE_DISABLED = 0;
+  EnTradeMode_TRADE_LONGONLY = 1;
+  EnTradeMode_TRADE_SHORTONLY = 2;
+  EnTradeMode_TRADE_CLOSEONLY = 3;
+  EnTradeMode_TRADE_FULL = 4;
+}
+
+enum EnCalcMode {
+  EnCalcMode_TRADE_MODE_FOREX = 0;
+  EnCalcMode_TRADE_MODE_FUTURES = 1;
+  EnCalcMode_TRADE_MODE_CFD = 2;
+  EnCalcMode_TRADE_MODE_CFDINDEX = 3;
+  EnCalcMode_TRADE_MODE_CFDLEVERAGE = 4;
+  EnCalcMode_TRADE_MODE_FOREX_NO_LEVERAGE = 5;
+  EnCalcMode_TRADE_MODE_EXCH_STOCKS = 32;
+  EnCalcMode_TRADE_MODE_EXCH_FUTURES = 33;
+  EnCalcMode_TRADE_MODE_EXCH_FUTURES_FORTS = 34;
+  EnCalcMode_TRADE_MODE_EXCH_OPTIONS = 35;
+  EnCalcMode_TRADE_MODE_EXCH_OPTIONS_MARGIN = 36;
+  EnCalcMode_TRADE_MODE_EXCH_BONDS = 37;
+  EnCalcMode_TRADE_MODE_EXCH_STOCKS_MOEX = 38;
+  EnCalcMode_TRADE_MODE_EXCH_BONDS_MOEX = 39;
+  EnCalcMode_TRADE_MODE_SERV_COLLATERAL = 64;
+}
+
+enum EnExecutionMode {
+  EnExecutionMode_EXECUTION_REQUEST = 0;
+  EnExecutionMode_EXECUTION_INSTANT = 1;
+  EnExecutionMode_EXECUTION_MARKET = 2;
+  EnExecutionMode_EXECUTION_EXCHANGE = 3;
+}
+
+enum EnGTCMode {
+  EnGTCMode_ORDERS_GTC = 0;
+  EnGTCMode_ORDERS_DAILY = 1;
+  EnGTCMode_ORDERS_DAILY_NO_STOPS = 2;
+}
+
+enum EnFillingFlags {
+  EnFillingFlags_FILL_FLAGS_NONE = 0;
+  EnFillingFlags_FILL_FLAGS_FOK = 1;
+  EnFillingFlags_FILL_FLAGS_IOC = 2;
+  EnFillingFlags_FILL_FLAGS_ALL = 3;
+}
+
+enum EnExpirationFlags {
+  EnExpirationFlags_TIME_FLAGS_NONE = 0;
+  EnExpirationFlags_TIME_FLAGS_GTC = 1;
+  EnExpirationFlags_TIME_FLAGS_DAY = 2;
+  EnExpirationFlags_TIME_FLAGS_SPECIFIED = 4;
+  EnExpirationFlags_TIME_FLAGS_SPECIFIED_DAY = 8;
+  EnExpirationFlags_TIME_FLAGS_ALL = 15;
+}
+
+message SymbolsParamsReply {
+  repeated ConSymbol result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "userGroup": "real//real"
+// }
+message SymbolGroupsRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  string userGroup = 2;
+}
+
+message ConGroupSymbol {
+  uint32 IECheckMode = 1;
+  uint32 IECheckModeDefault = 2;
+  uint32 IETimeout = 3;
+  uint32 IETimeoutDefault = 4;
+  uint32 IESlipProfit = 5;
+  uint32 IESlipProfitDefault = 6;
+  uint32 IESlipLosing = 7;
+  uint32 IESlipLosingDefault = 8;
+  uint64 IEVolumeMax = 9;
+  uint64 IEVolumeMaxDefault = 10;
+  OrderFlags OrderFlags = 11;
+  OrderFlags OrderFlagsDefault = 12;
+  double MarginRateInitialDefault = 13;
+  double MarginRateMaintenanceDefault = 14;
+  double MarginRateLiquidity = 15;
+  double MarginRateLiquidityDefault = 16;
+  REFlags REFlags = 17;
+  REFlags REFlagsDefault = 18;
+  double MarginHedged = 19;
+  double MarginHedgedDefault = 20;
+  PermissionsFlags PermissionsFlags = 21;
+  double MarginRateCurrency = 22;
+  double MarginRateCurrencyDefault = 23;
+  uint32 BookDepthLimit = 24;
+  uint32 IEFlags = 25;
+  uint32 IEFlagsDefault = 26;
+  uint64 VolumeMinExt = 27;
+  uint64 VolumeMinExtDefault = 28;
+  uint64 VolumeMaxExt = 29;
+  uint64 VolumeMaxExtDefault = 30;
+  uint64 VolumeStepExt = 31;
+  uint64 VolumeStepExtDefault = 32;
+  uint64 VolumeLimitExt = 33;
+  uint64 VolumeLimitExtDefault = 34;
+  uint64 IEVolumeMaxExt = 35;
+  uint64 IEVolumeMaxExtDefault = 36;
+  uint32 SwapYearDays = 37;
+  int32 SwapYearDaysDefault = 38;
+  uint32 SwapFlags = 39;
+  uint32 SwapFlagsDefault = 40;
+  double SwapRateSunday = 41;
+  double SwapRateSundayDefault = 42;
+  double SwapRateMonday = 43;
+  double SwapRateMondayDefault = 44;
+  double SwapRateTuesday = 45;
+  double SwapRateTuesdayDefault = 46;
+  double SwapRateWednesday = 47;
+  double SwapRateWednesdayDefault = 48;
+  double SwapRateThursday = 49;
+  double SwapRateThursdayDefault = 50;
+  double SwapRateFriday = 51;
+  double SwapRateFridayDefault = 52;
+  double SwapRateSaturday = 53;
+  double SwapRateSaturdayDefault = 54;
+  string Path = 55;
+  TradeMode TradeMode = 56;
+  TradeMode TradeModeDefault = 57;
+  ExecutionMode ExecMode = 58;
+  ExecutionMode ExecModeDefault = 59;
+  FillingFlags FillFlags = 60;
+  FillingFlags FillFlagsDefault = 61;
+  ExpirationFlags ExpirFlags = 62;
+  ExpirationFlags ExpirFlagsDefault = 63;
+  int32 SpreadDiff = 64;
+  int32 SpreadDiffDefault = 65;
+  int32 SpreadDiffBalance = 66;
+  int32 SpreadDiffBalanceDefault = 67;
+  int32 StopsLevel = 68;
+  int32 StopsLevelDefault = 69;
+  int32 FreezeLevel = 70;
+  int32 FreezeLevelDefault = 71;
+  uint64 VolumeMin = 72;
+  uint64 VolumeMinDefault = 73;
+  uint64 VolumeMax = 74;
+  uint64 VolumeMaxDefault = 75;
+  uint64 VolumeStep = 76;
+  uint64 VolumeStepDefault = 77;
+  uint64 VolumeLimit = 78;
+  uint64 VolumeLimitDefault = 79;
+  MarginFlags MarginFlags = 80;
+  MarginFlags MarginFlagsDefault = 81;
+  double MarginInitial = 82;
+  double MarginInitialDefault = 83;
+  double MarginMaintenance = 84;
+  double MarginMaintenanceDefault = 85;
+  double MarginLong = 86;
+  double MarginLongDefault = 87;
+  double MarginShort = 88;
+  double MarginShortDefault = 89;
+  double MarginLimit = 90;
+  double MarginLimitDefault = 91;
+  double MarginStop = 92;
+  double MarginStopDefault = 93;
+  double MarginStopLimit = 94;
+  double MarginStopLimitDefault = 95;
+  SwapMode SwapMode = 96;
+  SwapMode SwapModeDefault = 97;
+  double SwapLong = 98;
+  double SwapLongDefault = 99;
+  double SwapShort = 100;
+  double SwapShortDefault = 101;
+  int32 Swap3Day = 102;
+  int32 Swap3DayDefault = 103;
+  uint32 RETimeout = 104;
+  uint32 RETimeoutDefault = 105;
+  double MarginRateInitialBuyMarket = 106;
+  double MarginRateInitialSellMarket = 107;
+  double MarginRateInitialBuyLimit = 108;
+  double MarginRateInitialSellLimit = 109;
+  double MarginRateInitialBuyStop = 110;
+  double MarginRateInitialSellStop = 111;
+  double MarginRateMaintenanceBuyMarket = 112;
+  double MarginRateMaintenanceSellMarket = 113;
+  double MarginRateMaintenanceBuyLimit = 114;
+  double MarginRateMaintenanceSellLimit = 115;
+  double MarginRateMaintenanceBuyStop = 116;
+  double MarginRateMaintenanceSellStop = 117;
+}
+
+enum OrderFlags {
+  OrderFlags_None = 0;
+  OrderFlags_Market = 1;
+  OrderFlags_Limit = 2;
+  OrderFlags_Stop = 4;
+  OrderFlags_StopLimit = 8;
+  OrderFlags_Sl = 16;
+  OrderFlags_Tp = 32;
+  OrderFlags_Closeby = 64;
+  OrderFlags_All = 127;
+}
+
+enum REFlags {
+  REFlags_None = 0;
+  REFlags_Order = 1;
+}
+
+enum PermissionsFlags {
+  PermissionsFlags_None = 0;
+  PermissionsFlags_Book = 1;
+}
+
+enum TradeMode {
+  TradeMode_Disabled = 0;
+  TradeMode_Longonly = 1;
+  TradeMode_Shortonly = 2;
+  TradeMode_Closeonly = 3;
+  TradeMode_Full = 4;
+}
+
+enum ExecutionMode {
+  ExecutionMode_Request = 0;
+  ExecutionMode_Instant = 1;
+  ExecutionMode_Market = 2;
+  ExecutionMode_Exchange = 3;
+}
+
+enum FillingFlags {
+  FillingFlags_None = 0;
+  FillingFlags_Fok = 1;
+  FillingFlags_Ioc = 2;
+  FillingFlags_All = 3;
+}
+
+enum ExpirationFlags {
+  ExpirationFlags_None = 0;
+  ExpirationFlags_Gtc = 1;
+  ExpirationFlags_Day = 2;
+  ExpirationFlags_Specified = 4;
+  ExpirationFlags_SpecifiedDay = 8;
+  ExpirationFlags_All = 15;
+}
+
+enum MarginFlags {
+  MarginFlags_None = 0;
+  MarginFlags_CheckProcess = 1;
+  MarginFlags_CheckSltp = 2;
+  MarginFlags_HedgeLargeLeg = 4;
+  MarginFlags_ExcludePl = 8;
+  MarginFlags_All = 15;
+}
+
+enum SwapMode {
+  SwapMode_Disabled = 0;
+  SwapMode_ByPoints = 1;
+  SwapMode_BySymbolCurrency = 2;
+  SwapMode_ByMarginCurrency = 3;
+  SwapMode_ByGroupCurrency = 4;
+  SwapMode_ByInterestCurrent = 5;
+  SwapMode_ByInterestOpen = 6;
+  SwapMode_ReopenByClosePrice = 7;
+  SwapMode_ReopenByBid = 8;
+  SwapMode_ByProfitCurrency = 9;
+}
+
+message SymbolGroupsReply {
+  repeated ConGroupSymbol result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "symbol": "EURUSD",
+//  "from": "2023-7-04T00:00:00",
+//  "to": "2023-7-05T00:00:00"
+// }
+message ChartRequestRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Symbol [Required]
+  string symbol = 2;
+  // From date' in format: yyyy-MM-ddTHH:mm:ss [Required]
+  string from = 3;
+  // To date' in format: yyyy-MM-ddTHH:mm:ss [Required]
+  string to = 4;
+  // Bars count per message 
+  int32 barsPerMsg = 5; 
+}
+
+message ChartBar {
+   google.protobuf.Timestamp datetime = 1;
+  double open = 2;
+  double high = 3;
+  double low = 4;
+  double close = 5;
+  uint64 tick_volume = 6;
+  int32 spread = 7;
+  uint64 volume = 8;
+}
+
+
+message ChartBarSlim {
+  int32 d = 1;
+  double o = 2;
+  double h = 3;
+  double l = 4;
+  double c = 5;
+  uint64 v = 6;
+}
+
+message ChartRequestReply {
+  repeated ChartBar result = 1;
+  Error error = 2;
+}
+
+message ChartRequestSlimReply {
+  repeated ChartBarSlim result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message SymbolsListRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+}
+
+message SymbolsListReply {
+  repeated string result = 1;
+  Error error = 2;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "symbol": "EURUSD",
+//  "interval": "0"
+// }
+message SubscribeRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Symbol [Required]
+  string symbol = 2;
+  // Minimum interval between events in milliseconds
+  int32 interval = 3;
+}
+
+message SubscribeReply {
+  string result = 1;
+  Error error = 2;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt4mng",
+//  "symbol": "EURUSD"
+// }
+message UnsubscribeRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1; // Token returned by 'Connect' method [Required]
+  // Symbol [Required]
+  string symbol = 2;
+}
+
+message UnsubscribeReply {
+  string result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt4mng"
+// }
+message SubscribeManyRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1; // Token returned by 'Connect' method [Required]
+  // Symbol [Required]
+  repeated string symbol = 2;
+}
+
+message SubscribeManyReply {
+  string result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt4mng"
+// }
+message UnsubscribeManyRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1; // Token returned by 'Connect' method [Required]
+  // Symbol [Required]
+  repeated string symbol = 2;
+}
+
+message UnsubscribeManyReply {
+  string result = 1;
+  Error error = 2;
+}
+
+message PingRequest {
+}
+
+message PingReply {
+  string result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "user": "",
+//  "password": "eanm3xtd",
+//  "server": "20.4.28.127"
+// }
+message ConnectRequest {
+  // Account number. Example: 500476959 [Required]
+  uint64 user = 1;
+  // Password. Example: ehj4bod [Required]
+  string password = 2;
+  // Host - ip adddress or dns name with or without port number. Example: mt4-demo.roboforex.com [Required]
+  string server = 3;
+  // Unsubcribe all realtime quote subscriptions
+  bool unsubscibe = 4; 
+}
+
+message ConnectReply {
+  string result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "login": "0"
+// }
+message AccountsSummaryRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Token returned by 'Connect' method
+  repeated uint64 login = 2;
+}
+
+// Account summary trading information
+message AccountSummary {
+// Balance
+  uint64 Login = 1;
+// Balance
+  double Balance = 2;
+// Profit
+  double Profit = 3;
+// Equity
+  double Equity = 4;
+// Margin
+  double Margin = 5;
+// Free margin
+  double FreeMargin = 6;
+}
+
+message AccountsSummaryReply {
+  repeated AccountSummary result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message AccountsRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+}
+
+message AccountsReply {
+  repeated uint64 result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message AccountsOnlineRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+}
+
+message AccountsOnlineReply {
+  repeated uint64 result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "login": "1"
+// }
+message AccountDetailsRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Token returned by 'Connect' method
+  uint64 login = 2;
+}
+
+message Account {
+  uint64 Login = 1;
+  uint32 CurrencyDigits = 2;
+  double Balance = 3;
+  double Credit = 4;
+  double Margin = 5;
+  double MarginFree = 6;
+  double MarginLevel = 7;
+  uint32 MarginLeverage = 8;
+  double Profit = 9;
+  double Storage = 10;
+  double Floating = 11;
+  double Equity = 12;
+  EnSoActivation SOActivation = 13;
+  int64 SOTime = 14;
+  double SOLevel = 15;
+  double SOEquity = 16;
+  double SOMargin = 17;
+  double BlockedCommission = 18;
+  double BlockedProfit = 19;
+  double MarginInitial = 20;
+  double MarginMaintenance = 21;
+  double Assets = 22;
+  double Liabilities = 23;
+}
+
+enum EnSoActivation {
+  EnSoActivation_ACTIVATION_NONE = 0;
+  EnSoActivation_ACTIVATION_MARGIN_CALL = 1;
+  EnSoActivation_ACTIVATION_STOP_OUT = 2;
+}
+
+message AccountDetailsReply {
+  Account result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message AccountDetailsManyRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Token returned by 'Connect' method
+  repeated uint64 login = 2;
+}
+
+message AccountDetailsManyReply {
+  repeated Account result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "login": "1"
+// }
+message UserDetailsRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Token returned by 'Connect' method
+  uint64 login = 2;
+}
+
+message UserDetailsReply {
+  User result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message UserDetailsManyRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Token returned by 'Connect' method
+  repeated uint64 login = 2;
+}
+
+message UserDetailsManyReply {
+  repeated User result = 1;
+  Error error = 2;
+}
+
+
+enum OrderType {
+  OrderType_BUY = 0;
+  OrderType_SELL = 1;
+  OrderType_BUY_LIMIT = 2;
+  OrderType_SELL_LIMIT = 3;
+  OrderType_BUY_STOP = 4;
+  OrderType_SELL_STOP = 5;
+  OrderType_BUY_STLIMIT = 6;
+  OrderType_SELL_STLIMIT = 7;
+  OrderType_CLOSE_BY = 8;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "login": "",
+//  "symbol": "",
+//  "operation": "",
+//  "lots": "",
+//  "price": "0",
+//  "slippage": "0",
+//  "stoploss": "0",
+//  "takeprofit": "0"
+// }
+message OrderSendRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Token returned by 'Connect' method [Required]
+  uint64 login = 2;
+  // Symbol [Required]
+  string symbol = 3;
+  // But or sell, market or pending [Required]
+  OrderType operation = 4;
+  // Lots [Required]
+  double lots = 5;
+  // Price
+  double price = 6;
+  // Slippage
+  uint64 slippage = 7;
+  // StopLoss 
+  double stoploss = 8;
+  // TakeProfit
+  double takeprofit = 9;
+  // Comment
+  string comment = 10;
+}
+
+message TradeResult {
+  Request Answer = 1;
+  Confirm Result = 2;
+}
+
+message Request {
+  MTRetCode ApiDataClearAll = 1;
+  uint64 VolumeCurrent = 2;
+  uint64 VolumeCurrentExt = 3;
+  string SymbolOriginal = 4;
+  string Print = 5;
+  uint32 ID = 6;
+  uint64 Login = 7;
+  string Group = 8;
+  string Symbol = 9;
+  uint32 Digits = 10;
+  EnTradeActions Action = 11;
+  int64 TimeExpiration = 12;
+  EnOrderType Type = 13;
+  EnOrderFilling TypeFill = 14;
+  EnOrderTime TypeTime = 15;
+  EnTradeActionFlags Flags = 16;
+  uint64 Volume = 17;
+  uint64 Order = 18;
+  string OrderExternalID = 19;
+  double PriceOrder = 20;
+  double PriceTrigger = 21;
+  double PriceSL = 22;
+  double PriceTP = 23;
+  uint64 PriceDeviation = 24;
+  double PriceDeviationTop = 25;
+  double PriceDeviationBottom = 26;
+  string Comment = 27;
+  MTRetCode ResultRetcode = 28;
+  uint64 ResultDealer = 29;
+  uint64 ResultDeal = 30;
+  uint64 ResultOrder = 31;
+  uint64 ResultVolume = 32;
+  double ResultPrice = 33;
+  double ResultDealerBid = 34;
+  double ResultDealerAsk = 35;
+  double ResultDealerLast = 36;
+  double ResultMarketBid = 37;
+  double ResultMarketAsk = 38;
+  double ResultMarketLast = 39;
+  string ResultComment = 40;
+  string ExternalAccount = 41;
+  uint32 IDClient = 42;
+  string IP = 43;
+  uint64 SourceLogin = 44;
+  uint64 Position = 45;
+  uint64 PositionBy = 46;
+  string PositionExternalID = 47;
+  string PositionByExternalID = 48;
+  uint64 VolumeExt = 49;
+  uint64 ResultVolumeExt = 50;
+}
+
+enum EnTradeActions {
+  EnTradeActions_TA_PRICE = 0;
+  EnTradeActions_TA_REQUEST = 1;
+  EnTradeActions_TA_INSTANT = 2;
+  EnTradeActions_TA_MARKET = 3;
+  EnTradeActions_TA_EXCHANGE = 4;
+  EnTradeActions_TA_PENDING = 5;
+  EnTradeActions_TA_SLTP = 6;
+  EnTradeActions_TA_MODIFY = 7;
+  EnTradeActions_TA_REMOVE = 8;
+  EnTradeActions_TA_TRANSFER = 9;
+  EnTradeActions_TA_CLOSE_BY = 10;
+  EnTradeActions_TA_ACTIVATE = 100;
+  EnTradeActions_TA_ACTIVATE_SL = 101;
+  EnTradeActions_TA_ACTIVATE_TP = 102;
+  EnTradeActions_TA_ACTIVATE_STOPLIMIT = 103;
+  EnTradeActions_TA_STOPOUT_ORDER = 104;
+  EnTradeActions_TA_STOPOUT_POSITION = 105;
+  EnTradeActions_TA_EXPIRATION = 106;
+  EnTradeActions_TA_DEALER_POS_EXECUTE = 200;
+  EnTradeActions_TA_DEALER_ORD_PENDING = 201;
+  EnTradeActions_TA_DEALER_POS_MODIFY = 202;
+  EnTradeActions_TA_DEALER_ORD_MODIFY = 203;
+  EnTradeActions_TA_DEALER_ORD_REMOVE = 204;
+  EnTradeActions_TA_DEALER_ORD_ACTIVATE = 205;
+  EnTradeActions_TA_DEALER_BALANCE = 206;
+  EnTradeActions_TA_DEALER_ORD_SLIMIT = 207;
+  EnTradeActions_TA_DEALER_CLOSE_BY = 208;
+  EnTradeActions_TA_END = 255;
+}
+
+enum EnOrderType {
+  EnOrderType_OP_BUY = 0;
+  EnOrderType_OP_SELL = 1;
+  EnOrderType_OP_BUY_LIMIT = 2;
+  EnOrderType_OP_SELL_LIMIT = 3;
+  EnOrderType_OP_BUY_STOP = 4;
+  EnOrderType_OP_SELL_STOP = 5;
+  EnOrderType_OP_BUY_STOP_LIMIT = 6;
+  EnOrderType_OP_SELL_STOP_LIMIT = 7;
+  EnOrderType_OP_CLOSE_BY = 8;
+}
+
+enum EnOrderFilling {
+  EnOrderFilling_ORDER_FILL_FOK = 0;
+  EnOrderFilling_ORDER_FILL_IOC = 1;
+  EnOrderFilling_ORDER_FILL_RETURN = 2;
+}
+
+enum EnOrderTime {
+  EnOrderTime_ORDER_TIME_GTC = 0;
+  EnOrderTime_ORDER_TIME_DAY = 1;
+  EnOrderTime_ORDER_TIME_SPECIFIED = 2;
+  EnOrderTime_ORDER_TIME_SPECIFIED_DAY = 3;
+}
+
+enum EnTradeActionFlags {
+    EnTradeActionFlags_TA_FLAG_NONE = 0;
+  EnTradeActionFlags_TA_FLAG_CLOSE = 1;
+  EnTradeActionFlags_TA_FLAG_MARKET = 2;
+  EnTradeActionFlags_TA_FLAG_CHANGED_PRICE = 4;
+  EnTradeActionFlags_TA_FLAG_CHANGED_TRIGGER = 8;
+  EnTradeActionFlags_TA_FLAG_CHANGED_SL = 16;
+  EnTradeActionFlags_TA_FLAG_CHANGED_TP = 32;
+  EnTradeActionFlags_TA_FLAG_CHANGED_EXP_TYPE = 64;
+  EnTradeActionFlags_TA_FLAG_CHANGED_EXP_TIME = 128;
+  EnTradeActionFlags_TA_FLAG_EXPERT = 256;
+  EnTradeActionFlags_TA_FLAG_SIGNAL = 512;
+  EnTradeActionFlags_TA_FLAG_SKIP_MARGIN_CHECK = 1024;
+  EnTradeActionFlags_TA_FLAG_ALL = 2047;
+}
+
+message Confirm {
+  string Print = 1;
+  uint32 ID = 2;
+  MTRetCode Retcode = 3;
+  uint64 Volume = 4;
+  double Price = 5;
+  double TickBid = 6;
+  double TickAsk = 7;
+  double TickLast = 8;
+  string Comment = 9;
+  uint32 Flags = 10;
+  string DealID = 11;
+  string OrderID = 12;
+  double PriceGateway = 13;
+  string PositionExternalID = 14;
+  int32 ExternalRetcode = 15;
+  uint64 VolumeExt = 16;
+}
+
+message OrderSendReply {
+  TradeResult result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "ticket": "",
+//  "lots": "0",
+//  "price": "0",
+//  "slippage": "0"
+// }
+message OrderCloseRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Order ticket [Required]
+  uint64 ticket = 2;
+  // Lots
+  double lots = 3;
+  // Price
+  double price = 4;
+  // Slippage
+  uint64 slippage = 5;
+}
+
+message OrderCloseReply {
+  TradeResult result = 1;
+  Error error = 2;
+}
+
+
+message User {
+  uint64 ClientID = 1;
+  string FirstName = 2;
+  string LastName = 3;
+  string MiddleName = 4;
+  string OTPSecret = 5;
+  uint32 LimitOrders = 6;
+  double LimitPositionsValue = 7;
+  uint64 Login = 8;
+  string Group = 9;
+  uint64 CertSerialNumber = 10;
+  UsersRights Rights = 11;
+  int64 Registration = 12;
+  int64 LastAccess = 13;
+  string LastIP = 14;
+  string Name = 15;
+  string Company = 16;
+  string Account = 17;
+  string Country = 18;
+  uint32 Language = 19;
+  string City = 20;
+  string State = 21;
+  string ZIPCode = 22;
+  string Address = 23;
+  string Phone = 24;
+  string EMail = 25;
+  string ID = 26;
+  string Status = 27;
+  string Comment = 28;
+  uint32 Color = 29;
+  string PhonePassword = 30;
+  uint32 Leverage = 31;
+  uint64 Agent = 32;
+  double Balance = 33;
+  double Credit = 34;
+  double InterestRate = 35;
+  double CommissionDaily = 36;
+  double CommissionMonthly = 37;
+  double CommissionAgentDaily = 38;
+  double CommissionAgentMonthly = 39;
+  double BalancePrevDay = 40;
+  double BalancePrevMonth = 41;
+  double EquityPrevDay = 42;
+  double EquityPrevMonth = 43;
+  int64 LastPassChange = 44;
+  string LeadCampaign = 45;
+  string LeadSource = 46;
+  MTRetCode ApiDataClearAll = 47;
+  MTRetCode ExternalAccountClear = 48;
+  uint32 ExternalAccountTotal = 49;
+  string MQID = 50;
+}
+
+enum UsersRights {
+  UsersRights_USER_RIGHT_NONE = 0;
+  UsersRights_USER_RIGHT_ENABLED = 1;
+  UsersRights_USER_RIGHT_PASSWORD = 2;
+  UsersRights_USER_RIGHT_TRADE_DISABLED = 4;
+  UsersRights_USER_RIGHT_INVESTOR = 8;
+  UsersRights_USER_RIGHT_CONFIRMED = 16;
+  UsersRights_USER_RIGHT_TRAILING = 32;
+  UsersRights_USER_RIGHT_EXPERT = 64;
+  UsersRights_USER_RIGHT_OBSOLETE = 128;
+  UsersRights_USER_RIGHT_REPORTS = 256;
+  UsersRights_USER_RIGHT_READONLY = 512;
+  UsersRights_USER_RIGHT_RESET_PASS = 1024;
+  UsersRights_USER_RIGHT_OTP_ENABLED = 2048;
+  UsersRights_USER_RIGHT_SPONSORED_HOSTING = 8192;
+  UsersRights_USER_RIGHT_API_ENABLED = 16384;
+  UsersRights_USER_RIGHT_PUSH_NOTIFICATION = 32768;
+  UsersRights_USER_RIGHT_DEFAULT = 355;
+  UsersRights_USER_RIGHT_ALL = 61311;
+}
+
+enum MTRetCode {
+  MTRetCode_MT_RET_OK = 0;
+  MTRetCode_MT_RET_OK_NONE = 1;
+  MTRetCode_MT_RET_ERROR = 2;
+  MTRetCode_MT_RET_ERR_PARAMS = 3;
+  MTRetCode_MT_RET_ERR_DATA = 4;
+  MTRetCode_MT_RET_ERR_DISK = 5;
+  MTRetCode_MT_RET_ERR_MEM = 6;
+  MTRetCode_MT_RET_ERR_NETWORK = 7;
+  MTRetCode_MT_RET_ERR_PERMISSIONS = 8;
+  MTRetCode_MT_RET_ERR_TIMEOUT = 9;
+  MTRetCode_MT_RET_ERR_CONNECTION = 10;
+  MTRetCode_MT_RET_ERR_NOSERVICE = 11;
+  MTRetCode_MT_RET_ERR_FREQUENT = 12;
+  MTRetCode_MT_RET_ERR_NOTFOUND = 13;
+  MTRetCode_MT_RET_ERR_PARTIAL = 14;
+  MTRetCode_MT_RET_ERR_SHUTDOWN = 15;
+  MTRetCode_MT_RET_ERR_CANCEL = 16;
+  MTRetCode_MT_RET_ERR_DUPLICATE = 17;
+  MTRetCode_MT_RET_AUTH_CLIENT_INVALID = 1000;
+  MTRetCode_MT_RET_AUTH_ACCOUNT_INVALID = 1001;
+  MTRetCode_MT_RET_AUTH_ACCOUNT_DISABLED = 1002;
+  MTRetCode_MT_RET_AUTH_ADVANCED = 1003;
+  MTRetCode_MT_RET_AUTH_CERTIFICATE = 1004;
+  MTRetCode_MT_RET_AUTH_CERTIFICATE_BAD = 1005;
+  MTRetCode_MT_RET_AUTH_NOTCONFIRMED = 1006;
+  MTRetCode_MT_RET_AUTH_SERVER_INTERNAL = 1007;
+  MTRetCode_MT_RET_AUTH_SERVER_BAD = 1008;
+  MTRetCode_MT_RET_AUTH_UPDATE_ONLY = 1009;
+  MTRetCode_MT_RET_AUTH_CLIENT_OLD = 1010;
+  MTRetCode_MT_RET_AUTH_MANAGER_NOCONFIG = 1011;
+  MTRetCode_MT_RET_AUTH_MANAGER_IPBLOCK = 1012;
+  MTRetCode_MT_RET_AUTH_GROUP_INVALID = 1013;
+  MTRetCode_MT_RET_AUTH_CA_DISABLED = 1014;
+  MTRetCode_MT_RET_AUTH_INVALID_ID = 1015;
+  MTRetCode_MT_RET_AUTH_INVALID_IP = 1016;
+  MTRetCode_MT_RET_AUTH_INVALID_TYPE = 1017;
+  MTRetCode_MT_RET_AUTH_SERVER_BUSY = 1018;
+  MTRetCode_MT_RET_AUTH_SERVER_CERT = 1019;
+  MTRetCode_MT_RET_AUTH_ACCOUNT_UNKNOWN = 1020;
+  MTRetCode_MT_RET_AUTH_SERVER_OLD = 1021;
+  MTRetCode_MT_RET_AUTH_SERVER_LIMIT = 1022;
+  MTRetCode_MT_RET_AUTH_MOBILE_DISABLED = 1023;
+  MTRetCode_MT_RET_AUTH_MANAGER_TYPE = 1024;
+  MTRetCode_MT_RET_AUTH_DEMO_DISABLED = 1025;
+  MTRetCode_MT_RET_AUTH_RESET_PASSWORD = 1026;
+  MTRetCode_MT_RET_AUTH_OTP_INVALID = 1027;
+  MTRetCode_MT_RET_AUTH_OTP_NEED_SECRET = 1028;
+  MTRetCode_MT_RET_AUTH_MIGRATION_MT4 = 1029;
+  MTRetCode_MT_RET_AUTH_MIGRATION_MT5 = 1030;
+  MTRetCode_MT_RET_AUTH_INVALID_VERIFY = 1031;
+  MTRetCode_MT_RET_AUTH_VERIFY_BAD_EMAIL = 1032;
+  MTRetCode_MT_RET_AUTH_VERIFY_BAD_PHONE = 1033;
+  MTRetCode_MT_RET_AUTH_API_DISABLED = 1034;
+  MTRetCode_MT_RET_CFG_LAST_ADMIN = 2000;
+  MTRetCode_MT_RET_CFG_LAST_ADMIN_GROUP = 2001;
+  MTRetCode_MT_RET_CFG_NOT_EMPTY = 2003;
+  MTRetCode_MT_RET_CFG_INVALID_RANGE = 2004;
+  MTRetCode_MT_RET_CFG_NOT_MANAGER_LOGIN = 2005;
+  MTRetCode_MT_RET_CFG_BUILTIN = 2006;
+  MTRetCode_MT_RET_CFG_DUPLICATE = 2007;
+  MTRetCode_MT_RET_CFG_LIMIT_REACHED = 2008;
+  MTRetCode_MT_RET_CFG_NO_ACCESS_TO_MAIN = 2009;
+  MTRetCode_MT_RET_CFG_DEALER_ID_EXIST = 2010;
+  MTRetCode_MT_RET_CFG_BIND_ADDR_EXIST = 2011;
+  MTRetCode_MT_RET_CFG_WORKING_TRADE = 2012;
+  MTRetCode_MT_RET_CFG_GATEWAY_NAME_EXIST = 2013;
+  MTRetCode_MT_RET_CFG_SWITCH_TO_BACKUP = 2014;
+  MTRetCode_MT_RET_CFG_NO_BACKUP_MODULE = 2015;
+  MTRetCode_MT_RET_CFG_NO_TRADE_MODULE = 2016;
+  MTRetCode_MT_RET_CFG_NO_HISTORY_MODULE = 2017;
+  MTRetCode_MT_RET_CFG_ANOTHER_SWITCH = 2018;
+  MTRetCode_MT_RET_CFG_NO_LICENSE_FILE = 2019;
+  MTRetCode_MT_RET_CFG_GATEWAY_LOGIN_EXIST = 2020;
+  MTRetCode_MT_RET_USR_LAST_ADMIN = 3001;
+  MTRetCode_MT_RET_USR_LOGIN_EXHAUSTED = 3002;
+  MTRetCode_MT_RET_USR_LOGIN_PROHIBITED = 3003;
+  MTRetCode_MT_RET_USR_LOGIN_EXIST = 3004;
+  MTRetCode_MT_RET_USR_SUICIDE = 3005;
+  MTRetCode_MT_RET_USR_INVALID_PASSWORD = 3006;
+  MTRetCode_MT_RET_USR_LIMIT_REACHED = 3007;
+  MTRetCode_MT_RET_USR_HAS_TRADES = 3008;
+  MTRetCode_MT_RET_USR_DIFFERENT_SERVERS = 3009;
+  MTRetCode_MT_RET_USR_DIFFERENT_CURRENCY = 3010;
+  MTRetCode_MT_RET_USR_IMPORT_BALANCE = 3011;
+  MTRetCode_MT_RET_USR_IMPORT_GROUP = 3012;
+  MTRetCode_MT_RET_USR_ACCOUNT_EXIST = 3013;
+  MTRetCode_MT_RET_USR_IMPORT_ACCOUNT = 3014;
+  MTRetCode_MT_RET_USR_IMPORT_POSITIONS = 3015;
+  MTRetCode_MT_RET_USR_IMPORT_ORDERS = 3016;
+  MTRetCode_MT_RET_USR_IMPORT_DEALS = 3017;
+  MTRetCode_MT_RET_USR_IMPORT_HISTORY = 3018;
+  MTRetCode_MT_RET_USR_API_LIMIT_REACHED = 3019;
+  MTRetCode_MT_RET_TRADE_LIMIT_REACHED = 4001;
+  MTRetCode_MT_RET_TRADE_ORDER_EXIST = 4002;
+  MTRetCode_MT_RET_TRADE_ORDER_EXHAUSTED = 4003;
+  MTRetCode_MT_RET_TRADE_DEAL_EXHAUSTED = 4004;
+  MTRetCode_MT_RET_TRADE_MAX_MONEY = 4005;
+  MTRetCode_MT_RET_TRADE_DEAL_EXIST = 4006;
+  MTRetCode_MT_RET_TRADE_ORDER_PROHIBITED = 4007;
+  MTRetCode_MT_RET_TRADE_DEAL_PROHIBITED = 4008;
+  MTRetCode_MT_RET_TRADE_SPLIT_VOLUME = 4009;
+  MTRetCode_MT_RET_REPORT_SNAPSHOT = 5001;
+  MTRetCode_MT_RET_REPORT_NOTSUPPORTED = 5002;
+  MTRetCode_MT_RET_REPORT_NODATA = 5003;
+  MTRetCode_MT_RET_REPORT_TEMPLATE_BAD = 5004;
+  MTRetCode_MT_RET_REPORT_TEMPLATE_END = 5005;
+  MTRetCode_MT_RET_REPORT_INVALID_ROW = 5006;
+  MTRetCode_MT_RET_REPORT_LIMIT_REPEAT = 5007;
+  MTRetCode_MT_RET_REPORT_LIMIT_REPORT = 5008;
+  MTRetCode_MT_RET_HST_SYMBOL_NOTFOUND = 6001;
+  MTRetCode_MT_RET_REQUEST_INWAY = 10001;
+  MTRetCode_MT_RET_REQUEST_ACCEPTED = 10002;
+  MTRetCode_MT_RET_REQUEST_PROCESS = 10003;
+  MTRetCode_MT_RET_REQUEST_REQUOTE = 10004;
+  MTRetCode_MT_RET_REQUEST_PRICES = 10005;
+  MTRetCode_MT_RET_REQUEST_REJECT = 10006;
+  MTRetCode_MT_RET_REQUEST_CANCEL = 10007;
+  MTRetCode_MT_RET_REQUEST_PLACED = 10008;
+  MTRetCode_MT_RET_REQUEST_DONE = 10009;
+  MTRetCode_MT_RET_REQUEST_DONE_PARTIAL = 10010;
+  MTRetCode_MT_RET_REQUEST_ERROR = 10011;
+  MTRetCode_MT_RET_REQUEST_TIMEOUT = 10012;
+  MTRetCode_MT_RET_REQUEST_INVALID = 10013;
+  MTRetCode_MT_RET_REQUEST_INVALID_VOLUME = 10014;
+  MTRetCode_MT_RET_REQUEST_INVALID_PRICE = 10015;
+  MTRetCode_MT_RET_REQUEST_INVALID_STOPS = 10016;
+  MTRetCode_MT_RET_REQUEST_TRADE_DISABLED = 10017;
+  MTRetCode_MT_RET_REQUEST_MARKET_CLOSED = 10018;
+  MTRetCode_MT_RET_REQUEST_NO_MONEY = 10019;
+  MTRetCode_MT_RET_REQUEST_PRICE_CHANGED = 10020;
+  MTRetCode_MT_RET_REQUEST_PRICE_OFF = 10021;
+  MTRetCode_MT_RET_REQUEST_INVALID_EXP = 10022;
+  MTRetCode_MT_RET_REQUEST_ORDER_CHANGED = 10023;
+  MTRetCode_MT_RET_REQUEST_TOO_MANY = 10024;
+  MTRetCode_MT_RET_REQUEST_NO_CHANGES = 10025;
+  MTRetCode_MT_RET_REQUEST_AT_DISABLED_SERVER = 10026;
+  MTRetCode_MT_RET_REQUEST_AT_DISABLED_CLIENT = 10027;
+  MTRetCode_MT_RET_REQUEST_LOCKED = 10028;
+  MTRetCode_MT_RET_REQUEST_FROZEN = 10029;
+  MTRetCode_MT_RET_REQUEST_INVALID_FILL = 10030;
+  MTRetCode_MT_RET_REQUEST_CONNECTION = 10031;
+  MTRetCode_MT_RET_REQUEST_ONLY_REAL = 10032;
+  MTRetCode_MT_RET_REQUEST_LIMIT_ORDERS = 10033;
+  MTRetCode_MT_RET_REQUEST_LIMIT_VOLUME = 10034;
+  MTRetCode_MT_RET_REQUEST_INVALID_ORDER = 10035;
+  MTRetCode_MT_RET_REQUEST_POSITION_CLOSED = 10036;
+  MTRetCode_MT_RET_REQUEST_EXECUTION_SKIPPED = 10037;
+  MTRetCode_MT_RET_REQUEST_INVALID_CLOSE_VOLUME = 10038;
+  MTRetCode_MT_RET_REQUEST_CLOSE_ORDER_EXIST = 10039;
+  MTRetCode_MT_RET_REQUEST_LIMIT_POSITIONS = 10040;
+  MTRetCode_MT_RET_REQUEST_REJECT_CANCEL = 10041;
+  MTRetCode_MT_RET_REQUEST_LONG_ONLY = 10042;
+  MTRetCode_MT_RET_REQUEST_SHORT_ONLY = 10043;
+  MTRetCode_MT_RET_REQUEST_CLOSE_ONLY = 10044;
+  MTRetCode_MT_RET_REQUEST_PROHIBITED_BY_FIFO = 10045;
+  MTRetCode_MT_RET_REQUEST_HEDGE_PROHIBITED = 10046;
+  MTRetCode_MT_RET_REQUEST_RETURN = 11000;
+  MTRetCode_MT_RET_REQUEST_DONE_CANCEL = 11001;
+  MTRetCode_MT_RET_REQUEST_REQUOTE_RETURN = 11002;
+  MTRetCode_MT_RET_ERR_NOTIMPLEMENT = 12000;
+  MTRetCode_MT_RET_ERR_NOTMAIN = 12001;
+  MTRetCode_MT_RET_ERR_NOTSUPPORTED = 12002;
+  MTRetCode_MT_RET_ERR_DEADLOCK = 12003;
+  MTRetCode_MT_RET_ERR_LOCKED = 12004;
+  MTRetCode_MT_RET_MESSENGER_INVALID_PHONE = 14000;
+  MTRetCode_MT_RET_MESSENGER_NOT_MOBILE = 14001;
+  MTRetCode_MT_RET_SUBS_NOT_FOUND = 15000;
+  MTRetCode_MT_RET_SUBS_NOT_FOUND_CFG = 15001;
+  MTRetCode_MT_RET_SUBS_NOT_FOUND_USER = 15002;
+  MTRetCode_MT_RET_SUBS_DISABLED = 15003;
+  MTRetCode_MT_RET_SUBS_PERMISSION_USER = 15004;
+  MTRetCode_MT_RET_SUBS_PERMISSION_SUBSCRIBE = 15005;
+  MTRetCode_MT_RET_SUBS_PERMISSION_UNSUBSCRIBE = 15006;
+  MTRetCode_MT_RET_SUBS_REAL_ONLY = 15007;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "master_pass": "",
+//  "investor_pass": "",
+//  "enabled": "",
+//  "user": ""
+// }
+message AccountCreateRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  string master_pass = 2;
+  string investor_pass = 3;
+  bool enabled = 4;
+  User user = 5;
+}
+
+message AccountCreateReply {
+  User result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "login": "1"
+// }
+message AccountDeleteRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Token returned by 'Connect' method [Required]
+  uint64 login = 2;
+}
+
+message AccountDeleteReply {
+  string result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "enabled": "",
+//  "user": ""
+// }
+message AccountUpdateRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  bool enabled = 2;
+  // Account number. Example: 500476959 [Required]
+  User user = 3;
+}
+
+message AccountUpdateReply {
+  string result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "login": "",
+//  "amount": "",
+//  "comment": "",
+//  "credit": "False"
+// }
+message DepositRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Token returned by 'Connect' method [Required]
+  uint64 login = 2;
+  // Amount [Required]
+  double amount = 3;
+  // Comment [Required]
+  string comment = 4;
+  // Set true if credit
+  bool credit = 5;
+}
+
+message DepositReply {
+  uint64 result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message PositionsRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  repeated uint64 logins = 2;
+}
+
+message Position {
+  string Print = 1;
+  uint64 Login = 2;
+  string Symbol = 3;
+  uint32 Action = 4;
+  uint32 Digits = 5;
+  uint32 DigitsCurrency = 6;
+  double ContractSize = 7;
+  int64 TimeCreate = 8;
+  int64 TimeUpdate = 9;
+  double PriceOpen = 10;
+  double PriceCurrent = 11;
+  double PriceSL = 12;
+  double PriceTP = 13;
+  uint64 Volume = 14;
+  double Profit = 15;
+  double Storage = 16;
+  double ObsoleteValue = 17;
+  double RateProfit = 18;
+  double RateMargin = 19;
+  uint64 ExpertID = 20;
+  uint64 ExpertPositionID = 21;
+  string Comment = 22;
+  uint32 ActivationMode = 23;
+  int64 ActivationTime = 24;
+  double ActivationPrice = 25;
+  uint32 ActivationFlags = 26;
+  MTRetCode ApiDataClearAll = 27;
+  int64 TimeCreateMsc = 28;
+  int64 TimeUpdateMsc = 29;
+  uint64 Dealer = 30;
+  uint64 PositionTicket = 31;
+  string ExternalID = 32;
+  uint32 ModificationFlags = 33;
+  uint32 Reason = 34;
+  uint64 VolumeExt = 35;
+  double Lots = 36;
+}
+
+message PositionsReply {
+  repeated Position result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message PositionsMT4FormatRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  repeated uint64 logins = 2;
+}
+
+// Order in MT4 format
+message TradeRecord {
+// Lots
+  double Lots = 1;
+// Order ticket
+  uint64 Order = 2;
+// Owner's login
+  uint64 Login = 3;
+// Security
+  string Symbol = 4;
+// Security precision
+  uint32 Digits = 5;
+// Trade command
+  OrderType Cmd = 6;
+// Volume
+  int32 Volume = 7;
+// Open time
+  google.protobuf.Timestamp OpenTime = 8;
+// Reserved
+  int32 State = 9;
+// Open price
+  double OpenPrice = 10;
+  double Sl = 11;
+  double Tp = 12;
+// Close time
+  google.protobuf.Timestamp CloseTime = 13;
+// Gateway order volume
+  int32 GwVolume = 14;
+// Pending order's expiration time
+  google.protobuf.Timestamp Expiration = 15;
+// Trade reason
+  DealReason Reason = 16;
+// Reserved fields
+  string ConvReserv = 17;
+// Convertation rates from profit currency to group deposit currency
+  repeated double ConvRates = 18;
+// Commission
+  double Commission = 19;
+// Agent commission
+  double CommissionAgent = 20;
+// Order swaps
+  double Storage = 21;
+// Close price
+  double ClosePrice = 22;
+// Profit
+  double Profit = 23;
+// Taxes
+  double Taxes = 24;
+// Special value used by client experts
+  uint64 Magic = 25;
+// Comment
+  string Comment = 26;
+// Gateway order ticket
+  int32 GwOrder = 27;
+// Used by MT Manager
+  int32 Activation = 28;
+// Gateway order price deviation (pips) from order open price
+  int32 GwOpenPrice = 29;
+// Gateway order price deviation (pips) from order close price
+  int32 GwClosePrice = 30;
+// Margin convertation rate (rate of convertation from margin currency to deposit one)
+  double MarginRate = 31;
+// Timestamp
+  google.protobuf.Timestamp Timestamp = 32;
+// For api usage
+  repeated int32 ApiData = 33;
+}
+
+enum DealReason {
+  DealReason_CLIENT = 0;
+  DealReason_EXPERT = 1;
+  DealReason_DEALER = 2;
+  DealReason_SL = 3;
+  DealReason_TP = 4;
+  DealReason_SO = 5;
+  DealReason_ROLLOVER = 6;
+  DealReason_EXTERNAL_CLIENT = 7;
+  DealReason_VMARGIN = 8;
+  DealReason_GATEWAY = 9;
+  DealReason_SIGNAL = 10;
+  DealReason_SETTLEMENT = 11;
+  DealReason_TRANSFER = 12;
+  DealReason_SYNC = 13;
+  DealReason_EXTERNAL_SERVICE = 14;
+  DealReason_MIGRATION = 15;
+  DealReason_MOBILE = 16;
+  DealReason_WEB = 17;
+  DealReason_SPLIT = 18;
+}
+
+message PositionsMT4FormatReply {
+  repeated TradeRecord result = 1;
+  Error error = 2;
+}
+
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "login": "1003",
+//  "from": "2023-7-04T00:00:00",
+//  "to": "2023-7-05T00:00:00"
+// }
+message PendingOrderHistoryRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Login [Required]
+  uint64 login = 2;
+   // From date' in format: yyyy-MM-ddTHH:mm:ss [Required]
+  string from = 3;
+  // To date' in format: yyyy-MM-ddTHH:mm:ss [Required]
+  string to = 4;
+}
+
+message PendingOrderHistoryReply {
+  repeated Order result = 1;
+  Error error = 2;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "login": "1003",
+//  "symbol": "EURUSD",
+//  "from": "2023-7-04T00:00:00",
+//  "to": "2023-7-05T00:00:00"
+// }
+message TickHistoryRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Symbol [Required]
+  string symbol = 2;
+   // From date' in format: yyyy-MM-ddTHH:mm:ss [Required]
+  string from = 3;
+  // To date' in format: yyyy-MM-ddTHH:mm:ss [Required]
+  string to = 4;
+}
+
+message TickHistoryReply {
+  repeated MTTickShort result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "login": "1003",
+//  "from": "2023-7-04T00:00:00",
+//  "to": "2023-7-05T00:00:00"
+// }
+message DealHistoryRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Token returned by 'Connect' method
+  uint64 login = 2;
+  // From date' in format: yyyy-MM-ddTHH:mm:ss [Required]
+  string from = 3;
+  // To date' in format: yyyy-MM-ddTHH:mm:ss [Required]
+  string to = 4;
+}
+
+message DealHistoryReply {
+  repeated Deal result = 1;
+  Error error = 2;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message OnDealUpdateRequest {
+  string id = 1;
+}
+
+message DealUpdate {
+  DealUpdateAction Action = 1;
+  Deal Deal = 2;
+}
+
+enum DealUpdateAction {
+  DealUpdateAction_Add = 0;
+  DealUpdateAction_Update = 1;
+  DealUpdateAction_Delete = 2;
+  DealUpdateAction_Clean = 3;
+  DealUpdateAction_Sync = 4;
+  DealUpdateAction_Perform = 5;
+}
+
+message Deal {
+  double PriceSL = 1;
+  double PriceTP = 2;
+  uint64 VolumeExt = 3;
+  uint64 VolumeClosedExt = 4;
+  double Fee = 5;
+  double Value = 6;
+  double MarketBid = 7;
+  double MarketAsk = 8;
+  double MarketLast = 9;
+  string Print = 10;
+  uint64 DealTicket = 11;
+  string ExternalID = 12;
+  uint64 Login = 13;
+  uint64 Dealer = 14;
+  uint64 Order = 15;
+  DealAction Action = 16;
+  EntryFlag Entry = 17;
+  uint32 Digits = 18;
+  uint32 DigitsCurrency = 19;
+  double ContractSize = 20;
+  int64 Time = 21;
+  string Symbol = 22;
+  double Price = 23;
+  uint64 Volume = 24;
+  double Profit = 25;
+  double Storage = 26;
+  double Commission = 27;
+  double ObsoleteValue = 28;
+  double RateProfit = 29;
+  double RateMargin = 30;
+  uint64 ExpertID = 31;
+  uint64 PositionID = 32;
+  string Comment = 33;
+  MTRetCode ApiDataClearAll = 34;
+  double ProfitRaw = 35;
+  double PricePosition = 36;
+  uint64 VolumeClosed = 37;
+  double TickValue = 38;
+  double TickSize = 39;
+  uint64 Flags = 40;
+  int64 TimeMsc = 41;
+  DealReason Reason = 42;
+  string Gateway = 43;
+  double PriceGateway = 44;
+  uint32 ModificationFlags = 45;
+  double Lots = 46;
+}
+
+enum DealAction {
+  DealAction_BUY = 0;
+  DealAction_SELL = 1;
+  DealAction_BALANCE = 2;
+  DealAction_CREDIT = 3;
+  DealAction_CHARGE = 4;
+  DealAction_CORRECTION = 5;
+  DealAction_BONUS = 6;
+  DealAction_COMMISSION = 7;
+  DealAction_COMMISSION_DAILY = 8;
+  DealAction_COMMISSION_MONTHLY = 9;
+  DealAction_AGENT_DAILY = 10;
+  DealAction_AGENT_MONTHLY = 11;
+  DealAction_INTERESTRATE = 12;
+  DealAction_BUY_CANCELED = 13;
+  DealAction_SELL_CANCELED = 14;
+  DealAction_DIVIDEND = 15;
+  DealAction_DIVIDEND_FRANKED = 16;
+  DealAction_TAX = 17;
+  DealAction_AGENT = 18;
+  DealAction_SO_COMPENSATION = 19;
+  DealAction_SO_COMPENSATION_CREDIT = 20;
+}
+
+enum EntryFlag {
+  EntryFlag_IN = 0;
+  EntryFlag_OUT = 1;
+  EntryFlag_INOUT = 2;
+  EntryFlag_OUT_BY = 3;
+}
+
+
+message OnDealUpdateReply {
+  DealUpdate result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "login": "1003",
+//  "from": "2023-7-04T00:00:00",
+//  "to": "2023-7-05T00:00:00"
+// }
+message PositionHistoryMT4FormatRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // Token returned by 'Connect' method
+  uint64 login = 2;
+  // From date' in format: yyyy-MM-ddTHH:mm:ss [Required]
+  string from = 3;
+  // To date' in format: yyyy-MM-ddTHH:mm:ss [Required]
+  string to = 4;
+}
+
+message PositionHistoryMT4FormatReply {
+  repeated TradeRecord result = 1;
+  Error error = 2;
+}
+
+
+enum EnMTLogRequestMode {
+  EnMTLogRequestMode_MTLogModeStd = 0;
+  EnMTLogRequestMode_MTLogModeErr = 1;
+  EnMTLogRequestMode_MTLogModeFull = 2;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "mode": "MTLogModeStd"
+// }
+message TradeJournalRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+  // full: 0 host: 4 user: 5 Trade: 6
+  EnMTLogRequestMode mode = 2;
+  google.protobuf.Timestamp from = 3;
+  google.protobuf.Timestamp to = 4;
+  string filter = 5;
+}
+
+message MTLogRecord {
+  EnMTLogFlags flags = 1;
+  EnMTLogCode code = 2;
+  EnMTLogType type = 3;
+  int64 datetime = 4;
+  string source = 5;
+  string message = 6;
+  int64 datetime_msc = 7;
+  repeated int32 reserved = 8;
+}
+
+enum EnMTLogFlags {
+  EnMTLogFlags_LOG_FLAGS_NONE = 0;
+  EnMTLogFlags_LOG_FLAGS_CORRUPTED = 1;
+
+}
+
+enum EnMTLogCode {
+    EnMTLogCode_MTLogOK = 0;
+  EnMTLogCode_MTLogFolder = -1;
+  EnMTLogCode_MTLogWarn = 1;
+  EnMTLogCode_MTLogErr = 2;
+  EnMTLogCode_MTLogAtt = 3;
+  EnMTLogCode_MTLogLogin = 4;
+}
+
+enum EnMTLogType {
+  EnMTLogType_MTLogTypeAll = 0;
+  EnMTLogType_MTLogTypeCfg = 1;
+  EnMTLogType_MTLogTypeSys = 2;
+  EnMTLogType_MTLogTypeNet = 3;
+  EnMTLogType_MTLogTypeHst = 4;
+  EnMTLogType_MTLogTypeUser = 5;
+  EnMTLogType_MTLogTypeTrade = 6;
+  EnMTLogType_MTLogTypeAPI = 7;
+  EnMTLogType_MTLogTypeNotify = 8;
+  EnMTLogType_MTLogTypeLiveUpdate = 16;
+  EnMTLogType_MTLogTypeSendMail = 17;
+}
+
+message TradeJournalReply {
+  repeated MTLogRecord result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message HealthRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+}
+
+message HealthReply {
+  string result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng",
+//  "name": ""
+// }
+message SymbolGetRequest {
+  string id = 1;
+  string name = 2;
+}
+
+
+
+message SymbolGetReply {
+  ConSymbol result = 1;
+  Error error = 2;
+}
+
+service Streams {
+// Pending orders updates
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc OnOrderUpdate (OnOrderUpdateRequest) returns (stream OnOrderUpdateReply);
+// Positions updates
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc OnPositionUpdate (OnPositionUpdateRequest) returns (stream OnPositionUpdateReply);
+  // Deal updates
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc OnDealUpdate (OnDealUpdateRequest) returns (stream OnDealUpdateReply);
+// Positions updates
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+//  rpc OnPositionUpdateMT4Format (OnPositionUpdateMT4FormatRequest) returns (OnPositionUpdateMT4FormatReply);
+
+// Real time quotes.
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc OnQuote (OnQuoteRequest) returns (stream OnQuoteReply);
+// MarginCallEnter, MarginCallLeave, StopOutEnter, StopOutLeave events
+// <br> [Example] <br>
+// { <br>
+//  "id": "" <br>
+// }
+  rpc OnAccountUpdate (OnAccountUpdateRequest) returns (stream OnAccountUpdateReply);
+// Orders profits updates.
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng" <br>
+// }
+  rpc OrderProfit (OrderProfitRequest) returns (stream OrderProfitReply);
+  // OHLC history
+// <br> [Example] <br>
+// { <br>
+//  "id": "demo-token-mt5mng", <br>
+//  "symbol": "EURUSD", <br>
+//  "from": "2023-7-04T00:00:00", <br>
+//  "to": "2023-7-05T00:00:00" <br>
+// }
+   rpc ChartRequestSlim (ChartRequestRequest) returns (stream ChartRequestSlimReply);
+// Reqquests updates
+// <br> [Example] <br>
+// { <br>
+//  "id": "" <br>
+// }
+  rpc OnRequestUpdate (OnRequestUpdateRequest) returns (stream OnRequestUpdateReply);
+// User updates
+// <br> [Example] <br>
+// { <br>
+//  "id": "" <br>
+// }
+  rpc OnUserUpdate (OnUserUpdateRequest) returns (stream OnUserUpdateReply);
+// Group updates
+// <br> [Example] <br>
+// { <br>
+//  "id": "" <br>
+// }
+  rpc OnGroupUpdate (OnGroupUpdateRequest) returns (stream OnGroupUpdateReply);
+// Group updates
+// <br> [Example] <br>
+// { <br>
+//  "id": "" <br>
+// }
+  rpc OnSymbolUpdate (OnSymbolUpdateRequest) returns (stream OnSymbolUpdateReply);
+}
+
+// [Example]
+// {
+//  "id": ""
+// }
+message OnRequestUpdateRequest {
+  string id = 1;
+}
+
+message RequestUpdate {
+  RequestUpdateAction Action = 1;
+  Request Request = 2;
+}
+
+enum RequestUpdateAction {
+  RequestUpdateAction_Add = 0;
+  RequestUpdateAction_Update = 1;
+  RequestUpdateAction_Delete = 2;
+}
+
+message OnRequestUpdateReply {
+  RequestUpdate result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": ""
+// }
+message OnUserUpdateRequest {
+  string id = 1;
+}
+
+message UserUpdate {
+  UserUpdateAction Action = 1;
+  User User = 2;
+}
+
+enum UserUpdateAction {
+  UserUpdateAction_Add = 0;
+  UserUpdateAction_Update = 1;
+  UserUpdateAction_Delete = 2;
+  UserUpdateAction_Clean = 3;
+}
+
+message OnUserUpdateReply {
+  UserUpdate result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": ""
+// }
+message OnGroupUpdateRequest {
+  string id = 1;
+}
+
+message GroupUpdate {
+  GroupUpdateAction Action = 1;
+  ConGroup Group = 2;
+}
+
+enum GroupUpdateAction {
+  GroupUpdateAction_Add = 0;
+  GroupUpdateAction_Update = 1;
+  GroupUpdateAction_Delete = 2;
+}
+
+message OnGroupUpdateReply {
+  GroupUpdate result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": ""
+// }
+message OnSymbolUpdateRequest {
+  string id = 1;
+}
+
+message SymbolUpdate {
+  SymbolUpdateAction Action = 1;
+  ConSymbol Symbol = 2;
+}
+
+enum SymbolUpdateAction {
+  SymbolUpdateAction_Add = 0;
+  SymbolUpdateAction_Update = 1;
+  SymbolUpdateAction_Delete = 2;
+}
+
+message OnSymbolUpdateReply {
+  SymbolUpdate result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": ""
+// }
+message OnAccountUpdateRequest {
+  string id = 1;
+}
+
+message AccountUpdate {
+  AccountUpdateType Type = 1;
+  Account Account = 2;
+  ConGroup Group = 3;
+}
+
+enum AccountUpdateType {
+  AccountUpdateType_MarginCallEnter = 0;
+  AccountUpdateType_MarginCallLeave = 1;
+  AccountUpdateType_StopOutEnter = 2;
+  AccountUpdateType_StopOutLeave = 3;
+}
+
+message OnAccountUpdateReply {
+  AccountUpdate result = 1;
+  Error error = 2;
+}
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message OnOrderUpdateRequest {
+  // Token returned by 'Connect' method
+  string id = 1;
+}
+
+message OrderUpdate {
+  OrderUpdateAction Action = 1;
+  Order Order = 2;
+}
+
+enum OrderUpdateAction {
+  OrderUpdateAction_Add = 0;
+  OrderUpdateAction_Update = 1;
+  OrderUpdateAction_Delete = 2;
+}
+
+message Order {
+  uint64 PositionByID = 1;
+  uint32 ModificationFlags = 2;
+  uint64 VolumeInitialExt = 3;
+  uint64 VolumeCurrentExt = 4;
+  string Print = 5;
+  uint64 OrderTicket = 6;
+  string ExternalID = 7;
+  uint64 Login = 8;
+  uint64 Dealer = 9;
+  string Symbol = 10;
+  uint32 Digits = 11;
+  uint32 DigitsCurrency = 12;
+  double ContractSize = 13;
+  EnOrderState State = 14;
+  EnOrderReason Reason = 15;
+  int64 TimeSetup = 16;
+  int64 TimeExpiration = 17;
+  int64 TimeDone = 18;
+  OrderType Type = 19;
+  EnOrderFilling TypeFill = 20;
+  EnOrderTime TypeTime = 21;
+  double PriceOrder = 22;
+  double PriceTrigger = 23;
+  double PriceCurrent = 24;
+  double PriceSL = 25;
+  double PriceTP = 26;
+  uint64 VolumeInitial = 27;
+  uint64 VolumeCurrent = 28;
+  uint64 ExpertID = 29;
+  uint64 PositionID = 30;
+  string Comment = 31;
+  EnOrderActivation ActivationMode = 32;
+  int64 ActivationTime = 33;
+  double ActivationPrice = 34;
+  TradeActivationFlags ActivationFlags = 35;
+  MTRetCode ApiDataClearAll = 36;
+  int64 TimeSetupMsc = 37;
+  int64 TimeDoneMsc = 38;
+  double RateMargin = 39;
+  double Lots = 40;
+}
+
+enum EnOrderActivation {
+  EnOrderActivation_ACTIVATION_NONE = 0;
+  EnOrderActivation_ACTIVATION_PENDING = 1;
+  EnOrderActivation_ACTIVATION_STOPLIMIT = 2;
+  EnOrderActivation_ACTIVATION_EXPIRATION = 3;
+  EnOrderActivation_ACTIVATION_STOPOUT = 4;
+}
+
+enum TradeActivationFlags {
+    TradeActivationFlags_NONE = 0;
+  TradeActivationFlags_FLAGS_NO_LIMIT = 1;
+  TradeActivationFlags_NO_STOP = 2;
+  TradeActivationFlags_NO_SLIMIT = 4;
+  TradeActivationFlags_NO_SL = 8;
+  TradeActivationFlags_NO_TP = 16;
+  TradeActivationFlags_NO_SO = 32;
+  TradeActivationFlags_NO_EXPIRATION = 64;
+  TradeActivationFlags_ALL = 127;
+}
+
+enum EnOrderState {
+  EnOrderState_ORDER_STATE_STARTED = 0;
+  EnOrderState_ORDER_STATE_PLACED = 1;
+  EnOrderState_ORDER_STATE_CANCELED = 2;
+  EnOrderState_ORDER_STATE_PARTIAL = 3;
+  EnOrderState_ORDER_STATE_FILLED = 4;
+  EnOrderState_ORDER_STATE_REJECTED = 5;
+  EnOrderState_ORDER_STATE_EXPIRED = 6;
+  EnOrderState_ORDER_STATE_REQUEST_ADD = 7;
+  EnOrderState_ORDER_STATE_REQUEST_MODIFY = 8;
+  EnOrderState_ORDER_STATE_REQUEST_CANCEL = 9;
+}
+
+enum EnOrderReason {
+  EnOrderReason_ORDER_REASON_CLIENT = 0;
+  EnOrderReason_ORDER_REASON_EXPERT = 1;
+  EnOrderReason_ORDER_REASON_DEALER = 2;
+  EnOrderReason_ORDER_REASON_SL = 3;
+  EnOrderReason_ORDER_REASON_TP = 4;
+  EnOrderReason_ORDER_REASON_SO = 5;
+  EnOrderReason_ORDER_REASON_ROLLOVER = 6;
+  EnOrderReason_ORDER_REASON_EXTERNAL_CLIENT = 7;
+  EnOrderReason_ORDER_REASON_VMARGIN = 8;
+  EnOrderReason_ORDER_REASON_GATEWAY = 9;
+  EnOrderReason_ORDER_REASON_SIGNAL = 10;
+  EnOrderReason_ORDER_REASON_SETTLEMENT = 11;
+  EnOrderReason_ORDER_REASON_TRANSFER = 12;
+  EnOrderReason_ORDER_REASON_SYNC = 13;
+  EnOrderReason_ORDER_REASON_EXTERNAL_SERVICE = 14;
+  EnOrderReason_ORDER_REASON_MIGRATION = 15;
+  EnOrderReason_ORDER_REASON_MOBILE = 16;
+  EnOrderReason_ORDER_REASON_WEB = 17;
+  EnOrderReason_ORDER_REASON_SPLIT = 18;
+}
+
+message OnOrderUpdateReply {
+  OrderUpdate result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message OnPositionUpdateRequest {
+  // Token returned by 'Connect' method
+  string id = 1;
+}
+
+message PositionUpdate {
+  PositionUpdateAction Action = 1;
+  Position Position = 2;
+}
+
+enum PositionUpdateAction {
+  PositionUpdateAction_Add = 0;
+  PositionUpdateAction_Update = 1;
+  PositionUpdateAction_Delete = 2;
+  PositionUpdateAction_Clean = 3;
+}
+
+message OnPositionUpdateReply {
+  PositionUpdate result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message OnPositionUpdateMT4FormatRequest {
+  // Token returned by 'Connect' method
+  string id = 1;
+}
+
+message OnPositionUpdateMT4FormatReply {
+  TradeRecord result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message OnQuoteRequest {
+  // Token returned by 'Connect' method
+  string id = 1;
+}
+
+// New quote event arguments.
+message Quote {
+// Trading instrument.
+  string Symbol = 1;
+// Bid.
+  double Bid = 2;
+// Ask.
+  double Ask = 3;
+// Server time.
+  google.protobuf.Timestamp Time = 4;
+// Last deal price.
+  double Last = 5;
+// Volume
+  uint64 Volume = 6;
+}
+
+message OnQuoteReply {
+  Quote result = 1;
+  Error error = 2;
+}
+
+
+// [Example]
+// {
+//  "id": "demo-token-mt5mng"
+// }
+message OrderProfitRequest {
+  // Token returned by 'Connect' method [Required]
+  string id = 1;
+}
+
+// Profit update message
+message OrderProfitUpdate {
+// Account number
+  uint64 Login = 1;
+// Balace
+  double Balance = 2;
+// Equity
+  double Equity = 3;
+// User margin
+  double Margin = 4;
+// Free margin
+  double FreeMargin = 5;
+  double Profit = 6;
+// Opened orders
+  repeated Order Orders = 7;
+}
+
+// ProfitUpdate order parameters
+message ProfitUpdateOrder {
+// Ticket
+  uint64 Ticket = 1;
+// Profit
+  double Profit = 2;
+}
+
+message OrderProfitReply {
+  OrderProfitUpdate result = 1;
+  Error error = 2;
+}

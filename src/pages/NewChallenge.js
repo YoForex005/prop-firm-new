@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sliders } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 function NewChallenge() {
+    const location = useLocation();
     const [step, setStep] = useState('two-step');
     const [model, setModel] = useState('funding-pips');
     const [size, setSize] = useState('100000');
     const [platform, setPlatform] = useState('mt5');
+
+    useEffect(() => {
+        if (location.state?.mode === 'free-trial') {
+            setStep('free-trial');
+        }
+    }, [location.state]);
 
     const prices = {
         '5000': 32,
@@ -42,6 +50,10 @@ function NewChallenge() {
                             <label className={`radio-card ${step === 'zero' ? 'active' : ''}`} onClick={() => setStep('zero')}>
                                 <div className="radio-circle">{step === 'zero' && <div className="dot"></div>}</div>
                                 <span>Zero</span>
+                            </label>
+                            <label className={`radio-card ${step === 'free-trial' ? 'active' : ''}`} onClick={() => setStep('free-trial')}>
+                                <div className="radio-circle">{step === 'free-trial' && <div className="dot"></div>}</div>
+                                <span>Free Trial</span>
                             </label>
                         </div>
                     </div>
@@ -143,8 +155,13 @@ function NewChallenge() {
                     <div className="order-summary-card">
                         <h3>Order Summary</h3>
                         <div className="summary-row">
+<<<<<<< HEAD
                             <span>${parseInt(size).toLocaleString()}.00 — {step === 'two-step' ? 'Two Step' : 'One Step'} {model === 'funding-pips' ? 'YoPips' : 'Pro'}</span>
                             <span className="price">${currentPrice}.00</span>
+=======
+                            <span>${parseInt(size).toLocaleString()}.00 — {step === 'free-trial' ? 'Free Trial' : (step === 'two-step' ? 'Two Step' : (step === 'zero' ? 'Zero' : 'One Step'))} {model === 'funding-pips' ? 'FundingPips' : 'Pro'}</span>
+                            <span className="price">${step === 'free-trial' ? 0 : currentPrice}.00</span>
+>>>>>>> 2379fea68ff36624c4d10e3effef4a43116341cb
                         </div>
                         <div className="summary-meta">
                             Platform: {platform === 'metatrader' ? 'MetaTrader 5' : 'MatchTrader'}
@@ -154,7 +171,7 @@ function NewChallenge() {
 
                         <div className="summary-total">
                             <span>Total</span>
-                            <span className="total-price">${currentPrice}.00</span>
+                            <span className="total-price">${step === 'free-trial' ? 0 : currentPrice}.00</span>
                         </div>
 
                         <div className="terms-box">
@@ -171,7 +188,7 @@ function NewChallenge() {
                             </ul>
                         </div>
 
-                        <button className="btn-checkout">Continue to Payment</button>
+                        <button className="btn-checkout">{step === 'free-trial' ? 'Start Free Trial' : 'Continue to Payment'}</button>
                     </div>
                 </div>
             </div>

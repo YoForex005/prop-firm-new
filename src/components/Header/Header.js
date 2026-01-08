@@ -14,6 +14,9 @@ function Header() {
                     <h1>Hey, Yo</h1>
                 </div>
                 <div className="header-actions">
+                    <Link to="/new-challenge" state={{ mode: 'free-trial' }} className="btn-secondary" style={{ marginRight: '10px', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                        Free Trial
+                    </Link>
                     <Link to="/new-challenge" className="btn-primary">
                         <Rocket size={16} fill="white" /> BUY CHALLENGE
                     </Link>
