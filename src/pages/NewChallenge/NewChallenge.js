@@ -42,20 +42,28 @@ function NewChallenge() {
                     password: 'DemoUser@123'
                 };
 
-                const account = await flexyService.createFreeTrial(dummyUser);
+                // Call real MT5 API with user-selected balance
+                const account = await flexyService.createFreeTrial({
+                    ...dummyUser,
+                    balance: parseInt(size) // Use selected account size
+                });
 
                 // Save to localStorage for Dashboard to pickup
                 const challengeData = {
-                    ...account,
+                    login: account.login,
+                    password: account.password,
+                    investorPassword: account.investorPassword,
+                    server: account.server || 'FlexyMarkets-Server',
+                    platform: 'MT5',
                     status: 'Active',
-                    balance: '100000',
+                    balance: parseInt(size),
                     type: 'Free Trial',
                     tier: 'Standard',
                     created: new Date().toISOString()
                 };
                 localStorage.setItem('activeChallenge', JSON.stringify(challengeData));
 
-                alert(`Free Trial Created Successfully!\n\nLogin: ${account.login}\nPassword: ${account.password}\nServer: ${account.server}`);
+                alert(`Free Trial Created Successfully!\n\nLogin: ${account.login}\nPassword: ${account.password}\nServer: ${challengeData.server}`);
                 navigate('/');
             } catch (error) {
                 console.error(error);

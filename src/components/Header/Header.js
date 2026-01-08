@@ -1,43 +1,58 @@
-import React, { useState } from 'react';
-import { Rocket, Share2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import ShareModal from '../ShareModal/ShareModal';
+import React from 'react';
+import { Home, Bell, Info, X } from 'lucide-react';
+import './Header.css';
 
 function Header() {
-    const [isShareModalOpen, setIsShareModalOpen] = useState(false);
-
     return (
-        <div>
-            <div className="header">
-                <div className="user-greeting">
-                    <div className="avatar">Y</div>
-                    <h1>Hey, Yo</h1>
-                </div>
-                <div className="header-actions">
-                    <Link to="/new-challenge" state={{ mode: 'free-trial' }} className="btn-secondary" style={{ marginRight: '10px', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                        Free Trial
-                    </Link>
-                    <Link to="/new-challenge" className="btn-primary">
-                        <Rocket size={16} fill="white" /> BUY CHALLENGE
-                    </Link>
-                    <button className="btn-secondary" onClick={() => setIsShareModalOpen(true)}>
-                        <Share2 size={16} /> Share
-                    </button>
-                </div>
-            </div>
-            <div className="breadcrumbs">
-                {/* Simplified logo representation text as SVG not available */}
-                <span style={{ fontWeight: '900', fontSize: '16px' }}>P</span>
-                <span className="breadcrumb-bold">YoPips</span>
-                <span className="breadcrumb-separator">|</span>
-                <span className="breadcrumb-bold">Trader Summary</span>
-                <span className="allocation">Total Allocation: $0.00</span>
+        <div className="header-wrapper">
+            {/* Center the top nav */}
+            <div className="centered-content">
+                <header className="header-container">
+                    <div className="header-left">
+                        <nav className="breadcrumb-nav">
+                            <Home size={14} className="breadcrumb-icon" style={{ color: '#94a3b8' }} />
+                            <span>Trader</span>
+                            <span className="breadcrumb-sep">/</span>
+                            <span className="breadcrumb-active">Accounts overview</span>
+                        </nav>
+                    </div>
+
+                    <div className="header-right">
+                        <div className="user-profile">
+                            <span className="user-name">Arijeet</span>
+                            <div className="user-initials">AN</div>
+                        </div>
+
+                        <div className="notification-bell">
+                            <Bell size={20} style={{ color: '#1e293b' }} />
+                            <div className="notification-dot"></div>
+                        </div>
+                    </div>
+                </header>
             </div>
 
-            <ShareModal
-                isOpen={isShareModalOpen}
-                onClose={() => setIsShareModalOpen(false)}
-            />
+            {/* Center the banner content */}
+            <div className="banner-outer">
+                <div className="centered-content">
+                    <div className="special-deal-banner">
+                        <div className="banner-left">
+                            <div className="banner-icons">
+                                <Info size={14} className="banner-icon-bg" />
+                            </div>
+                            <div className="banner-text">
+                                <span className="deal-pill">
+                                    <Info size={14} /> Special Deal! $100,000 FTMO Challenge for €439 <span className="save-badge">Save €101</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div className="banner-right">
+                            <span className="banner-promo-text">$100,000 FTMO Challenge: <strong>Now 19% Off</strong></span>
+                            <button className="get-it-now-btn">Get It Now</button>
+                            <X size={18} className="close-banner" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

@@ -66,14 +66,8 @@ function App() {
         <Route path="/google-auth" element={<GoogleAuthMock />} />
         <Route path="*" element={
           <div className="app-container">
-            {/* ... */}
             <Sidebar darkMode={darkMode} toggleTheme={toggleTheme} />
             <div className="main-content">
-              <div className="top-banner">
-                <div className="banner-content">
-                  Holiday Special: Use code FP & unwrap 20% OFF all YoPips evaluations 🎁 Note: $100k accounts on 1-Step and 2-Step are not included
-                </div>
-              </div>
               <div className="content-body">
                 <Routes>
                   <Route path="/" element={<Dashboard />} />

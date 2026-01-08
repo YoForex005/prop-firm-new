@@ -22,7 +22,7 @@ export const flexyService = {
             // First check if backend is running
             await flexyService.checkHealth();
 
-            const response = await fetch('/api/mt5/create-demo', {
+            const response = await fetch('/api/mt5/create-actual-demo', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -31,8 +31,7 @@ export const flexyService = {
                     name: userDetails.name,
                     email: userDetails.email,
                     leverage: 100,
-                    balance: 100000,
-                    group: 'demo\\Standard'
+                    balance: userDetails.balance || 100000
                 })
             });
 
