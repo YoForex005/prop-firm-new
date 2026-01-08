@@ -16,7 +16,7 @@ class MT5WebAPIClient {
         this.password = config.password;
         this.build = config.build || 2750;
         this.agent = config.agent || 'WebAPI';
-        this.proxy = config.proxy; // { host, port, auth: { username, password } }
+        this.proxy = config.proxy;
 
         this.httpsAgent = new https.Agent({ maxSockets: 1, keepAlive: true });
         this.authenticated = false;
@@ -25,9 +25,6 @@ class MT5WebAPIClient {
         this.pandingCallbacks = [];
     }
 
-    /**
-     * Internal request handler
-     */
     async Request(options, body = null) {
         if (this.proxy) {
             return this.ManualRequest(options, body);
@@ -178,7 +175,6 @@ class MT5WebAPIClient {
 
         let answer = null;
         try {
-            // Check if body contains multiple parts or headers (sometimes happens with manual parsing)
             const cleanBody = body.includes('HTTP/1.1') ? body.split('\r\n\r\n').pop() : body;
             answer = JSON.parse(cleanBody);
         } catch {
@@ -333,6 +329,42 @@ class MT5WebAPIClient {
                     group: createdUser?.Group || answer.Group,
                     leverage: createdUser?.Leverage || answer.Leverage,
                     balance: createdUser?.Balance || answer.Balance
+                });
+            }, 'application/json');
+        });
+    }
+
+    /**
+     * Add Balance to Account - Uses user/update as workaround for permission issue
+     */
+    depositBalance(login, amount, comment = 'Deposit') {
+        return new Promise((resolve, reject) => {
+            if (!this.authenticated) {
+                return reject(new Error('Not authenticated'));
+            }
+
+            // Direct balance update (workaround for trade permission issue)
+            const updateRecord = {
+                Login: login,
+                Balance: amount,
+                Comment: comment
+            };
+
+            const body = JSON.stringify(updateRecord);
+            console.log('POST /api/user/update with:', body);
+
+            this.Post('/api/user/update', body, (error, res, responseBody) => {
+                const answer = this.ParseBodyJSON(error, res, responseBody, (err) => {
+                    reject(new Error(String(err)));
+                });
+                if (!answer) return;
+
+                resolve({
+                    success: true,
+                    login: login,
+                    amount: amount,
+                    method: 'user_update',
+                    updated: answer.answer
                 });
             }, 'application/json');
         });

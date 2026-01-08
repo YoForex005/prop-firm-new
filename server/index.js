@@ -132,6 +132,189 @@ app.post('/api/mt5/create-demo', async (req, res) => {
     }
 });
 
+// Create ACTUAL Demo MT5 Account (Yellow Icon - demo\Propfirm group)
+app.post('/api/mt5/create-actual-demo', async (req, res) => {
+    try {
+        const { name, email, leverage = 100, balance = 100000 } = req.body;
+
+        console.log(`\nCreating DEMO account (yellow icon) for: ${name} (${email})`);
+
+        // Generate passwords
+        const mainPassword = generatePassword();
+        const investorPassword = generatePassword();
+
+        // Ensure connected
+        if (!mt5Client.authenticated) {
+            await mt5Client.connect();
+        }
+
+        // Create DEMO account via MT5 Web API in demo\Propfirm group
+        const account = await mt5Client.createAccount({
+            name: name,
+            email: email,
+            group: 'demo\\Propfirm',  // Actual demo group (yellow icon)
+            leverage: leverage,
+            balance: balance,
+            password: mainPassword,
+            investorPassword: investorPassword
+        });
+
+        const fullAccount = {
+            login: account.login,
+            password: mainPassword,
+            investorPassword: investorPassword,
+            serverAddress: `${MT5_CONFIG.server}:${MT5_CONFIG.port}`,
+            name: name,
+            email: email,
+            leverage: leverage,
+            balance: balance,
+            group: account.group,
+            accountType: 'demo',  // Flag as demo account
+            created: new Date().toISOString()
+        };
+
+        createdAccounts.push(fullAccount);
+
+        console.log(`✓ DEMO Account created: ${fullAccount.login}`);
+
+        res.json({
+            success: true,
+            message: 'Demo account (yellow icon) created successfully',
+            account: fullAccount
+        });
+
+    } catch (error) {
+        console.error('Error creating demo account:', error.message);
+        res.status(500).json({
+            success: false,
+            message: 'Failed to create demo account',
+            error: error.message
+        });
+    }
+});
+
+// Add Balance to Account (For 2-Phase Challenge Purchase)
+app.post('/api/mt5/deposit', async (req, res) => {
+    try {
+        const { login, amount, comment = 'Challenge Purchase - Phase 1' } = req.body;
+
+        if (!login || !amount) {
+            return res.status(400).json({
+                success: false,
+                message: 'Login and amount are required'
+            });
+        }
+
+        console.log(`\nAdding $${amount} to account ${login}...`);
+
+        // Ensure connected
+        if (!mt5Client.authenticated) {
+            await mt5Client.connect();
+        }
+
+        // Deposit balance to the account
+        const result = await mt5Client.depositBalance(login, amount, comment);
+
+        console.log(`✓ Balance added: $${amount} to account ${login}`);
+
+        res.json({
+            success: true,
+            message: `Successfully deposited $${amount}`,
+            transaction: {
+                login: login,
+                amount: amount,
+                comment: comment,
+                timestamp: new Date().toISOString()
+            }
+        });
+
+    } catch (error) {
+        console.error('Error depositing balance:', error.message);
+        res.status(500).json({
+            success: false,
+            message: 'Failed to deposit balance',
+            error: error.message
+        });
+    }
+});
+
+// Create 2-Phase Challenge Account (Auto-deposit after creation)
+app.post('/api/mt5/create-challenge', async (req, res) => {
+    try {
+        const {
+            name,
+            email,
+            leverage = 100,
+            balance = 100000,
+            phase = 1
+        } = req.body;
+
+        console.log(`\nCreating Phase ${phase} Challenge account for: ${name} (${email})`);
+
+        const mainPassword = generatePassword();
+        const investorPassword = generatePassword();
+
+        if (!mt5Client.authenticated) {
+            await mt5Client.connect();
+        }
+
+        // Create account
+        const account = await mt5Client.createAccount({
+            name: name,
+            email: email,
+            group: 'Demo\\propfirm',
+            leverage: leverage,
+            balance: 0,
+            password: mainPassword,
+            investorPassword: investorPassword
+        });
+
+        console.log(`✓ Account created: ${account.login}`);
+
+        // Add balance
+        await mt5Client.depositBalance(
+            account.login,
+            balance,
+            `Phase ${phase} Challenge Balance`
+        );
+
+        console.log(`✓ Balance deposited: $${balance}`);
+
+        const fullAccount = {
+            login: account.login,
+            password: mainPassword,
+            investorPassword: investorPassword,
+            serverAddress: `${MT5_CONFIG.server}:${MT5_CONFIG.port}`,
+            name: name,
+            email: email,
+            leverage: leverage,
+            balance: balance,
+            group: account.group,
+            accountType: 'challenge',
+            phase: phase,
+            created: new Date().toISOString()
+        };
+
+        createdAccounts.push(fullAccount);
+
+        res.json({
+            success: true,
+            message: `Phase ${phase} challenge account created with $${balance} balance`,
+            account: fullAccount
+        });
+
+    } catch (error) {
+        console.error('Error creating challenge account:', error.message);
+        res.status(500).json({
+            success: false,
+            message: 'Failed to create challenge account',
+            error: error.message
+        });
+    }
+});
+
+
+
 // Start server
 app.listen(PORT, () => {
     console.log(`Prop Firm MT5 Backend listening on port ${PORT}`);
