@@ -1,9 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const fetch = require('node-fetch');
-const https = require('https');
-const { HttpsProxyAgent } = require('https-proxy-agent');
-const MT5Manager = require('./mt5-manager');
+const MT5WebAPIClient = require('./mt5-webapi-official');
 
 // Disable SSL verification for self-signed certificates
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
@@ -11,34 +8,24 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const app = express();
 const PORT = 3001;
 
-// Proxy Configuration (whitelisted IP for MT5 connection)
-const PROXY_CONFIG = {
-    host: '81.29.145.69',
-    port: 49527,
-    auth: {
-        username: 'fGUqTcsdMsBZlms',
-        password: '3eo1qF91WA7Fyku'
+// MT5 Configuration (Server 1 - Verified WORKING)
+const MT5_CONFIG = {
+    server: '86.104.251.172',
+    port: 443,
+    login: 900546,
+    password: 'Lc_2PhYa',
+    proxy: {
+        host: '81.29.145.69',
+        port: 49527,
+        auth: {
+            username: 'fGUqTcsdMsBZlms',
+            password: '3eo1qF91WA7Fyku'
+        }
     }
 };
 
-// MT5 Manager Configuration
-const MT5_CONFIG = {
-    server: '86.104.251.172',
-    port: 443, // Proxy whitelisted for port 443
-    login: 1111,
-    password: 'Ak@47#YoFx'
-};
-
-// Create proxy agent for HTTPS requests
-const proxyUrl = `http://${PROXY_CONFIG.auth.username}:${PROXY_CONFIG.auth.password}@${PROXY_CONFIG.host}:${PROXY_CONFIG.port}`;
-const proxyAgent = new HttpsProxyAgent(proxyUrl);
-
-// Initialize MT5 Client
-// Initialize MT5 Client
-const mt5Client = new MT5Manager({
-    ...MT5_CONFIG,
-    proxy: PROXY_CONFIG
-});
+// Initialize MT5 Web API Client
+const mt5Client = new MT5WebAPIClient(MT5_CONFIG);
 
 app.use(cors());
 app.use(express.json());
@@ -62,28 +49,25 @@ app.get('/api/health', (req, res) => {
         status: 'ok',
         mt5Server: MT5_CONFIG.server,
         mt5Port: MT5_CONFIG.port,
-        proxyHost: PROXY_CONFIG.host,
-        proxyPort: PROXY_CONFIG.port,
-        mt5Connected: mt5Client.isConnected
+        mt5Connected: mt5Client.authenticated
     });
 });
 
-// Test MT5 Connection through proxy
+// Test MT5 Connection
 app.get('/api/mt5/test-connection', async (req, res) => {
     try {
         console.log('Testing MT5 connection...');
         await mt5Client.connect();
         res.json({
             success: true,
-            message: 'Connected to MT5 successfully',
-            sessionActive: mt5Client.isConnected
+            message: 'Connected to MT5 Manager via Proxy',
+            sessionActive: mt5Client.authenticated
         });
     } catch (error) {
         console.error('MT5 Connection Test Failed:', error.message);
         res.status(500).json({
             success: false,
-            error: error.message,
-            details: 'Failed to connect to MT5 server'
+            error: error.message
         });
     }
 });
@@ -91,94 +75,55 @@ app.get('/api/mt5/test-connection', async (req, res) => {
 // Create Demo MT5 Account
 app.post('/api/mt5/create-demo', async (req, res) => {
     try {
-        const { name, email, leverage = 100, balance = 100000, group = 'demo\\Standard' } = req.body;
+        const { name, email, leverage = 100, balance = 100000, group = 'Demo\\propfirm' } = req.body;
 
-        console.log(`\n========================================`);
-        console.log(`Creating demo account for: ${name} (${email})`);
-        console.log(`Using proxy: ${PROXY_CONFIG.host}:${PROXY_CONFIG.port}`);
-        console.log(`MT5 Server: ${MT5_CONFIG.server}:${MT5_CONFIG.port}`);
-        console.log(`========================================\n`);
+        console.log(`\nCreating demo account for: ${name} (${email})`);
 
         // Generate passwords
         const mainPassword = generatePassword();
         const investorPassword = generatePassword();
 
-        let account;
-        let usingRealMT5 = false;
-
-        // Try to create account via MT5 Web API
-        try {
-            account = await mt5Client.createUser({
-                name: name,
-                email: email,
-                group: group,
-                leverage: leverage,
-                balance: balance,
-                password: mainPassword,
-                investorPassword: investorPassword
-            });
-            usingRealMT5 = true;
-            console.log('✓ Account created via MT5 API:', account.login);
-        } catch (mt5Error) {
-            console.log('MT5 API not available:', mt5Error.message);
-            console.log('Creating account locally for demo purposes...\n');
-
-            // Fallback: Create account locally
-            account = {
-                login: Math.floor(50000 + Math.random() * 50000),
-                password: mainPassword,
-                investorPassword: investorPassword,
-                group: group,
-                leverage: leverage,
-                balance: balance
-            };
+        // Ensure connected
+        if (!mt5Client.authenticated) {
+            await mt5Client.connect();
         }
 
-        // Build full account object
-        const fullAccount = {
-            login: account.login,
-            password: account.password,
-            investorPassword: account.investorPassword,
-            server: 'FlexyMarkets-Server',
-            serverAddress: `${MT5_CONFIG.server}:${MT5_CONFIG.port}`,
-            platform: 'MT5',
+        // Create account via MT5 Web API
+        const account = await mt5Client.createAccount({
             name: name,
             email: email,
-            leverage: account.leverage,
-            balance: account.balance,
+            group: group,
+            leverage: leverage,
+            balance: balance,
+            password: mainPassword,
+            investorPassword: investorPassword
+        });
+
+        const fullAccount = {
+            login: account.login,
+            password: mainPassword,
+            investorPassword: investorPassword,
+            serverAddress: `${MT5_CONFIG.server}:${MT5_CONFIG.port}`,
+            name: name,
+            email: email,
+            leverage: leverage,
+            balance: balance,
             group: account.group,
-            type: 'Demo',
-            usingRealMT5: usingRealMT5,
             created: new Date().toISOString()
         };
 
-        // Store in memory
         createdAccounts.push(fullAccount);
 
-        console.log(`\n✓ Demo account created successfully!`);
-        console.log(`  Login: ${fullAccount.login}`);
-        console.log(`  Password: ${fullAccount.password}`);
-        console.log(`  Server: ${fullAccount.server}`);
-        console.log(`  Real MT5: ${usingRealMT5 ? 'Yes' : 'No (simulated)'}\n`);
+        console.log(`✓ Account created: ${fullAccount.login}`);
 
         res.json({
             success: true,
             message: 'Demo account created successfully',
-            realMT5: usingRealMT5,
-            account: {
-                login: fullAccount.login,
-                password: fullAccount.password,
-                investorPassword: fullAccount.investorPassword,
-                server: fullAccount.server,
-                serverAddress: fullAccount.serverAddress,
-                platform: fullAccount.platform,
-                leverage: fullAccount.leverage,
-                balance: fullAccount.balance
-            }
+            account: fullAccount
         });
 
     } catch (error) {
-        console.error('Error creating demo account:', error);
+        console.error('Error creating demo account:', error.message);
         res.status(500).json({
             success: false,
             message: 'Failed to create demo account',
@@ -187,58 +132,11 @@ app.post('/api/mt5/create-demo', async (req, res) => {
     }
 });
 
-// Get all created accounts
-app.get('/api/mt5/accounts', (req, res) => {
-    res.json({
-        success: true,
-        count: createdAccounts.length,
-        accounts: createdAccounts.map(acc => ({
-            login: acc.login,
-            name: acc.name,
-            email: acc.email,
-            type: acc.type,
-            balance: acc.balance,
-            server: acc.server,
-            realMT5: acc.usingRealMT5,
-            created: acc.created
-        }))
-    });
-});
-
-// Get account by login
-app.get('/api/mt5/accounts/:login', (req, res) => {
-    const login = parseInt(req.params.login);
-    const account = createdAccounts.find(acc => acc.login === login);
-
-    if (!account) {
-        return res.status(404).json({ success: false, message: 'Account not found' });
-    }
-
-    res.json({ success: true, account });
-});
-
 // Start server
 app.listen(PORT, () => {
-    console.log(`
-╔═══════════════════════════════════════════════════════════════╗
-║           Prop Firm MT5 Backend Server                        ║
-╠═══════════════════════════════════════════════════════════════╣
-║  Server running on: http://localhost:${PORT}                    ║
-║  MT5 Server: ${MT5_CONFIG.server}:${MT5_CONFIG.port}                          ║
-║  Manager Login: ${MT5_CONFIG.login}                                       ║
-║  Proxy: ${PROXY_CONFIG.host}:${PROXY_CONFIG.port}                          ║
-╠═══════════════════════════════════════════════════════════════╣
-║  Endpoints:                                                   ║
-║  GET  /api/health              - Health check                 ║
-║  GET  /api/mt5/test-connection - Test MT5 connection          ║
-║  POST /api/mt5/create-demo     - Create demo account          ║
-║  GET  /api/mt5/accounts        - List all accounts            ║
-║  GET  /api/mt5/accounts/:id    - Get account by login         ║
-╚═══════════════════════════════════════════════════════════════╝
-    `);
+    console.log(`Prop Firm MT5 Backend listening on port ${PORT}`);
 
-    // Try to connect to MT5 on startup
-    console.log('Attempting to connect to MT5 server...');
+    // Attempt initial connection
     mt5Client.connect()
         .then(() => console.log('✓ Initial MT5 connection successful'))
         .catch(err => console.log('✗ Initial MT5 connection failed:', err.message));
