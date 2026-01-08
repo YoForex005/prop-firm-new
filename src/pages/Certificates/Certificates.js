@@ -8,7 +8,7 @@ function Certificates() {
             <div className="certificates-header">
                 <div className="logo-section" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
                     {/* Assuming header logo handled by layout or local here if needed */}
-                    {/* <span style={{fontWeight: 'bold'}}>FundingPips</span> */}
+                    {/* <span style={{fontWeight: 'bold'}}>YoPips</span> */}
                 </div>
                 <h2>Certificates</h2>
             </div>

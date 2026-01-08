@@ -1,0 +1,7 @@
+.empty-state-plain {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}

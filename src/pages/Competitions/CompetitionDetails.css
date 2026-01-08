@@ -1,0 +1,538 @@
+/* Existing Styles for Monthly View... */
+.comp-details-container {
+    max-width: 1500px;
+    /* Wider for dashboard */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ... keep existing styles ... */
+
+/* --- CHAMPIONSHIP MODE STYLES --- */
+
+.champ-top-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 24px;
+}
+
+.champ-hero-card {
+    background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);
+    /* Deep Blue Theme */
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.champ-hero-content {
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.champ-hero-tag {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.champ-hero-card h2 {
+    font-size: 24px;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+}
+
+.communities-joined {
+    font-size: 13px;
+    opacity: 0.7;
+    margin-bottom: 24px;
+}
+
+.champ-dates-grid {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.champ-dates-grid .label {
+    display: block;
+    font-size: 11px;
+    opacity: 0.6;
+    margin-bottom: 4px;
+}
+
+.champ-dates-grid .val {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.champ-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.btn-host {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-host:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-text-blue {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.champ-hero-img img {
+    height: 160px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+/* --- STANDARD RENDER (Monthly Competition) --- */
+.comp-header-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    margin-bottom: 24px;
+    position: relative;
+    border: 1px solid #eef2f6;
+}
+
+.header-content-left {
+    flex: 1;
+}
+
+.comp-header-card h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    color: #111827;
+}
+
+.header-tags {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    align-items: center;
+}
+
+.tag-matchtrader {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.tag-ongoing {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #10b981;
+    font-weight: 600;
+}
+
+.dot-green {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+}
+
+.countdown-section {
+    margin-bottom: 32px;
+}
+
+.countdown-label {
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 500;
+}
+
+.timer-blocks {
+    display: flex;
+    gap: 12px;
+}
+
+.timer-block {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 8px 16px;
+    text-align: center;
+    min-width: 60px;
+}
+
+.time-val {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.time-label {
+    display: block;
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+.header-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.btn-join {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+}
+
+.btn-join:hover {
+    background: #1d4ed8;
+}
+
+.btn-secondary {
+    background: white;
+    border: 1px solid #d1d5db;
+    color: #374151;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+    color: #111827;
+}
+
+/* PODIUM VISUALS */
+.header-podium-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.podium-visual {
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.podium-rank {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.podium-rank.rank-1 {
+    z-index: 3;
+    margin-bottom: 30px;
+}
+
+.podium-rank.rank-2 {
+    z-index: 2;
+    margin-bottom: 0;
+}
+
+.podium-rank.rank-3 {
+    z-index: 1;
+    margin-bottom: -10px;
+}
+
+.podium-badge {
+    width: 80px;
+    height: 92px;
+    /* Hexagon-ish ratio */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.badge-inner {
+    font-size: 32px;
+    font-weight: 900;
+    color: white;
+    opacity: 0.5;
+}
+
+.podium-badge.gold {
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    width: 100px;
+    height: 115px;
+}
+
+.podium-badge.silver {
+    background: linear-gradient(135deg, #e5e7eb 0%, #9ca3af 100%);
+    width: 80px;
+    /* Slightly smaller */
+    height: 92px;
+}
+
+.podium-badge.bronze {
+    background: linear-gradient(135deg, #fdba74 0%, #c2410c 100%);
+    width: 80px;
+    height: 92px;
+}
+
+.wing-left,
+.wing-right {
+    position: absolute;
+    top: 20px;
+    width: 40px;
+    height: 60px;
+    background: #fbbf24;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+.wing-left {
+    left: -20px;
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+}
+
+.wing-right {
+    right: -20px;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.p-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 4px;
+    max-width: 100px;
+    text-align: center;
+}
+
+.p-name.main {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.p-num {
+    font-size: 12px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* LAYOUT GRID */
+.comp-details-content {
+    display: flex;
+    gap: 24px;
+}
+
+.comp-leaderboard-section {
+    flex: 2.2;
+    background: white;
+    border-radius: 20px;
+    border: 1px solid #e5e7eb;
+    padding: 24px;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.leaderboard-table th {
+    text-align: left;
+    font-size: 12px;
+    color: #9ca3af;
+    font-weight: 400;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.leaderboard-table td {
+    padding: 16px;
+    font-size: 13px;
+    color: #374151;
+    font-weight: 500;
+    border-bottom: 1px solid #f9fafb;
+}
+
+.name-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.profit-cell,
+.gain-cell {
+    color: #10b981;
+    /* Green */
+    font-weight: 600;
+}
+
+.text-green {
+    color: #10b981;
+}
+
+.status-dot {
+    width: 24px;
+    height: 24px;
+    background: #f3f4f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.status-dot.green {
+    color: #10b981;
+}
+
+.status-dot.blue {
+    color: #2563eb;
+}
+
+/* SIDEBAR */
+.comp-sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.current-rank-card {
+    background: #2563eb;
+    border-radius: 16px;
+    padding: 24px;
+    color: white;
+    text-align: center;
+}
+
+.current-rank-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+}
+
+.current-rank-card p {
+    font-size: 12px;
+    opacity: 0.8;
+    margin: 0 0 16px 0;
+}
+
+.btn-my-stats {
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.info-grid-card {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    border: 1px solid #e5e7eb;
+}
+
+.info-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.info-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-col .label {
+    font-size: 11px;
+    color: #9ca3af;
+    margin-bottom: 2px;
+}
+
+.info-col .val-bold {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.rules-card {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    border: 1px solid #e5e7eb;
+}
+
+.rules-card h4 {
+    margin: 0 0 16px 0;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.rule-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: #374151;
+    font-weight: 500;
+}
+
+.icon-blue {
+    color: #3b82f6;
+}

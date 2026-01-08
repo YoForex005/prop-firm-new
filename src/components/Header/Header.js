@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Rocket, Share2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ShareModal from '../ShareModal/ShareModal';
 
 function Header() {
+    const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+
     return (
         <div>
             <div className="header">
@@ -14,7 +17,7 @@ function Header() {
                     <Link to="/new-challenge" className="btn-primary">
                         <Rocket size={16} fill="white" /> BUY CHALLENGE
                     </Link>
-                    <button className="btn-secondary">
+                    <button className="btn-secondary" onClick={() => setIsShareModalOpen(true)}>
                         <Share2 size={16} /> Share
                     </button>
                 </div>
@@ -22,11 +25,16 @@ function Header() {
             <div className="breadcrumbs">
                 {/* Simplified logo representation text as SVG not available */}
                 <span style={{ fontWeight: '900', fontSize: '16px' }}>P</span>
-                <span className="breadcrumb-bold">FundingPips</span>
+                <span className="breadcrumb-bold">YoPips</span>
                 <span className="breadcrumb-separator">|</span>
                 <span className="breadcrumb-bold">Trader Summary</span>
                 <span className="allocation">Total Allocation: $0.00</span>
             </div>
+
+            <ShareModal
+                isOpen={isShareModalOpen}
+                onClose={() => setIsShareModalOpen(false)}
+            />
         </div>
     );
 }

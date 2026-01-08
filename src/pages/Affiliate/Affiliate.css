@@ -50,6 +50,33 @@
     padding: 8px 12px;
     background: #f9fafb;
     flex: 1;
+    position: relative;
+    /* For tooltip positioning */
+}
+
+.copy-feedback {
+    position: absolute;
+    right: 40px;
+    /* Position to the left of the button */
+    background: #10b981;
+    color: white;
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    animation: fadeIn 0.2s;
+    pointer-events: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(2px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .input-group input {
@@ -113,6 +140,8 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    /* Ensure it fills width if sidebar is hidden */
+    min-width: 0;
 }
 
 .tabs-row {
@@ -230,4 +259,212 @@
     font-size: 20px;
     font-weight: 600;
     color: var(--text-color);
+}
+
+/* Dark Mode Overrides */
+[data-theme='dark'] .affiliate-header h2 {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .referral-section {
+    background-color: #1a1a1a;
+    border-color: #333;
+}
+
+[data-theme='dark'] .referral-desc {
+    color: #999;
+}
+
+[data-theme='dark'] .input-group {
+    background-color: #262626;
+    border-color: #333;
+}
+
+[data-theme='dark'] .input-group input {
+    color: white;
+}
+
+[data-theme='dark'] .commission-info {
+    background-color: rgba(3, 105, 161, 0.2);
+    border-color: #0369a1;
+}
+
+[data-theme='dark'] .info-text {
+    color: #7dd3fc;
+}
+
+[data-theme='dark'] .btn-visit {
+    background-color: #262626;
+    border-color: #333;
+    color: #ccc;
+}
+
+[data-theme='dark'] .tab-btn {
+    color: #999;
+}
+
+[data-theme='dark'] .tab-btn.active {
+    background-color: #333;
+    color: white;
+    border-bottom-color: white;
+}
+
+[data-theme='dark'] .control-btn {
+    background-color: #262626;
+    border-color: #333;
+    color: #ccc;
+}
+
+[data-theme='dark'] .control-btn.active {
+    background-color: #333;
+    border-color: #555;
+}
+
+[data-theme='dark'] .date-picker-popover {
+    background-color: #1a1a1a;
+    border-color: #333;
+}
+
+[data-theme='dark'] .quick-btn {
+    background-color: #262626;
+    border-color: #333;
+    color: #ccc;
+}
+
+[data-theme='dark'] .quick-btn:hover {
+    background-color: #333;
+}
+
+[data-theme='dark'] .date-input-wrapper {
+    background-color: #262626;
+    border-color: #333;
+}
+
+[data-theme='dark'] .date-input-wrapper input {
+    color: white;
+}
+
+/* Date Picker Styles */
+.date-picker-wrapper {
+    position: relative;
+}
+
+.control-btn.active {
+    background-color: #f3f4f6;
+    border-color: #ccc;
+}
+
+.date-picker-popover {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    /* Align to right or left depending on preference, screenshot looks somewhat centered or left aligned to parent */
+    left: 0;
+    width: 300px;
+    /* Fixed width for layout */
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.quick-select-section label,
+.date-field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray-text);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.quick-select-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.quick-btn {
+    padding: 8px;
+    font-size: 12px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: all 0.2s;
+}
+
+.quick-btn:hover {
+    background-color: #f9f9f9;
+    border-color: #ccc;
+}
+
+.date-input-row {
+    display: flex;
+    gap: 12px;
+}
+
+.date-field {
+    flex: 1;
+}
+
+.date-input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 8px;
+    background: white;
+    cursor: pointer;
+    /* Clickable */
+}
+
+/* Hide default calendar picker icon in WebKit browsers since we use custom icon */
+.date-input-native::-webkit-calendar-picker-indicator {
+    display: none;
+    /* Use display:none to hide the native icon, 
+       allowing our custom icon and wrapper click to handle it */
+}
+
+.date-input-native {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 12px;
+    color: var(--text-color);
+    background: transparent;
+    font-family: inherit;
+    /* Ensure it takes full height/width of container area effectively */
+}
+
+.input-icon {
+    color: var(--gray-text);
+    opacity: 0.7;
+    pointer-events: none;
+    /* Let clicks pass through to wrapper */
+}
+
+[data-theme='dark'] .toggle-group {
+    background-color: #262626;
+}
+
+[data-theme='dark'] .chart-placeholder {
+    background-color: #1a1a1a;
+    border-color: #333;
+    color: #999;
+}
+
+[data-theme='dark'] .stat-card-white {
+    background-color: #1a1a1a;
+    border-color: #333;
+}
+
+[data-theme='dark'] .stat-val-large {
+    color: white;
 }

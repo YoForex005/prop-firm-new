@@ -1,7 +1,5 @@
 import React from 'react';
 import './Dashboard.css';
-
-/* Import Components from their new structure (will be updated shortly) */
 import Header from '../../components/Header/Header';
 import AccountSummary from '../../components/AccountSummary/AccountSummary';
 import BehavioralBias from '../../components/BehavioralBias/BehavioralBias';
@@ -13,13 +11,13 @@ import SessionWinRates from '../../components/SessionWinRates/SessionWinRates';
 
 function Dashboard() {
     return (
-        <>
+        <div className="dashboard-container">
             <Header />
-            <div className="grid-container">
+            <div className="dashboard-grid">
                 {/* Left Column (Wide) */}
-                <div className="grid-left-col">
-                    {/* Row 1: Mixed Flex (Blue Card + Bias) */}
-                    <div className="top-cards-row">
+                <div className="grid-col-left">
+                    {/* Row 1: Split Card */}
+                    <div className="row-split-card">
                         <div className="account-summary-wrapper">
                             <AccountSummary />
                         </div>
@@ -29,25 +27,24 @@ function Dashboard() {
                     </div>
 
                     {/* Row 2: User Level */}
-                    <UserLevel />
+                    <div className="card-wrapper-level">
+                        <UserLevel />
+                    </div>
 
                     {/* Row 3: Most Traded */}
-                    <MostTraded />
+                    <div className="card-wrapper-most-traded">
+                        <MostTraded />
+                    </div>
                 </div>
 
                 {/* Right Column (Narrow) */}
-                <div className="grid-right-col">
-                    {/* Row 1: Daily Perf */}
+                <div className="grid-col-right">
                     <DailyPerformance />
-
-                    {/* Row 2: Profitability */}
                     <Profitability />
-
-                    {/* Row 3: Session Win Rates */}
                     <SessionWinRates />
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

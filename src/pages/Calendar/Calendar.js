@@ -1,8 +1,62 @@
 import React from 'react';
-import { Filter, Calendar as CalendarIcon, Clock } from 'lucide-react';
+import { Filter, Calendar as CalendarIcon, Clock, ChevronDown, Search, Check } from 'lucide-react';
 import './Calendar.css';
 
 function Calendar() {
+    const [currencyDropdownOpen, setCurrencyDropdownOpen] = React.useState(false);
+    const [selectedCurrency, setSelectedCurrency] = React.useState('Select currency...');
+    const [activeDropdown, setActiveDropdown] = React.useState(null);
+    const [selectedDays, setSelectedDays] = React.useState(['Wed']);
+    const [showPassedEvents, setShowPassedEvents] = React.useState(false);
+
+    const toggleDay = (day) => {
+        setSelectedDays(prev =>
+            prev.includes(day)
+                ? prev.filter(d => d !== day)
+                : [...prev, day]
+        );
+    };
+    const [impactFilters, setImpactFilters] = React.useState({
+        high: true,
+        med: true,
+        low: true,
+        none: false
+    });
+    const dropdownRef = React.useRef(null);
+    const currencies = ['JPY', 'CNY', 'CHF', 'EUR', 'GBP', 'USD', 'NZD', 'AUD', 'CAD'];
+
+    const toggleImpact = (level) => {
+        setImpactFilters(prev => ({
+            ...prev,
+            [level]: !prev[level]
+        }));
+    };
+
+    const toggleDropdown = (index) => {
+        if (activeDropdown === index) {
+            setActiveDropdown(null);
+        } else {
+            setActiveDropdown(index);
+        }
+    };
+
+    const toggleCurrencyDropdown = () => setCurrencyDropdownOpen(!currencyDropdownOpen);
+
+    const handleCurrencySelect = (currency) => {
+        setSelectedCurrency(currency);
+        setCurrencyDropdownOpen(false);
+    };
+
+    React.useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setCurrencyDropdownOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
     const events = [
         { time: '4:00 PM', currency: 'USD', event: 'ISM Services PMI', restricted: true, actual: '', forecast: '52.2', previous: '52.6', impact: 'high' },
         { time: '4:00 PM', currency: 'USD', event: 'JOLTs Job Openings', restricted: true, actual: '', forecast: '7.40M', previous: '7.67M', impact: 'high' },
@@ -29,30 +83,82 @@ function Calendar() {
             <div className="calendar-filters">
                 <div className="filter-group">
                     <span style={{ fontSize: '13px', fontWeight: '600', color: '#666' }}>Filters</span>
-                    <select className="currency-select">
-                        <option>Select currency...</option>
-                        <option>USD</option>
-                        <option>EUR</option>
-                        <option>GBP</option>
-                    </select>
+
+                    <div className="custom-select-wrapper" ref={dropdownRef}>
+                        <button className={`custom-select-trigger ${currencyDropdownOpen ? 'active' : ''}`} onClick={toggleCurrencyDropdown}>
+                            {selectedCurrency}
+                            <ChevronDown size={14} className="chevron-icon" />
+                        </button>
+
+                        {currencyDropdownOpen && (
+                            <div className="custom-select-dropdown">
+                                <div className="search-wrapper">
+                                    <div className="search-icon-wrapper">
+                                        <Search size={14} color="#999" />
+                                    </div>
+                                    <input type="text" placeholder="Search currency..." className="currency-search-input" />
+                                </div>
+                                <div className="currency-list">
+                                    {currencies.map(curr => (
+                                        <div
+                                            key={curr}
+                                            className="currency-item"
+                                            onClick={() => handleCurrencySelect(curr)}
+                                        >
+                                            {curr}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
 
                     <div className="day-selector">
-                        <button className="day-btn">Mon</button>
-                        <button className="day-btn">Tue</button>
-                        <button className="day-btn active">Wed</button>
-                        <button className="day-btn">Thu</button>
-                        <button className="day-btn">Fri</button>
-                        <button className="day-btn">Sat</button>
-                        <button className="day-btn">Sun</button>
+                        {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(day => (
+                            <button
+                                key={day}
+                                className={`day-btn ${selectedDays.includes(day) ? 'active' : ''}`}
+                                onClick={() => toggleDay(day)}
+                            >
+                                {day}
+                            </button>
+                        ))}
                     </div>
                 </div>
 
                 <div className="filter-group">
                     <div className="impact-toggles">
-                        <div className="impact-toggle impact-high active">High Impact</div>
-                        <div className="impact-toggle impact-med active">Medium Impact</div>
-                        <div className="impact-toggle impact-low active">Low Impact</div>
-                        <div className="impact-toggle impact-none">No Impact</div>
+                        <div
+                            className={`impact-toggle impact-high ${impactFilters.high ? 'active' : ''}`}
+                            onClick={() => toggleImpact('high')}
+                        >
+                            {impactFilters.high && <Check size={12} strokeWidth={3} />} High Impact
+                        </div>
+                        <div
+                            className={`impact-toggle impact-med ${impactFilters.med ? 'active' : ''}`}
+                            onClick={() => toggleImpact('med')}
+                        >
+                            {impactFilters.med && <Check size={12} strokeWidth={3} />} Medium Impact
+                        </div>
+                        <div
+                            className={`impact-toggle impact-low ${impactFilters.low ? 'active' : ''}`}
+                            onClick={() => toggleImpact('low')}
+                        >
+                            {impactFilters.low && <Check size={12} strokeWidth={3} />} Low Impact
+                        </div>
+                        <div
+                            className={`impact-toggle impact-none ${impactFilters.none ? 'active' : ''}`}
+                            onClick={() => toggleImpact('none')}
+                        >
+                            {impactFilters.none && <Check size={12} strokeWidth={3} />} No Impact
+                        </div>
+                    </div>
+
+                    <div className="passed-events-toggle" onClick={() => setShowPassedEvents(!showPassedEvents)}>
+                        <div className={`toggle-switch ${showPassedEvents ? 'active' : ''}`}>
+                            <div className="toggle-knob" />
+                        </div>
+                        <span>Show Passed Events</span>
                     </div>
                 </div>
             </div>
@@ -88,16 +194,43 @@ function Calendar() {
                                 </td>
                                 <td>{ev.previous}</td>
                                 <td>{ev.forecast}</td>
-                                <td style={{ textAlign: 'right' }}>
-                                    <button className="btn-add-cal">
-                                        <CalendarIcon size={14} /> Add to Calendar
+                                <td style={{ textAlign: 'right', position: 'relative' }}>
+                                    <button
+                                        className={`btn-add-cal ${activeDropdown === index ? 'active' : ''}`}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            toggleDropdown(index);
+                                        }}
+                                    >
+                                        <span className="btn-content">
+                                            <CalendarIcon size={14} />
+                                            Add to Calendar
+                                        </span>
+                                        <ChevronDown size={14} className="chevron-icon" />
                                     </button>
+
+                                    {activeDropdown === index && (
+                                        <div className="cal-dropdown-menu">
+                                            <div className="cal-dropdown-item">Google Calendar</div>
+                                            <div className="cal-dropdown-item">Outlook</div>
+                                            <div className="cal-dropdown-item">Apple Calendar</div>
+                                            <div className="cal-dropdown-item">Yahoo Calendar</div>
+                                        </div>
+                                    )}
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
+
+            {/* Click overlay to close dropdowns */}
+            {activeDropdown !== null && (
+                <div
+                    style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 5 }}
+                    onClick={() => setActiveDropdown(null)}
+                />
+            )}
         </div>
     );
 }

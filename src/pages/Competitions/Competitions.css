@@ -229,3 +229,73 @@
     font-weight: 600;
     cursor: pointer;
 }
+
+/* Dark Mode Overrides */
+[data-theme='dark'] .competitions-hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid #333;
+}
+
+[data-theme='dark'] .hero-title {
+    color: white;
+}
+
+[data-theme='dark'] .tabs-nav {
+    border-bottom-color: #333;
+}
+
+[data-theme='dark'] .competition-card {
+    background-color: #1a1a1a;
+    border-color: #333;
+}
+
+[data-theme='dark'] .comp-title {
+    color: white;
+}
+
+[data-theme='dark'] .comp-timer {
+    background-color: #333;
+    color: #ccc;
+}
+
+/* Specific Button Styles */
+.btn-more-info {
+    background: white;
+    border: 1px solid #e0e0e0;
+    color: var(--text-color);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-prizepool {
+    background: white;
+}
+
+[data-theme='dark'] .btn-prizepool {
+    background-color: transparent;
+    border-color: #333;
+    color: white;
+}
+
+[data-theme='dark'] .btn-prizepool:hover {
+    border-color: #555;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+[data-theme='dark'] .btn-more-info {
+    background-color: transparent;
+    border-color: #333;
+    color: #ccc;
+}
+
+[data-theme='dark'] .btn-more-info:hover {
+    border-color: #555;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+[data-theme='dark'] .plat-tag {
+    background-color: #262626;
+    border-color: #333;
+    color: #ccc;
+}

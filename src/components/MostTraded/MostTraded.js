@@ -2,12 +2,10 @@ import React from 'react';
 
 function MostTraded() {
     return (
-        <div className="card most-traded">
-            <div className="card-header">
-                <h3>Most Traded 3 Instruments</h3>
-            </div>
+        <div className="general-card most-traded-card">
+            <div className="card-title">Most Traded 3 Instruments</div>
             <div className="list-placeholder">
-                {/* List would go here */}
+                {/* Empty */}
             </div>
         </div>
     );

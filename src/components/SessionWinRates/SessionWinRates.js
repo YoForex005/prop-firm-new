@@ -2,25 +2,23 @@ import React from 'react';
 
 function SessionWinRates() {
     return (
-        <div className="card session-win-rates">
-            <div className="card-header">
-                <h3>Session Win Rates</h3>
-            </div>
-            <div className="sessions">
+        <div className="general-card sessions-card">
+            <div className="card-title">Session Win Rates</div>
+            <div className="session-rows">
                 <div className="session-row">
-                    <span>New York</span>
-                    <div className="progress-bar"><div className="fill" style={{ width: '0%' }}></div></div>
-                    <span>0.0%</span>
+                    <span className="name">New York</span>
+                    <div className="bar-bg"><div className="bar-fill" style={{ width: '0%' }}></div></div>
+                    <span className="val">0.0%</span>
                 </div>
                 <div className="session-row">
-                    <span>London</span>
-                    <div className="progress-bar"><div className="fill" style={{ width: '0%' }}></div></div>
-                    <span>0.0%</span>
+                    <span className="name">London</span>
+                    <div className="bar-bg"><div className="bar-fill" style={{ width: '0%' }}></div></div>
+                    <span className="val">0.0%</span>
                 </div>
                 <div className="session-row">
-                    <span>Asia</span>
-                    <div className="progress-bar"><div className="fill" style={{ width: '0%' }}></div></div>
-                    <span>0.0%</span>
+                    <span className="name">Asia</span>
+                    <div className="bar-bg"><div className="bar-fill" style={{ width: '0%' }}></div></div>
+                    <span className="val">0.0%</span>
                 </div>
             </div>
         </div>

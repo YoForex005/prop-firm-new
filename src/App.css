@@ -12,6 +12,16 @@
   --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
+[data-theme='dark'] {
+  --bg-color: #0d0d0d;
+  --sidebar-bg: #141414;
+  --header-bg: #141414;
+  --card-bg: #141414;
+  --text-color: #f3f4f6;
+  --gray-text: #9ca3af;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -59,6 +69,43 @@ body {
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
+  position: relative;
+  /* For tooltip positioning */
+}
+
+/* Tooltip Styles */
+.nav-item[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 120%;
+  /* Right side of the button */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #333;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 100;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  animation: fadeInTooltip 0.2s forwards;
+}
+
+@keyframes fadeInTooltip {
+  to {
+    opacity: 1;
+    left: 130%;
+    /* Slight slide out effect */
+  }
+}
+
+[data-theme='dark'] .nav-item[data-tooltip]:hover::after {
+  background-color: #444;
+  border: 1px solid #555;
 }
 
 .nav-item:hover {
@@ -89,9 +136,30 @@ body {
   background: linear-gradient(90deg, #9b5cf4 0%, #6e45e2 100%);
   color: white;
   text-align: center;
-  padding: 8px;
+  padding: 8px 0;
+  /* Removed side padding to ensure full width flow */
   font-size: 13px;
   font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.banner-content {
+  display: inline-block;
+  animation: scroll-left 20s linear infinite;
+  padding-left: 100%;
+  /* Start from right */
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 /* Main Body Padding */
@@ -652,7 +720,7 @@ body {
   margin-bottom: 8px;
   font-size: 14px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-color);
 }
 
 .summary-meta {

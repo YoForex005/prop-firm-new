@@ -201,7 +201,7 @@
     margin-bottom: 8px;
     font-size: 14px;
     font-weight: 600;
-    color: #333;
+    color: var(--text-color);
 }
 
 .summary-meta {
@@ -293,4 +293,91 @@
     font-size: 14px;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(59, 91, 219, 0.3);
+}
+
+/* Dark Mode Overrides */
+[data-theme='dark'] .new-challenge-container h2,
+[data-theme='dark'] .config-section h3,
+[data-theme='dark'] .summary-section h3,
+[data-theme='dark'] .order-summary-card h3 {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .radio-card {
+    background-color: transparent;
+    border-color: #333;
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .radio-card:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: #555;
+}
+
+[data-theme='dark'] .radio-card.active {
+    background-color: transparent;
+    border-color: var(--primary-color);
+    box-shadow: inset 0 0 0 1px var(--primary-color);
+}
+
+[data-theme='dark'] .radio-circle {
+    border-color: #555;
+}
+
+[data-theme='dark'] .radio-card.active .radio-circle {
+    border-color: var(--primary-color);
+}
+
+[data-theme='dark'] .toggle-btn {
+    background-color: transparent;
+    border-color: #333;
+    color: #999;
+}
+
+[data-theme='dark'] .toggle-btn.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+[data-theme='dark'] .highlight-section {
+    background-color: #111827;
+    /* Deep Navy Blue */
+    border-color: #1f2937;
+    color: white;
+}
+
+[data-theme='dark'] .icon-wrapper {
+    color: #60a5fa;
+}
+
+[data-theme='dark'] .order-summary-card {
+    background-color: #141414;
+    border-color: #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] .summary-row,
+[data-theme='dark'] .summary-total {
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .summary-divider {
+    background-color: #333;
+}
+
+[data-theme='dark'] .coupon-input-group input {
+    background-color: transparent;
+    border-color: #444;
+    color: white;
+}
+
+[data-theme='dark'] .coupon-input-group button {
+    background-color: #262626;
+    border-color: #444;
+    color: white;
+}
+
+[data-theme='dark'] .terms-box {
+    background-color: rgba(255, 255, 255, 0.03);
 }

@@ -1,0 +1,163 @@
+.payouts-container {
+    padding: 32px 40px;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.payouts-header {
+    margin-bottom: 32px;
+}
+
+.fp-logo-text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+}
+
+.fp-brand {
+    font-weight: 600;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Add a pseudo-element for the visual logo roughly if needed, or assume text for now */
+
+.fp-divider {
+    color: #e0e0e0;
+    font-weight: 300;
+}
+
+.fp-page-title {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.payouts-cards-row {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.payout-card {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: var(--box-shadow);
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Certificate Card */
+.certificate-card {
+    align-items: center;
+    text-align: center;
+}
+
+.certificate-icon-wrapper {
+    margin-bottom: 24px;
+    color: #6b7280;
+}
+
+.certificate-content h3 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.certificate-content p {
+    margin: 0 0 4px 0;
+    font-size: 13px;
+    color: var(--gray-text);
+    line-height: 1.5;
+}
+
+.certificate-content .sub-text {
+    color: #9ca3af;
+    font-size: 12px;
+}
+
+/* Request Card */
+.request-card {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.request-content h3 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.request-content p {
+    margin: 0 0 24px 0;
+    font-size: 13px;
+    color: var(--gray-text);
+    line-height: 1.6;
+    max-width: 90%;
+}
+
+.request-btn {
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-color);
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s;
+}
+
+.request-btn:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+/* Table Header */
+.payouts-table-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    /* 8 equal columns rough approximation */
+    padding: 16px 0;
+    border-bottom: 1px solid transparent;
+}
+
+.th-item {
+    font-size: 12px;
+    color: #9ca3af;
+    font-weight: 500;
+    text-align: left;
+}
+
+/* Dark Mode */
+[data-theme='dark'] .payout-card {
+    background-color: var(--card-bg);
+}
+
+[data-theme='dark'] .fp-divider {
+    color: #444;
+}
+
+[data-theme='dark'] .request-btn {
+    background-color: transparent;
+    border-color: #333;
+    color: #fff;
+}
+
+[data-theme='dark'] .request-btn:hover {
+    background-color: #222;
+}
+
+[data-theme='dark'] .certificate-icon-wrapper {
+    color: #999;
+}

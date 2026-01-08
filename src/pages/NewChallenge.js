@@ -53,11 +53,11 @@ function NewChallenge() {
                         <div className="radio-group-row">
                             <label className={`radio-card ${model === 'funding-pips' ? 'active' : ''}`} onClick={() => setModel('funding-pips')}>
                                 <div className="radio-circle">{model === 'funding-pips' && <div className="dot"></div>}</div>
-                                <span>FundingPips</span>
+                                <span>YoPips</span>
                             </label>
                             <label className={`radio-card ${model === 'funding-pips-pro' ? 'active' : ''}`} onClick={() => setModel('funding-pips-pro')}>
                                 <div className="radio-circle">{model === 'funding-pips-pro' && <div className="dot"></div>}</div>
-                                <span>FundingPips Pro</span>
+                                <span>YoPips Pro</span>
                             </label>
                         </div>
                     </div>
@@ -143,7 +143,7 @@ function NewChallenge() {
                     <div className="order-summary-card">
                         <h3>Order Summary</h3>
                         <div className="summary-row">
-                            <span>${parseInt(size).toLocaleString()}.00 — {step === 'two-step' ? 'Two Step' : 'One Step'} {model === 'funding-pips' ? 'FundingPips' : 'Pro'}</span>
+                            <span>${parseInt(size).toLocaleString()}.00 — {step === 'two-step' ? 'Two Step' : 'One Step'} {model === 'funding-pips' ? 'YoPips' : 'Pro'}</span>
                             <span className="price">${currentPrice}.00</span>
                         </div>
                         <div className="summary-meta">

@@ -1,0 +1,135 @@
+/* CompetitionInfoModal.css */
+.info-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+}
+
+.info-modal-content {
+    background: white;
+    width: 600px;
+    /* Slightly wider than prize modal */
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.2s ease-out;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.info-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 16px;
+}
+
+.info-modal-header h3 {
+    margin: 0;
+    color: #2563eb;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #9ca3af;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.btn-close:hover {
+    background: #f3f4f6;
+    color: #4b5563;
+}
+
+.info-modal-body {
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.6;
+}
+
+.modal-text {
+    margin-bottom: 16px;
+    color: #1f2937;
+}
+
+.modal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+}
+
+.modal-list li {
+    margin-bottom: 4px;
+}
+
+.important-notice,
+.access-info,
+.final-note {
+    margin-top: 24px;
+}
+
+.important-notice p,
+.access-info p,
+.final-note p {
+    margin: 0 0 16px 0;
+}
+
+strong {
+    font-weight: 700;
+    color: #111827;
+}
+
+a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Dark Mode */
+[data-theme='dark'] .info-modal-content {
+    background: #1f2937;
+    color: white;
+}
+
+[data-theme='dark'] .info-modal-header {
+    border-bottom-color: #374151;
+}
+
+[data-theme='dark'] .modal-text,
+[data-theme='dark'] strong {
+    color: #e5e7eb;
+}
+
+[data-theme='dark'] .btn-close:hover {
+    background: #374151;
+}
