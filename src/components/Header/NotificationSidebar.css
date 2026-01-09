@@ -1,0 +1,202 @@
+/* Notification Sidebar Overlay */
+.notification-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 998;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Sidebar Container */
+.notification-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 380px;
+    height: 100vh;
+    background: #f9fafb;
+    /* Light gray bg like reference */
+    z-index: 999;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    overflow-y: auto;
+    animation: slideIn 0.3s ease-out;
+    border-left: 1px solid #e5e7eb;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Header */
+.notif-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.notif-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.mark-read-btn {
+    background: none;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #111827;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+}
+
+/* List */
+.notif-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Card */
+.notif-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.notif-card-header {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.notif-icon-wrapper {
+    margin-top: 2px;
+}
+
+.notif-icon-warning {
+    color: #6b7280;
+}
+
+.notif-icon-key {
+    color: #6b7280;
+    transform: rotate(-45deg);
+}
+
+.notif-icon-news {
+    color: #6b7280;
+}
+
+.notif-content {
+    flex: 1;
+}
+
+.notif-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+}
+
+.notif-title {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #0369a1;
+    /* Link blue color */
+}
+
+/* Combine title text like "Important updates Don't miss..." via logic or just styling adjacent text? 
+   Reference shows: "Important updates" in blue, resting text in black inline.
+   My component structure separated them, but I can make the title blue and bold.
+*/
+.notif-text {
+    font-size: 13px;
+    color: #374151;
+    margin: 0;
+    line-height: 1.5;
+    display: inline;
+}
+
+/* The reference image shows "Blue title" + " Black text" inline effectively. 
+   I will tweak the JS structure slightly if strict inline is needed, but separate blocks are safer for reading.
+   Actually: "Important updates Don't miss..." -> "Important updates" is the link.
+   I'll adjust the CSS to make title behave like the blue text part.
+*/
+
+.notif-time {
+    display: block;
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 8px;
+}
+
+.unread-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #007bff;
+    /* Bright blue dot */
+    border-radius: 50%;
+    margin-left: 8px;
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+.notif-image-container {
+    margin: 16px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.notif-img {
+    border-radius: 4px;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.notif-action-btn {
+    width: 100%;
+    background-color: #007bff;
+    /* Bright blue button */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background-color 0.2s;
+}
+
+.notif-action-btn:hover {
+    background-color: #0069d9;
+}

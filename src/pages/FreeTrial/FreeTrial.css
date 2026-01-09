@@ -1,0 +1,219 @@
+.free-trial-container {
+    padding: 20px 40px;
+    background-color: #f8f9fa;
+    /* Light background */
+    min-height: calc(100vh - 64px);
+    /* Adjust based on navbar height */
+    font-family: 'Inter', sans-serif;
+}
+
+.ft-breadcrumbs {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+.ft-breadcrumbs .home-icon {
+    margin-right: 8px;
+    margin-bottom: 2px;
+}
+
+.ft-breadcrumbs .separator {
+    margin: 0 8px;
+    color: #ced4da;
+}
+
+.ft-breadcrumbs .current {
+    color: #212529;
+    font-weight: 500;
+}
+
+/* Content Wrapper */
+.free-trial-content-wrapper {
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    padding: 40px;
+    min-height: 400px;
+    margin-bottom: 60px;
+}
+
+/* Blurred Background */
+.blurred-background {
+    filter: blur(4px);
+    opacity: 0.5;
+    pointer-events: none;
+    /* Prevent clicks */
+    user-select: none;
+}
+
+.blur-header h1 {
+    font-size: 24px;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.blur-header p {
+    color: #6c757d;
+    font-size: 14px;
+    max-width: 700px;
+    margin-bottom: 5px;
+}
+
+.blur-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.blur-card h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #495057;
+}
+
+.blur-line {
+    background: #e9ecef;
+    height: 12px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.blur-line.short {
+    width: 40%;
+}
+
+.blur-line.long {
+    width: 80%;
+}
+
+.blur-summary-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.blur-icon {
+    width: 40px;
+    height: 40px;
+    background: #e9ecef;
+    border-radius: 50%;
+}
+
+.blur-text-bold {
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 4px;
+}
+
+.blur-text {
+    color: #6c757d;
+    font-size: 13px;
+}
+
+/* Active Trial Overlay */
+.active-trial-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: white;
+    /* Ensure background is white if it overlays */
+    padding: 20px;
+    /* Usually overlays might have a shadow or distinct bg, but relevant image shows it floating over content */
+    z-index: 10;
+    width: 100%;
+    max-width: 600px;
+    background: transparent;
+    /* Assuming the overlay is just the content and the blur handles the focus */
+}
+
+/* Actually, let's make the overlay elements sharp against the blurred bg */
+.lock-icon-container {
+    margin-bottom: 20px;
+}
+
+.active-trial-overlay h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.active-trial-overlay p {
+    font-size: 14px;
+    color: #495057;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.learn-more-link {
+    display: block;
+    color: #6c757d;
+    text-decoration: underline;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.back-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.back-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+.ft-footer {
+    text-align: left;
+    color: #6c757d;
+    font-size: 12px;
+    padding-top: 20px;
+}
+
+.footer-links {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #495057;
+    margin-right: 15px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.full-disclaimer {
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-size: 11px;
+    color: #6c757d;
+}
+
+.copyright {
+    margin-bottom: 5px;
+}
+
+.version {
+    color: #adb5bd;
+}

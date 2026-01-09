@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sliders } from 'lucide-react';
+import { Sliders, ChevronDown } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { flexyService } from '../../services/flexyService';
 import './NewChallenge.css';
@@ -10,8 +10,9 @@ function NewChallenge() {
     const [step, setStep] = useState('two-step');
     const [model, setModel] = useState('funding-pips');
     const [size, setSize] = useState('100000');
-    const [platform, setPlatform] = useState('mt5');
+    const [platform, setPlatform] = useState('matchtrader');
     const [isLoading, setIsLoading] = useState(false);
+    const [profitTarget, setProfitTarget] = useState('8%');
 
     useEffect(() => {
         if (location.state?.mode === 'free-trial') {
@@ -136,8 +137,18 @@ function NewChallenge() {
                                     <p>Choose options for profit target</p>
                                 </div>
                                 <div className="toggle-group">
-                                    <button className="toggle-btn active"><div className="dot"></div> 8% <span className="tag">Default</span></button>
-                                    <button className="toggle-btn"><div className="circle-outline"></div> 10% <span className="price-tag">-$40.00</span></button>
+                                    <button
+                                        className={`toggle-btn ${profitTarget === '8%' ? 'active' : ''}`}
+                                        onClick={() => setProfitTarget('8%')}
+                                    >
+                                        <div className={profitTarget === '8%' ? "dot" : "circle-outline"}></div> 8% <span className="tag">Default</span>
+                                    </button>
+                                    <button
+                                        className={`toggle-btn ${profitTarget === '10%' ? 'active' : ''}`}
+                                        onClick={() => setProfitTarget('10%')}
+                                    >
+                                        <div className={profitTarget === '10%' ? "dot" : "circle-outline"}></div> 10% <span className="price-tag">-$40.00</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -181,24 +192,66 @@ function NewChallenge() {
                     <div className="summary-section">
                         <div className="collapse-header">
                             <h3>Billing Details</h3>
-                            <span className="down-arrow">v</span>
+                            <ChevronDown size={16} />
                         </div>
-                        <p className="section-desc">Enter your billing information for the challenge purchase</p>
+                        <div className="billing-form">
+                            <div className="form-row">
+                                <div className="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" defaultValue="Yo" />
+                                </div>
+                                <div className="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" defaultValue="Forex" />
+                                </div>
+                            </div>
+
+                            <div className="form-group">
+                                <label>Country</label>
+                                <div className="select-wrapper">
+                                    <select defaultValue="">
+                                        <option value="" disabled></option>
+                                        <option value="US">United States</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="IN">India</option>
+                                    </select>
+                                    <ChevronDown size={14} className="select-icon" />
+                                </div>
+                            </div>
+
+                            <div className="form-group">
+                                <label>Billing Address</label>
+                                <input type="text" defaultValue="123, Billing Street" />
+                            </div>
+
+                            <div className="form-row">
+                                <div className="form-group">
+                                    <label>City</label>
+                                    <input type="text" defaultValue="New York" />
+                                </div>
+                                <div className="form-group">
+                                    <label>ZIP / Postal Code</label>
+                                    <input type="text" defaultValue="10001" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Coupon */}
-                    <div className="summary-section">
-                        <h3>Coupon Code</h3>
-                        <p className="section-desc">Enter a coupon code to get a discount on your challenge</p>
+
+                    {/* Coupon Code */}
+                    <div className="sidebar-card">
+                        <h3 className="sidebar-card-title">Coupon Code</h3>
+                        <p className="sidebar-card-desc">Enter a coupon code to get a discount on your challenge</p>
                         <div className="coupon-input-group">
                             <input type="text" placeholder="Enter coupon code" />
                             <button>Apply</button>
                         </div>
                     </div>
 
-                    {/* Order Summary Card */}
-                    <div className="order-summary-card">
-                        <h3>Order Summary</h3>
+
+                    {/* Order Summary */}
+                    <div className="sidebar-card">
+                        <h3 className="sidebar-card-title">Order Summary</h3>
                         <div className="summary-row">
                             <span>${parseInt(size).toLocaleString()}.00 — {step === 'free-trial' ? 'Free Trial' : (step === 'two-step' ? 'Two Step' : (step === 'zero' ? 'Zero' : 'One Step'))} {model === 'funding-pips' ? 'YoPips' : 'Pro'}</span>
                             <span className="price">${step === 'free-trial' ? 0 : currentPrice}.00</span>
