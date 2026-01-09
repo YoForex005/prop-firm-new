@@ -1,0 +1,35 @@
+Subject: Request to Enable Trade/Deposit Permissions for Manager Account 900546
+
+Dear Broker Support Team,
+
+I am writing to request additional permissions for our MT5 Manager account to enable automated balance operations via the Web API.
+
+**Current Situation:**
+- Manager Account: 900546
+- Server: 86.104.251.172:443 (Flexy Server)
+- Current Status: Account creation via `/api/user/add` works perfectly
+- Issue: Balance deposit operations via `/api/trade/balance` return "retcode 8: Not enough permissions"
+
+**Request:**
+Please enable the following permissions for Manager account 900546:
+- **Trade Operations Permission** (PERM_m_trade or equivalent)
+- Specifically, permission to execute balance deposit operations via the Web API endpoint `/api/trade/balance`
+
+**Use Case:**
+We are building an automated prop firm onboarding system that needs to:
+1. Create challenge accounts (✅ Currently working)
+2. Automatically deposit initial balance when customers purchase 2-phase challenges (❌ Currently blocked)
+
+**Technical Details:**
+- Endpoint: `GET /api/trade/balance?login=X&type=2&balance=X&comment=X`
+- Current Response: `{ "retcode" : "8 Not enough permissions" }`
+- Expected Response: `{ "retcode" : "0 Done", "answer" : { "Ticket" : "..." } }`
+
+**Testing:**
+Once permissions are granted, we will test with account #900556 to verify functionality.
+
+Thank you for your assistance. Please let us know if you need any additional information.
+
+Best regards,
+[Your Name]
+[Your Company]

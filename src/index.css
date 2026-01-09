@@ -1,13 +1,106 @@
+:root {
+  /* FTMO Color Palette - Precision Matches */
+  --primary-white: #ffffff;
+  --bg-main: #f4f6fa;
+  /* Calibrated light gray-blue background */
+  --sidebar-bg: #fcfcfc;
+  --primary-blue: #0084ff;
+  --primary-blue-hover: #0073e6;
+  --text-main: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.05);
+  --sidebar-width: 210px;
+  --header-height: 56px;
+  --content-max-width: 1080px;
+
+  /* Status Colors */
+  --status-active: #10b981;
+  --status-passed: #10b981;
+  --status-failed: #ef4444;
+  --status-ongoing: #3b82f6;
+  --status-ignored: #94a3b8;
+
+  /* Stat Background Tints */
+  --stat-bg-positive: #f0fdf4;
+  /* Light green tint */
+  --stat-bg-negative: #fffafa;
+  /* Precision light pink tint */
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-size: 14px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Global Styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.card {
+  background: var(--primary-white);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
+}
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  /* Padding removed to allow centered-content to handle gaps */
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 0px;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+/* Precision Layout Centering */
+.centered-content {
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 40px;
+}
+
+@media (max-width: 1024px) {
+  .centered-content {
+    padding: 0 20px;
+  }
 }
