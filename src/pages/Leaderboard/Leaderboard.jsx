@@ -38,7 +38,7 @@ function Leaderboard() {
                         <p className="text-xs text-[#666] dark:text-[#888] font-medium mt-1">Top traders of the month</p>
                     </div>
                 </div>
-                <div className="flex items-center gap-1 p-1.5 bg-white dark:bg-[#1a1a1a] border border-[#e5e7eb] dark:border-[#333] rounded-xl shadow-sm overflow-x-auto max-w-full">
+                <div className="flex items-center gap-1 p-1.5 bg-white dark:bg-[#141414] border border-[#e5e7eb] dark:border-[#333] rounded-xl shadow-sm overflow-x-auto max-w-full">
                     {filters.map(filter => (
                         <button
                             key={filter}
@@ -128,7 +128,7 @@ function Leaderboard() {
             </div>
 
             {/* Enhanced Table */}
-            <div className="bg-white dark:bg-[#1a1a1a] rounded-2xl border border-[#e5e7eb] dark:border-[#333] shadow-sm overflow-hidden">
+            <div className="bg-white dark:bg-[#141414] rounded-2xl border border-[#e5e7eb] dark:border-[#333] shadow-sm overflow-hidden">
                 <div className="overflow-x-auto">
                     <table className="w-full border-collapse text-sm min-w-[1200px]">
                         <thead>
@@ -150,12 +150,12 @@ function Leaderboard() {
                         <tbody>
                             {data.map((row) => (
                                 <tr key={row.rank} className="border-b border-[#f3f4f6] dark:border-[#2a2a2a] last:border-b-0 hover:bg-[#f9fafb] dark:hover:bg-[#262626] transition-colors group">
-                                    <td className="px-6 py-4 sticky left-0 bg-white dark:bg-[#1a1a1a] group-hover:bg-[#f9fafb] dark:group-hover:bg-[#262626] transition-colors z-10">
+                                    <td className="px-6 py-4 sticky left-0 bg-white dark:bg-[#141414] group-hover:bg-[#f9fafb] dark:group-hover:bg-[#262626] transition-colors z-10">
                                         <div className={`w-8 h-8 flex items-center justify-center font-bold rounded-lg text-sm ${row.rank === 1 ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400' : row.rank === 2 ? 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300' : row.rank === 3 ? 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400' : 'text-[#6b7280] dark:text-[#9ca3af]'}`}>
                                             {row.rank <= 3 ? <Trophy size={14} /> : row.rank}
                                         </div>
                                     </td>
-                                    <td className="px-6 py-4 font-semibold text-[#111827] dark:text-[#f3f4f6] sticky left-[80px] bg-white dark:bg-[#1a1a1a] group-hover:bg-[#f9fafb] dark:group-hover:bg-[#262626] transition-colors z-10 whitespace-nowrap">{row.name}</td>
+                                    <td className="px-6 py-4 font-semibold text-[#111827] dark:text-[#f3f4f6] sticky left-[80px] bg-white dark:bg-[#141414] group-hover:bg-[#f9fafb] dark:group-hover:bg-[#262626] transition-colors z-10 whitespace-nowrap">{row.name}</td>
                                     <td className="px-6 py-4 text-right font-bold text-[#10b981]">{row.profit}</td>
                                     <td className="px-6 py-4 text-right font-medium text-[#10b981] bg-[#ecfdf5] dark:bg-[#064e3b]/20 rounded-lg">{row.profitP}</td>
                                     <td className="px-6 py-4 text-center">

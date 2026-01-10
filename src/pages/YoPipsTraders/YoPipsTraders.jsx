@@ -102,7 +102,7 @@ function YoPipsTraders() {
             </div>
 
             {/* Footer */}
-            <div className="pt-10 border-t border-[#eee] dark:border-[#374151] mt-10">
+            <div className="pt-10 border-t border-[#eee] dark:border-[#333] mt-10">
                 <div className="flex gap-5 mb-4">
                     <a href="#" className="text-xs text-[#666] dark:text-[#9ca3af] underline font-semibold">Cookie settings</a>
                     <a href="#" className="text-xs text-[#666] dark:text-[#9ca3af] underline font-semibold">Privacy policy</a>

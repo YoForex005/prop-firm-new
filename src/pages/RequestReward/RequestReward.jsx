@@ -14,7 +14,7 @@ function RequestReward() {
             </div>
 
             <div className="flex-1 flex flex-col items-center justify-center text-center max-w-[500px] mx-auto">
-                <div className="w-16 h-16 bg-[#f3f4f6] dark:bg-[#1f2937] rounded-full flex items-center justify-center mb-6 text-[#4b5563] dark:text-[#9ca3af]">
+                <div className="w-16 h-16 bg-[#f3f4f6] dark:bg-[#262626] rounded-full flex items-center justify-center mb-6 text-[#4b5563] dark:text-[#9ca3af]">
                     <Calendar size={32} strokeWidth={1.5} />
                 </div>
                 <h2 className="text-xl font-semibold text-[--text-color] dark:text-[#f3f4f6] mb-3 m-0">No Eligible Accounts</h2>
@@ -30,7 +30,7 @@ function RequestReward() {
                         ← Back to Payouts
                     </button>
                     <button
-                        className="bg-[#e5e7eb] dark:bg-[#374151] text-[#374151] dark:text-[#e5e7eb] border-none px-5 py-2.5 rounded-lg font-medium text-[13px] cursor-pointer flex items-center gap-2 hover:bg-[#d1d5db] dark:hover:bg-[#4b5563] transition-colors duration-200 shadow-sm"
+                        className="bg-[#e5e7eb] dark:bg-[#262626] text-[#374151] dark:text-[#e5e7eb] border-none px-5 py-2.5 rounded-lg font-medium text-[13px] cursor-pointer flex items-center gap-2 hover:bg-[#d1d5db] dark:hover:bg-[#333] transition-colors duration-200 shadow-sm"
                         onClick={() => navigate('/accounts')}
                     >
                         View Accounts

@@ -108,7 +108,7 @@ function Profile() {
             {activeTab === 'personal-information' && (
                 <div className="max-w-[900px]">
                     {/* User Info Card */}
-                    <div className="bg-white dark:bg-[#1f2937] border border-[#eee] dark:border-[#374151] rounded-lg p-6 flex items-center gap-5 mb-8 shadow-[0_1px_3px_rgba(0,0,0,0.05)] max-md:flex-col max-md:text-center max-md:gap-4">
+                    <div className="bg-white dark:bg-[#141414] border border-[#eee] dark:border-[#333] rounded-lg p-6 flex items-center gap-5 mb-8 shadow-[0_1px_3px_rgba(0,0,0,0.05)] max-md:flex-col max-md:text-center max-md:gap-4">
                         <div className="w-16 h-16 rounded-full bg-linear-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center text-white text-2xl font-bold shrink-0">AN</div>
                         <div className="flex-1 max-md:flex max-md:flex-col max-md:items-center">
                             <div className="flex items-center gap-2 mb-1.5">
@@ -122,12 +122,12 @@ function Profile() {
                             <div className="text-[13px] text-[#666] dark:text-[#9ca3af] mb-1">ranjan.nayak1968@gmail.com</div>
                             <div className="text-[13px] text-[#999] dark:text-[#6b7280]">0 Yo Pips Points</div>
                         </div>
-                        <button className="bg-white dark:bg-[#374151] border border-[#ddd] dark:border-[#4b5563] text-[#1a1a1a] dark:text-[#e5e7eb] px-4 py-2 rounded-md text-[13px] font-semibold cursor-pointer transition-all duration-200 hover:bg-[#f7f7f7] dark:hover:bg-[#4b5563]" onClick={() => setShowNicknameModal(true)}>Edit nickname</button>
+                        <button className="bg-white dark:bg-[#262626] border border-[#ddd] dark:border-[#333] text-[#1a1a1a] dark:text-[#e5e7eb] px-4 py-2 rounded-md text-[13px] font-semibold cursor-pointer transition-all duration-200 hover:bg-[#f7f7f7] dark:hover:bg-[#333]" onClick={() => setShowNicknameModal(true)}>Edit nickname</button>
                     </div>
 
                     {/* Profile Picture Settings */}
                     {showProfilePictureSettings && (
-                        <div className="bg-white dark:bg-[#1f2937] border border-[#e5e7eb] dark:border-[#374151] rounded-lg p-6 mb-6">
+                        <div className="bg-white dark:bg-[#141414] border border-[#e5e7eb] dark:border-[#333] rounded-lg p-6 mb-6">
                             <h3 className="text-base font-semibold text-[#1a1a1a] dark:text-[#f3f4f6] m-0 mb-4">Profile picture settings</h3>
                             <div className="bg-[#e7f3ff] dark:bg-[rgba(0,123,255,0.15)] border border-[#90c9ff] dark:border-[rgba(0,123,255,0.3)] rounded-md p-3 flex gap-3 mb-5 items-start">
                                 <Info size={16} className="text-[#0066cc] dark:text-[#3b82f6] shrink-0 mt-[2px]" />
@@ -137,7 +137,7 @@ function Profile() {
                                 </p>
                             </div>
                             <div className="border-2 border-dashed border-[#d1d5db] dark:border-[#4b5563] rounded-lg p-12 text-center cursor-pointer transition-all duration-200 hover:border-[#007bff] hover:bg-[#f7f9fc] dark:hover:bg-[#1f2937]">
-                                <div className="w-16 h-16 bg-[#f3f4f6] dark:bg-[#374151] rounded-full flex items-center justify-center mx-auto mb-4 text-[#6b7280] dark:text-[#9ca3af]">
+                                <div className="w-16 h-16 bg-[#f3f4f6] dark:bg-[#262626] rounded-full flex items-center justify-center mx-auto mb-4 text-[#6b7280] dark:text-[#9ca3af]">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                         <polyline points="17 8 12 3 7 8"></polyline>
@@ -158,22 +158,22 @@ function Profile() {
                     )}
 
                     {/* Client Section */}
-                    <div className="bg-white dark:bg-[#1f2937] border border-[#eee] dark:border-[#374151] rounded-lg p-6 mb-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+                    <div className="bg-white dark:bg-[#141414] border border-[#eee] dark:border-[#333] rounded-lg p-6 mb-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
                         <h3 className="text-base font-bold text-[#1a1a1a] dark:text-[#f3f4f6] m-0 mb-5">Client</h3>
                         <div className="grid grid-cols-2 gap-4 mb-4 max-md:grid-cols-1">
                             <div className="flex flex-col">
                                 <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">First Name</label>
-                                <input type="text" value="Arijeet" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#2d3748] text-[#999] dark:text-[#6b7280]" />
+                                <input type="text" value="Arijeet" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#333] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#262626] text-[#999] dark:text-[#6b7280]" />
                             </div>
                             <div className="flex flex-col">
                                 <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Last Name</label>
-                                <input type="text" value="Nayak" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#2d3748] text-[#999] dark:text-[#6b7280]" />
+                                <input type="text" value="Nayak" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#333] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#262626] text-[#999] dark:text-[#6b7280]" />
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4 mb-4">
                             <div className="col-span-2 flex flex-col">
                                 <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Title</label>
-                                <select className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] text-[#1a1a1a] dark:text-[#f3f4f6]">
+                                <select className="w-full p-2.5 border border-[#ddd] dark:border-[#333] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#262626] text-[#1a1a1a] dark:text-[#f3f4f6]">
                                     <option>Mr.</option>
                                     <option>Mrs.</option>
                                     <option>Ms.</option>
@@ -183,22 +183,22 @@ function Profile() {
                     </div>
 
                     {/* Contact Info Section */}
-                    <div className="bg-white dark:bg-[#1f2937] border border-[#eee] dark:border-[#374151] rounded-lg p-6 mb-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+                    <div className="bg-white dark:bg-[#141414] border border-[#eee] dark:border-[#333] rounded-lg p-6 mb-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
                         <h3 className="text-base font-bold text-[#1a1a1a] dark:text-[#f3f4f6] m-0 mb-5">Contact Info</h3>
                         <div className="grid grid-cols-2 gap-4 mb-4 max-md:grid-cols-1">
                             <div className="flex flex-col">
                                 <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Contact Phone</label>
-                                <input type="text" value="+918420484785" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#2d3748] text-[#999] dark:text-[#6b7280]" />
+                                <input type="text" value="+918420484785" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#333] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#262626] text-[#999] dark:text-[#6b7280]" />
                             </div>
                             <div className="flex flex-col">
                                 <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">E-mail address</label>
-                                <input type="text" value="ranjan.nayak1968@gmail.com" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#2d3748] text-[#999] dark:text-[#6b7280]" />
+                                <input type="text" value="ranjan.nayak1968@gmail.com" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#333] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#262626] text-[#999] dark:text-[#6b7280]" />
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4 mb-4">
                             <div className="col-span-2 flex flex-col">
                                 <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Country of residence</label>
-                                <select defaultValue="Iceland" className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] text-[#1a1a1a] dark:text-[#f3f4f6]">
+                                <select defaultValue="Iceland" className="w-full p-2.5 border border-[#ddd] dark:border-[#333] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#262626] text-[#1a1a1a] dark:text-[#f3f4f6]">
                                     <option value="">Select a country</option>
                                     <option>Afghanistan</option>
                                     <option>Albania</option>
@@ -400,17 +400,17 @@ function Profile() {
                         <div className="grid grid-cols-2 gap-4 mb-4 max-md:grid-cols-1">
                             <div className="flex flex-col">
                                 <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">City</label>
-                                <input type="text" placeholder="" className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] text-[#1a1a1a] dark:text-[#f3f4f6]" />
+                                <input type="text" placeholder="" className="w-full p-2.5 border border-[#ddd] dark:border-[#333] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#262626] text-[#1a1a1a] dark:text-[#f3f4f6]" />
                             </div>
                             <div className="flex flex-col">
                                 <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Street</label>
-                                <input type="text" placeholder="" className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] text-[#1a1a1a] dark:text-[#f3f4f6]" />
+                                <input type="text" placeholder="" className="w-full p-2.5 border border-[#ddd] dark:border-[#333] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#262626] text-[#1a1a1a] dark:text-[#f3f4f6]" />
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4 mb-4">
                             <div className="flex flex-col">
                                 <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Postal Code</label>
-                                <input type="text" placeholder="" className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] text-[#1a1a1a] dark:text-[#f3f4f6]" />
+                                <input type="text" placeholder="" className="w-full p-2.5 border border-[#ddd] dark:border-[#333] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#262626] text-[#1a1a1a] dark:text-[#f3f4f6]" />
                             </div>
                         </div>
                     </div>
@@ -456,7 +456,7 @@ function Profile() {
             {activeTab === 'account-information' && (
                 <div className="max-w-[900px]">
                     {/* User Info Card */}
-                    <div className="bg-white dark:bg-[#1f2937] border border-[#eee] dark:border-[#374151] rounded-lg p-6 flex items-center gap-5 mb-8 shadow-[0_1px_3px_rgba(0,0,0,0.05)] max-md:flex-col max-md:text-center max-md:gap-4">
+                    <div className="bg-white dark:bg-[#141414] border border-[#eee] dark:border-[#333] rounded-lg p-6 flex items-center gap-5 mb-8 shadow-[0_1px_3px_rgba(0,0,0,0.05)] max-md:flex-col max-md:text-center max-md:gap-4">
                         <div className="w-16 h-16 rounded-full bg-linear-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center text-white text-2xl font-bold shrink-0">AN</div>
                         <div className="flex-1 max-md:flex max-md:flex-col max-md:items-center">
                             <div className="flex items-center gap-2 mb-1.5">
@@ -466,13 +466,13 @@ function Profile() {
                             <div className="text-[13px] text-[#666] dark:text-[#9ca3af] mb-1">ranjan.nayak1968@gmail.com</div>
                             <div className="text-[13px] text-[#999] dark:text-[#6b7280]">0 Yo Pips Points</div>
                         </div>
-                        <button className="bg-white dark:bg-[#374151] border border-[#ddd] dark:border-[#4b5563] text-[#1a1a1a] dark:text-[#e5e7eb] px-4 py-2 rounded-md text-[13px] font-semibold cursor-pointer transition-all duration-200 hover:bg-[#f7f7f7] dark:hover:bg-[#4b5563]" onClick={() => setShowNicknameModal(true)}>Edit nickname</button>
+                        <button className="bg-white dark:bg-[#262626] border border-[#ddd] dark:border-[#333] text-[#1a1a1a] dark:text-[#e5e7eb] px-4 py-2 rounded-md text-[13px] font-semibold cursor-pointer transition-all duration-200 hover:bg-[#f7f7f7] dark:hover:bg-[#333]" onClick={() => setShowNicknameModal(true)}>Edit nickname</button>
                     </div>
 
                     {/* Edit Nickname Modal */}
                     {showNicknameModal && (
                         <div className="fixed inset-0 bg-[rgba(0,0,0,0.5)] flex items-center justify-center z-[1000]" onClick={() => setShowNicknameModal(false)}>
-                            <div className="bg-white dark:bg-[#1f2937] rounded-lg w-full max-w-[500px] shadow-[0_10px_30px_rgba(0,0,0,0.2)] animate-[slideUpModal_0.3s_ease-out] max-md:w-[95%] max-md:mx-[10px]" onClick={(e) => e.stopPropagation()}>
+                            <div className="bg-white dark:bg-[#141414] rounded-lg w-full max-w-[500px] shadow-[0_10px_30px_rgba(0,0,0,0.2)] animate-[slideUpModal_0.3s_ease-out] max-md:w-[95%] max-md:mx-[10px]" onClick={(e) => e.stopPropagation()}>
                                 <div className="flex justify-between items-center px-6 py-5 border-b border-[#e5e7eb] dark:border-[#374151]">
                                     <h2 className="text-base font-semibold m-0 text-[#1a1a1a] dark:text-[#f3f4f6]">Edit My Profile</h2>
                                     <X size={20} className="text-[#6b7280] dark:text-[#9ca3af] cursor-pointer hover:text-[#1a1a1a] dark:hover:text-[#f3f4f6]" onClick={() => setShowNicknameModal(false)} />
@@ -490,12 +490,12 @@ function Profile() {
                                         value={nickname}
                                         onChange={(e) => setNickname(e.target.value)}
                                         placeholder="Enter your nickname"
-                                        className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] box-border focus:outline-none focus:border-[#007bff] focus:bg-white dark:focus:bg-[#4b5563] text-[#1a1a1a] dark:text-[#f3f4f6]"
+                                        className="w-full p-2.5 border border-[#ddd] dark:border-[#333] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#262626] box-border focus:outline-none focus:border-[#007bff] focus:bg-white dark:focus:bg-[#333] text-[#1a1a1a] dark:text-[#f3f4f6]"
                                     />
                                 </div>
 
                                 <div className="flex justify-end gap-3 px-6 py-4 border-t border-[#e5e7eb] dark:border-[#374151]">
-                                    <button className="bg-[#f3f4f6] dark:bg-[#374151] text-[#374151] dark:text-[#e5e7eb] border-none px-5 py-2 rounded-md text-sm font-semibold cursor-pointer transition-colors duration-200 hover:bg-[#e5e7eb] dark:hover:bg-[#4b5563]" onClick={() => setShowNicknameModal(false)}>Close</button>
+                                    <button className="bg-[#f3f4f6] dark:bg-[#262626] text-[#374151] dark:text-[#e5e7eb] border-none px-5 py-2 rounded-md text-sm font-semibold cursor-pointer transition-colors duration-200 hover:bg-[#e5e7eb] dark:hover:bg-[#333]" onClick={() => setShowNicknameModal(false)}>Close</button>
                                     <button className="bg-[#007bff] text-white border-none px-5 py-2 rounded-md text-sm font-semibold cursor-pointer transition-colors duration-200 hover:bg-[#0056b3]" onClick={handleSaveNickname}>Save</button>
                                 </div>
                             </div>
@@ -503,22 +503,22 @@ function Profile() {
                     )}
 
                     {/* Client Section */}
-                    <div className="bg-white dark:bg-[#1f2937] border border-[#eee] dark:border-[#374151] rounded-lg p-6 mb-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+                    <div className="bg-white dark:bg-[#141414] border border-[#eee] dark:border-[#333] rounded-lg p-6 mb-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
                         <h3 className="text-base font-bold text-[#1a1a1a] dark:text-[#f3f4f6] m-0 mb-5">Client</h3>
                         <div className="grid grid-cols-2 gap-4 mb-4 max-md:grid-cols-1">
                             <div className="flex flex-col">
                                 <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">First Name</label>
-                                <input type="text" value="Arijeet" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#2d3748] text-[#999] dark:text-[#6b7280]" />
+                                <input type="text" value="Arijeet" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#333] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#262626] text-[#999] dark:text-[#6b7280]" />
                             </div>
                             <div className="flex flex-col">
                                 <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Last Name</label>
-                                <input type="text" value="Nayak" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#2d3748] text-[#999] dark:text-[#6b7280]" />
+                                <input type="text" value="Nayak" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#333] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#262626] text-[#999] dark:text-[#6b7280]" />
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4 mb-4">
                             <div className="col-span-2 flex flex-col">
                                 <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Title</label>
-                                <select className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] text-[#1a1a1a] dark:text-[#f3f4f6]">
+                                <select className="w-full p-2.5 border border-[#ddd] dark:border-[#333] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#262626] text-[#1a1a1a] dark:text-[#f3f4f6]">
                                     <option>Mr.</option>
                                     <option>Mrs.</option>
                                     <option>Ms.</option>
@@ -528,22 +528,22 @@ function Profile() {
                     </div>
 
                     {/* Contact Info Section */}
-                    <div className="bg-white dark:bg-[#1f2937] border border-[#eee] dark:border-[#374151] rounded-lg p-6 mb-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+                    <div className="bg-white dark:bg-[#141414] border border-[#eee] dark:border-[#333] rounded-lg p-6 mb-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
                         <h3 className="text-base font-bold text-[#1a1a1a] dark:text-[#f3f4f6] m-0 mb-5">Contact Info</h3>
                         <div className="grid grid-cols-2 gap-4 mb-4 max-md:grid-cols-1">
                             <div className="flex flex-col">
                                 <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Contact Phone</label>
-                                <input type="text" value="+918420484785" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#2d3748] text-[#999] dark:text-[#6b7280]" />
+                                <input type="text" value="+918420484785" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#333] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#262626] text-[#999] dark:text-[#6b7280]" />
                             </div>
                             <div className="flex flex-col">
                                 <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">E-mail address</label>
-                                <input type="text" value="ranjan.nayak1968@gmail.com" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#2d3748] text-[#999] dark:text-[#6b7280]" />
+                                <input type="text" value="ranjan.nayak1968@gmail.com" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#333] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#262626] text-[#999] dark:text-[#6b7280]" />
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4 mb-4">
                             <div className="col-span-2 flex flex-col">
                                 <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Country of residence</label>
-                                <select defaultValue="Iceland" className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] text-[#1a1a1a] dark:text-[#f3f4f6]">
+                                <select defaultValue="Iceland" className="w-full p-2.5 border border-[#ddd] dark:border-[#333] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#262626] text-[#1a1a1a] dark:text-[#f3f4f6]">
                                     <option value="">Select a country</option>
                                     <option>Afghanistan</option>
                                     <option>Albania</option>
@@ -780,7 +780,7 @@ function Profile() {
             {/* Edit Nickname Modal */}
             {showNicknameModal && (
                 <div className="fixed inset-0 bg-[rgba(0,0,0,0.5)] flex items-center justify-center z-[1000]" onClick={() => setShowNicknameModal(false)}>
-                    <div className="bg-white dark:bg-[#1f2937] rounded-lg w-full max-w-[500px] shadow-[0_10px_30px_rgba(0,0,0,0.2)] animate-[slideUpModal_0.3s_ease-out]" onClick={(e) => e.stopPropagation()}>
+                    <div className="bg-white dark:bg-[#141414] rounded-lg w-full max-w-[500px] shadow-[0_10px_30px_rgba(0,0,0,0.2)] animate-[slideUpModal_0.3s_ease-out]" onClick={(e) => e.stopPropagation()}>
                         <div className="flex justify-between items-center px-6 py-5 border-b border-[#e5e7eb] dark:border-[#374151]">
                             <h2 className="text-base font-semibold m-0 text-[#1a1a1a] dark:text-[#f3f4f6]">Edit My Profile</h2>
                             <X size={20} className="text-[#6b7280] dark:text-[#9ca3af] cursor-pointer hover:text-[#1a1a1a] dark:hover:text-[#f3f4f6]" onClick={() => setShowNicknameModal(false)} />

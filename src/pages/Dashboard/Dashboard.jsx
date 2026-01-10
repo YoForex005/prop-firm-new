@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import AccountRow from '../../components/Dashboard/AccountRow';
 import PromoCard from '../../components/Dashboard/PromoCard';
-import { Timer, Search, Calendar as CalendarIcon } from 'lucide-react';
+import { Timer, Search, Calendar as CalendarIcon, Briefcase, History, Eye, EyeOff } from 'lucide-react';
 
-// Mock Data
 function Dashboard() {
     const navigate = useNavigate();
     const [showOnlyVisibleActive, setShowOnlyVisibleActive] = useState(false);
@@ -55,18 +54,30 @@ function Dashboard() {
         <div className="w-full m-0">
             <Header />
 
+            {/* Active Accounts Section */}
             <div className="mb-10">
-                <div className="flex justify-between items-center mb-4 pb-2 border-b border-[#f0f0f0] dark:border-[#374151]">
-                    <h2 className="text-base font-bold m-0 flex items-center gap-2 text-[#1d1d1f] dark:text-[#f3f4f6]">Active accounts</h2>
-                    <div className="flex items-center gap-2 text-[13px] text-[#86868b] dark:text-[#9ca3af]">
-                        <span>Show only visible</span>
-                        <input
-                            type="checkbox"
-                            checked={showOnlyVisibleActive}
-                            onChange={(e) => setShowOnlyVisibleActive(e.target.checked)}
-                        />
+                <div className="flex justify-between items-center mb-5">
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-[#1d1d1f] dark:bg-white rounded-xl flex items-center justify-center shadow-lg">
+                            <Briefcase size={20} className="text-white dark:text-[#1d1d1f]" />
+                        </div>
+                        <div>
+                            <h2 className="text-lg font-bold m-0 text-[#1d1d1f] dark:text-white">Active Accounts</h2>
+                            <p className="text-xs text-[#86868b] dark:text-[#6b7280] m-0">Manage your trading accounts</p>
+                        </div>
                     </div>
+                    <button
+                        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-medium cursor-pointer transition-all duration-200 border ${showOnlyVisibleActive
+                            ? 'bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f] border-[#1d1d1f] dark:border-white'
+                            : 'bg-white dark:bg-[#1a1a1a] text-[#666] dark:text-[#9ca3af] border-[#e0e0e0] dark:border-[#333] hover:border-[#999] dark:hover:border-[#555]'
+                            }`}
+                        onClick={() => setShowOnlyVisibleActive(!showOnlyVisibleActive)}
+                    >
+                        {showOnlyVisibleActive ? <Eye size={14} /> : <EyeOff size={14} />}
+                        Show only visible
+                    </button>
                 </div>
+
                 <div className="accounts-list">
                     {(!showOnlyVisibleActive || activeAccount.visible) && (
                         <AccountRow
@@ -79,37 +90,48 @@ function Dashboard() {
                 </div>
             </div>
 
+            {/* History Section */}
             <div className="mb-10">
-                <div className="flex justify-between items-center mb-4 pb-2 border-b border-[#f0f0f0] dark:border-[#374151]">
-                    <h2 className="text-base font-bold m-0 flex items-center gap-2 text-[#1d1d1f] dark:text-[#f3f4f6]">
-                        <CalendarIcon size={18} className="text-[#666] dark:text-[#9ca3af]" />
-                        History
-                    </h2>
-                    <div className="flex items-center gap-2 text-[13px] text-[#86868b] dark:text-[#9ca3af]">
-                        <span>Show only visible</span>
-                        <input
-                            type="checkbox"
-                            checked={showOnlyVisibleHistory}
-                            onChange={(e) => setShowOnlyVisibleHistory(e.target.checked)}
-                        />
+                <div className="flex justify-between items-center mb-5">
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-[#666] dark:bg-[#555] rounded-xl flex items-center justify-center shadow-lg">
+                            <History size={20} className="text-white" />
+                        </div>
+                        <div>
+                            <h2 className="text-lg font-bold m-0 text-[#1d1d1f] dark:text-white">Account History</h2>
+                            <p className="text-xs text-[#86868b] dark:text-[#6b7280] m-0">Review your past trading attempts</p>
+                        </div>
                     </div>
-                </div>
-
-                <div className="mb-4 pl-0.5">
                     <button
-                        className={`bg-none border-none py-2 mr-6 text-sm font-semibold cursor-pointer border-b-2 transition-all duration-200 ${historyTab === 'free-trial'
-                                ? 'text-[#00d4aa] border-b-[#00d4aa]'
-                                : 'text-[#999] border-b-transparent hover:text-[#00d4aa] dark:text-[#6b7280] dark:hover:text-[#00d4aa]'
+                        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-medium cursor-pointer transition-all duration-200 border ${showOnlyVisibleHistory
+                            ? 'bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f] border-[#1d1d1f] dark:border-white'
+                            : 'bg-white dark:bg-[#1a1a1a] text-[#666] dark:text-[#9ca3af] border-[#e0e0e0] dark:border-[#333] hover:border-[#999] dark:hover:border-[#555]'
                             }`}
-                        onClick={() => setHistoryTab('free-trial')}
+                        onClick={() => setShowOnlyVisibleHistory(!showOnlyVisibleHistory)}
                     >
-                        Free trial
+                        {showOnlyVisibleHistory ? <Eye size={14} /> : <EyeOff size={14} />}
+                        Show only visible
                     </button>
                 </div>
 
-                <div className="accounts-list">
+                {/* Tab Navigation */}
+                <div className="flex gap-1 mb-4 bg-[#f5f7fa] dark:bg-[#1a1a1a] rounded-xl p-1 w-fit">
+                    {['free-trial', 'evaluation', 'express'].map((tab) => (
+                        <button
+                            key={tab}
+                            className={`px-4 py-2 text-sm font-semibold cursor-pointer rounded-lg transition-all duration-200 border-none capitalize ${historyTab === tab
+                                ? 'bg-white dark:bg-[#262626] text-[#1d1d1f] dark:text-white shadow-sm'
+                                : 'bg-transparent text-[#86868b] dark:text-[#6b7280] hover:text-[#1d1d1f] dark:hover:text-white'
+                                }`}
+                            onClick={() => setHistoryTab(tab)}
+                        >
+                            {tab.replace('-', ' ')}
+                        </button>
+                    ))}
+                </div>
+
+                <div className="accounts-list space-y-2">
                     {filteredHistoryAccounts.map((acc, idx) => {
-                        // Find original index to toggle correctly
                         const originalIndex = historyAccounts.findIndex(a => a.login === acc.login);
                         return (
                             <AccountRow
@@ -124,6 +146,7 @@ function Dashboard() {
                 </div>
             </div>
 
+            {/* Promo Cards */}
             <div className="flex gap-6 mt-10 mb-10 max-md:flex-col">
                 <PromoCard
                     icon={Timer}
@@ -158,19 +181,19 @@ function Dashboard() {
                 />
             </div>
 
-            <div className="mt-[60px] pb-10 text-[#9aa0ac] text-[11px] text-left dark:text-[#9ca3af]">
-                <div className="flex gap-4 mb-4 font-semibold underline cursor-pointer">
-                    <span>Cookie settings</span>
-                    <span>Privacy policy</span>
-                    <span>Terms & Conditions</span>
+            {/* Footer */}
+            <div className="mt-16 pt-8 pb-10 border-t border-[#eee] dark:border-[#262626]">
+                <div className="flex gap-6 mb-4">
+                    <a href="#" className="text-xs text-[#86868b] dark:text-[#6b7280] font-medium hover:text-[#1d1d1f] dark:hover:text-white transition-colors">Cookie settings</a>
+                    <a href="#" className="text-xs text-[#86868b] dark:text-[#6b7280] font-medium hover:text-[#1d1d1f] dark:hover:text-white transition-colors">Privacy policy</a>
+                    <a href="#" className="text-xs text-[#86868b] dark:text-[#6b7280] font-medium hover:text-[#1d1d1f] dark:hover:text-white transition-colors">Terms & Conditions</a>
                 </div>
-                <p className="mb-4 leading-relaxed">
-                    All information provided on this site is intended solely for educational purposes related to trading on financial markets and does not serve in any way as a specific investment recommendation, business recommendation, investment opportunity analysis or similar general recommendation regarding the trading of investment instruments. Yo Pips only provides services of simulated trading and educational tools for traders. The information on this site is not directed at residents in any country or jurisdiction where such distribution or use would be contrary to local laws or regulations. Yo Pips companies do not act as a broker and do not accept any deposits. The offered technical solution for the Yo Pips platforms and data feed is powered by liquidity providers.
+                <p className="text-[11px] text-[#9ca3af] dark:text-[#6b7280] leading-relaxed mb-4 max-w-4xl">
+                    All information provided on this site is intended solely for educational purposes related to trading on financial markets and does not serve in any way as a specific investment recommendation, business recommendation, investment opportunity analysis or similar general recommendation regarding the trading of investment instruments. Yo Pips only provides services of simulated trading and educational tools for traders.
                 </p>
-                <div className="text-[#9aa0ac] dark:text-[#9ca3af]">
+                <div className="text-[11px] text-[#9ca3af] dark:text-[#6b7280]">
                     2026 © Copyright - YoPips.com Made with ♥ for trading.
-                    <br />
-                    Version: 673b1000
+                    <span className="ml-4 text-[10px] bg-[#f5f7fa] dark:bg-[#1a1a1a] px-2 py-0.5 rounded">v673b1000</span>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@ function FreeTrial() {
     const navigate = useNavigate();
 
     return (
-        <div className="p-5 px-10 bg-[#f8f9fa] dark:bg-[var(--bg-color)] min-h-[calc(100vh-64px)] font-sans">
+        <div className="p-5 px-10 bg-[#f8f9fa] dark:bg-[#0d0d0d] min-h-[calc(100vh-64px)] font-sans">
             {/* Breadcrumbs */}
             <div className="flex items-center text-sm text-[#6c757d] mb-[30px]">
                 <Home size={14} className="mr-2 mb-0.5" />
@@ -16,7 +16,7 @@ function FreeTrial() {
                 <span className="text-[#212529] dark:text-[#e9ecef] font-medium">Free Trial</span>
             </div>
 
-            <div className="relative bg-white dark:bg-[#1f2937] rounded-lg shadow-sm p-10 min-h-[400px] mb-[60px] border border-transparent dark:border-[#374151]">
+            <div className="relative bg-white dark:bg-[#141414] rounded-lg shadow-sm p-10 min-h-[400px] mb-[60px] border border-transparent dark:border-[#333]">
                 {/* Blurred Background Content (Mocking the underlying form) */}
                 <div className="blur-[4px] opacity-50 pointer-events-none select-none">
                     <div className="mb-10">
@@ -33,8 +33,8 @@ function FreeTrial() {
                         </div>
                         <div className="blur-card">
                             <h3 className="text-base mb-4 text-[#495057] dark:text-[#adb5bd] font-semibold">Summary</h3>
-                            <div className="flex items-center gap-4 p-4 bg-[#f8f9fa] dark:bg-[#111827] rounded-md">
-                                <div className="w-10 h-10 bg-[#e9ecef] dark:bg-[#374151] rounded-full"></div>
+                            <div className="flex items-center gap-4 p-4 bg-[#f8f9fa] dark:bg-[#1a1a1a] rounded-md">
+                                <div className="w-10 h-10 bg-[#e9ecef] dark:bg-[#333] rounded-full"></div>
                                 <div>
                                     <div className="font-semibold text-[#343a40] dark:text-[#e9ecef] mb-1">Free Trial</div>
                                     <div className="text-[#6c757d] dark:text-[#9ca3af] text-[13px]">$200,000 account</div>
@@ -64,7 +64,7 @@ function FreeTrial() {
                 </div>
             </div>
 
-            <div className="text-left text-[#6c757d] text-xs pt-5 border-t border-transparent dark:border-[#374151]">
+            <div className="text-left text-[#6c757d] text-xs pt-5 border-t border-transparent dark:border-[#333]">
                 <div className="mb-2.5">
                     <a href="#" className="decoration-none text-[#495057] dark:text-[#9ca3af] mr-4 font-medium hover:underline">Cookie settings</a>
                     <a href="#" className="decoration-none text-[#495057] dark:text-[#9ca3af] mr-4 font-medium hover:underline">Privacy policy</a>

@@ -13,6 +13,8 @@ function AccountMetrix() {
     const [chartTab, setChartTab] = useState('1-day');
     const [showCredentials, setShowCredentials] = useState(false);
     const [showShareModal, setShowShareModal] = useState(false);
+    const [objectiveLinesOn, setObjectiveLinesOn] = useState(true);
+    const [chartZoomed, setChartZoomed] = useState(true);
 
     const mockAccount = {
         login: '1512264795',
@@ -24,7 +26,7 @@ function AccountMetrix() {
     const shareLink = "https://trader.ftmo.com/live-metrix/1512264795/share/019ba288-e56d-733a-b";
 
     return (
-        <div className="min-h-screen bg-[#f3f4f6] dark:bg-[#111827] p-6 lg:p-10 font-sans text-[#1a1a1a] dark:text-[#f3f4f6]">
+        <div className="min-h-screen bg-[#f3f4f6] dark:bg-[#0d0d0d] p-6 lg:p-10 font-sans text-[#1a1a1a] dark:text-[#f3f4f6]">
             {showCredentials && (
                 <CredentialsModal
                     onClose={() => setShowCredentials(false)}
@@ -76,7 +78,7 @@ function AccountMetrix() {
             {/* Top Grid: Current Results & Free Trial */}
             <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-5 mb-8">
                 {/* Current Results */}
-                <div className="bg-white dark:bg-[#1f2937] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#374151]">
+                <div className="bg-white dark:bg-[#141414] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#333]">
                     <h3 className="m-0 mb-4 text-[15px] font-semibold text-[#111827] dark:text-[#f3f4f6]">Current Results</h3>
 
                     <div className="flex justify-between mb-5 pb-5 border-b border-[#f3f4f6] dark:border-[#374151]">
@@ -98,8 +100,18 @@ function AccountMetrix() {
                         <div className="flex flex-col gap-1">
                             <span className="text-[10px] text-[#6b7280] dark:text-[#9ca3af]">Trading Objective lines</span>
                             <div className="flex bg-[#f3f4f6] dark:bg-[#374151] rounded p-0.5">
-                                <button className="px-4 py-1 border-none bg-transparent text-xs cursor-pointer rounded text-[#374151] dark:text-[#9ca3af]">Off</button>
-                                <button className="px-4 py-1 border-none bg-[#0066ff] text-white text-xs cursor-pointer rounded shadow-sm">On</button>
+                                <button
+                                    className={`px-4 py-1 border-none text-xs cursor-pointer rounded transition-all duration-200 ${!objectiveLinesOn ? 'bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f] shadow-sm' : 'bg-transparent text-[#374151] dark:text-[#9ca3af] hover:text-[#1d1d1f] dark:hover:text-white'}`}
+                                    onClick={() => setObjectiveLinesOn(false)}
+                                >
+                                    Off
+                                </button>
+                                <button
+                                    className={`px-4 py-1 border-none text-xs cursor-pointer rounded transition-all duration-200 ${objectiveLinesOn ? 'bg-[#0066ff] text-white shadow-sm' : 'bg-transparent text-[#374151] dark:text-[#9ca3af] hover:text-[#1d1d1f] dark:hover:text-white'}`}
+                                    onClick={() => setObjectiveLinesOn(true)}
+                                >
+                                    On
+                                </button>
                             </div>
                         </div>
                         <div className="flex flex-col gap-1">
@@ -109,20 +121,43 @@ function AccountMetrix() {
                                 <option>Percentage</option>
                             </select>
                         </div>
-                        <button className="ml-auto px-3 py-1 border border-[#e5e7eb] dark:border-[#4b5563] bg-white dark:bg-[#1f2937] rounded text-xs cursor-pointer text-[#374151] dark:text-[#e5e7eb]">Zoom out</button>
+                        <button
+                            className="ml-auto px-3 py-1.5 border border-[#e5e7eb] dark:border-[#4b5563] bg-white dark:bg-[#1f2937] rounded text-xs cursor-pointer text-[#374151] dark:text-[#e5e7eb] hover:bg-[#f3f4f6] dark:hover:bg-[#374151] transition-all duration-200 flex items-center gap-1.5"
+                            onClick={() => setChartZoomed(!chartZoomed)}
+                        >
+                            {chartZoomed ? (
+                                <>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /><line x1="8" y1="11" x2="14" y2="11" /></svg>
+                                    Zoom out
+                                </>
+                            ) : (
+                                <>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /><line x1="11" y1="8" x2="11" y2="14" /><line x1="8" y1="11" x2="14" y2="11" /></svg>
+                                    Zoom in
+                                </>
+                            )}
+                        </button>
                     </div>
 
-                    <div className="bg-[#fafbfc] dark:bg-[#111827] h-[200px] border border-dashed border-[#e5e7eb] dark:border-[#374151] relative">
+                    <div className={`bg-[#fafbfc] dark:bg-[#111827] border border-dashed border-[#e5e7eb] dark:border-[#374151] relative transition-all duration-300 overflow-hidden ${chartZoomed ? 'h-[200px]' : 'h-[80px]'}`}>
                         {/* Placeholder for Bar Chart */}
                         <div className="h-full relative py-5 pl-[60px] pr-0">
-                            <div className="absolute left-[10px] top-[20px] bottom-[40px] flex flex-col justify-between text-[10px] text-[#9ca3af]">
-                                <span>$50,200.00</span>
-                                <span>$50,100.00</span>
-                                <span>$50,000.00</span>
-                                <span>$49,900.00</span>
-                            </div>
+                            {chartZoomed && (
+                                <div className="absolute left-[10px] top-[20px] bottom-[40px] flex flex-col justify-between text-[10px] text-[#9ca3af]">
+                                    <span>$50,200.00</span>
+                                    <span>$50,100.00</span>
+                                    <span>$50,000.00</span>
+                                    <span>$49,900.00</span>
+                                </div>
+                            )}
+                            {!chartZoomed && (
+                                <div className="absolute left-[10px] top-[15px] bottom-[25px] flex flex-col justify-between text-[10px] text-[#9ca3af]">
+                                    <span>$50,200.00</span>
+                                    <span>$49,900.00</span>
+                                </div>
+                            )}
                             <div className="h-full flex items-end pb-[30px]">
-                                <div className="w-[60px] bg-[#60a5fa] opacity-50 ml-auto mr-[40px]" style={{ height: '60%' }}></div>
+                                <div className={`w-[60px] bg-[#60a5fa] opacity-50 ml-auto mr-[40px] transition-all duration-300`} style={{ height: chartZoomed ? '60%' : '40%' }}></div>
                             </div>
                             <div className="absolute bottom-[10px] left-[60px] right-[20px] flex justify-between text-[10px] text-[#9ca3af]">
                                 <span>7 Jan 2025 10:00</span>
@@ -133,7 +168,7 @@ function AccountMetrix() {
                 </div>
 
                 {/* Free Trial / Account Info */}
-                <div className="bg-white dark:bg-[#1f2937] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#374151] flex flex-col">
+                <div className="bg-white dark:bg-[#141414] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#333] flex flex-col">
                     <div className="flex justify-between items-center mb-4">
                         <h3 className="m-0 text-[15px] font-semibold text-[#111827] dark:text-[#f3f4f6]">Free trial</h3>
                     </div>
@@ -181,7 +216,7 @@ function AccountMetrix() {
                         <span className="text-[10px] text-[#0066ff]">▼</span> Open trades
                     </div>
                 </div>
-                <div className="bg-white dark:bg-[#1f2937] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-[#e5e7eb] dark:border-[#374151] overflow-x-auto">
+                <div className="bg-white dark:bg-[#141414] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-[#e5e7eb] dark:border-[#333] overflow-x-auto">
                     <table className="w-full border-collapse min-w-[600px]">
                         <thead>
                             <tr>
@@ -228,7 +263,7 @@ function AccountMetrix() {
 
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-5 mb-5">
                 {/* Consistency Score */}
-                <div className="bg-white dark:bg-[#1f2937] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#374151] text-center">
+                <div className="bg-white dark:bg-[#141414] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#333] text-center">
                     <div className="flex justify-between items-center mb-4">
                         <h4 className="m-0 text-[15px] font-semibold text-[#111827] dark:text-[#f3f4f6]">Consistency score</h4>
                         <Settings size={14} className="text-gray-400 dark:text-gray-500" />
@@ -247,7 +282,7 @@ function AccountMetrix() {
                 </div>
 
                 {/* Objectives */}
-                <div className="bg-white dark:bg-[#1f2937] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#374151]">
+                <div className="bg-white dark:bg-[#141414] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#333]">
                     <h4 className="m-0 mb-4 text-[15px] font-semibold text-[#111827] dark:text-[#f3f4f6]">Objectives</h4>
                     <table className="w-full border-collapse">
                         <thead>
@@ -285,15 +320,15 @@ function AccountMetrix() {
 
             {/* Permitted Loss Stats Bars */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-8">
-                <div className="bg-[#f9fafb] dark:bg-[#1f2937] p-3 rounded-md text-center flex flex-col gap-1.5 border border-[#e5e7eb] dark:border-[#374151]">
+                <div className="bg-[#f9fafb] dark:bg-[#262626] p-3 rounded-md text-center flex flex-col gap-1.5 border border-[#e5e7eb] dark:border-[#333]">
                     <span className="text-[11px] text-[#6b7280] dark:text-[#9ca3af] flex items-center justify-center gap-1">Today's permitted loss <Info size={12} /></span>
                     <span className="text-sm font-semibold text-[#111827] dark:text-[#f3f4f6]">$10,100.29</span>
                 </div>
-                <div className="bg-[#f9fafb] dark:bg-[#1f2937] p-3 rounded-md text-center flex flex-col gap-1.5 border border-[#e5e7eb] dark:border-[#374151]">
+                <div className="bg-[#f9fafb] dark:bg-[#262626] p-3 rounded-md text-center flex flex-col gap-1.5 border border-[#e5e7eb] dark:border-[#333]">
                     <span className="text-[11px] text-[#6b7280] dark:text-[#9ca3af] flex items-center justify-center gap-1">Max permitted loss <Info size={12} /></span>
                     <span className="text-sm font-semibold text-[#111827] dark:text-[#f3f4f6]">$20,100.29</span>
                 </div>
-                <div className="bg-[#f9fafb] dark:bg-[#1f2937] p-3 rounded-md text-center flex flex-col gap-1.5 border border-[#e5e7eb] dark:border-[#374151]">
+                <div className="bg-[#f9fafb] dark:bg-[#262626] p-3 rounded-md text-center flex flex-col gap-1.5 border border-[#e5e7eb] dark:border-[#333]">
                     <span className="text-[11px] text-[#6b7280] dark:text-[#9ca3af] flex items-center justify-center gap-1">Today's profit <Info size={12} /></span>
                     <span className="text-sm font-semibold text-[#111827] dark:text-[#f3f4f6]">$20.73</span>
                 </div>
@@ -301,7 +336,7 @@ function AccountMetrix() {
 
             {/* Statistics & Daily Summary */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
-                <div className="bg-white dark:bg-[#1f2937] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#374151]">
+                <div className="bg-white dark:bg-[#141414] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#333]">
                     <h3 className="m-0 mb-4 text-[15px] font-semibold text-[#111827] dark:text-[#f3f4f6]">Statistics</h3>
                     <div className="grid grid-cols-3 gap-3">
                         <StatBox label="Equity" value="$200,205.01" />
@@ -318,7 +353,7 @@ function AccountMetrix() {
                     </div>
                 </div>
 
-                <div className="bg-white dark:bg-[#1f2937] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#374151]">
+                <div className="bg-white dark:bg-[#141414] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#333]">
                     <h3 className="m-0 mb-4 text-[15px] font-semibold text-[#111827] dark:text-[#f3f4f6] flex items-center gap-1">Daily summary <Info size={14} /></h3>
                     <div className="flex justify-between text-[11px] text-[#6b7280] dark:text-[#9ca3af] mb-5">
                         <span>Date</span>
@@ -333,7 +368,7 @@ function AccountMetrix() {
             </div>
 
             {/* Trading Journal - Calendar */}
-            <div className="bg-white dark:bg-[#1f2937] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#374151] mb-8">
+            <div className="bg-white dark:bg-[#141414] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#333] mb-8">
                 <h3 className="m-0 mb-4 text-[15px] font-semibold text-[#111827] dark:text-[#f3f4f6] flex items-center gap-1">Trading journal <Info size={14} /></h3>
                 <div className="flex gap-5 border-b border-[#e5e7eb] dark:border-[#374151] mb-5">
                     <span className="pb-2.5 text-[13px] text-[#0066ff] dark:text-[#60a5fa] cursor-pointer border-b-2 border-[#0066ff] dark:border-[#60a5fa]">Daily PnL</span>
@@ -371,7 +406,7 @@ function AccountMetrix() {
             </div>
 
             {/* Economic Calendar Footer */}
-            <div className="bg-white dark:bg-[#1f2937] rounded-lg p-0 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#374151] overflow-hidden">
+            <div className="bg-white dark:bg-[#141414] rounded-lg p-0 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#333] overflow-hidden">
                 <div className="p-5 pb-0">
                     <h3 className="m-0 mb-4 text-[15px] font-semibold text-[#111827] dark:text-[#f3f4f6]">Economic Calendar</h3>
                 </div>
@@ -469,7 +504,7 @@ function AccountMetrix() {
 // Helper component for statistics boxes
 function StatBox({ label, value }) {
     return (
-        <div className="bg-[#f9fafb] dark:bg-[#1f2937] p-2.5 rounded-md text-center border border-[#e5e7eb] dark:border-[#374151] flex flex-col items-center justify-center">
+        <div className="bg-[#f9fafb] dark:bg-[#262626] p-2.5 rounded-md text-center border border-[#e5e7eb] dark:border-[#333] flex flex-col items-center justify-center">
             <span className="block text-[10px] text-[#6b7280] dark:text-[#9ca3af] mb-1 flex items-center gap-1">{label} <Info size={10} className="ml-0.5" /></span>
             <span className="text-[13px] font-semibold text-[#1a1a1a] dark:text-[#f3f4f6]">{value}</span>
         </div>

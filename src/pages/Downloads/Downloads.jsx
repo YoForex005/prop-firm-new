@@ -4,7 +4,7 @@ import { Download, X, FileText } from 'lucide-react';
 function Downloads() {
     const [showDownloadModal, setShowDownloadModal] = useState(false);
     return (
-        <div className="p-6 px-8 bg-[#f5f5f5] dark:bg-[#111827] min-h-screen max-md:p-4">
+        <div className="p-6 px-8 bg-[#f5f5f5] dark:bg-[#0d0d0d] min-h-screen max-md:p-4">
             {/* Breadcrumbs */}
             <div className="flex items-center gap-2 mb-6 text-[13px] text-[#666] dark:text-[#9ca3af]">
                 <span className="text-[#666] dark:text-[#9ca3af]">Trader</span>
@@ -33,7 +33,7 @@ function Downloads() {
             </div>
 
             {/* Downloads Section */}
-            <div className="bg-white dark:bg-[#1f2937] rounded-xl p-8 mb-6 shadow-sm">
+            <div className="bg-white dark:bg-[#141414] rounded-xl p-8 mb-6 shadow-sm">
                 <div className="flex items-center gap-3 mb-8">
                     <Download size={24} className="text-[#1a1a1a] dark:text-[#f3f4f6]" />
                     <h2 className="text-xl font-bold m-0 text-[#1a1a1a] dark:text-[#f3f4f6]">Downloads</h2>
@@ -45,7 +45,7 @@ function Downloads() {
                     <div className="overflow-x-auto">
                         <table className="w-full border-collapse mb-5 min-w-[600px]">
                             <thead>
-                                <tr className="bg-[#f7f9fc] dark:bg-[#374151]">
+                                <tr className="bg-[#f7f9fc] dark:bg-[#262626]">
                                     <th className="text-left p-3 px-4 text-sm font-semibold text-[#666] dark:text-[#9ca3af]">Description</th>
                                     <th className="text-left p-3 px-4 text-sm font-semibold text-[#666] dark:text-[#9ca3af]">File</th>
                                     <th className="text-left p-3 px-4 text-sm font-semibold text-[#666] dark:text-[#9ca3af]">More Info</th>
@@ -53,11 +53,10 @@ function Downloads() {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td className="p-4 border-b border-[#e5e7eb] dark:border-[#4b5563] text-sm text-[#1a1a1a] dark:text-[#f3f4f6]">App Suite MT4 extension (Win)</td>
-                                    <td className="p-4 border-b border-[#e5e7eb] dark:border-[#4b5563] text-sm text-[#1a1a1a] dark:text-[#f3f4f6]">
+                                    <td className="p-4 border-b border-[#e5e7eb] dark:border-[#333] text-sm text-[#1a1a1a] dark:text-[#f3f4f6]">
                                         <a href="#" className="text-[#0072ff] no-underline font-medium hover:underline dark:text-[#60a5fa]">App Suite MT4 extension (Win)</a>
                                     </td>
-                                    <td className="p-4 border-b border-[#e5e7eb] dark:border-[#4b5563] text-sm text-[#1a1a1a] dark:text-[#f3f4f6]">
+                                    <td className="p-4 border-b border-[#e5e7eb] dark:border-[#333] text-sm text-[#1a1a1a] dark:text-[#f3f4f6]">
                                         <a href="#" className="text-[#0072ff] no-underline font-medium hover:underline dark:text-[#60a5fa]">More Info</a>
                                     </td>
                                 </tr>
@@ -84,7 +83,7 @@ function Downloads() {
                 <div className="mt-8">
                     <h3 className="text-lg font-semibold text-[#1a1a1a] dark:text-[#f3f4f6] m-0 mb-5">Platforms</h3>
 
-                    <div className="bg-[#f8f9fa] dark:bg-[#374151] flex items-center justify-between p-6 mb-3 rounded-lg border border-[#e5e7eb] dark:border-[#4b5563] max-sm:flex-col max-sm:gap-4 max-sm:text-center">
+                    <div className="bg-[#f8f9fa] dark:bg-[#262626] flex items-center justify-between p-6 mb-3 rounded-lg border border-[#e5e7eb] dark:border-[#333] max-sm:flex-col max-sm:gap-4 max-sm:text-center">
                         <div className="flex items-center">
                             <svg width="180" height="40" viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="20" r="12" fill="#4CAF50" opacity="0.8" />
@@ -96,7 +95,7 @@ function Downloads() {
                         <button className="bg-white dark:bg-[#1f2937] text-[#1a1a1a] dark:text-[#f3f4f6] border border-[#d1d5db] dark:border-[#4b5563] px-5 py-2.5 rounded-md text-sm font-semibold cursor-pointer transition-all duration-200 hover:bg-[#f7f9fc] dark:hover:bg-[#374151] hover:border-[#0072ff] hover:text-[#0072ff] dark:hover:text-[#60a5fa]">Supported platforms</button>
                     </div>
 
-                    <div className="bg-[#f8f9fa] dark:bg-[#374151] flex items-center justify-between p-6 mb-3 rounded-lg border border-[#e5e7eb] dark:border-[#4b5563] max-sm:flex-col max-sm:gap-4 max-sm:text-center">
+                    <div className="bg-[#f8f9fa] dark:bg-[#262626] flex items-center justify-between p-6 mb-3 rounded-lg border border-[#e5e7eb] dark:border-[#333] max-sm:flex-col max-sm:gap-4 max-sm:text-center">
                         <div className="flex items-center">
                             <svg width="180" height="40" viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="20" r="12" fill="#4CAF50" opacity="0.8" />
@@ -108,7 +107,7 @@ function Downloads() {
                         <button className="bg-white dark:bg-[#1f2937] text-[#1a1a1a] dark:text-[#f3f4f6] border border-[#d1d5db] dark:border-[#4b5563] px-5 py-2.5 rounded-md text-sm font-semibold cursor-pointer transition-all duration-200 hover:bg-[#f7f9fc] dark:hover:bg-[#374151] hover:border-[#0072ff] hover:text-[#0072ff] dark:hover:text-[#60a5fa]">Supported platforms</button>
                     </div>
 
-                    <div className="bg-[#f8f9fa] dark:bg-[#374151] flex items-center justify-between p-6 mb-0 rounded-lg border border-[#e5e7eb] dark:border-[#4b5563] max-sm:flex-col max-sm:gap-4 max-sm:text-center">
+                    <div className="bg-[#f8f9fa] dark:bg-[#262626] flex items-center justify-between p-6 mb-0 rounded-lg border border-[#e5e7eb] dark:border-[#333] max-sm:flex-col max-sm:gap-4 max-sm:text-center">
                         <div className="flex items-center">
                             <svg width="140" height="40" viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
                                 <text x="0" y="26" fontFamily="Arial, sans-serif" fontSize="22" fontWeight="700" fill="#E53935">c</text>
@@ -121,8 +120,8 @@ function Downloads() {
             </div>
 
             {/* Footer */}
-            <div className="bg-white dark:bg-[#1f2937] rounded-xl p-8 mb-6 shadow-sm">
-                <div className="flex gap-6 mb-4 pb-4 border-b border-[#e5e7eb] dark:border-[#4b5563] max-sm:flex-col max-sm:gap-3">
+            <div className="bg-white dark:bg-[#141414] rounded-xl p-8 mb-6 shadow-sm">
+                <div className="flex gap-6 mb-4 pb-4 border-b border-[#e5e7eb] dark:border-[#333] max-sm:flex-col max-sm:gap-3">
                     <a href="#" className="text-sm font-medium text-[#0072ff] dark:text-[#60a5fa] no-underline hover:underline">Cookie settings</a>
                     <a href="#" className="text-sm font-medium text-[#0072ff] dark:text-[#60a5fa] no-underline hover:underline">Privacy policy</a>
                     <a href="#" className="text-sm font-medium text-[#0072ff] dark:text-[#60a5fa] no-underline hover:underline">Terms & Conditions</a>
@@ -143,10 +142,10 @@ function Downloads() {
                     onClick={() => setShowDownloadModal(false)}
                 >
                     <div
-                        className="bg-white dark:bg-[#1f2937] rounded-xl w-[90%] max-w-[600px] shadow-[0_20px_60px_rgba(0,0,0,0.3)] animate-[slideUpModal_0.3s_ease-out]"
+                        className="bg-white dark:bg-[#141414] rounded-xl w-[90%] max-w-[600px] shadow-[0_20px_60px_rgba(0,0,0,0.3)] animate-[slideUpModal_0.3s_ease-out]"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <div className="flex justify-between items-center p-6 px-8 border-b border-[#e5e7eb] dark:border-[#4b5563]">
+                        <div className="flex justify-between items-center p-6 px-8 border-b border-[#e5e7eb] dark:border-[#333]">
                             <h2 className="text-xl font-bold m-0 text-[#1a1a1a] dark:text-[#f3f4f6]">Extension for your MetaTrader 4 & 5</h2>
                             <button className="bg-transparent border-none text-[#666] dark:text-[#9ca3af] cursor-pointer p-1 flex items-center justify-center transition-colors hover:text-[#1a1a1a] dark:hover:text-[#f3f4f6]" onClick={() => setShowDownloadModal(false)}>
                                 <X size={20} />

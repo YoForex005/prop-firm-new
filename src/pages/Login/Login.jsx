@@ -49,7 +49,7 @@ function Login() {
                         <label className="block text-[13px] font-semibold text-[var(--text-color)] dark:text-white mb-2">Email address</label>
                         <input
                             type="email"
-                            className="w-full p-2.5 px-3 border border-[#e0e0e0] dark:border-[#333] rounded-md text-sm outline-none transition-colors duration-200 bg-white dark:bg-[#1a1a1a] text-[var(--text-color)] dark:text-white focus:border-[#2563eb]"
+                            className="w-full p-2.5 px-3 border border-[#e0e0e0] dark:border-[#333] rounded-md text-sm outline-none transition-colors duration-200 bg-white dark:bg-[#262626] text-[var(--text-color)] dark:text-white focus:border-[#2563eb]"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -59,7 +59,7 @@ function Login() {
                         <label className="block text-[13px] font-semibold text-[var(--text-color)] dark:text-white mb-2">Password</label>
                         <input
                             type="password"
-                            className="w-full p-2.5 px-3 border border-[#e0e0e0] dark:border-[#333] rounded-md text-sm outline-none transition-colors duration-200 bg-white dark:bg-[#1a1a1a] text-[var(--text-color)] dark:text-white focus:border-[#2563eb]"
+                            className="w-full p-2.5 px-3 border border-[#e0e0e0] dark:border-[#333] rounded-md text-sm outline-none transition-colors duration-200 bg-white dark:bg-[#262626] text-[var(--text-color)] dark:text-white focus:border-[#2563eb]"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
@@ -74,7 +74,7 @@ function Login() {
                     </div>
 
                     {/* Fake Cloudflare Widget */}
-                    <div className="bg-[#f9f9f9] dark:bg-[#1a1a1a] border border-[#e0e0e0] dark:border-[#333] p-2 px-3 rounded flex items-center mb-6 relative h-[50px]">
+                    <div className="bg-[#f9f9f9] dark:bg-[#262626] border border-[#e0e0e0] dark:border-[#333] p-2 px-3 rounded flex items-center mb-6 relative h-[50px]">
                         <div className="w-6 h-6 flex items-center justify-center border-2 border-[#e0e0e0] dark:border-[#333] rounded-full mr-3">
                             <Check size={20} color="#10b981" />
                         </div>
@@ -91,7 +91,7 @@ function Login() {
 
                     <div className="text-center text-[11px] text-[#999] mb-4 relative">OR</div>
 
-                    <button className="w-full bg-white text-[#333] border border-[#e0e0e0] dark:border-[#ccc] p-2.5 rounded-lg text-sm font-medium cursor-pointer flex items-center justify-center gap-2 mb-6" onClick={handleGoogleLogin}>
+                    <button className="w-full bg-white dark:bg-[#141414] text-[#333] dark:text-[#f3f4f6] border border-[#e0e0e0] dark:border-[#333] p-2.5 rounded-lg text-sm font-medium cursor-pointer flex items-center justify-center gap-2 mb-6" onClick={handleGoogleLogin}>
                         <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="18" height="18" />
                         Continue with Google
                     </button>
@@ -104,7 +104,7 @@ function Login() {
 
             {/* Help Widget Button */}
             <button className="fixed bottom-6 right-6 flex items-center gap-3 bg-transparent border-none cursor-pointer">
-                <span className="bg-white px-4 py-2 rounded-[20px] text-[13px] shadow-[0_2px_10px_rgba(0,0,0,0.1)] text-[#333]">Hi. Need any help?</span>
+                <span className="bg-white dark:bg-[#141414] px-4 py-2 rounded-[20px] text-[13px] shadow-[0_2px_10px_rgba(0,0,0,0.1)] text-[#333] dark:text-white">Hi. Need any help?</span>
                 <div className="w-[50px] h-[50px] bg-[#1e3a8a] rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.2)] text-white">
                     <MessageSquare size={24} color="white" fill="white" />
                 </div>

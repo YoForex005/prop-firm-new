@@ -50,7 +50,7 @@ function Affiliate() {
                 <h2 className="text-2xl font-semibold m-0 text-[var(--text-color)] flex items-center gap-3">Affiliate</h2>
             </div>
 
-            <div className="bg-white dark:bg-[#1a1a1a] rounded-xl border border-[#e0e0e0] dark:border-[#333] p-6">
+            <div className="bg-white dark:bg-[#141414] rounded-xl border border-[#e0e0e0] dark:border-[#333] p-6">
                 <h3 className="text-base font-semibold m-0 mb-2">Referral Code</h3>
                 <p className="text-[13px] text-[--gray-text] dark:text-[#999] m-0 mb-5">Share your referral link or code to earn commissions.</p>
 
@@ -111,7 +111,7 @@ function Affiliate() {
                                         </button>
 
                                         {showDatePicker && (
-                                            <div className="absolute top-[calc(100%+8px)] right-0 left-0 w-[300px] bg-white dark:bg-[#1a1a1a] border border-[#e0e0e0] dark:border-[#333] rounded-xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.1)] z-50 flex flex-col gap-4">
+                                            <div className="absolute top-[calc(100%+8px)] right-0 left-0 w-[300px] bg-white dark:bg-[#141414] border border-[#e0e0e0] dark:border-[#333] rounded-xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.1)] z-50 flex flex-col gap-4">
                                                 <div className="flex flex-col gap-2">
                                                     <label className="block text-[11px] font-semibold text-[--gray-text] uppercase">Quick Select</label>
                                                     <div className="grid grid-cols-2 gap-2">
@@ -170,7 +170,7 @@ function Affiliate() {
                                 </div>
                             </div>
 
-                            <div className="bg-white dark:bg-[#1a1a1a] border border-[#e0e0e0] dark:border-[#333] rounded-xl h-[300px] flex flex-col items-center justify-center text-[--gray-text] dark:text-[#999] text-center">
+                            <div className="bg-white dark:bg-[#141414] border border-[#e0e0e0] dark:border-[#333] rounded-xl h-[300px] flex flex-col items-center justify-center text-[--gray-text] dark:text-[#999] text-center">
                                 <TrendingUp size={32} style={{ opacity: 0.3 }} />
                                 <h4 className="m-0 mt-3 font-medium">No referral data available</h4>
                                 <p className="text-[13px] mt-3">Start referring users to see your earnings history</p>
@@ -179,7 +179,7 @@ function Affiliate() {
                     ) : (
                         <div>
                             <h3 className="m-0 mb-4 text-base">Daily Breakdown</h3>
-                            <div className="bg-white dark:bg-[#1a1a1a] border border-[#e0e0e0] dark:border-[#333] rounded-xl p-8 text-center text-[--gray-text]">
+                            <div className="bg-white dark:bg-[#141414] border border-[#e0e0e0] dark:border-[#333] rounded-xl p-8 text-center text-[--gray-text]">
                                 <p className="text-sm">No daily data available for this period.</p>
                             </div>
                         </div>
@@ -188,15 +188,15 @@ function Affiliate() {
 
                 {activeTab === 'overview' && (
                     <div className="flex-1 flex flex-col gap-4">
-                        <div className="bg-white dark:bg-[#1a1a1a] border border-[#e0e0e0] dark:border-[#333] rounded-xl p-5">
+                        <div className="bg-white dark:bg-[#141414] border border-[#e0e0e0] dark:border-[#333] rounded-xl p-5">
                             <div className="text-[13px] text-[--gray-text] mb-2">Total Referrals</div>
                             <div className="text-xl font-semibold text-[--text-color] dark:text-white">0</div>
                         </div>
-                        <div className="bg-white dark:bg-[#1a1a1a] border border-[#e0e0e0] dark:border-[#333] rounded-xl p-5">
+                        <div className="bg-white dark:bg-[#141414] border border-[#e0e0e0] dark:border-[#333] rounded-xl p-5">
                             <div className="text-[13px] text-[--gray-text] mb-2">Total Paid Out</div>
                             <div className="text-xl font-semibold text-[--text-color] dark:text-white">$0.00</div>
                         </div>
-                        <div className="bg-white dark:bg-[#1a1a1a] border border-[#e0e0e0] dark:border-[#333] rounded-xl p-5">
+                        <div className="bg-white dark:bg-[#141414] border border-[#e0e0e0] dark:border-[#333] rounded-xl p-5">
                             <div className="text-[13px] text-[--gray-text] mb-2">Available Balance</div>
                             <div className="text-xl font-semibold text-[--text-color] dark:text-white">$0.00</div>
                         </div>

@@ -62,7 +62,7 @@ function Support() {
             <div className="mb-[30px]">
                 <div className="flex justify-between items-center">
                     <h3 className="text-sm font-bold mb-3 text-[#111827] dark:text-[#f3f4f6]">Solved tickets</h3>
-                    <div className="bg-white dark:bg-[#1a1a1a] border border-[#e5e7eb] dark:border-[#333] rounded-md px-3 py-1.5 text-[13px] text-[#374151] dark:text-[#e5e7eb] flex items-center gap-2">
+                    <div className="bg-white dark:bg-[#262626] border border-[#e5e7eb] dark:border-[#333] rounded-md px-3 py-1.5 text-[13px] text-[#374151] dark:text-[#e5e7eb] flex items-center gap-2">
                         0 <ChevronDown size={16} />
                     </div>
                 </div>
@@ -74,12 +74,12 @@ function Support() {
                 <div className="bg-white dark:bg-[#141414] p-6 rounded-lg border border-[#e5e7eb] dark:border-[#333] shadow-sm">
                     <div className="mb-5">
                         <label className="block text-xs font-semibold text-[#374151] dark:text-[#e5e7eb] mb-2">Subject</label>
-                        <input type="text" className="w-full p-2.5 px-3 border border-[#e5e7eb] dark:border-[#333] rounded-md bg-[#f3f4f6] dark:bg-[#1a1a1a] text-[13px] text-[#111827] dark:text-[#f3f4f6] outline-none transition-colors duration-200 focus:border-[#d1d5db] dark:focus:border-[#555] focus:bg-white dark:focus:bg-[#1a1a1a]" />
+                        <input type="text" className="w-full p-2.5 px-3 border border-[#e5e7eb] dark:border-[#333] rounded-md bg-[#f3f4f6] dark:bg-[#262626] text-[13px] text-[#111827] dark:text-[#f3f4f6] outline-none transition-colors duration-200 focus:border-[#d1d5db] dark:focus:border-[#555] focus:bg-white dark:focus:bg-[#1a1a1a]" />
                     </div>
 
                     <div className="mb-5">
                         <label className="block text-xs font-semibold text-[#374151] dark:text-[#e5e7eb] mb-2">Message</label>
-                        <textarea className="w-full p-2.5 px-3 border border-[#e5e7eb] dark:border-[#333] rounded-md bg-[#f3f4f6] dark:bg-[#1a1a1a] text-[13px] text-[#111827] dark:text-[#f3f4f6] outline-none transition-colors duration-200 focus:border-[#d1d5db] dark:focus:border-[#555] focus:bg-white dark:focus:bg-[#1a1a1a] resize-y" rows="6"></textarea>
+                        <textarea className="w-full p-2.5 px-3 border border-[#e5e7eb] dark:border-[#333] rounded-md bg-[#f3f4f6] dark:bg-[#262626] text-[13px] text-[#111827] dark:text-[#f3f4f6] outline-none transition-colors duration-200 focus:border-[#d1d5db] dark:focus:border-[#555] focus:bg-white dark:focus:bg-[#1a1a1a] resize-y" rows="6"></textarea>
                     </div>
 
                     <div className="mb-5">

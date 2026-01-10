@@ -55,7 +55,7 @@ function Premium() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
                     {/* Prime Tier */}
-                    <div className="bg-white dark:bg-[#1f2937] border border-[#eee] dark:border-[#374151] rounded-xl p-8 px-6 text-center shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
+                    <div className="bg-white dark:bg-[#141414] border border-[#eee] dark:border-[#333] rounded-xl p-8 px-6 text-center shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
                         <div className="mb-6">
                             <div className="w-20 h-20 rounded-xl flex items-center justify-center mx-auto mb-4 bg-[#3d3f71] text-white">
                                 <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
@@ -103,11 +103,11 @@ function Premium() {
                                 <span>Certificate of achievement</span>
                             </div>
                         </div>
-                        <button className="w-full p-2.5 bg-white dark:bg-[#374151] border border-[#ddd] dark:border-[#4b5563] rounded-md font-semibold cursor-pointer transition-all duration-200 hover:bg-[#f7f7f7] dark:hover:bg-[#4b5563] text-[#1a1a1a] dark:text-[#e5e7eb]" onClick={() => setIsPrimeModalOpen(true)}>More Details</button>
+                        <button className="w-full p-2.5 bg-white dark:bg-[#262626] border border-[#ddd] dark:border-[#4b5563] rounded-md font-semibold cursor-pointer transition-all duration-200 hover:bg-[#f7f7f7] dark:hover:bg-[#333] text-[#1a1a1a] dark:text-[#e5e7eb]" onClick={() => setIsPrimeModalOpen(true)}>More Details</button>
                     </div>
 
                     {/* Supreme Tier */}
-                    <div className="bg-white dark:bg-[#1f2937] border border-[#eee] dark:border-[#374151] rounded-xl p-8 px-6 text-center shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
+                    <div className="bg-white dark:bg-[#141414] border border-[#eee] dark:border-[#333] rounded-xl p-8 px-6 text-center shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
                         <div className="mb-6">
                             <div className="w-20 h-20 rounded-xl flex items-center justify-center mx-auto mb-4 bg-[#6b4423] text-[#ffd700]">
                                 <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
@@ -139,11 +139,11 @@ function Premium() {
                                 <span>Possible job interview at Quantlane</span>
                             </div>
                         </div>
-                        <button className="w-full p-2.5 bg-white dark:bg-[#374151] border border-[#ddd] dark:border-[#4b5563] rounded-md font-semibold cursor-pointer transition-all duration-200 hover:bg-[#f7f7f7] dark:hover:bg-[#4b5563] text-[#1a1a1a] dark:text-[#e5e7eb]" onClick={() => setIsSupremeModalOpen(true)}>More Details</button>
+                        <button className="w-full p-2.5 bg-white dark:bg-[#262626] border border-[#ddd] dark:border-[#4b5563] rounded-md font-semibold cursor-pointer transition-all duration-200 hover:bg-[#f7f7f7] dark:hover:bg-[#333] text-[#1a1a1a] dark:text-[#e5e7eb]" onClick={() => setIsSupremeModalOpen(true)}>More Details</button>
                     </div>
 
                     {/* Quantlane Tier */}
-                    <div className="bg-white dark:bg-[#1f2937] border border-[#eee] dark:border-[#374151] rounded-xl p-8 px-6 text-center shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
+                    <div className="bg-white dark:bg-[#141414] border border-[#eee] dark:border-[#333] rounded-xl p-8 px-6 text-center shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
                         <div className="mb-6">
                             <div className="w-20 h-20 rounded-xl flex items-center justify-center mx-auto mb-4 bg-[#2a2a2a] text-[#ff8c00]">
                                 <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
@@ -187,7 +187,7 @@ function Premium() {
                                 <span>Institutional trading conditions - spreads, liquidity, risk framework</span>
                             </div>
                         </div>
-                        <button className="w-full p-2.5 bg-white dark:bg-[#374151] border border-[#ddd] dark:border-[#4b5563] rounded-md font-semibold cursor-pointer transition-all duration-200 hover:bg-[#f7f7f7] dark:hover:bg-[#4b5563] text-[#1a1a1a] dark:text-[#e5e7eb]" onClick={() => setIsQuantlaneModalOpen(true)}>More Details</button>
+                        <button className="w-full p-2.5 bg-white dark:bg-[#262626] border border-[#ddd] dark:border-[#4b5563] rounded-md font-semibold cursor-pointer transition-all duration-200 hover:bg-[#f7f7f7] dark:hover:bg-[#333] text-[#1a1a1a] dark:text-[#e5e7eb]" onClick={() => setIsQuantlaneModalOpen(true)}>More Details</button>
                     </div>
                 </div>
 
@@ -213,7 +213,7 @@ function Premium() {
             {/* PRIME TRADER MODAL */}
             {isPrimeModalOpen && (
                 <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1000] animate-[fadeIn_0.2s_ease-out]" onClick={() => setIsPrimeModalOpen(false)}>
-                    <div className="bg-white dark:bg-[#1f2937] w-full max-w-[800px] rounded-xl overflow-hidden relative max-h-[90vh] overflow-y-auto animate-[slideUp_0.3s_ease-out] shadow-2xl" onClick={e => e.stopPropagation()}>
+                    <div className="bg-white dark:bg-[#141414] w-full max-w-[800px] rounded-xl overflow-hidden relative max-h-[90vh] overflow-y-auto animate-[slideUp_0.3s_ease-out] shadow-2xl" onClick={e => e.stopPropagation()}>
                         <button className="absolute top-4 right-4 bg-transparent border-none text-white/70 cursor-pointer z-10 p-2 rounded-full hover:bg-white/10 hover:text-white transition-colors" onClick={() => setIsPrimeModalOpen(false)}>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -301,7 +301,7 @@ function Premium() {
             {/* SUPREME TRADER MODAL */}
             {isSupremeModalOpen && (
                 <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1000] animate-[fadeIn_0.2s_ease-out]" onClick={() => setIsSupremeModalOpen(false)}>
-                    <div className="bg-white dark:bg-[#1f2937] w-full max-w-[800px] rounded-xl overflow-hidden relative max-h-[90vh] overflow-y-auto animate-[slideUp_0.3s_ease-out] shadow-2xl" onClick={e => e.stopPropagation()}>
+                    <div className="bg-white dark:bg-[#141414] w-full max-w-[800px] rounded-xl overflow-hidden relative max-h-[90vh] overflow-y-auto animate-[slideUp_0.3s_ease-out] shadow-2xl" onClick={e => e.stopPropagation()}>
                         <button className="absolute top-4 right-4 bg-transparent border-none text-white/70 cursor-pointer z-10 p-2 rounded-full hover:bg-white/10 hover:text-white transition-colors" onClick={() => setIsSupremeModalOpen(false)}>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -382,7 +382,7 @@ function Premium() {
             {/* QUANTLANE TRADER MODAL */}
             {isQuantlaneModalOpen && (
                 <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1000] animate-[fadeIn_0.2s_ease-out]" onClick={() => setIsQuantlaneModalOpen(false)}>
-                    <div className="bg-white dark:bg-[#1f2937] w-full max-w-[800px] rounded-xl overflow-hidden relative max-h-[90vh] overflow-y-auto animate-[slideUp_0.3s_ease-out] shadow-2xl" onClick={e => e.stopPropagation()}>
+                    <div className="bg-white dark:bg-[#141414] w-full max-w-[800px] rounded-xl overflow-hidden relative max-h-[90vh] overflow-y-auto animate-[slideUp_0.3s_ease-out] shadow-2xl" onClick={e => e.stopPropagation()}>
                         <button className="absolute top-4 right-4 bg-transparent border-none text-white/70 cursor-pointer z-10 p-2 rounded-full hover:bg-white/10 hover:text-white transition-colors" onClick={() => setIsQuantlaneModalOpen(false)}>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>

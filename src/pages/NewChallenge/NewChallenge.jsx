@@ -88,24 +88,24 @@ function NewChallenge() {
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_520px] gap-12 items-start">
                 <div className="flex flex-col gap-10">
                     {/* Challenge Type */}
-                    <div className="bg-white dark:bg-[#1f2937] rounded-xl p-7 border border-[#e5e7eb] dark:border-[#374151] shadow-[0_1px_3px_rgba(0,0,0,0.06)] flex flex-col gap-10">
+                    <div className="bg-white dark:bg-[#141414] rounded-xl p-7 border border-[#e5e7eb] dark:border-[#333] shadow-[0_1px_3px_rgba(0,0,0,0.06)] flex flex-col gap-10">
                         <div>
                             <h3 className="text-base font-semibold m-0 mb-1.5 text-[#1a1a1a] dark:text-[#f3f4f6]">Challenge Type</h3>
                             <p className="text-sm text-[#6b7280] dark:text-[#9ca3af] m-0 mb-5 leading-relaxed">Choose the type of challenge you want to take</p>
                             <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-3">
-                                <label className={`flex items-center gap-3 p-4 px-[18px] bg-white dark:bg-[#1f2937] border-[1.5px] rounded-[10px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d1d5db] dark:hover:border-[#4b5563] relative ${step === 'one-step' ? 'border-[--primary-color] bg-[rgba(59,130,246,0.05)] dark:bg-[rgba(59,130,246,0.1)] shadow-[0_0_0_1px_rgba(59,130,246,0.1)] translate-y-0' : 'border-[#e5e7eb] dark:border-[#374151]'}`} onClick={() => setStep('one-step')}>
+                                <label className={`flex items-center gap-3 p-4 px-[18px] bg-white dark:bg-[#262626] border-[1.5px] rounded-[10px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d1d5db] dark:hover:border-[#4b5563] relative ${step === 'one-step' ? 'border-[--primary-color] bg-[rgba(59,130,246,0.05)] dark:bg-[rgba(59,130,246,0.1)] shadow-[0_0_0_1px_rgba(59,130,246,0.1)] translate-y-0' : 'border-[#e5e7eb] dark:border-[#333]'}`} onClick={() => setStep('one-step')}>
                                     <div className={`w-5 h-5 border-2 rounded-full flex items-center justify-center transition-all duration-200 shrink-0 ${step === 'one-step' ? 'border-[--primary-color]' : 'border-[#d1d5db] dark:border-[#4b5563]'}`}>
                                         {step === 'one-step' && <div className="w-3 h-3 bg-[--primary-color] rounded-full animate-[scaleIn_0.2s_ease-out_forwards]"></div>}
                                     </div>
                                     <span className="text-[15px] font-medium text-[#1a1a1a] dark:text-[#e5e7eb]">One Step</span>
                                 </label>
-                                <label className={`flex items-center gap-3 p-4 px-[18px] bg-white dark:bg-[#1f2937] border-[1.5px] rounded-[10px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d1d5db] dark:hover:border-[#4b5563] relative ${step === 'two-step' ? 'border-[--primary-color] bg-[rgba(59,130,246,0.05)] dark:bg-[rgba(59,130,246,0.1)] shadow-[0_0_0_1px_rgba(59,130,246,0.1)] translate-y-0' : 'border-[#e5e7eb] dark:border-[#374151]'}`} onClick={() => setStep('two-step')}>
+                                <label className={`flex items-center gap-3 p-4 px-[18px] bg-white dark:bg-[#262626] border-[1.5px] rounded-[10px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d1d5db] dark:hover:border-[#4b5563] relative ${step === 'two-step' ? 'border-[--primary-color] bg-[rgba(59,130,246,0.05)] dark:bg-[rgba(59,130,246,0.1)] shadow-[0_0_0_1px_rgba(59,130,246,0.1)] translate-y-0' : 'border-[#e5e7eb] dark:border-[#333]'}`} onClick={() => setStep('two-step')}>
                                     <div className={`w-5 h-5 border-2 rounded-full flex items-center justify-center transition-all duration-200 shrink-0 ${step === 'two-step' ? 'border-[--primary-color]' : 'border-[#d1d5db] dark:border-[#4b5563]'}`}>
                                         {step === 'two-step' && <div className="w-3 h-3 bg-[--primary-color] rounded-full animate-[scaleIn_0.2s_ease-out_forwards]"></div>}
                                     </div>
                                     <span className="text-[15px] font-medium text-[#1a1a1a] dark:text-[#e5e7eb]">Two Step</span>
                                 </label>
-                                <label className={`flex items-center gap-3 p-4 px-[18px] bg-white dark:bg-[#1f2937] border-[1.5px] rounded-[10px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d1d5db] dark:hover:border-[#4b5563] relative ${step === 'zero' ? 'border-[--primary-color] bg-[rgba(59,130,246,0.05)] dark:bg-[rgba(59,130,246,0.1)] shadow-[0_0_0_1px_rgba(59,130,246,0.1)] translate-y-0' : 'border-[#e5e7eb] dark:border-[#374151]'}`} onClick={() => setStep('zero')}>
+                                <label className={`flex items-center gap-3 p-4 px-[18px] bg-white dark:bg-[#262626] border-[1.5px] rounded-[10px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d1d5db] dark:hover:border-[#4b5563] relative ${step === 'zero' ? 'border-[--primary-color] bg-[rgba(59,130,246,0.05)] dark:bg-[rgba(59,130,246,0.1)] shadow-[0_0_0_1px_rgba(59,130,246,0.1)] translate-y-0' : 'border-[#e5e7eb] dark:border-[#333]'}`} onClick={() => setStep('zero')}>
                                     <div className={`w-5 h-5 border-2 rounded-full flex items-center justify-center transition-all duration-200 shrink-0 ${step === 'zero' ? 'border-[--primary-color]' : 'border-[#d1d5db] dark:border-[#4b5563]'}`}>
                                         {step === 'zero' && <div className="w-3 h-3 bg-[--primary-color] rounded-full animate-[scaleIn_0.2s_ease-out_forwards]"></div>}
                                     </div>
@@ -119,13 +119,13 @@ function NewChallenge() {
                             <h3 className="text-base font-semibold m-0 mb-1.5 text-[#1a1a1a] dark:text-[#f3f4f6]">Model</h3>
                             <p className="text-sm text-[#6b7280] dark:text-[#9ca3af] m-0 mb-5 leading-relaxed">Choose the trading model</p>
                             <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-3">
-                                <label className={`flex items-center gap-3 p-4 px-[18px] bg-white dark:bg-[#1f2937] border-[1.5px] rounded-[10px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d1d5db] dark:hover:border-[#4b5563] relative ${model === 'funding-pips' ? 'border-[--primary-color] bg-[rgba(59,130,246,0.05)] dark:bg-[rgba(59,130,246,0.1)] shadow-[0_0_0_1px_rgba(59,130,246,0.1)] translate-y-0' : 'border-[#e5e7eb] dark:border-[#374151]'}`} onClick={() => setModel('funding-pips')}>
+                                <label className={`flex items-center gap-3 p-4 px-[18px] bg-white dark:bg-[#262626] border-[1.5px] rounded-[10px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d1d5db] dark:hover:border-[#4b5563] relative ${model === 'funding-pips' ? 'border-[--primary-color] bg-[rgba(59,130,246,0.05)] dark:bg-[rgba(59,130,246,0.1)] shadow-[0_0_0_1px_rgba(59,130,246,0.1)] translate-y-0' : 'border-[#e5e7eb] dark:border-[#333]'}`} onClick={() => setModel('funding-pips')}>
                                     <div className={`w-5 h-5 border-2 rounded-full flex items-center justify-center transition-all duration-200 shrink-0 ${model === 'funding-pips' ? 'border-[--primary-color]' : 'border-[#d1d5db] dark:border-[#4b5563]'}`}>
                                         {model === 'funding-pips' && <div className="w-3 h-3 bg-[--primary-color] rounded-full animate-[scaleIn_0.2s_ease-out_forwards]"></div>}
                                     </div>
                                     <span className="text-[15px] font-medium text-[#1a1a1a] dark:text-[#e5e7eb]">YoPips</span>
                                 </label>
-                                <label className={`flex items-center gap-3 p-4 px-[18px] bg-white dark:bg-[#1f2937] border-[1.5px] rounded-[10px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d1d5db] dark:hover:border-[#4b5563] relative ${model === 'funding-pips-pro' ? 'border-[--primary-color] bg-[rgba(59,130,246,0.05)] dark:bg-[rgba(59,130,246,0.1)] shadow-[0_0_0_1px_rgba(59,130,246,0.1)] translate-y-0' : 'border-[#e5e7eb] dark:border-[#374151]'}`} onClick={() => setModel('funding-pips-pro')}>
+                                <label className={`flex items-center gap-3 p-4 px-[18px] bg-white dark:bg-[#262626] border-[1.5px] rounded-[10px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d1d5db] dark:hover:border-[#4b5563] relative ${model === 'funding-pips-pro' ? 'border-[--primary-color] bg-[rgba(59,130,246,0.05)] dark:bg-[rgba(59,130,246,0.1)] shadow-[0_0_0_1px_rgba(59,130,246,0.1)] translate-y-0' : 'border-[#e5e7eb] dark:border-[#333]'}`} onClick={() => setModel('funding-pips-pro')}>
                                     <div className={`w-5 h-5 border-2 rounded-full flex items-center justify-center transition-all duration-200 shrink-0 ${model === 'funding-pips-pro' ? 'border-[--primary-color]' : 'border-[#d1d5db] dark:border-[#4b5563]'}`}>
                                         {model === 'funding-pips-pro' && <div className="w-3 h-3 bg-[--primary-color] rounded-full animate-[scaleIn_0.2s_ease-out_forwards]"></div>}
                                     </div>
@@ -135,9 +135,9 @@ function NewChallenge() {
                         </div>
 
                         {/* Customise Trading Rules */}
-                        <div className="bg-gradient-to-br from-[#f8fafc] to-[#eff6ff] dark:from-[#1f2937] dark:to-[#111827] border border-[#e2e8f0] dark:border-[#374151] rounded-2xl p-7">
+                        <div className="bg-gradient-to-br from-[#f8fafc] to-[#eff6ff] dark:from-[#111827] dark:to-[#0d0d0d] border border-[#e2e8f0] dark:border-[#333] rounded-2xl p-7">
                             <div className="flex gap-4 mb-6">
-                                <div className="text-[--primary-color] dark:text-[#60a5fa] bg-white dark:bg-[#374151] p-2.5 rounded-[10px] shadow-[0_2px_4px_rgba(0,0,0,0.02)] h-fit">
+                                <div className="text-[--primary-color] dark:text-[#60a5fa] bg-white dark:bg-[#262626] p-2.5 rounded-[10px] shadow-[0_2px_4px_rgba(0,0,0,0.02)] h-fit">
                                     <Sliders size={18} />
                                 </div>
                                 <div>
@@ -176,7 +176,7 @@ function NewChallenge() {
                             <p className="text-sm text-[#6b7280] dark:text-[#9ca3af] m-0 mb-5 leading-relaxed">Choose your preferred account size</p>
                             <div className="grid grid-cols-3 gap-3">
                                 {['5000', '10000', '25000', '50000', '100000'].map(val => (
-                                    <label key={val} className={`flex flex-col items-center justify-center text-center gap-2 p-4 bg-white dark:bg-[#1f2937] border-[1.5px] rounded-[10px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d1d5db] dark:hover:border-[#4b5563] relative ${size === val ? 'border-[--primary-color] bg-[rgba(59,130,246,0.05)] dark:bg-[rgba(59,130,246,0.1)] shadow-[0_0_0_1px_rgba(59,130,246,0.1)] translate-y-0' : 'border-[#e5e7eb] dark:border-[#374151]'}`} onClick={() => setSize(val)}>
+                                    <label key={val} className={`flex flex-col items-center justify-center text-center gap-2 p-4 bg-white dark:bg-[#262626] border-[1.5px] rounded-[10px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d1d5db] dark:hover:border-[#4b5563] relative ${size === val ? 'border-[--primary-color] bg-[rgba(59,130,246,0.05)] dark:bg-[rgba(59,130,246,0.1)] shadow-[0_0_0_1px_rgba(59,130,246,0.1)] translate-y-0' : 'border-[#e5e7eb] dark:border-[#333]'}`} onClick={() => setSize(val)}>
                                         <div className={`w-5 h-5 border-2 rounded-full flex items-center justify-center transition-all duration-200 shrink-0 ${size === val ? 'border-[--primary-color]' : 'border-[#d1d5db] dark:border-[#4b5563]'}`}>
                                             {size === val && <div className="w-3 h-3 bg-[--primary-color] rounded-full animate-[scaleIn_0.2s_ease-out_forwards]"></div>}
                                         </div>
@@ -194,7 +194,7 @@ function NewChallenge() {
                                 {['MetaTrader 5', 'MatchTrader', 'CTrader +$20.00'].map(p => {
                                     const val = p.split(' ')[0].toLowerCase();
                                     return (
-                                        <label key={p} className={`flex items-center gap-3 p-4 px-[18px] bg-white dark:bg-[#1f2937] border-[1.5px] rounded-[10px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d1d5db] dark:hover:border-[#4b5563] relative ${platform === val ? 'border-[--primary-color] bg-[rgba(59,130,246,0.05)] dark:bg-[rgba(59,130,246,0.1)] shadow-[0_0_0_1px_rgba(59,130,246,0.1)] translate-y-0' : 'border-[#e5e7eb] dark:border-[#374151]'}`} onClick={() => setPlatform(val)}>
+                                        <label key={p} className={`flex items-center gap-3 p-4 px-[18px] bg-white dark:bg-[#262626] border-[1.5px] rounded-[10px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d1d5db] dark:hover:border-[#4b5563] relative ${platform === val ? 'border-[--primary-color] bg-[rgba(59,130,246,0.05)] dark:bg-[rgba(59,130,246,0.1)] shadow-[0_0_0_1px_rgba(59,130,246,0.1)] translate-y-0' : 'border-[#e5e7eb] dark:border-[#333]'}`} onClick={() => setPlatform(val)}>
                                             <div className={`w-5 h-5 border-2 rounded-full flex items-center justify-center transition-all duration-200 shrink-0 ${platform === val ? 'border-[--primary-color]' : 'border-[#d1d5db] dark:border-[#4b5563]'}`}>
                                                 {platform === val && <div className="w-3 h-3 bg-[--primary-color] rounded-full animate-[scaleIn_0.2s_ease-out_forwards]"></div>}
                                             </div>
@@ -209,7 +209,7 @@ function NewChallenge() {
 
                 <div className="w-full max-w-[520px] flex flex-col gap-6 max-md:max-w-full">
                     {/* Billing Details Stub */}
-                    <div className="bg-white dark:bg-[#1f2937] rounded-xl p-6 border border-[#e5e7eb] dark:border-[#374151] shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
+                    <div className="bg-white dark:bg-[#141414] rounded-xl p-6 border border-[#e5e7eb] dark:border-[#333] shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
                         <div className="flex justify-between items-center cursor-pointer pb-4">
                             <h3 className="text-lg font-bold m-0 text-[#1a1a1a] dark:text-[#f3f4f6]">Billing Details</h3>
                             <ChevronDown size={16} />
@@ -218,18 +218,18 @@ function NewChallenge() {
                             <div className="flex gap-5 max-md:flex-col max-md:gap-4">
                                 <div className="flex-1 flex flex-col gap-2">
                                     <label className="text-sm font-semibold text-[#1a1a1a] dark:text-[#e5e7eb] mb-0.5">First Name</label>
-                                    <input type="text" defaultValue="Yo" className="w-full h-11 px-3.5 border border-[#e5e7eb] dark:border-[#374151] rounded-lg text-[15px] text-[#111827] dark:text-white bg-white dark:bg-[#111827] outline-none transition-all duration-200 focus:border-[--primary-color] focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)]" />
+                                    <input type="text" defaultValue="Yo" className="w-full h-11 px-3.5 border border-[#e5e7eb] dark:border-[#333] rounded-lg text-[15px] text-[#111827] dark:text-white bg-white dark:bg-[#262626] outline-none transition-all duration-200 focus:border-[--primary-color] focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)]" />
                                 </div>
                                 <div className="flex-1 flex flex-col gap-2">
                                     <label className="text-sm font-semibold text-[#1a1a1a] dark:text-[#e5e7eb] mb-0.5">Last Name</label>
-                                    <input type="text" defaultValue="Forex" className="w-full h-11 px-3.5 border border-[#e5e7eb] dark:border-[#374151] rounded-lg text-[15px] text-[#111827] dark:text-white bg-white dark:bg-[#111827] outline-none transition-all duration-200 focus:border-[--primary-color] focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)]" />
+                                    <input type="text" defaultValue="Forex" className="w-full h-11 px-3.5 border border-[#e5e7eb] dark:border-[#333] rounded-lg text-[15px] text-[#111827] dark:text-white bg-white dark:bg-[#262626] outline-none transition-all duration-200 focus:border-[--primary-color] focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)]" />
                                 </div>
                             </div>
 
                             <div className="flex-1 flex flex-col gap-2">
                                 <label className="text-sm font-semibold text-[#1a1a1a] dark:text-[#e5e7eb] mb-0.5">Country</label>
                                 <div className="relative w-full">
-                                    <select defaultValue="" className="w-full h-11 px-3.5 border border-[#e5e7eb] dark:border-[#374151] rounded-lg text-[15px] text-[#111827] dark:text-white bg-white dark:bg-[#111827] outline-none transition-all duration-200 focus:border-[--primary-color] focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)] appearance-none cursor-pointer">
+                                    <select defaultValue="" className="w-full h-11 px-3.5 border border-[#e5e7eb] dark:border-[#333] rounded-lg text-[15px] text-[#111827] dark:text-white bg-white dark:bg-[#262626] outline-none transition-all duration-200 focus:border-[--primary-color] focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)] appearance-none cursor-pointer">
                                         <option value="" disabled></option>
                                         <option value="US">United States</option>
                                         <option value="UK">United Kingdom</option>
@@ -241,17 +241,17 @@ function NewChallenge() {
 
                             <div className="flex-1 flex flex-col gap-2">
                                 <label className="text-sm font-semibold text-[#1a1a1a] dark:text-[#e5e7eb] mb-0.5">Billing Address</label>
-                                <input type="text" defaultValue="123, Billing Street" className="w-full h-11 px-3.5 border border-[#e5e7eb] dark:border-[#374151] rounded-lg text-[15px] text-[#111827] dark:text-white bg-white dark:bg-[#111827] outline-none transition-all duration-200 focus:border-[--primary-color] focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)]" />
+                                <input type="text" defaultValue="123, Billing Street" className="w-full h-11 px-3.5 border border-[#e5e7eb] dark:border-[#333] rounded-lg text-[15px] text-[#111827] dark:text-white bg-white dark:bg-[#262626] outline-none transition-all duration-200 focus:border-[--primary-color] focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)]" />
                             </div>
 
                             <div className="flex gap-5 max-md:flex-col max-md:gap-4">
                                 <div className="flex-1 flex flex-col gap-2">
                                     <label className="text-sm font-semibold text-[#1a1a1a] dark:text-[#e5e7eb] mb-0.5">City</label>
-                                    <input type="text" defaultValue="New York" className="w-full h-11 px-3.5 border border-[#e5e7eb] dark:border-[#374151] rounded-lg text-[15px] text-[#111827] dark:text-white bg-white dark:bg-[#111827] outline-none transition-all duration-200 focus:border-[--primary-color] focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)]" />
+                                    <input type="text" defaultValue="New York" className="w-full h-11 px-3.5 border border-[#e5e7eb] dark:border-[#333] rounded-lg text-[15px] text-[#111827] dark:text-white bg-white dark:bg-[#262626] outline-none transition-all duration-200 focus:border-[--primary-color] focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)]" />
                                 </div>
                                 <div className="flex-1 flex flex-col gap-2">
                                     <label className="text-sm font-semibold text-[#1a1a1a] dark:text-[#e5e7eb] mb-0.5">ZIP / Postal Code</label>
-                                    <input type="text" defaultValue="10001" className="w-full h-11 px-3.5 border border-[#e5e7eb] dark:border-[#374151] rounded-lg text-[15px] text-[#111827] dark:text-white bg-white dark:bg-[#111827] outline-none transition-all duration-200 focus:border-[--primary-color] focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)]" />
+                                    <input type="text" defaultValue="10001" className="w-full h-11 px-3.5 border border-[#e5e7eb] dark:border-[#333] rounded-lg text-[15px] text-[#111827] dark:text-white bg-white dark:bg-[#262626] outline-none transition-all duration-200 focus:border-[--primary-color] focus:shadow-[0_0_0_3px_rgba(59,130,246,0.1)]" />
                                 </div>
                             </div>
                         </div>
@@ -259,18 +259,18 @@ function NewChallenge() {
 
 
                     {/* Coupon Code */}
-                    <div className="bg-white dark:bg-[#1f2937] rounded-xl p-6 border border-[#e5e7eb] dark:border-[#374151] shadow-[0_1px_3px_rgba(0,0,0,0.06)] max-md:p-5">
+                    <div className="bg-white dark:bg-[#141414] rounded-xl p-6 border border-[#e5e7eb] dark:border-[#333] shadow-[0_1px_3px_rgba(0,0,0,0.06)] max-md:p-5">
                         <h3 className="text-lg font-bold m-0 mb-2 text-[#1a1a1a] dark:text-[#f3f4f6]">Coupon Code</h3>
                         <p className="text-sm text-[#6b7280] dark:text-[#9ca3af] m-0 mb-5 leading-relaxed">Enter a coupon code to get a discount on your challenge</p>
                         <div className="flex gap-3 items-stretch max-md:flex-col">
-                            <input type="text" placeholder="Enter coupon code" className="flex-1 p-2.5 px-4 border border-[#e5e7eb] dark:border-[#374151] rounded-lg outline-none transition-colors duration-200 text-[15px] bg-white dark:bg-[#111827] text-[#111827] dark:text-white h-11 box-border focus:border-[--primary-color] focus:shadow-[0_0_0_2px_rgba(59,130,246,0.1)]" />
+                            <input type="text" placeholder="Enter coupon code" className="flex-1 p-2.5 px-4 border border-[#e5e7eb] dark:border-[#333] rounded-lg outline-none transition-colors duration-200 text-[15px] bg-white dark:bg-[#262626] text-[#111827] dark:text-white h-11 box-border focus:border-[--primary-color] focus:shadow-[0_0_0_2px_rgba(59,130,246,0.1)]" />
                             <button className="w-28 max-md:w-full h-11 bg-[--primary-color] dark:bg-[#1f2937] text-white border-none rounded-lg cursor-pointer font-semibold text-sm transition-all duration-200 hover:-translate-y-px hover:shadow-[0_4px_12px_rgba(59,130,246,0.3)] dark:hover:bg-[#374151]">Apply</button>
                         </div>
                     </div>
 
 
                     {/* Order Summary */}
-                    <div className="bg-white dark:bg-[#1f2937] rounded-xl p-6 border border-[#e5e7eb] dark:border-[#374151] shadow-[0_1px_3px_rgba(0,0,0,0.06)] max-md:p-5 dark:shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+                    <div className="bg-white dark:bg-[#141414] rounded-xl p-6 border border-[#e5e7eb] dark:border-[#333] shadow-[0_1px_3px_rgba(0,0,0,0.06)] max-md:p-5 dark:shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
                         <h3 className="text-lg font-bold mb-6 text-[#1a1a1a] dark:text-[#f3f4f6]">Order Summary</h3>
                         <div className="flex justify-between items-baseline mb-3 text-[15px] font-semibold text-[#1a1a1a] dark:text-[#e5e7eb]">
                             <span>${parseInt(size).toLocaleString()}.00 — {step === 'free-trial' ? 'Free Trial' : (step === 'two-step' ? 'Two Step' : (step === 'zero' ? 'Zero' : 'One Step'))} {model === 'funding-pips' ? 'YoPips' : 'Pro'}</span>
@@ -287,7 +287,7 @@ function NewChallenge() {
                             <span className="text-3xl font-extrabold text-[--primary-color] tracking-tight">${step === 'free-trial' ? 0 : currentPrice}.00</span>
                         </div>
 
-                        <div className="bg-[#f8fafc] dark:bg-[#111827] p-5 rounded-xl border border-[#e2e8f0] dark:border-[#374151] mb-6">
+                        <div className="bg-[#f8fafc] dark:bg-[#262626] p-5 rounded-xl border border-[#e2e8f0] dark:border-[#333] mb-6">
                             <label className="flex items-start gap-2.5 text-[13px] font-semibold mb-3 cursor-pointer leading-[1.4] text-[#1a1a1a] dark:text-[#e5e7eb]">
                                 <input type="checkbox" defaultChecked className="mt-1" />
                                 <span className="checkmark"></span>

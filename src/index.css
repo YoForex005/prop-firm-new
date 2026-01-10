@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Configure dark mode for Tailwind v4 - activates when .dark class or data-theme="dark" is present */
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
 :root {
   /* FTMO Color Palette - Precision Matches */
   --primary-white: #ffffff;
@@ -146,10 +149,10 @@ button {
   }
 
   .btn-secondary {
-    @apply bg-white border border-[#e0e0e0] text-[var(--text-color)] py-[10px] px-[20px] rounded-[8px] cursor-pointer font-semibold text-[13px] flex items-center gap-2;
+    @apply bg-white dark:bg-[#262626] border border-[#e0e0e0] dark:border-[#333] text-[var(--text-color)] dark:text-white py-[10px] px-[20px] rounded-[8px] cursor-pointer font-semibold text-[13px] flex items-center gap-2;
   }
 
   .card {
-    @apply bg-[var(--card-bg)] rounded-[var(--border-radius)] p-[24px] shadow-[var(--box-shadow)] border border-[#f2f2f2];
+    @apply bg-[var(--card-bg)] rounded-[var(--border-radius)] p-[24px] shadow-[var(--box-shadow)] border border-[#f2f2f2] dark:border-[#333];
   }
 }

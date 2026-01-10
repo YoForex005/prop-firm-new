@@ -118,9 +118,9 @@ function Competitions() {
             {/* Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {getDisplayedCompetitions().map(comp => (
-                    <div key={comp.id} className="bg-white dark:bg-[#1a1a1a] rounded-xl p-5 border border-[#e0e0e0] dark:border-[#333] flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow duration-200">
+                    <div key={comp.id} className="bg-white dark:bg-[#141414] rounded-xl p-5 border border-[#e0e0e0] dark:border-[#333] flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow duration-200">
                         <div className="flex justify-between items-start">
-                            <span className="text-[11px] bg-[#f0f0f0] dark:bg-[#333] px-2 py-1 rounded text-[#666] dark:text-[#ccc] font-medium font-mono">{comp.endIn}</span>
+                            <span className="text-[11px] bg-[#f0f0f0] dark:bg-[#262626] px-2 py-1 rounded text-[#666] dark:text-[#ccc] font-medium font-mono">{comp.endIn}</span>
                         </div>
                         <h3 className="text-[15px] font-semibold m-0 text-[#1a1a1a] dark:text-white line-clamp-2 leading-snug">{comp.title}</h3>
                         <div className="flex gap-3 text-xs text-[#6b7280] dark:text-[#9ca3af] items-center">
