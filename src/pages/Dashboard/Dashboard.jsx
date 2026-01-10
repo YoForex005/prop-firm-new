@@ -170,7 +170,7 @@ function Dashboard() {
                     subtitle="Trade up to $200,000 Yo Pips Account"
                     description="Show us your trading skills. Pass the Evaluation Course and receive the Yo Pips Account!"
                     features={[
-                        "We provide you with up to $200,000 Yo Pips Account",
+                        "Up to $200,000 Yo Pips Account",
                         "Prove your trading skills",
                         "Full Account Analysis",
                         "Premium Apps"
