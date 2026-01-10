@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   /* FTMO Color Palette - Precision Matches */
   --primary-white: #ffffff;
