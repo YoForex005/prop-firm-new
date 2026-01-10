@@ -13,6 +13,7 @@ import {
     Share2,
     ChevronDown,
     Moon,
+    Sun,
     LogOut,
     Globe,
     Calendar,
@@ -25,7 +26,9 @@ import {
     Calculator,
     GraduationCap as GradCap,
     Target,
-    Lock
+    Lock,
+    Sparkles,
+    ChevronRight
 } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
@@ -40,7 +43,6 @@ function Sidebar({ darkMode, toggleTheme, openChat, closeSidebar }) {
     const [showTimezoneModal, setShowTimezoneModal] = React.useState(false);
     const isActive = (path) => location.pathname === path;
 
-    // Helper to handle navigation and closing sidebar
     const handleNav = (path) => {
         navigate(path);
         if (closeSidebar) closeSidebar();
@@ -52,195 +54,218 @@ function Sidebar({ darkMode, toggleTheme, openChat, closeSidebar }) {
         if (closeSidebar) closeSidebar();
     };
 
-    // Shared Classes
-    const navItemBase = "w-full flex items-center gap-3 px-3 py-2.5 bg-transparent border-none text-[var(--text-color)] text-sm font-medium cursor-pointer rounded-lg transition-all mb-1 h-auto decoration-none hover:bg-[#f7f9fc] hover:text-[var(--primary-color)] dark:hover:bg-[#1f1f1f]";
-    const navItemActive = "bg-[#eff4ff] text-[var(--primary-color)] shadow-none dark:bg-[#1a2236]";
-
-    const submenuItemBase = "flex items-center gap-3 px-3 py-2 rounded-md text-[var(--text-color)] text-[13px] font-medium cursor-pointer transition-all mb-0.5 hover:bg-[#f7f9fc] hover:text-[var(--primary-color)] dark:hover:bg-[#1f1f1f]";
-    const submenuItemActive = "bg-[#eff4ff] text-[var(--primary-color)] dark:bg-[#1a2236]";
-
     return (
-        <div className="w-[280px] bg-[var(--sidebar-bg)] flex flex-col py-6 border-r border-[#f0f0f0] z-10 h-full overflow-y-auto">
-            <div className="px-6 pb-8 flex items-center gap-3">
-                <Link to="/" className="flex items-center gap-2.5 no-underline" onClick={closeSidebar}>
-                    <svg fill={darkMode ? "#ffffff" : "#000000"} width="32px" height="32px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16 0C7.163 0 0 7.163 0 16s7.163 16 16 16 16-7.163 16-16S24.837 0 16 0zm0 30C8.268 30 2 23.732 2 16S8.268 2 16 2s14 6.268 14 14-6.268 14 14 14z" />
-                        <path d="M12 9h9v3h-6v4h6v3h-6v6h-3V9z" />
-                    </svg>
-                    <span className="text-[20px] font-bold text-[var(--text-color)]">Yo Pips</span>
+        <div className="w-[260px] bg-white dark:bg-[#0d0d0d] flex flex-col border-r border-[#f0f0f0] dark:border-[#1a1a1a] z-10 h-full overflow-hidden">
+            {/* Logo Section */}
+            <div className="px-5 py-5 border-b border-[#f5f5f5] dark:border-[#1a1a1a]">
+                <Link to="/" className="flex items-center gap-3 no-underline group" onClick={closeSidebar}>
+                    <img
+                        src="/logo.png"
+                        alt="Yo Pips Logo"
+                        className="w-10 h-10 rounded-xl object-contain group-hover:scale-105 transition-transform"
+                    />
+                    <span className="text-lg font-bold text-[#1d1d1f] dark:text-white">Yo Pips</span>
                 </Link>
             </div>
 
-            <div className="flex-1 overflow-y-auto px-4">
+            {/* Scrollable Content */}
+            <div className="flex-1 overflow-y-auto px-3 py-4">
+                {/* CTA Button */}
                 <button
-                    className="w-full bg-[#2563eb] text-white border-none rounded-lg p-3 font-semibold text-sm cursor-pointer mb-6 transition-colors hover:bg-[#1d4ed8]"
+                    className="w-full bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] text-white border-none rounded-xl p-3.5 font-semibold text-sm cursor-pointer mb-6 transition-all hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-0.5 flex items-center justify-center gap-2"
                     onClick={() => handleNav('/new-challenge')}
                 >
+                    <Sparkles size={16} />
                     New Yo Pips Challenge
                 </button>
 
-                <div className="mb-6">
-                    <div className="text-xs text-[var(--gray-text)] font-semibold mb-2 pl-3 uppercase tracking-[0.5px]">Main menu</div>
+                {/* Main Menu */}
+                <div className="mb-5">
+                    <div className="text-[10px] text-[#9ca3af] dark:text-[#6b7280] font-semibold mb-3 px-3 uppercase tracking-wider">Main Menu</div>
 
-                    <div className={`${navItemBase} ${isActive('/') ? navItemActive : ''}`} onClick={() => handleNav('/')}>
-                        <LayoutGrid size={20} />
-                        <span>Accounts Overview</span>
-                    </div>
-
-                    <div className={`${navItemBase} ${isActive('/premium') ? navItemActive : ''}`} onClick={() => handleNav('/premium')}>
-                        <Crown size={20} />
-                        <span>Premium</span>
-                    </div>
-
-                    <div className={`${navItemBase} ${isActive('/profile') ? navItemActive : ''}`} onClick={() => handleNav('/profile')}>
-                        <User size={20} />
-                        <span>Profile</span>
-                    </div>
-
-                    <div className={`${navItemBase} ${isActive('/yopips-traders') ? navItemActive : ''}`} onClick={() => handleNav('/yopips-traders')}>
-                        <Users size={18} />
-                        <span>Yo Pips Traders</span>
-                    </div>
-
-                    <div className={`${navItemBase} ${isActive('/academy') ? navItemActive : ''}`} onClick={() => handleNav('/academy')}>
-                        <GraduationCap size={20} />
-                        <span>Yo Pips Academy</span>
-                    </div>
-
-                    <div className={`${navItemBase} ${isActive('/billing') ? navItemActive : ''}`} onClick={() => handleNav('/billing')}>
-                        <CreditCard size={20} />
-                        <span>Billing</span>
-                    </div>
-
-                    <div className={`${navItemBase} ${isActive('/leaderboard') ? navItemActive : ''}`} onClick={() => handleNav('/leaderboard')}>
-                        <Trophy size={20} />
-                        <span>Leaderboard</span>
-                    </div>
-
-                    <div className={`${navItemBase} ${isActive('/certificates') ? navItemActive : ''}`} onClick={() => handleNav('/certificates')}>
-                        <Award size={20} />
-                        <span>Certificates</span>
-                    </div>
-
-                    <div className={`${navItemBase} ${isActive('/downloads') ? navItemActive : ''}`} onClick={() => handleNav('/downloads')}>
-                        <Download size={20} />
-                        <span>Downloads</span>
-                    </div>
-
-                    <div className={`${navItemBase} ${isActive('/social') ? navItemActive : ''}`} onClick={() => handleNav('/social')}>
-                        <Share2 size={20} />
-                        <span>Social Media</span>
-                    </div>
+                    <nav className="space-y-0.5">
+                        {[
+                            { path: '/', icon: LayoutGrid, label: 'Accounts Overview' },
+                            { path: '/premium', icon: Crown, label: 'Premium' },
+                            { path: '/profile', icon: User, label: 'Profile' },
+                            { path: '/yopips-traders', icon: Users, label: 'Yo Pips Traders' },
+                            { path: '/academy', icon: GraduationCap, label: 'Yo Pips Academy' },
+                            { path: '/billing', icon: CreditCard, label: 'Billing' },
+                            { path: '/leaderboard', icon: Trophy, label: 'Leaderboard' },
+                            { path: '/certificates', icon: Award, label: 'Certificates' },
+                            { path: '/downloads', icon: Download, label: 'Downloads' },
+                            { path: '/social', icon: Share2, label: 'Social Media' },
+                        ].map(({ path, icon: Icon, label }) => (
+                            <button
+                                key={path}
+                                className={`w-full flex items-center gap-3 px-3 py-2.5 border-none text-sm font-medium cursor-pointer rounded-xl transition-all duration-200 text-left ${isActive(path)
+                                    ? 'bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f] shadow-md'
+                                    : 'bg-transparent text-[#4b5563] dark:text-[#9ca3af] hover:bg-[#f5f7fa] dark:hover:bg-[#141414] hover:text-[#1d1d1f] dark:hover:text-white'
+                                    }`}
+                                onClick={() => handleNav(path)}
+                            >
+                                <Icon size={18} className="shrink-0" />
+                                <span>{label}</span>
+                                {isActive(path) && <ChevronRight size={14} className="ml-auto opacity-60" />}
+                            </button>
+                        ))}
+                    </nav>
                 </div>
 
-                <div className="mb-6">
-                    <div
-                        className={`${navItemBase} ${toolsOpen ? navItemActive : ''}`}
+                {/* Tools & Services Section */}
+                <div className="mb-5">
+                    <button
+                        className={`w-full flex items-center gap-3 px-3 py-2.5 border-none text-sm font-medium cursor-pointer rounded-xl transition-all duration-200 text-left ${toolsOpen
+                            ? 'bg-[#f5f7fa] dark:bg-[#141414] text-[#1d1d1f] dark:text-white'
+                            : 'bg-transparent text-[#4b5563] dark:text-[#9ca3af] hover:bg-[#f5f7fa] dark:hover:bg-[#141414]'
+                            }`}
                         onClick={() => setToolsOpen(!toolsOpen)}
                     >
                         <span className="flex-1">Tools & Services</span>
                         <ChevronDown
                             size={16}
-                            className={`transition-transform duration-200 ${toolsOpen ? 'rotate-180' : 'rotate-0'}`}
+                            className={`transition-transform duration-300 ${toolsOpen ? 'rotate-180' : 'rotate-0'}`}
                         />
-                    </div>
-                    {toolsOpen && (
-                        <div className="pl-3 mb-2">
-                            <div className={`${submenuItemBase} ${isActive('/calendar') ? submenuItemActive : ''}`} onClick={() => handleNav('/calendar')}>
-                                <Calendar size={16} className="min-w-[16px]" />
-                                <span className="flex-1">Economic Calendar</span>
-                            </div>
-                            <div className={`${submenuItemBase} ${isActive('/symbols-tickets') ? submenuItemActive : ''}`} onClick={() => handleNav('/symbols-tickets')}>
-                                <Tag size={16} className="min-w-[16px]" />
-                                <span className="flex-1">Symbols & Tickets</span>
-                            </div>
-                            <div className={`${submenuItemBase} ${isActive('/ticker') ? submenuItemActive : ''}`} onClick={() => handleNav('/ticker')}>
-                                <TrendingUp size={16} className="min-w-[16px]" />
-                                <span className="flex-1">Ticker</span>
-                            </div>
-                            <div
-                                className={`${submenuItemBase} text-[#999] hover:bg-[#fff8e1] hover:text-[#856404] relative group`}
-                                onClick={handleLockedClick}
-                            >
-                                <LineChart size={16} className="min-w-[16px]" />
-                                <span className="flex-1">Trader's Analysis</span>
-                                <Lock size={12} className="ml-auto text-[#ff9800] shrink-0" />
-                            </div>
-                            {/* Updated Timezone Converter using state instead of navigation */}
-                            <div className={`${submenuItemBase} ${showTimezoneModal ? submenuItemActive : ''}`} onClick={() => setShowTimezoneModal(true)}>
-                                <Clock size={16} className="min-w-[16px]" />
-                                <span className="flex-1">Timezone Converter</span>
-                            </div>
-                            {/* Locked Items Repeated Pattern */}
+                    </button>
+
+                    <div className={`overflow-hidden transition-all duration-300 ${toolsOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                        <div className="pl-2 pt-1 space-y-0.5">
+                            {/* Available Items */}
                             {[
-                                { icon: Handshake, label: "Partnership Deals" },
-                                { icon: BarChart, label: "Equity Simulator" },
-                                { icon: LineChart, label: "Statistical App" },
-                                { icon: Calculator, label: "Calculators" },
-                                { icon: GradCap, label: "Mentor App" },
-                                { icon: Target, label: "Performance Coaching" }
+                                { path: '/calendar', icon: Calendar, label: 'Economic Calendar' },
+                                { path: '/symbols-tickets', icon: Tag, label: 'Symbols & Tickets' },
+                                { path: '/ticker', icon: TrendingUp, label: 'Ticker' },
+                            ].map(({ path, icon: Icon, label }) => (
+                                <button
+                                    key={path}
+                                    className={`w-full flex items-center gap-3 px-3 py-2 border-none text-[13px] font-medium cursor-pointer rounded-lg transition-all duration-200 text-left ${isActive(path)
+                                        ? 'bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f]'
+                                        : 'bg-transparent text-[#6b7280] dark:text-[#9ca3af] hover:bg-[#f5f7fa] dark:hover:bg-[#1a1a1a] hover:text-[#1d1d1f] dark:hover:text-white'
+                                        }`}
+                                    onClick={() => handleNav(path)}
+                                >
+                                    <Icon size={16} className="shrink-0" />
+                                    <span>{label}</span>
+                                </button>
+                            ))}
+
+                            {/* Timezone Converter */}
+                            <button
+                                className={`w-full flex items-center gap-3 px-3 py-2 border-none text-[13px] font-medium cursor-pointer rounded-lg transition-all duration-200 text-left ${showTimezoneModal
+                                    ? 'bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f]'
+                                    : 'bg-transparent text-[#6b7280] dark:text-[#9ca3af] hover:bg-[#f5f7fa] dark:hover:bg-[#1a1a1a] hover:text-[#1d1d1f] dark:hover:text-white'
+                                    }`}
+                                onClick={() => setShowTimezoneModal(true)}
+                            >
+                                <Clock size={16} className="shrink-0" />
+                                <span>Timezone Converter</span>
+                            </button>
+
+                            {/* Locked Items */}
+                            {[
+                                { icon: LineChart, label: "Trader's Analysis" },
+                                { icon: Handshake, label: 'Partnership Deals' },
+                                { icon: BarChart, label: 'Equity Simulator' },
+                                { icon: Calculator, label: 'Calculators' },
+                                { icon: GradCap, label: 'Mentor App' },
+                                { icon: Target, label: 'Performance Coaching' }
                             ].map((item, idx) => (
-                                <div
+                                <button
                                     key={idx}
-                                    className={`${submenuItemBase} text-[#999] hover:bg-[#fff8e1] hover:text-[#856404] relative group`}
+                                    className="w-full flex items-center gap-3 px-3 py-2 border-none text-[13px] font-medium cursor-pointer rounded-lg transition-all duration-200 text-left bg-transparent text-[#9ca3af] dark:text-[#6b7280] hover:bg-amber-50 dark:hover:bg-amber-500/10 hover:text-amber-600 dark:hover:text-amber-400 group"
                                     onClick={handleLockedClick}
                                 >
-                                    <item.icon size={16} className="min-w-[16px]" />
+                                    <item.icon size={16} className="shrink-0" />
                                     <span className="flex-1">{item.label}</span>
-                                    <Lock size={12} className="ml-auto text-[#ff9800] shrink-0" />
-                                </div>
+                                    <Lock size={12} className="text-amber-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </button>
                             ))}
                         </div>
-                    )}
-                    <div
-                        className={`${navItemBase} ${supportOpen ? navItemActive : ''}`}
+                    </div>
+                </div>
+
+                {/* Support Section */}
+                <div className="mb-5">
+                    <button
+                        className={`w-full flex items-center gap-3 px-3 py-2.5 border-none text-sm font-medium cursor-pointer rounded-xl transition-all duration-200 text-left ${supportOpen
+                            ? 'bg-[#f5f7fa] dark:bg-[#141414] text-[#1d1d1f] dark:text-white'
+                            : 'bg-transparent text-[#4b5563] dark:text-[#9ca3af] hover:bg-[#f5f7fa] dark:hover:bg-[#141414]'
+                            }`}
                         onClick={() => setSupportOpen(!supportOpen)}
                     >
                         <span className="flex-1">Support</span>
                         <ChevronDown
                             size={16}
-                            className={`transition-transform duration-200 ${supportOpen ? 'rotate-180' : 'rotate-0'}`}
+                            className={`transition-transform duration-300 ${supportOpen ? 'rotate-180' : 'rotate-0'}`}
                         />
-                    </div>
-                    {supportOpen && (
-                        <div className="pl-3 mb-2">
-                            <div className={`${submenuItemBase} ${isActive('/support/send-message') ? submenuItemActive : ''}`} onClick={() => handleNav('/support/send-message')}>
-                                <MessageSquare size={16} className="min-w-[16px]" />
-                                <span>Send message</span>
-                            </div>
-                            <div
-                                className={`${submenuItemBase} ${isActive('/support/live-chat') ? submenuItemActive : ''}`}
-                                onClick={() => {
-                                    openChat();
-                                }}
-                            >
-                                <MessageSquare size={16} className="min-w-[16px]" />
-                                <span>Live Chat</span>
-                            </div>
-                            <div className={`${submenuItemBase} ${isActive('/support/discord') ? submenuItemActive : ''}`} onClick={() => handleNav('/support/discord')}>
-                                <MessageSquare size={16} className="min-w-[16px]" />
-                                <span>Discord</span>
-                            </div>
-                        </div>
-                    )}
-                </div>
+                    </button>
 
-                <div className="mb-6">
-                    <div className="text-xs text-[var(--gray-text)] font-semibold mb-2 pl-3 uppercase tracking-[0.5px]">Mobile app</div>
-                    <div className={navItemBase} onClick={toggleTheme}>
-                        <Moon size={20} className="min-w-[20px]" />
-                        <span>Dark mode</span>
-                    </div>
-                    <Link to="/website" className={navItemBase}>
-                        <LogOut size={20} className="rotate-180 min-w-[20px]" />
-                        <span>Back to website</span>
-                    </Link>
-                    <div className={navItemBase}>
-                        <Globe size={20} className="min-w-[20px]" />
-                        <span>English</span>
-                        <ChevronDown size={16} className="ml-auto" />
+                    <div className={`overflow-hidden transition-all duration-300 ${supportOpen ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                        <div className="pl-2 pt-1 space-y-0.5">
+                            <button
+                                className={`w-full flex items-center gap-3 px-3 py-2 border-none text-[13px] font-medium cursor-pointer rounded-lg transition-all duration-200 text-left ${isActive('/support/send-message')
+                                    ? 'bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f]'
+                                    : 'bg-transparent text-[#6b7280] dark:text-[#9ca3af] hover:bg-[#f5f7fa] dark:hover:bg-[#1a1a1a] hover:text-[#1d1d1f] dark:hover:text-white'
+                                    }`}
+                                onClick={() => handleNav('/support/send-message')}
+                            >
+                                <MessageSquare size={16} className="shrink-0" />
+                                <span>Send Message</span>
+                            </button>
+                            <button
+                                className="w-full flex items-center gap-3 px-3 py-2 border-none text-[13px] font-medium cursor-pointer rounded-lg transition-all duration-200 text-left bg-transparent text-[#6b7280] dark:text-[#9ca3af] hover:bg-[#f5f7fa] dark:hover:bg-[#1a1a1a] hover:text-[#1d1d1f] dark:hover:text-white"
+                                onClick={() => openChat()}
+                            >
+                                <MessageSquare size={16} className="shrink-0" />
+                                <span>Live Chat</span>
+                                <span className="ml-auto w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                            </button>
+                            <button
+                                className={`w-full flex items-center gap-3 px-3 py-2 border-none text-[13px] font-medium cursor-pointer rounded-lg transition-all duration-200 text-left ${isActive('/support/discord')
+                                    ? 'bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f]'
+                                    : 'bg-transparent text-[#6b7280] dark:text-[#9ca3af] hover:bg-[#f5f7fa] dark:hover:bg-[#1a1a1a] hover:text-[#1d1d1f] dark:hover:text-white'
+                                    }`}
+                                onClick={() => handleNav('/support/discord')}
+                            >
+                                <MessageSquare size={16} className="shrink-0" />
+                                <span>Discord</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            {/* Bottom Section */}
+            <div className="px-3 py-4 border-t border-[#f5f5f5] dark:border-[#1a1a1a] space-y-1">
+                <div className="text-[10px] text-[#9ca3af] dark:text-[#6b7280] font-semibold mb-2 px-3 uppercase tracking-wider">Settings</div>
+
+                {/* Dark Mode Toggle */}
+                <button
+                    className="w-full flex items-center gap-3 px-3 py-2.5 border-none text-sm font-medium cursor-pointer rounded-xl transition-all duration-200 text-left bg-transparent text-[#4b5563] dark:text-[#9ca3af] hover:bg-[#f5f7fa] dark:hover:bg-[#141414]"
+                    onClick={toggleTheme}
+                >
+                    {darkMode ? <Sun size={18} className="shrink-0" /> : <Moon size={18} className="shrink-0" />}
+                    <span>{darkMode ? 'Light Mode' : 'Dark Mode'}</span>
+                    <div className={`ml-auto w-9 h-5 rounded-full relative transition-colors ${darkMode ? 'bg-[#1d1d1f]' : 'bg-[#e5e7eb]'}`}>
+                        <div className={`absolute w-4 h-4 bg-white rounded-full top-0.5 transition-all shadow-sm ${darkMode ? 'left-[18px]' : 'left-0.5'}`}></div>
+                    </div>
+                </button>
+
+                {/* Language Selector */}
+                <button className="w-full flex items-center gap-3 px-3 py-2.5 border-none text-sm font-medium cursor-pointer rounded-xl transition-all duration-200 text-left bg-transparent text-[#4b5563] dark:text-[#9ca3af] hover:bg-[#f5f7fa] dark:hover:bg-[#141414]">
+                    <Globe size={18} className="shrink-0" />
+                    <span>English</span>
+                    <ChevronDown size={14} className="ml-auto opacity-50" />
+                </button>
+
+                {/* Back to Website */}
+                <Link
+                    to="/website"
+                    className="w-full flex items-center gap-3 px-3 py-2.5 border-none text-sm font-medium cursor-pointer rounded-xl transition-all duration-200 text-left bg-transparent text-[#4b5563] dark:text-[#9ca3af] hover:bg-[#f5f7fa] dark:hover:bg-[#141414] no-underline"
+                >
+                    <LogOut size={18} className="shrink-0 rotate-180" />
+                    <span>Back to Website</span>
+                </Link>
             </div>
 
             {/* Timezone Converter Modal */}
@@ -250,18 +275,24 @@ function Sidebar({ darkMode, toggleTheme, openChat, closeSidebar }) {
 
             {/* Locked Feature Modal */}
             {showLockedModal && (
-                <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[10000] animate-[fadeIn_0.2s_ease-in]" onClick={() => setShowLockedModal(false)}>
-                    <div className="bg-white dark:bg-[#2a2a2a] rounded-2xl p-10 max-w-[450px] w-[90%] text-center shadow-[0_20px_60px_rgba(0,0,0,0.3)] animate-[slideUp_0.3s_ease-out]" onClick={(e) => e.stopPropagation()}>
-                        <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-[#ff9800] shadow-[0_4px_12px_rgba(255,152,0,0.2)]" style={{ background: 'linear-gradient(135deg, #fff3cd 0%, #ffe8a1 100%)' }}>
-                            <Lock size={32} />
+                <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[10000] animate-[fadeIn_0.2s_ease-in]" onClick={() => setShowLockedModal(false)}>
+                    <div className="bg-white dark:bg-[#1a1a1a] rounded-2xl p-8 max-w-[400px] w-[90%] text-center shadow-2xl animate-[slideUp_0.3s_ease-out]" onClick={(e) => e.stopPropagation()}>
+                        <div className="w-16 h-16 bg-gradient-to-br from-amber-100 to-amber-200 dark:from-amber-500/20 dark:to-amber-500/10 rounded-2xl flex items-center justify-center mx-auto mb-5 text-amber-500">
+                            <Lock size={28} />
                         </div>
-                        <h3 className="text-2xl font-bold mb-4 text-[#1a1a1a] dark:text-white">Feature Locked</h3>
-                        <p className="text-[15px] text-[#666] dark:text-[#ccc] mb-8 leading-relaxed">To gain access to this feature, it is necessary to purchase a Yo Pips Challenge</p>
+                        <h3 className="text-xl font-bold mb-3 text-[#1d1d1f] dark:text-white">Feature Locked</h3>
+                        <p className="text-sm text-[#6b7280] dark:text-[#9ca3af] mb-6 leading-relaxed">To gain access to this feature, it is necessary to purchase a Yo Pips Challenge</p>
                         <div className="flex gap-3 justify-center">
-                            <button className="px-6 py-3 border-2 border-[#e0e0e0] dark:border-[#444] bg-white dark:bg-[#1a1a1a] rounded-lg text-sm font-semibold cursor-pointer transition-all text-[#666] dark:text-[#ccc] hover:bg-[#f7f7f7] hover:border-[#ccc]" onClick={() => setShowLockedModal(false)}>
+                            <button
+                                className="px-5 py-2.5 border border-[#e5e7eb] dark:border-[#333] bg-white dark:bg-[#141414] rounded-xl text-sm font-medium cursor-pointer transition-all text-[#4b5563] dark:text-[#9ca3af] hover:bg-[#f5f7fa] dark:hover:bg-[#1a1a1a]"
+                                onClick={() => setShowLockedModal(false)}
+                            >
                                 Close
                             </button>
-                            <button className="px-6 py-3 border-none bg-gradient-to-br from-[#007bff] to-[#0056b3] text-white rounded-lg text-sm font-semibold cursor-pointer transition-all shadow-[0_4px_12px_rgba(0,123,255,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(0,123,255,0.4)]" onClick={() => handleNav('/new-challenge')}>
+                            <button
+                                className="px-5 py-2.5 border-none bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f] rounded-xl text-sm font-semibold cursor-pointer transition-all hover:opacity-90"
+                                onClick={() => handleNav('/new-challenge')}
+                            >
                                 Purchase Challenge
                             </button>
                         </div>
