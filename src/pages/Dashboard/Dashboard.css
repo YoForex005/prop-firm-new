@@ -1,6 +1,5 @@
 .dashboard-container {
-    max-width: 1200px;
-    margin: 0 auto;
+    margin: 0;
     width: 100%;
 }
 
@@ -99,4 +98,41 @@
 
 .footer-copyright {
     color: #9aa0ac;
+}
+
+/* Dark Mode Overrides */
+[data-theme='dark'] .section-header {
+    border-bottom-color: #374151;
+}
+
+[data-theme='dark'] .section-header h2 {
+    color: #f3f4f6;
+}
+
+[data-theme='dark'] .history-icon {
+    color: #9ca3af;
+}
+
+[data-theme='dark'] .filter-toggle {
+    color: #9ca3af;
+}
+
+[data-theme='dark'] .history-tab {
+    color: #6b7280;
+}
+
+[data-theme='dark'] .history-tab.active {
+    color: #00d4aa;
+}
+
+[data-theme='dark'] .dashboard-footer {
+    color: #9ca3af;
+}
+
+[data-theme='dark'] .footer-links {
+    color: #9ca3af;
+}
+
+[data-theme='dark'] .footer-copyright {
+    color: #9ca3af;
 }

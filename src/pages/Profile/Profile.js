@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './Profile.css';
-import { User, Info, Edit2 } from 'lucide-react';
+import { User, Info, Edit2, X } from 'lucide-react';
 
 function Profile() {
     const [activeTab, setActiveTab] = useState('personal-information');
     const [showProfilePictureSettings, setShowProfilePictureSettings] = useState(false);
+    const [showNicknameModal, setShowNicknameModal] = useState(false);
+    const [nickname, setNickname] = useState('');
     const [formData, setFormData] = useState({
         title: '',
         firstName: '',
@@ -57,6 +59,13 @@ function Profile() {
             console.log('Form is valid, saving...', formData);
             alert('Profile saved successfully!');
         }
+    };
+
+    const handleSaveNickname = () => {
+        // Save nickname logic
+        console.log('Saving nickname:', nickname);
+        alert(`Nickname '${nickname}' saved successfully!`);
+        setShowNicknameModal(false);
     };
 
     return (
@@ -135,7 +144,7 @@ function Profile() {
                             <div className="user-email">ranjan.nayak1968@gmail.com</div>
                             <div className="user-points">0 Yo Pips Points</div>
                         </div>
-                        <button className="edit-nickname-btn">Edit nickname</button>
+                        <button className="edit-nickname-btn" onClick={() => setShowNicknameModal(true)}>Edit nickname</button>
                     </div>
 
                     {/* Profile Picture Settings */}
@@ -479,8 +488,40 @@ function Profile() {
                             <div className="user-email">ranjan.nayak1968@gmail.com</div>
                             <div className="user-points">0 Yo Pips Points</div>
                         </div>
-                        <button className="edit-nickname-btn">Edit nickname</button>
+                        <button className="edit-nickname-btn" onClick={() => setShowNicknameModal(true)}>Edit nickname</button>
                     </div>
+
+                    {/* Edit Nickname Modal */}
+                    {showNicknameModal && (
+                        <div className="nickname-modal-overlay" onClick={() => setShowNicknameModal(false)}>
+                            <div className="nickname-modal-content" onClick={(e) => e.stopPropagation()}>
+                                <div className="nickname-modal-header">
+                                    <h2>Edit My Profile</h2>
+                                    <X size={20} className="modal-close-icon" onClick={() => setShowNicknameModal(false)} />
+                                </div>
+
+                                <div className="nickname-info-box">
+                                    <Info size={16} />
+                                    <p>You can set your nickname only once. If you've already set it and need to change it, please contact <a href="mailto:support@ftmo.com">support@ftmo.com</a>.</p>
+                                </div>
+
+                                <div className="nickname-form-group">
+                                    <label>Nickname</label>
+                                    <input
+                                        type="text"
+                                        value={nickname}
+                                        onChange={(e) => setNickname(e.target.value)}
+                                        placeholder="Enter your nickname"
+                                    />
+                                </div>
+
+                                <div className="nickname-modal-actions">
+                                    <button className="nickname-close-btn" onClick={() => setShowNicknameModal(false)}>Close</button>
+                                    <button className="nickname-save-btn" onClick={handleSaveNickname}>Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
 
                     {/* Client Section */}
                     <div className="profile-section">
@@ -772,6 +813,69 @@ function Profile() {
                             2026 © Copyright - YoPips.com Made with ♥ for trading
                             <br />
                             Version: 673b1000
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Yo Pips Identity Tab */}
+            {activeTab === 'ftmo-identity' && (
+                <div className="profile-page-content">
+                    <h3 className="section-title">Yo Pips Identity</h3>
+
+                    <div className="profile-warning-box">
+                        <Info size={18} />
+                        <p>
+                            The Yo Pips Identity section will be unlocked for you once you are about to sign or change a contract with us. It will be automatically unlocked once you meet a Profit Target in a Verification that has not violated Max Daily Loss or Max Loss.
+                        </p>
+                    </div>
+
+                    {/* Footer */}
+                    <div className="profile-page-footer">
+                        <div className="footer-links-row">
+                            <a href="#">Cookie settings</a>
+                            <a href="#">Privacy policy</a>
+                            <a href="#">Terms & Conditions</a>
+                        </div>
+                        <p className="footer-text">
+                            All information provided on this site is intended solely for educational purposes related to trading on financial markets and does not serve in any way as a specific investment recommendation, business recommendation, investment opportunity analysis or similar general recommendation regarding the trading of investment instruments. Yo Pips only provides services of simulated trading and educational tools for traders. The information on this site is not directed at residents in any country or jurisdiction where such distribution or use would be contrary to local laws or regulations. Yo Pips companies do not act as a broker and do not accept any deposits. The offered technical solution for the Yo Pips platforms and data feed is powered by liquidity providers.
+                        </p>
+                        <div className="footer-copyright-row">
+                            2026 © Copyright - YoPips.com Made with ♥ for trading.
+                            <br />
+                            Version: 673b1000
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Edit Nickname Modal */}
+            {showNicknameModal && (
+                <div className="nickname-modal-overlay" onClick={() => setShowNicknameModal(false)}>
+                    <div className="nickname-modal-content" onClick={(e) => e.stopPropagation()}>
+                        <div className="nickname-modal-header">
+                            <h2>Edit My Profile</h2>
+                            <X size={20} className="modal-close-icon" onClick={() => setShowNicknameModal(false)} />
+                        </div>
+
+                        <div className="nickname-info-box">
+                            <Info size={16} />
+                            <p>You can set your nickname only once. If you've already set it and need to change it, please contact <a href="mailto:support@yopips.com">support@yopips.com</a>.</p>
+                        </div>
+
+                        <div className="nickname-form-group">
+                            <label>Nickname</label>
+                            <input
+                                type="text"
+                                value={nickname}
+                                onChange={(e) => setNickname(e.target.value)}
+                                placeholder="Enter your nickname"
+                            />
+                        </div>
+
+                        <div className="nickname-modal-actions">
+                            <button className="nickname-close-btn" onClick={() => setShowNicknameModal(false)}>Close</button>
+                            <button className="nickname-save-btn" onClick={handleSaveNickname}>Save</button>
                         </div>
                     </div>
                 </div>

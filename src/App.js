@@ -38,6 +38,8 @@ function App() {
     });
     const [bannerVisible, setBannerVisible] = useState(true);
 
+    const [isChatOpen, setIsChatOpen] = useState(false);
+
     useEffect(() => {
         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         const handleChange = (e) => setDarkMode(e.matches);
@@ -74,7 +76,11 @@ function App() {
                 <Route path="*" element={
                     <>
                         <div className="app-container">
-                            <Sidebar darkMode={darkMode} toggleTheme={toggleTheme} />
+                            <Sidebar
+                                darkMode={darkMode}
+                                toggleTheme={toggleTheme}
+                                openChat={() => setIsChatOpen(true)}
+                            />
                             <div className="main-content">
                                 {bannerVisible && (
                                     <div className="top-banner-orange">
@@ -109,7 +115,10 @@ function App() {
                                         <Route path="/billing" element={<Billing />} />
                                         <Route path="/free-trial" element={<FreeTrial />} />
                                     </Routes>
-                                    <ChatBot />
+                                    <ChatBot
+                                        isOpen={isChatOpen}
+                                        toggleChat={() => setIsChatOpen(!isChatOpen)}
+                                    />
                                 </div>
                             </div>
                         </div>

@@ -44,7 +44,7 @@ body {
 }
 
 .content-body {
-  padding: 0 32px 24px 32px;
+  padding: 0 40px 32px 24px;
 }
 
 /* Top Banner Orange */
@@ -755,4 +755,194 @@ body {
   font-size: 14px;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(59, 91, 219, 0.3);
+}
+
+/* --- Mobile Responsiveness --- */
+
+/* Mobile Menu Button - Hidden on Desktop */
+.mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1001;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+}
+
+/* Sidebar Wrapper to handle transitions cleanly */
+.sidebar-wrapper {
+  height: 100vh;
+  display: flex;
+}
+
+/* Responsive Breakpoint */
+@media (max-width: 900px) {
+
+  /* Layout Changes */
+  .app-container {
+    flex-direction: column;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Sidebar Mobile State */
+  .sidebar-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    width: 280px;
+    background: transparent;
+    /* Wrapper doesn't need bg */
+  }
+
+  .sidebar-wrapper.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-wrapper.open+.sidebar-overlay,
+  .sidebar-overlay {
+    /* If overlay is sibling? In JS it is sibling of wrapper */
+    display: block;
+  }
+
+  /* Ensure Sidebar CSS from Sidebar.css works with wrapper */
+  /* Sidebar.css defines .sidebar { width: 280px... } which is inside wrapper? 
+       Wait, App.js renders: <div className="sidebar-wrapper"><Sidebar /></div>
+       Sidebar returns <div className="sidebar">...</div>
+       So .sidebar-wrapper > .sidebar. 
+    */
+
+  /* Main Content Adjustments */
+  .content-body {
+    padding: 50px 16px 80px 16px;
+    /* Top padding for menu btn, bottom for chat */
+  }
+
+  .header-container {
+    flex-direction: column-reverse;
+    /* Put breadcrumbs below actions, or stack */
+    align-items: flex-start;
+    gap: 16px;
+    padding-top: 50px;
+    /* Space for banner + menu button */
+  }
+
+  .header-user-actions {
+    align-self: flex-end;
+    /* Keep user profile on right */
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  /* Grid Stacking */
+  .grid-container {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .grid-left-col,
+  .grid-right-col {
+    flex: 1;
+    width: 100%;
+  }
+
+  .top-cards-row {
+    flex-direction: column;
+  }
+
+  .account-summary-wrapper,
+  .behavioral-bias-wrapper {
+    flex: 1;
+    width: 100%;
+  }
+
+  /* Table Responsiveness - Global */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* Hide some complexity in tables if needed, or scroll is fine */
+
+  /* Dashboard Specifics */
+  .user-level .bg-image {
+    width: 100%;
+    opacity: 0.2;
+    mask-image: none;
+  }
+
+  .level-stats {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  /* New Challenge Page Responsive */
+  .challenge-layout {
+    flex-direction: column;
+  }
+
+  .radio-group-row {
+    flex-direction: column;
+  }
+
+  .size-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rules-options .rule-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .toggle-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .size-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .level-name {
+    font-size: 24px;
+  }
+
+  .banner-content-static {
+    flex-direction: column;
+    text-align: center;
+    padding-right: 20px;
+  }
+
+  .header-user-actions {
+    gap: 12px;
+  }
 }

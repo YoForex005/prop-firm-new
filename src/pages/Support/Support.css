@@ -308,3 +308,108 @@ h3 {
 .heart {
     color: #ef4444;
 }
+
+/* Dark Mode Overrides */
+[data-theme='dark'] .support-container {
+    background-color: #111827;
+    color: #e5e7eb;
+}
+
+[data-theme='dark'] .support-breadcrumbs {
+    color: #6b7280;
+}
+
+[data-theme='dark'] .crumb-link {
+    color: #9ca3af;
+}
+
+[data-theme='dark'] .crumb-sep {
+    color: #4b5563;
+}
+
+[data-theme='dark'] .crumb-current {
+    color: #9ca3af;
+}
+
+[data-theme='dark'] .support-header-card,
+[data-theme='dark'] .tickets-table-card,
+[data-theme='dark'] .form-card {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+[data-theme='dark'] .headset-icon,
+[data-theme='dark'] .header-title h1 {
+    color: #f3f4f6;
+}
+
+[data-theme='dark'] h3 {
+    color: #f3f4f6;
+}
+
+[data-theme='dark'] .tickets-table th {
+    color: #9ca3af;
+    border-bottom-color: #374151;
+}
+
+[data-theme='dark'] .no-tickets-state {
+    color: #6b7280;
+}
+
+[data-theme='dark'] .empty-img-placeholder {
+    background: #374151;
+    background-image: linear-gradient(to bottom, #374151 0%, #1f2937 100%);
+}
+
+[data-theme='dark'] .empty-img-placeholder::before,
+[data-theme='dark'] .empty-img-placeholder::after {
+    background: #4b5563;
+}
+
+[data-theme='dark'] .solved-count-badge {
+    background: #374151;
+    border-color: #4b5563;
+    color: #e5e7eb;
+}
+
+[data-theme='dark'] .form-group label {
+    color: #e5e7eb;
+}
+
+[data-theme='dark'] .form-input,
+[data-theme='dark'] .form-textarea {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f3f4f6;
+}
+
+[data-theme='dark'] .form-input:focus,
+[data-theme='dark'] .form-textarea:focus {
+    border-color: #6b7280;
+    background: #4b5563;
+}
+
+[data-theme='dark'] .file-upload-area {
+    border-color: #4b5563;
+}
+
+[data-theme='dark'] .select-file-btn {
+    background: #4b5563;
+    color: #e5e7eb;
+}
+
+[data-theme='dark'] .file-limit {
+    color: #6b7280;
+}
+
+[data-theme='dark'] .footer-links a {
+    color: #9ca3af;
+}
+
+[data-theme='dark'] .footer-disclaimer {
+    color: #6b7280;
+}
+
+[data-theme='dark'] .footer-copyright {
+    color: #6b7280;
+}

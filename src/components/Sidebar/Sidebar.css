@@ -6,10 +6,11 @@
     padding: 24px 0;
     border-right: 1px solid #f0f0f0;
     z-index: 10;
-    transition: width 0.3s ease;
-    height: 100vh;
-    position: sticky;
-    top: 0;
+    /* transition: width 0.3s ease; - Removed, handled by wrapper */
+    height: 100%;
+    /* Changed from 100vh to fill wrapper */
+    /* position: sticky; - Removed, wrapper handles positioning */
+    /* top: 0; */
     overflow-y: auto;
 }
 
@@ -86,7 +87,6 @@
     text-decoration: none;
     margin-bottom: 4px;
     height: auto;
-    /* Override App.css fixed height */
 }
 
 .nav-item:hover {
@@ -98,10 +98,7 @@
     background-color: #eff4ff;
     color: var(--primary-color);
     box-shadow: none;
-    /* Override App.css */
 }
-
-
 
 .nav-item svg {
     min-width: 20px;
@@ -121,7 +118,6 @@
     margin-top: auto;
 }
 
-/* Override Tooltip removal */
 .nav-item[data-tooltip]:hover::after {
     display: none;
 }
@@ -167,6 +163,7 @@
 [data-theme='dark'] .submenu-item.active {
     background-color: #1a2236;
 }
+
 /* Locked item styles */
 .submenu-item.locked {
     color: #999;
@@ -201,8 +198,13 @@
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .locked-modal {
@@ -221,6 +223,7 @@
         transform: translateY(20px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;

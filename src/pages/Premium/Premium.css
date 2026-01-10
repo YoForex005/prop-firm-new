@@ -445,3 +445,107 @@
         gap: 32px;
     }
 }
+
+/* Dark Mode Overrides */
+[data-theme='dark'] .premium-header {
+    border-bottom-color: #374151;
+}
+
+[data-theme='dark'] .premium-title-section svg {
+    color: #9ca3af;
+}
+
+[data-theme='dark'] .premium-title-section h1 {
+    color: #f3f4f6;
+}
+
+[data-theme='dark'] .premium-tab {
+    color: #6b7280;
+}
+
+[data-theme='dark'] .premium-tab.active {
+    color: #007bff;
+}
+
+[data-theme='dark'] .premium-warning {
+    background-color: rgba(255, 193, 7, 0.15);
+    border-color: rgba(255, 193, 7, 0.3);
+    color: #ffc107;
+}
+
+[data-theme='dark'] .premium-warning svg {
+    color: #ff8c00;
+}
+
+[data-theme='dark'] .premium-content h2 {
+    color: #f3f4f6;
+}
+
+[data-theme='dark'] .premium-intro {
+    color: #e5e7eb;
+}
+
+[data-theme='dark'] .premium-description {
+    color: #9ca3af;
+}
+
+[data-theme='dark'] .tier-card {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+[data-theme='dark'] .tier-title {
+    color: #f3f4f6;
+}
+
+[data-theme='dark'] .benefit-item {
+    color: #e5e7eb;
+}
+
+[data-theme='dark'] .tier-button {
+    background: #374151;
+    border-color: #4b5563;
+    color: #e5e7eb;
+}
+
+[data-theme='dark'] .tier-button:hover {
+    background: #4b5563;
+}
+
+[data-theme='dark'] .premium-footer {
+    border-top-color: #374151;
+}
+
+[data-theme='dark'] .footer-links-premium a {
+    color: #9ca3af;
+}
+
+[data-theme='dark'] .footer-disclaimer-premium,
+[data-theme='dark'] .footer-copyright-premium {
+    color: #9ca3af;
+}
+
+/* Dark Mode Modal Overrides */
+[data-theme='dark'] .prime-modal-content {
+    background: #1f2937;
+}
+
+[data-theme='dark'] .prime-modal-body {
+    color: #e5e7eb;
+}
+
+[data-theme='dark'] .prime-modal-title {
+    color: #f3f4f6;
+}
+
+[data-theme='dark'] .prime-modal-desc {
+    color: #9ca3af;
+}
+
+[data-theme='dark'] .modal-section-title {
+    color: #f3f4f6;
+}
+
+[data-theme='dark'] .modal-benefit-item {
+    color: #e5e7eb;
+}

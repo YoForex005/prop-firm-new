@@ -192,7 +192,7 @@ function Premium() {
                     </div>
                 </div>
 
-                <button className="start-now-button">Start Now</button>
+                <button className="start-now-button" onClick={() => navigate('/new-challenge')}>Start Now</button>
 
                 <div className="premium-footer">
                     <div className="footer-links-premium">

@@ -105,10 +105,6 @@ function NewChallenge() {
                                 <div className="radio-circle">{step === 'zero' && <div className="dot"></div>}</div>
                                 <span>Zero</span>
                             </label>
-                            <label className={`radio-card ${step === 'free-trial' ? 'active' : ''}`} onClick={() => setStep('free-trial')}>
-                                <div className="radio-circle">{step === 'free-trial' && <div className="dot"></div>}</div>
-                                <span>Free Trial</span>
-                            </label>
                         </div>
                     </div>
 
@@ -155,7 +151,7 @@ function NewChallenge() {
                                         className={`toggle-btn ${profitTarget === '10%' ? 'active' : ''}`}
                                         onClick={() => setProfitTarget('10%')}
                                     >
-                                        <div className={profitTarget === '10%' ? "dot" : "circle-outline"}></div> 10% <span className="price-tag">-$40.00</span>
+                                        <div className={profitTarget === '10%' ? "dot" : "circle-outline"}></div> 10% <span className="price-tag">+$40.00</span>
                                     </button>
                                 </div>
                             </div>

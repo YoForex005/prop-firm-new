@@ -31,7 +31,7 @@ import {
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Sidebar.css';
 
-function Sidebar({ darkMode, toggleTheme }) {
+function Sidebar({ darkMode, toggleTheme, openChat, closeSidebar }) {
     const location = useLocation();
     const navigate = useNavigate();
     const [supportOpen, setSupportOpen] = React.useState(false);
@@ -39,15 +39,22 @@ function Sidebar({ darkMode, toggleTheme }) {
     const [showLockedModal, setShowLockedModal] = React.useState(false);
     const isActive = (path) => location.pathname === path;
 
+    // Helper to handle navigation and closing sidebar
+    const handleNav = (path) => {
+        navigate(path);
+        if (closeSidebar) closeSidebar();
+    };
+
     const handleLockedClick = (e) => {
         e.preventDefault();
         setShowLockedModal(true);
+        if (closeSidebar) closeSidebar();
     };
 
     return (
         <div className="sidebar">
             <div className="sidebar-logo">
-                <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+                <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }} onClick={closeSidebar}>
                     <svg fill={darkMode ? "#ffffff" : "#000000"} width="32px" height="32px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16 0C7.163 0 0 7.163 0 16s7.163 16 16 16 16-7.163 16-16S24.837 0 16 0zm0 30C8.268 30 2 23.732 2 16S8.268 2 16 2s14 6.268 14 14-6.268 14-14 14z" />
                         <path d="M12 9h9v3h-6v4h6v3h-6v6h-3V9z" />
@@ -59,7 +66,7 @@ function Sidebar({ darkMode, toggleTheme }) {
             <div className="sidebar-scroll">
                 <button
                     className="new-challenge-btn"
-                    onClick={() => navigate('/new-challenge')}
+                    onClick={() => handleNav('/new-challenge')}
                 >
                     New Yo Pips Challenge
                 </button>
@@ -67,75 +74,55 @@ function Sidebar({ darkMode, toggleTheme }) {
                 <div className="menu-group">
                     <div className="menu-label">Main menu</div>
 
-                    <Link to="/" style={{ textDecoration: 'none' }}>
-                        <div className={`nav-item ${isActive('/') ? 'active' : ''}`}>
-                            <LayoutGrid size={20} />
-                            <span>Accounts Overview</span>
-                        </div>
-                    </Link>
+                    <div className={`nav-item ${isActive('/') ? 'active' : ''}`} onClick={() => handleNav('/')}>
+                        <LayoutGrid size={20} />
+                        <span>Accounts Overview</span>
+                    </div>
 
-                    <Link to="/premium" style={{ textDecoration: 'none' }}>
-                        <div className={`nav-item ${isActive('/premium') ? 'active' : ''}`}>
-                            <Crown size={20} />
-                            <span>Premium</span>
-                        </div>
-                    </Link>
+                    <div className={`nav-item ${isActive('/premium') ? 'active' : ''}`} onClick={() => handleNav('/premium')}>
+                        <Crown size={20} />
+                        <span>Premium</span>
+                    </div>
 
-                    <Link to="/profile" style={{ textDecoration: 'none' }}>
-                        <div className={`nav-item ${isActive('/profile') ? 'active' : ''}`}>
-                            <User size={20} />
-                            <span>Profile</span>
-                        </div>
-                    </Link>
+                    <div className={`nav-item ${isActive('/profile') ? 'active' : ''}`} onClick={() => handleNav('/profile')}>
+                        <User size={20} />
+                        <span>Profile</span>
+                    </div>
 
-                    <Link to="/yopips-traders" style={{ textDecoration: 'none' }}>
-                        <div className={`nav-item ${isActive('/yopips-traders') ? 'active' : ''}`}>
-                            <Users size={18} />
-                            <span>Yo Pips Traders</span>
-                        </div>
-                    </Link>
+                    <div className={`nav-item ${isActive('/yopips-traders') ? 'active' : ''}`} onClick={() => handleNav('/yopips-traders')}>
+                        <Users size={18} />
+                        <span>Yo Pips Traders</span>
+                    </div>
 
-                    <Link to="/academy" style={{ textDecoration: 'none' }}>
-                        <div className={`nav-item ${isActive('/academy') ? 'active' : ''}`}>
-                            <GraduationCap size={20} />
-                            <span>Yo Pips Academy</span>
-                        </div>
-                    </Link>
+                    <div className={`nav-item ${isActive('/academy') ? 'active' : ''}`} onClick={() => handleNav('/academy')}>
+                        <GraduationCap size={20} />
+                        <span>Yo Pips Academy</span>
+                    </div>
 
-                    <Link to="/billing" style={{ textDecoration: 'none' }}>
-                        <div className={`nav-item ${isActive('/billing') ? 'active' : ''}`}>
-                            <CreditCard size={20} />
-                            <span>Billing</span>
-                        </div>
-                    </Link>
+                    <div className={`nav-item ${isActive('/billing') ? 'active' : ''}`} onClick={() => handleNav('/billing')}>
+                        <CreditCard size={20} />
+                        <span>Billing</span>
+                    </div>
 
-                    <Link to="/leaderboard" style={{ textDecoration: 'none' }}>
-                        <div className={`nav-item ${isActive('/leaderboard') ? 'active' : ''}`}>
-                            <Trophy size={20} />
-                            <span>Leaderboard</span>
-                        </div>
-                    </Link>
+                    <div className={`nav-item ${isActive('/leaderboard') ? 'active' : ''}`} onClick={() => handleNav('/leaderboard')}>
+                        <Trophy size={20} />
+                        <span>Leaderboard</span>
+                    </div>
 
-                    <Link to="/certificates" style={{ textDecoration: 'none' }}>
-                        <div className={`nav-item ${isActive('/certificates') ? 'active' : ''}`}>
-                            <Award size={20} />
-                            <span>Certificates</span>
-                        </div>
-                    </Link>
+                    <div className={`nav-item ${isActive('/certificates') ? 'active' : ''}`} onClick={() => handleNav('/certificates')}>
+                        <Award size={20} />
+                        <span>Certificates</span>
+                    </div>
 
-                    <Link to="/downloads" style={{ textDecoration: 'none' }}>
-                        <div className={`nav-item ${isActive('/downloads') ? 'active' : ''}`}>
-                            <Download size={20} />
-                            <span>Downloads</span>
-                        </div>
-                    </Link>
+                    <div className={`nav-item ${isActive('/downloads') ? 'active' : ''}`} onClick={() => handleNav('/downloads')}>
+                        <Download size={20} />
+                        <span>Downloads</span>
+                    </div>
 
-                    <Link to="/social" style={{ textDecoration: 'none' }}>
-                        <div className={`nav-item ${isActive('/social') ? 'active' : ''}`}>
-                            <Share2 size={20} />
-                            <span>Social Media</span>
-                        </div>
-                    </Link>
+                    <div className={`nav-item ${isActive('/social') ? 'active' : ''}`} onClick={() => handleNav('/social')}>
+                        <Share2 size={20} />
+                        <span>Social Media</span>
+                    </div>
                 </div>
 
                 <div className="menu-group">
@@ -155,35 +142,27 @@ function Sidebar({ darkMode, toggleTheme }) {
                     </div>
                     {toolsOpen && (
                         <div className="submenu">
-                            <Link to="/calendar" style={{ textDecoration: 'none' }}>
-                                <div className={`submenu-item ${isActive('/calendar') ? 'active' : ''}`}>
-                                    <Calendar size={16} />
-                                    <span>Economic Calendar</span>
-                                </div>
-                            </Link>
-                            <Link to="/symbols-tickets" style={{ textDecoration: 'none' }}>
-                                <div className={`submenu-item ${isActive('/symbols-tickets') ? 'active' : ''}`}>
-                                    <Tag size={16} />
-                                    <span>Symbols & Tickets</span>
-                                </div>
-                            </Link>
-                            <Link to="/ticker" style={{ textDecoration: 'none' }}>
-                                <div className={`submenu-item ${isActive('/ticker') ? 'active' : ''}`}>
-                                    <TrendingUp size={16} />
-                                    <span>Ticker</span>
-                                </div>
-                            </Link>
+                            <div className={`submenu-item ${isActive('/calendar') ? 'active' : ''}`} onClick={() => handleNav('/calendar')}>
+                                <Calendar size={16} />
+                                <span>Economic Calendar</span>
+                            </div>
+                            <div className={`submenu-item ${isActive('/symbols-tickets') ? 'active' : ''}`} onClick={() => handleNav('/symbols-tickets')}>
+                                <Tag size={16} />
+                                <span>Symbols & Tickets</span>
+                            </div>
+                            <div className={`submenu-item ${isActive('/ticker') ? 'active' : ''}`} onClick={() => handleNav('/ticker')}>
+                                <TrendingUp size={16} />
+                                <span>Ticker</span>
+                            </div>
                             <div className="submenu-item locked" onClick={handleLockedClick}>
                                 <LineChart size={16} />
                                 <span>Trader's Analysis</span>
                                 <Lock size={12} className="lock-icon" />
                             </div>
-                            <Link to="/timezone-converter" style={{ textDecoration: 'none' }}>
-                                <div className={`submenu-item ${isActive('/timezone-converter') ? 'active' : ''}`}>
-                                    <Clock size={16} />
-                                    <span>Timezone Converter</span>
-                                </div>
-                            </Link>
+                            <div className={`submenu-item ${isActive('/timezone-converter') ? 'active' : ''}`} onClick={() => handleNav('/timezone-converter')}>
+                                <Clock size={16} />
+                                <span>Timezone Converter</span>
+                            </div>
                             <div className="submenu-item locked" onClick={handleLockedClick}>
                                 <Handshake size={16} />
                                 <span>Partnership Deals</span>
@@ -232,24 +211,24 @@ function Sidebar({ darkMode, toggleTheme }) {
                     </div>
                     {supportOpen && (
                         <div className="submenu">
-                            <Link to="/support/send-message" style={{ textDecoration: 'none' }}>
-                                <div className={`submenu-item ${isActive('/support/send-message') ? 'active' : ''}`}>
-                                    <MessageSquare size={16} />
-                                    <span>Send message</span>
-                                </div>
-                            </Link>
-                            <Link to="/support/live-chat" style={{ textDecoration: 'none' }}>
-                                <div className={`submenu-item ${isActive('/support/live-chat') ? 'active' : ''}`}>
-                                    <MessageSquare size={16} />
-                                    <span>Live Chat</span>
-                                </div>
-                            </Link>
-                            <Link to="/support/discord" style={{ textDecoration: 'none' }}>
-                                <div className={`submenu-item ${isActive('/support/discord') ? 'active' : ''}`}>
-                                    <MessageSquare size={16} />
-                                    <span>Discord</span>
-                                </div>
-                            </Link>
+                            <div className={`submenu-item ${isActive('/support/send-message') ? 'active' : ''}`} onClick={() => handleNav('/support/send-message')}>
+                                <MessageSquare size={16} />
+                                <span>Send message</span>
+                            </div>
+                            <div
+                                className={`submenu-item ${isActive('/support/live-chat') ? 'active' : ''}`}
+                                onClick={() => {
+                                    openChat();
+                                }}
+                                style={{ cursor: 'pointer' }}
+                            >
+                                <MessageSquare size={16} />
+                                <span>Live Chat</span>
+                            </div>
+                            <div className={`submenu-item ${isActive('/support/discord') ? 'active' : ''}`} onClick={() => handleNav('/support/discord')}>
+                                <MessageSquare size={16} />
+                                <span>Discord</span>
+                            </div>
                         </div>
                     )}
                 </div>

@@ -401,3 +401,29 @@
 [data-theme='dark'] .footer-links a {
     color: #e5e7eb;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .billing-container {
+        padding: 16px;
+    }
+
+    .billing-header {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .filter-wrapper {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .filter-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .filter-popup {
+        width: 100%;
+    }
+}
