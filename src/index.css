@@ -106,3 +106,50 @@ button {
     padding: 0 20px;
   }
 }
+
+/* --- Migrated from App.css --- */
+:root {
+  --bg-color: #f7f9fc;
+  --sidebar-bg: #ffffff;
+  --header-bg: #ffffff;
+  --card-bg: #ffffff;
+  --primary-color: #3b5bdb;
+  --text-color: #1d1d1f;
+  --gray-text: #86868b;
+  --border-radius: 16px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  --status-active: #10b981;
+  --status-passed: #10b981;
+  --status-failed: #ef4444;
+}
+
+[data-theme='dark'],
+.dark {
+  --bg-color: #0d0d0d;
+  --sidebar-bg: #141414;
+  --header-bg: #141414;
+  --card-bg: #141414;
+  --text-color: #f3f4f6;
+  --gray-text: #9ca3af;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  /* Fix for global variables */
+  --bg-main: #0d0d0d;
+  --text-main: #f3f4f6;
+  --primary-white: #141414;
+  --border-color: #374151;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[var(--primary-color)] text-white border-none py-[10px] px-[20px] rounded-[8px] cursor-pointer font-semibold text-[13px] flex items-center gap-2 no-underline shadow-[0_4px_10px_#3b5bdb40];
+  }
+
+  .btn-secondary {
+    @apply bg-white border border-[#e0e0e0] text-[var(--text-color)] py-[10px] px-[20px] rounded-[8px] cursor-pointer font-semibold text-[13px] flex items-center gap-2;
+  }
+
+  .card {
+    @apply bg-[var(--card-bg)] rounded-[var(--border-radius)] p-[24px] shadow-[var(--box-shadow)] border border-[#f2f2f2];
+  }
+}

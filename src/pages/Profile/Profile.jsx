@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './Profile.css';
 import { User, Info, Edit2, X } from 'lucide-react';
 
 function Profile() {
@@ -69,133 +68,112 @@ function Profile() {
     };
 
     return (
-        <div className="profile-page-container">
+        <div className="max-w-[1200px] mx-auto p-0">
             {/* Breadcrumbs */}
-            <div className="profile-breadcrumbs">
-                <span className="breadcrumb-item">Trader</span>
-                <span className="breadcrumb-separator">/</span>
-                <span className="breadcrumb-item">Profile</span>
-                <span className="breadcrumb-separator">/</span>
-                <span className="breadcrumb-item active">Personal Information</span>
+            <div className="flex items-center gap-2 mb-6 text-[13px] text-[#999] dark:text-[#6b7280]">
+                <span className="text-[#999] dark:text-[#6b7280]">Trader</span>
+                <span className="text-[#ddd] dark:text-[#4b5563]">/</span>
+                <span className="text-[#999] dark:text-[#6b7280]">Profile</span>
+                <span className="text-[#ddd] dark:text-[#4b5563]">/</span>
+                <span className="text-[#333] dark:text-[#e5e7eb]">Personal Information</span>
             </div>
 
             {/* Header */}
-            <div className="profile-page-header">
-                <User size={20} />
-                <h1>Profile</h1>
+            <div className="flex items-center gap-3 mb-6">
+                <User size={20} className="text-[#1a1a1a] dark:text-[#f3f4f6]" />
+                <h1 className="text-[22px] font-semibold m-0 text-[#1a1a1a] dark:text-[#f3f4f6]">Profile</h1>
             </div>
 
             {/* Tabs */}
-            <div className="profile-tabs-row">
-                <button
-                    className={`profile-page-tab ${activeTab === 'personal-information' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('personal-information')}
-                >
-                    Personal Information
-                </button>
-                <button
-                    className={`profile-page-tab ${activeTab === 'account-information' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('account-information')}
-                >
-                    Account Information
-                </button>
-                <button
-                    className={`profile-page-tab ${activeTab === 'security' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('security')}
-                >
-                    Security
-                </button>
-                <button
-                    className={`profile-page-tab ${activeTab === 'ftmo-identity' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('ftmo-identity')}
-                >
-                    Yo Pips Identity
-                </button>
-                <button
-                    className={`profile-page-tab ${activeTab === 'newsletters' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('newsletters')}
-                >
-                    Newsletters
-                </button>
-                <button
-                    className={`profile-page-tab ${activeTab === 'ftmo-points' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('ftmo-points')}
-                >
-                    Yo Pips Points
-                </button>
+            <div className="flex gap-[2px] border-b-2 border-[#eee] dark:border-[#374151] mb-8 overflow-x-auto pb-1">
+                {[
+                    { id: 'personal-information', label: 'Personal Information' },
+                    { id: 'account-information', label: 'Account Information' },
+                    { id: 'security', label: 'Security' },
+                    { id: 'ftmo-identity', label: 'Yo Pips Identity' },
+                    { id: 'newsletters', label: 'Newsletters' },
+                    { id: 'ftmo-points', label: 'Yo Pips Points' }
+                ].map(tab => (
+                    <button
+                        key={tab.id}
+                        className={`bg-transparent border-none px-5 py-3 text-sm font-semibold text-[#999] dark:text-[#6b7280] cursor-pointer border-b-2 -mb-[2px] transition-all duration-200 hover:text-[#007bff] dark:hover:text-[#007bff] whitespace-nowrap ${activeTab === tab.id ? 'text-[#007bff] dark:text-[#007bff] border-[#007bff]' : 'border-transparent'}`}
+                        onClick={() => setActiveTab(tab.id)}
+                    >
+                        {tab.label}
+                    </button>
+                ))}
             </div>
 
             {/* Content */}
             {activeTab === 'personal-information' && (
-                <div className="profile-page-content">
+                <div className="max-w-[900px]">
                     {/* User Info Card */}
-                    <div className="user-info-card">
-                        <div className="user-avatar-circle">AN</div>
-                        <div className="user-info-details">
-                            <div className="user-name-row">
-                                <span className="user-name">Arijeet Nayak</span>
+                    <div className="bg-white dark:bg-[#1f2937] border border-[#eee] dark:border-[#374151] rounded-lg p-6 flex items-center gap-5 mb-8 shadow-[0_1px_3px_rgba(0,0,0,0.05)] max-md:flex-col max-md:text-center max-md:gap-4">
+                        <div className="w-16 h-16 rounded-full bg-linear-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center text-white text-2xl font-bold shrink-0">AN</div>
+                        <div className="flex-1 max-md:flex max-md:flex-col max-md:items-center">
+                            <div className="flex items-center gap-2 mb-1.5">
+                                <span className="text-lg font-bold text-[#1a1a1a] dark:text-[#f3f4f6]">Arijeet Nayak</span>
                                 <Edit2
                                     size={14}
-                                    className="edit-icon"
+                                    className="text-[#007bff] cursor-pointer"
                                     onClick={() => setShowProfilePictureSettings(!showProfilePictureSettings)}
-                                    style={{ cursor: 'pointer' }}
                                 />
                             </div>
-                            <div className="user-email">ranjan.nayak1968@gmail.com</div>
-                            <div className="user-points">0 Yo Pips Points</div>
+                            <div className="text-[13px] text-[#666] dark:text-[#9ca3af] mb-1">ranjan.nayak1968@gmail.com</div>
+                            <div className="text-[13px] text-[#999] dark:text-[#6b7280]">0 Yo Pips Points</div>
                         </div>
-                        <button className="edit-nickname-btn" onClick={() => setShowNicknameModal(true)}>Edit nickname</button>
+                        <button className="bg-white dark:bg-[#374151] border border-[#ddd] dark:border-[#4b5563] text-[#1a1a1a] dark:text-[#e5e7eb] px-4 py-2 rounded-md text-[13px] font-semibold cursor-pointer transition-all duration-200 hover:bg-[#f7f7f7] dark:hover:bg-[#4b5563]" onClick={() => setShowNicknameModal(true)}>Edit nickname</button>
                     </div>
 
                     {/* Profile Picture Settings */}
                     {showProfilePictureSettings && (
-                        <div className="profile-picture-settings">
-                            <h3 className="settings-title">Profile picture settings</h3>
-                            <div className="picture-info-box">
-                                <Info size={16} />
-                                <p>
+                        <div className="bg-white dark:bg-[#1f2937] border border-[#e5e7eb] dark:border-[#374151] rounded-lg p-6 mb-6">
+                            <h3 className="text-base font-semibold text-[#1a1a1a] dark:text-[#f3f4f6] m-0 mb-4">Profile picture settings</h3>
+                            <div className="bg-[#e7f3ff] dark:bg-[rgba(0,123,255,0.15)] border border-[#90c9ff] dark:border-[rgba(0,123,255,0.3)] rounded-md p-3 flex gap-3 mb-5 items-start">
+                                <Info size={16} className="text-[#0066cc] dark:text-[#3b82f6] shrink-0 mt-[2px]" />
+                                <p className="text-[13px] text-[#004080] dark:text-[#60a5fa] m-0 leading-relaxed">
                                     Please do not upload pictures (such as ID) or any documents containing sensitive or corrupted data.
                                     Your profile picture may be visible to third parties when contacting customer service.
                                 </p>
                             </div>
-                            <div className="picture-upload-area">
-                                <div className="upload-icon">
-                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <div className="border-2 border-dashed border-[#d1d5db] dark:border-[#4b5563] rounded-lg p-12 text-center cursor-pointer transition-all duration-200 hover:border-[#007bff] hover:bg-[#f7f9fc] dark:hover:bg-[#1f2937]">
+                                <div className="w-16 h-16 bg-[#f3f4f6] dark:bg-[#374151] rounded-full flex items-center justify-center mx-auto mb-4 text-[#6b7280] dark:text-[#9ca3af]">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                         <polyline points="17 8 12 3 7 8"></polyline>
                                         <line x1="12" y1="3" x2="12" y2="15"></line>
                                     </svg>
                                 </div>
-                                <p className="upload-text">Drag and drop file here or click</p>
+                                <p className="text-sm text-[#6b7280] dark:text-[#9ca3af] m-0">Drag and drop file here or click</p>
                             </div>
                         </div>
                     )}
 
                     {/* Error Alert */}
                     {showErrorAlert && (
-                        <div className="error-alert-banner">
-                            <Info size={18} />
-                            <span>Please fill in all required fields before saving.</span>
+                        <div className="bg-[#fee] dark:bg-[rgba(239,68,68,0.15)] border border-[#f44] dark:border-[rgba(239,68,68,0.3)] rounded-lg p-4 flex items-center gap-3 mb-6 text-[#c00] dark:text-[#ef4444] animate-[slideDown_0.3s_ease-out]">
+                            <Info size={18} className="shrink-0" />
+                            <span className="text-sm font-semibold">Please fill in all required fields before saving.</span>
                         </div>
                     )}
 
                     {/* Client Section */}
-                    <div className="profile-section">
-                        <h3 className="section-title">Client</h3>
-                        <div className="form-row">
-                            <div className="form-col">
-                                <label>First Name</label>
-                                <input type="text" value="Arijeet" readOnly />
+                    <div className="bg-white dark:bg-[#1f2937] border border-[#eee] dark:border-[#374151] rounded-lg p-6 mb-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+                        <h3 className="text-base font-bold text-[#1a1a1a] dark:text-[#f3f4f6] m-0 mb-5">Client</h3>
+                        <div className="grid grid-cols-2 gap-4 mb-4 max-md:grid-cols-1">
+                            <div className="flex flex-col">
+                                <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">First Name</label>
+                                <input type="text" value="Arijeet" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#2d3748] text-[#999] dark:text-[#6b7280]" />
                             </div>
-                            <div className="form-col">
-                                <label>Last Name</label>
-                                <input type="text" value="Nayak" readOnly />
+                            <div className="flex flex-col">
+                                <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Last Name</label>
+                                <input type="text" value="Nayak" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#2d3748] text-[#999] dark:text-[#6b7280]" />
                             </div>
                         </div>
-                        <div className="form-row">
-                            <div className="form-col-full">
-                                <label>Title</label>
-                                <select>
+                        <div className="grid grid-cols-2 gap-4 mb-4">
+                            <div className="col-span-2 flex flex-col">
+                                <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Title</label>
+                                <select className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] text-[#1a1a1a] dark:text-[#f3f4f6]">
                                     <option>Mr.</option>
                                     <option>Mrs.</option>
                                     <option>Ms.</option>
@@ -205,22 +183,22 @@ function Profile() {
                     </div>
 
                     {/* Contact Info Section */}
-                    <div className="profile-section">
-                        <h3 className="section-title">Contact Info</h3>
-                        <div className="form-row">
-                            <div className="form-col">
-                                <label>Contact Phone</label>
-                                <input type="text" value="+918420484785" readOnly />
+                    <div className="bg-white dark:bg-[#1f2937] border border-[#eee] dark:border-[#374151] rounded-lg p-6 mb-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+                        <h3 className="text-base font-bold text-[#1a1a1a] dark:text-[#f3f4f6] m-0 mb-5">Contact Info</h3>
+                        <div className="grid grid-cols-2 gap-4 mb-4 max-md:grid-cols-1">
+                            <div className="flex flex-col">
+                                <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Contact Phone</label>
+                                <input type="text" value="+918420484785" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#2d3748] text-[#999] dark:text-[#6b7280]" />
                             </div>
-                            <div className="form-col">
-                                <label>E-mail address</label>
-                                <input type="text" value="ranjan.nayak1968@gmail.com" readOnly />
+                            <div className="flex flex-col">
+                                <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">E-mail address</label>
+                                <input type="text" value="ranjan.nayak1968@gmail.com" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#2d3748] text-[#999] dark:text-[#6b7280]" />
                             </div>
                         </div>
-                        <div className="form-row">
-                            <div className="form-col-full">
-                                <label>Country of residence</label>
-                                <select defaultValue="Iceland">
+                        <div className="grid grid-cols-2 gap-4 mb-4">
+                            <div className="col-span-2 flex flex-col">
+                                <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Country of residence</label>
+                                <select defaultValue="Iceland" className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] text-[#1a1a1a] dark:text-[#f3f4f6]">
                                     <option value="">Select a country</option>
                                     <option>Afghanistan</option>
                                     <option>Albania</option>
@@ -419,28 +397,28 @@ function Profile() {
                                 </select>
                             </div>
                         </div>
-                        <div className="form-row">
-                            <div className="form-col">
-                                <label>City</label>
-                                <input type="text" placeholder="" />
+                        <div className="grid grid-cols-2 gap-4 mb-4 max-md:grid-cols-1">
+                            <div className="flex flex-col">
+                                <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">City</label>
+                                <input type="text" placeholder="" className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] text-[#1a1a1a] dark:text-[#f3f4f6]" />
                             </div>
-                            <div className="form-col">
-                                <label>Street</label>
-                                <input type="text" placeholder="" />
+                            <div className="flex flex-col">
+                                <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Street</label>
+                                <input type="text" placeholder="" className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] text-[#1a1a1a] dark:text-[#f3f4f6]" />
                             </div>
                         </div>
-                        <div className="form-row">
-                            <div className="form-col">
-                                <label>Postal Code</label>
-                                <input type="text" placeholder="" />
+                        <div className="grid grid-cols-2 gap-4 mb-4">
+                            <div className="flex flex-col">
+                                <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Postal Code</label>
+                                <input type="text" placeholder="" className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] text-[#1a1a1a] dark:text-[#f3f4f6]" />
                             </div>
                         </div>
                     </div>
 
                     {/* Warning Message */}
-                    <div className="profile-warning-box">
-                        <Info size={18} />
-                        <p>
+                    <div className="bg-[#fff8e1] dark:bg-[rgba(255,193,7,0.15)] border border-[#ffc107] dark:border-[rgba(255,193,7,0.3)] rounded-lg p-4 flex gap-3 mb-6 text-xs text-[#856404] dark:text-[#ffc107] leading-relaxed">
+                        <Info size={18} className="text-[#ff8c00] shrink-0 mt-[2px]" />
+                        <p className="m-0">
                             Please be aware that the registration is non-transferable and can't be changed to another person.
                             Changes in your credentials can only be accepted in cases where you change your address or officially
                             have your own name changed (e.g. in case of marriage). Attempts to transfer the account to another
@@ -449,23 +427,23 @@ function Profile() {
                     </div>
 
                     {/* Save Button */}
-                    <button className="profile-save-btn" onClick={handleSave}>Save</button>
+                    <button className="bg-[#007bff] hover:bg-[#0056b3] text-white border-none px-8 py-3 rounded-md text-sm font-semibold cursor-pointer mb-[60px] transition-colors duration-200" onClick={handleSave}>Save</button>
 
                     {/* Footer */}
-                    <div className="profile-page-footer">
-                        <div className="footer-links-row">
-                            <a href="#">Cookie settings</a>
-                            <a href="#">Privacy policy</a>
-                            <a href="#">Terms & Conditions</a>
+                    <div className="pt-10 border-t border-[#eee] dark:border-[#374151]">
+                        <div className="flex gap-5 mb-4 max-md:flex-col max-md:gap-2">
+                            <a href="#" className="text-xs text-[#666] dark:text-[#9ca3af] underline font-semibold">Cookie settings</a>
+                            <a href="#" className="text-xs text-[#666] dark:text-[#9ca3af] underline font-semibold">Privacy policy</a>
+                            <a href="#" className="text-xs text-[#666] dark:text-[#9ca3af] underline font-semibold">Terms & Conditions</a>
                         </div>
-                        <p className="footer-text">
+                        <p className="text-[11px] text-[#999] dark:text-[#6b7280] leading-relaxed mb-4">
                             All information provided on this site is intended solely for educational purposes related to trading on financial markets and does not serve in any way as a
                             specific investment recommendation, business recommendation, investment opportunity analysis or similar general recommendation regarding the trading of
                             investment instruments. Yo Pips only provides services of simulated trading and educational tools for traders. The information on this site is not directed at
                             residents in any country or jurisdiction where such distribution or use would be contrary to local laws or regulations. Yo Pips companies do not act as a broker
                             and do not accept any deposits. The offered technical solution for the Yo Pips platforms and data feed is powered by liquidity providers.
                         </p>
-                        <div className="footer-copyright-row">
+                        <div className="text-[11px] text-[#999] dark:text-[#6b7280]">
                             2026 © Copyright - YoPips.com Made with ♥ for trading
                             <br />
                             Version: 673b1000
@@ -476,70 +454,71 @@ function Profile() {
 
             {/* Account Information Tab */}
             {activeTab === 'account-information' && (
-                <div className="profile-page-content">
+                <div className="max-w-[900px]">
                     {/* User Info Card */}
-                    <div className="user-info-card">
-                        <div className="user-avatar-circle">AN</div>
-                        <div className="user-info-details">
-                            <div className="user-name-row">
-                                <span className="user-name">Arijeet Nayak</span>
-                                <Edit2 size={14} className="edit-icon" />
+                    <div className="bg-white dark:bg-[#1f2937] border border-[#eee] dark:border-[#374151] rounded-lg p-6 flex items-center gap-5 mb-8 shadow-[0_1px_3px_rgba(0,0,0,0.05)] max-md:flex-col max-md:text-center max-md:gap-4">
+                        <div className="w-16 h-16 rounded-full bg-linear-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center text-white text-2xl font-bold shrink-0">AN</div>
+                        <div className="flex-1 max-md:flex max-md:flex-col max-md:items-center">
+                            <div className="flex items-center gap-2 mb-1.5">
+                                <span className="text-lg font-bold text-[#1a1a1a] dark:text-[#f3f4f6]">Arijeet Nayak</span>
+                                <Edit2 size={14} className="text-[#007bff] cursor-pointer" />
                             </div>
-                            <div className="user-email">ranjan.nayak1968@gmail.com</div>
-                            <div className="user-points">0 Yo Pips Points</div>
+                            <div className="text-[13px] text-[#666] dark:text-[#9ca3af] mb-1">ranjan.nayak1968@gmail.com</div>
+                            <div className="text-[13px] text-[#999] dark:text-[#6b7280]">0 Yo Pips Points</div>
                         </div>
-                        <button className="edit-nickname-btn" onClick={() => setShowNicknameModal(true)}>Edit nickname</button>
+                        <button className="bg-white dark:bg-[#374151] border border-[#ddd] dark:border-[#4b5563] text-[#1a1a1a] dark:text-[#e5e7eb] px-4 py-2 rounded-md text-[13px] font-semibold cursor-pointer transition-all duration-200 hover:bg-[#f7f7f7] dark:hover:bg-[#4b5563]" onClick={() => setShowNicknameModal(true)}>Edit nickname</button>
                     </div>
 
                     {/* Edit Nickname Modal */}
                     {showNicknameModal && (
-                        <div className="nickname-modal-overlay" onClick={() => setShowNicknameModal(false)}>
-                            <div className="nickname-modal-content" onClick={(e) => e.stopPropagation()}>
-                                <div className="nickname-modal-header">
-                                    <h2>Edit My Profile</h2>
-                                    <X size={20} className="modal-close-icon" onClick={() => setShowNicknameModal(false)} />
+                        <div className="fixed inset-0 bg-[rgba(0,0,0,0.5)] flex items-center justify-center z-[1000]" onClick={() => setShowNicknameModal(false)}>
+                            <div className="bg-white dark:bg-[#1f2937] rounded-lg w-full max-w-[500px] shadow-[0_10px_30px_rgba(0,0,0,0.2)] animate-[slideUpModal_0.3s_ease-out] max-md:w-[95%] max-md:mx-[10px]" onClick={(e) => e.stopPropagation()}>
+                                <div className="flex justify-between items-center px-6 py-5 border-b border-[#e5e7eb] dark:border-[#374151]">
+                                    <h2 className="text-base font-semibold m-0 text-[#1a1a1a] dark:text-[#f3f4f6]">Edit My Profile</h2>
+                                    <X size={20} className="text-[#6b7280] dark:text-[#9ca3af] cursor-pointer hover:text-[#1a1a1a] dark:hover:text-[#f3f4f6]" onClick={() => setShowNicknameModal(false)} />
                                 </div>
 
-                                <div className="nickname-info-box">
-                                    <Info size={16} />
-                                    <p>You can set your nickname only once. If you've already set it and need to change it, please contact <a href="mailto:support@ftmo.com">support@ftmo.com</a>.</p>
+                                <div className="bg-[#e7f3ff] dark:bg-[rgba(0,123,255,0.15)] border border-[#90c9ff] dark:border-[rgba(0,123,255,0.3)] rounded-md px-4 py-3 mx-6 my-5 flex gap-3 items-start">
+                                    <Info size={16} className="text-[#0066cc] dark:text-[#3b82f6] shrink-0 mt-[2px]" />
+                                    <p className="text-[13px] text-[#004080] dark:text-[#60a5fa] m-0 leading-relaxed">You can set your nickname only once. If you've already set it and need to change it, please contact <a href="mailto:support@ftmo.com" className="text-[#0066cc] dark:text-[#60a5fa] underline">support@ftmo.com</a>.</p>
                                 </div>
 
-                                <div className="nickname-form-group">
-                                    <label>Nickname</label>
+                                <div className="px-6 pb-5">
+                                    <label className="block text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Nickname</label>
                                     <input
                                         type="text"
                                         value={nickname}
                                         onChange={(e) => setNickname(e.target.value)}
                                         placeholder="Enter your nickname"
+                                        className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] box-border focus:outline-none focus:border-[#007bff] focus:bg-white dark:focus:bg-[#4b5563] text-[#1a1a1a] dark:text-[#f3f4f6]"
                                     />
                                 </div>
 
-                                <div className="nickname-modal-actions">
-                                    <button className="nickname-close-btn" onClick={() => setShowNicknameModal(false)}>Close</button>
-                                    <button className="nickname-save-btn" onClick={handleSaveNickname}>Save</button>
+                                <div className="flex justify-end gap-3 px-6 py-4 border-t border-[#e5e7eb] dark:border-[#374151]">
+                                    <button className="bg-[#f3f4f6] dark:bg-[#374151] text-[#374151] dark:text-[#e5e7eb] border-none px-5 py-2 rounded-md text-sm font-semibold cursor-pointer transition-colors duration-200 hover:bg-[#e5e7eb] dark:hover:bg-[#4b5563]" onClick={() => setShowNicknameModal(false)}>Close</button>
+                                    <button className="bg-[#007bff] text-white border-none px-5 py-2 rounded-md text-sm font-semibold cursor-pointer transition-colors duration-200 hover:bg-[#0056b3]" onClick={handleSaveNickname}>Save</button>
                                 </div>
                             </div>
                         </div>
                     )}
 
                     {/* Client Section */}
-                    <div className="profile-section">
-                        <h3 className="section-title">Client</h3>
-                        <div className="form-row">
-                            <div className="form-col">
-                                <label>First Name</label>
-                                <input type="text" value="Arijeet" readOnly />
+                    <div className="bg-white dark:bg-[#1f2937] border border-[#eee] dark:border-[#374151] rounded-lg p-6 mb-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+                        <h3 className="text-base font-bold text-[#1a1a1a] dark:text-[#f3f4f6] m-0 mb-5">Client</h3>
+                        <div className="grid grid-cols-2 gap-4 mb-4 max-md:grid-cols-1">
+                            <div className="flex flex-col">
+                                <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">First Name</label>
+                                <input type="text" value="Arijeet" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#2d3748] text-[#999] dark:text-[#6b7280]" />
                             </div>
-                            <div className="form-col">
-                                <label>Last Name</label>
-                                <input type="text" value="Nayak" readOnly />
+                            <div className="flex flex-col">
+                                <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Last Name</label>
+                                <input type="text" value="Nayak" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#2d3748] text-[#999] dark:text-[#6b7280]" />
                             </div>
                         </div>
-                        <div className="form-row">
-                            <div className="form-col-full">
-                                <label>Title</label>
-                                <select>
+                        <div className="grid grid-cols-2 gap-4 mb-4">
+                            <div className="col-span-2 flex flex-col">
+                                <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Title</label>
+                                <select className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] text-[#1a1a1a] dark:text-[#f3f4f6]">
                                     <option>Mr.</option>
                                     <option>Mrs.</option>
                                     <option>Ms.</option>
@@ -549,22 +528,22 @@ function Profile() {
                     </div>
 
                     {/* Contact Info Section */}
-                    <div className="profile-section">
-                        <h3 className="section-title">Contact Info</h3>
-                        <div className="form-row">
-                            <div className="form-col">
-                                <label>Contact Phone</label>
-                                <input type="text" value="+918420484785" readOnly />
+                    <div className="bg-white dark:bg-[#1f2937] border border-[#eee] dark:border-[#374151] rounded-lg p-6 mb-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+                        <h3 className="text-base font-bold text-[#1a1a1a] dark:text-[#f3f4f6] m-0 mb-5">Contact Info</h3>
+                        <div className="grid grid-cols-2 gap-4 mb-4 max-md:grid-cols-1">
+                            <div className="flex flex-col">
+                                <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Contact Phone</label>
+                                <input type="text" value="+918420484785" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#2d3748] text-[#999] dark:text-[#6b7280]" />
                             </div>
-                            <div className="form-col">
-                                <label>E-mail address</label>
-                                <input type="text" value="ranjan.nayak1968@gmail.com" readOnly />
+                            <div className="flex flex-col">
+                                <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">E-mail address</label>
+                                <input type="text" value="ranjan.nayak1968@gmail.com" readOnly className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#2d3748] text-[#999] dark:text-[#6b7280]" />
                             </div>
                         </div>
-                        <div className="form-row">
-                            <div className="form-col-full">
-                                <label>Country of residence</label>
-                                <select defaultValue="Iceland">
+                        <div className="grid grid-cols-2 gap-4 mb-4">
+                            <div className="col-span-2 flex flex-col">
+                                <label className="text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Country of residence</label>
+                                <select defaultValue="Iceland" className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] text-[#1a1a1a] dark:text-[#f3f4f6]">
                                     <option value="">Select a country</option>
                                     <option>Afghanistan</option>
                                     <option>Albania</option>
@@ -763,84 +742,33 @@ function Profile() {
                                 </select>
                             </div>
                         </div>
-                        <div className="form-row">
-                            <div className="form-col">
-                                <label>City</label>
-                                <input type="text" placeholder="" />
-                            </div>
-                            <div className="form-col">
-                                <label>Street</label>
-                                <input type="text" placeholder="" />
-                            </div>
-                        </div>
-                        <div className="form-row">
-                            <div className="form-col">
-                                <label>Postal Code</label>
-                                <input type="text" placeholder="" />
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Warning Message */}
-                    <div className="profile-warning-box">
-                        <Info size={18} />
-                        <p>
-                            Please be aware that the registration is non-transferable and can't be changed to another person.
-                            Changes in your credentials can only be accepted in cases where you change your address or officially
-                            have your own name changed (e.g. in case of marriage). Attempts to transfer the account to another
-                            person using credentials (e.g. fake/s of your registration.
-                        </p>
-                    </div>
-
-                    {/* Save Button */}
-                    <button className="profile-save-btn">Save</button>
-
-                    {/* Footer */}
-                    <div className="profile-page-footer">
-                        <div className="footer-links-row">
-                            <a href="#">Cookie settings</a>
-                            <a href="#">Privacy policy</a>
-                            <a href="#">Terms & Conditions</a>
-                        </div>
-                        <p className="footer-text">
-                            All information provided on this site is intended solely for educational purposes related to trading on financial markets and does not serve in any way as a
-                            specific investment recommendation, business recommendation, investment opportunity analysis or similar general recommendation regarding the trading of
-                            investment instruments. Yo Pips only provides services of simulated trading and educational tools for traders. The information on this site is not directed at
-                            residents in any country or jurisdiction where such distribution or use would be contrary to local laws or regulations. Yo Pips companies do not act as a broker
-                            and do not accept any deposits. The offered technical solution for the Yo Pips platforms and data feed is powered by liquidity providers.
-                        </p>
-                        <div className="footer-copyright-row">
-                            2026 © Copyright - YoPips.com Made with ♥ for trading
-                            <br />
-                            Version: 673b1000
-                        </div>
                     </div>
                 </div>
             )}
 
             {/* Yo Pips Identity Tab */}
             {activeTab === 'ftmo-identity' && (
-                <div className="profile-page-content">
-                    <h3 className="section-title">Yo Pips Identity</h3>
+                <div className="max-w-[900px]">
+                    <h3 className="text-base font-bold text-[#1a1a1a] dark:text-[#f3f4f6] m-0 mb-5">Yo Pips Identity</h3>
 
-                    <div className="profile-warning-box">
-                        <Info size={18} />
-                        <p>
+                    <div className="bg-[#fff8e1] dark:bg-[rgba(255,193,7,0.15)] border border-[#ffc107] dark:border-[rgba(255,193,7,0.3)] rounded-lg p-4 flex gap-3 mb-6 text-xs text-[#856404] dark:text-[#ffc107] leading-relaxed">
+                        <Info size={18} className="text-[#ff8c00] shrink-0 mt-[2px]" />
+                        <p className="m-0">
                             The Yo Pips Identity section will be unlocked for you once you are about to sign or change a contract with us. It will be automatically unlocked once you meet a Profit Target in a Verification that has not violated Max Daily Loss or Max Loss.
                         </p>
                     </div>
 
                     {/* Footer */}
-                    <div className="profile-page-footer">
-                        <div className="footer-links-row">
-                            <a href="#">Cookie settings</a>
-                            <a href="#">Privacy policy</a>
-                            <a href="#">Terms & Conditions</a>
+                    <div className="pt-10 border-t border-[#eee] dark:border-[#374151]">
+                        <div className="flex gap-5 mb-4 max-md:flex-col max-md:gap-2">
+                            <a href="#" className="text-xs text-[#666] dark:text-[#9ca3af] underline font-semibold">Cookie settings</a>
+                            <a href="#" className="text-xs text-[#666] dark:text-[#9ca3af] underline font-semibold">Privacy policy</a>
+                            <a href="#" className="text-xs text-[#666] dark:text-[#9ca3af] underline font-semibold">Terms & Conditions</a>
                         </div>
-                        <p className="footer-text">
+                        <p className="text-[11px] text-[#999] dark:text-[#6b7280] leading-relaxed mb-4">
                             All information provided on this site is intended solely for educational purposes related to trading on financial markets and does not serve in any way as a specific investment recommendation, business recommendation, investment opportunity analysis or similar general recommendation regarding the trading of investment instruments. Yo Pips only provides services of simulated trading and educational tools for traders. The information on this site is not directed at residents in any country or jurisdiction where such distribution or use would be contrary to local laws or regulations. Yo Pips companies do not act as a broker and do not accept any deposits. The offered technical solution for the Yo Pips platforms and data feed is powered by liquidity providers.
                         </p>
-                        <div className="footer-copyright-row">
+                        <div className="text-[11px] text-[#999] dark:text-[#6b7280]">
                             2026 © Copyright - YoPips.com Made with ♥ for trading.
                             <br />
                             Version: 673b1000
@@ -851,31 +779,32 @@ function Profile() {
 
             {/* Edit Nickname Modal */}
             {showNicknameModal && (
-                <div className="nickname-modal-overlay" onClick={() => setShowNicknameModal(false)}>
-                    <div className="nickname-modal-content" onClick={(e) => e.stopPropagation()}>
-                        <div className="nickname-modal-header">
-                            <h2>Edit My Profile</h2>
-                            <X size={20} className="modal-close-icon" onClick={() => setShowNicknameModal(false)} />
+                <div className="fixed inset-0 bg-[rgba(0,0,0,0.5)] flex items-center justify-center z-[1000]" onClick={() => setShowNicknameModal(false)}>
+                    <div className="bg-white dark:bg-[#1f2937] rounded-lg w-full max-w-[500px] shadow-[0_10px_30px_rgba(0,0,0,0.2)] animate-[slideUpModal_0.3s_ease-out]" onClick={(e) => e.stopPropagation()}>
+                        <div className="flex justify-between items-center px-6 py-5 border-b border-[#e5e7eb] dark:border-[#374151]">
+                            <h2 className="text-base font-semibold m-0 text-[#1a1a1a] dark:text-[#f3f4f6]">Edit My Profile</h2>
+                            <X size={20} className="text-[#6b7280] dark:text-[#9ca3af] cursor-pointer hover:text-[#1a1a1a] dark:hover:text-[#f3f4f6]" onClick={() => setShowNicknameModal(false)} />
                         </div>
 
-                        <div className="nickname-info-box">
-                            <Info size={16} />
-                            <p>You can set your nickname only once. If you've already set it and need to change it, please contact <a href="mailto:support@yopips.com">support@yopips.com</a>.</p>
+                        <div className="bg-[#e7f3ff] dark:bg-[rgba(0,123,255,0.15)] border border-[#90c9ff] dark:border-[rgba(0,123,255,0.3)] rounded-md px-4 py-3 mx-6 my-5 flex gap-3 items-start">
+                            <Info size={16} className="text-[#0066cc] dark:text-[#3b82f6] shrink-0 mt-[2px]" />
+                            <p className="text-[13px] text-[#004080] dark:text-[#60a5fa] m-0 leading-relaxed">You can set your nickname only once. If you've already set it and need to change it, please contact <a href="mailto:support@yopips.com" className="text-[#0066cc] dark:text-[#60a5fa] underline">support@yopips.com</a>.</p>
                         </div>
 
-                        <div className="nickname-form-group">
-                            <label>Nickname</label>
+                        <div className="px-6 pb-5">
+                            <label className="block text-[13px] font-semibold text-[#333] dark:text-[#e5e7eb] mb-2">Nickname</label>
                             <input
                                 type="text"
                                 value={nickname}
                                 onChange={(e) => setNickname(e.target.value)}
                                 placeholder="Enter your nickname"
+                                className="w-full p-2.5 border border-[#ddd] dark:border-[#4b5563] rounded-md text-sm bg-[#f7f7f7] dark:bg-[#374151] box-border focus:outline-none focus:border-[#007bff] focus:bg-white dark:focus:bg-[#4b5563] text-[#1a1a1a] dark:text-[#f3f4f6]"
                             />
                         </div>
 
-                        <div className="nickname-modal-actions">
-                            <button className="nickname-close-btn" onClick={() => setShowNicknameModal(false)}>Close</button>
-                            <button className="nickname-save-btn" onClick={handleSaveNickname}>Save</button>
+                        <div className="flex justify-end gap-3 px-6 py-4 border-t border-[#e5e7eb] dark:border-[#374151]">
+                            <button className="bg-[#f3f4f6] dark:bg-[#374151] text-[#374151] dark:text-[#e5e7eb] border-none px-5 py-2 rounded-md text-sm font-semibold cursor-pointer transition-colors duration-200 hover:bg-[#e5e7eb] dark:hover:bg-[#4b5563]" onClick={() => setShowNicknameModal(false)}>Close</button>
+                            <button className="bg-[#007bff] text-white border-none px-5 py-2 rounded-md text-sm font-semibold cursor-pointer transition-colors duration-200 hover:bg-[#0056b3]" onClick={handleSaveNickname}>Save</button>
                         </div>
                     </div>
                 </div>

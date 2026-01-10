@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Dashboard.css';
 import Header from '../../components/Header/Header';
 import AccountRow from '../../components/Dashboard/AccountRow';
 import PromoCard from '../../components/Dashboard/PromoCard';
 import { Timer, Search, Calendar as CalendarIcon } from 'lucide-react';
 
 // Mock Data
-// We can define mock data inside or outside, better inside if we want it to reset or outside if static. 
-// Moving inside as initial state was the previous pattern for activeAccount.
-
 function Dashboard() {
     const navigate = useNavigate();
     const [showOnlyVisibleActive, setShowOnlyVisibleActive] = useState(false);
@@ -56,13 +52,13 @@ function Dashboard() {
     );
 
     return (
-        <div className="dashboard-container">
+        <div className="w-full m-0">
             <Header />
 
-            <div className="dashboard-section">
-                <div className="section-header">
-                    <h2>Active accounts</h2>
-                    <div className="filter-toggle">
+            <div className="mb-10">
+                <div className="flex justify-between items-center mb-4 pb-2 border-b border-[#f0f0f0] dark:border-[#374151]">
+                    <h2 className="text-base font-bold m-0 flex items-center gap-2 text-[#1d1d1f] dark:text-[#f3f4f6]">Active accounts</h2>
+                    <div className="flex items-center gap-2 text-[13px] text-[#86868b] dark:text-[#9ca3af]">
                         <span>Show only visible</span>
                         <input
                             type="checkbox"
@@ -83,13 +79,13 @@ function Dashboard() {
                 </div>
             </div>
 
-            <div className="dashboard-section">
-                <div className="section-header">
-                    <h2>
-                        <CalendarIcon size={18} className="history-icon" />
+            <div className="mb-10">
+                <div className="flex justify-between items-center mb-4 pb-2 border-b border-[#f0f0f0] dark:border-[#374151]">
+                    <h2 className="text-base font-bold m-0 flex items-center gap-2 text-[#1d1d1f] dark:text-[#f3f4f6]">
+                        <CalendarIcon size={18} className="text-[#666] dark:text-[#9ca3af]" />
                         History
                     </h2>
-                    <div className="filter-toggle">
+                    <div className="flex items-center gap-2 text-[13px] text-[#86868b] dark:text-[#9ca3af]">
                         <span>Show only visible</span>
                         <input
                             type="checkbox"
@@ -99,9 +95,12 @@ function Dashboard() {
                     </div>
                 </div>
 
-                <div className="history-tabs">
+                <div className="mb-4 pl-0.5">
                     <button
-                        className={`history-tab ${historyTab === 'free-trial' ? 'active' : ''}`}
+                        className={`bg-none border-none py-2 mr-6 text-sm font-semibold cursor-pointer border-b-2 transition-all duration-200 ${historyTab === 'free-trial'
+                                ? 'text-[#00d4aa] border-b-[#00d4aa]'
+                                : 'text-[#999] border-b-transparent hover:text-[#00d4aa] dark:text-[#6b7280] dark:hover:text-[#00d4aa]'
+                            }`}
                         onClick={() => setHistoryTab('free-trial')}
                     >
                         Free trial
@@ -125,7 +124,7 @@ function Dashboard() {
                 </div>
             </div>
 
-            <div className="promo-section">
+            <div className="flex gap-6 mt-10 mb-10 max-md:flex-col">
                 <PromoCard
                     icon={Timer}
                     title="Free Trial"
@@ -159,16 +158,16 @@ function Dashboard() {
                 />
             </div>
 
-            <div className="dashboard-footer">
-                <div className="footer-links">
+            <div className="mt-[60px] pb-10 text-[#9aa0ac] text-[11px] text-left dark:text-[#9ca3af]">
+                <div className="flex gap-4 mb-4 font-semibold underline cursor-pointer">
                     <span>Cookie settings</span>
                     <span>Privacy policy</span>
                     <span>Terms & Conditions</span>
                 </div>
-                <p className="footer-disclaimer">
+                <p className="mb-4 leading-relaxed">
                     All information provided on this site is intended solely for educational purposes related to trading on financial markets and does not serve in any way as a specific investment recommendation, business recommendation, investment opportunity analysis or similar general recommendation regarding the trading of investment instruments. Yo Pips only provides services of simulated trading and educational tools for traders. The information on this site is not directed at residents in any country or jurisdiction where such distribution or use would be contrary to local laws or regulations. Yo Pips companies do not act as a broker and do not accept any deposits. The offered technical solution for the Yo Pips platforms and data feed is powered by liquidity providers.
                 </p>
-                <div className="footer-copyright">
+                <div className="text-[#9aa0ac] dark:text-[#9ca3af]">
                     2026 © Copyright - YoPips.com Made with ♥ for trading.
                     <br />
                     Version: 673b1000

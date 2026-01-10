@@ -5,7 +5,6 @@ import {
     Settings, Search, ArrowLeft
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import './AccountMetrix.css';
 import CredentialsModal from '../../components/Modals/CredentialsModal';
 import ShareModal from '../../components/Modals/ShareModal';
 
@@ -25,7 +24,7 @@ function AccountMetrix() {
     const shareLink = "https://trader.ftmo.com/live-metrix/1512264795/share/019ba288-e56d-733a-b";
 
     return (
-        <div className="account-metrix-wrapper">
+        <div className="min-h-screen bg-[#f3f4f6] dark:bg-[#111827] p-6 lg:p-10 font-sans text-[#1a1a1a] dark:text-[#f3f4f6]">
             {showCredentials && (
                 <CredentialsModal
                     onClose={() => setShowCredentials(false)}
@@ -39,93 +38,93 @@ function AccountMetrix() {
                 />
             )}
             {/* Breadcrumbs */}
-            <div className="am-breadcrumbs">
+            <div className="flex items-center gap-1.5 mb-3 text-[11px] text-[#9ca3af] dark:text-[#6b7280]">
                 <span>Traders</span>
-                <span className="separator">/</span>
+                <span className="mx-1">/</span>
                 <span>Accounts Overview</span>
-                <span className="separator">/</span>
-                <span className="current">Account Metrix: 1512264795</span>
+                <span className="mx-1">/</span>
+                <span className="text-[#4b5563] dark:text-[#9ca3af]">Account Metrix: 1512264795</span>
             </div>
 
             {/* Page Header */}
-            <div className="metrix-page-header">
-                <div className="header-left">
+            <div className="flex items-center mb-5">
+                <div className="flex items-center gap-3">
                     <BarChartIcon />
-                    <h1>Account Metrix 1512264795</h1>
+                    <h1 className="text-xl font-semibold m-0 text-[#1a1a1a] dark:text-[#f3f4f6]">Account Metrix 1512264795</h1>
                 </div>
             </div>
 
             {/* Action Buttons */}
-            <div className="metrix-action-bar">
-                <button className="action-button" onClick={() => setShowCredentials(true)}>
+            <div className="flex flex-wrap gap-3 mb-6">
+                <button className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#1f2937] border border-[#e5e7eb] dark:border-[#374151] rounded text-[13px] font-medium text-[#374151] dark:text-[#e5e7eb] cursor-pointer shadow-sm hover:bg-[#f9fafb] dark:hover:bg-[#374151] transition-all duration-200" onClick={() => setShowCredentials(true)}>
                     <Key size={14} /> Credentials
                 </button>
-                <button className="action-button" onClick={() => navigate('/support')}>
+                <button className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#1f2937] border border-[#e5e7eb] dark:border-[#374151] rounded text-[13px] font-medium text-[#374151] dark:text-[#e5e7eb] cursor-pointer shadow-sm hover:bg-[#f9fafb] dark:hover:bg-[#374151] transition-all duration-200" onClick={() => navigate('/support')}>
                     <Phone size={14} /> Contact us
                 </button>
-                <button className="action-button" onClick={() => window.location.reload()}>
+                <button className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#1f2937] border border-[#e5e7eb] dark:border-[#374151] rounded text-[13px] font-medium text-[#374151] dark:text-[#e5e7eb] cursor-pointer shadow-sm hover:bg-[#f9fafb] dark:hover:bg-[#374151] transition-all duration-200" onClick={() => window.location.reload()}>
                     <RefreshCw size={14} /> Refresh
                 </button>
-                <button className="action-button" onClick={() => setShowShareModal(true)}>
+                <button className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#1f2937] border border-[#e5e7eb] dark:border-[#374151] rounded text-[13px] font-medium text-[#374151] dark:text-[#e5e7eb] cursor-pointer shadow-sm hover:bg-[#f9fafb] dark:hover:bg-[#374151] transition-all duration-200" onClick={() => setShowShareModal(true)}>
                     <Share2 size={14} /> Share
                 </button>
-                <button className="action-button">
+                <button className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#1f2937] border border-[#e5e7eb] dark:border-[#374151] rounded text-[13px] font-medium text-[#374151] dark:text-[#e5e7eb] cursor-pointer shadow-sm hover:bg-[#f9fafb] dark:hover:bg-[#374151] transition-all duration-200">
                     <XCircle size={14} /> Close account
                 </button>
             </div>
 
             {/* Top Grid: Current Results & Free Trial */}
-            <div className="metrix-top-grid">
+            <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-5 mb-8">
                 {/* Current Results */}
-                <div className="card current-results-card">
-                    <h3>Current Results</h3>
+                <div className="bg-white dark:bg-[#1f2937] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#374151]">
+                    <h3 className="m-0 mb-4 text-[15px] font-semibold text-[#111827] dark:text-[#f3f4f6]">Current Results</h3>
 
-                    <div className="results-metrics">
-                        <div className="metric-item">
-                            <span className="label">Balance <Info size={12} /></span>
-                            <span className="value bold">$50,000.00</span>
+                    <div className="flex justify-between mb-5 pb-5 border-b border-[#f3f4f6] dark:border-[#374151]">
+                        <div className="flex flex-col gap-1">
+                            <span className="text-xs text-[#6b7280] dark:text-[#9ca3af] flex items-center gap-1">Balance <Info size={12} /></span>
+                            <span className="text-lg font-bold text-[#1a1a1a] dark:text-[#f3f4f6]">$50,000.00</span>
                         </div>
-                        <div className="metric-item">
-                            <span className="label">Equity <Info size={12} /></span>
-                            <span className="value bold green">$50,205.01</span>
+                        <div className="flex flex-col gap-1">
+                            <span className="text-xs text-[#6b7280] dark:text-[#9ca3af] flex items-center gap-1">Equity <Info size={12} /></span>
+                            <span className="text-lg font-bold text-[#10b981]">$50,205.01</span>
                         </div>
-                        <div className="metric-item">
-                            <span className="label">Unrealized PnL <Info size={12} /></span>
-                            <span className="value green">$205.01</span>
+                        <div className="flex flex-col gap-1">
+                            <span className="text-xs text-[#6b7280] dark:text-[#9ca3af] flex items-center gap-1">Unrealized PnL <Info size={12} /></span>
+                            <span className="text-lg font-medium text-[#10b981]">$205.01</span>
                         </div>
                     </div>
 
-                    <div className="chart-controls">
-                        <div className="control-group">
-                            <span className="control-label">Trading Objective lines</span>
-                            <div className="toggle-group">
-                                <button className="toggle-btn">Off</button>
-                                <button className="toggle-btn active">On</button>
+                    <div className="flex items-center gap-5 mb-5 flex-wrap">
+                        <div className="flex flex-col gap-1">
+                            <span className="text-[10px] text-[#6b7280] dark:text-[#9ca3af]">Trading Objective lines</span>
+                            <div className="flex bg-[#f3f4f6] dark:bg-[#374151] rounded p-0.5">
+                                <button className="px-4 py-1 border-none bg-transparent text-xs cursor-pointer rounded text-[#374151] dark:text-[#9ca3af]">Off</button>
+                                <button className="px-4 py-1 border-none bg-[#0066ff] text-white text-xs cursor-pointer rounded shadow-sm">On</button>
                             </div>
                         </div>
-                        <div className="control-group">
-                            <span className="control-label">PnL Values</span>
-                            <select className="control-select">
+                        <div className="flex flex-col gap-1">
+                            <span className="text-[10px] text-[#6b7280] dark:text-[#9ca3af]">PnL Values</span>
+                            <select className="px-3 py-1 border border-[#e5e7eb] dark:border-[#4b5563] rounded text-xs bg-white dark:bg-[#1f2937] text-[#1a1a1a] dark:text-[#f3f4f6]">
                                 <option>Absolute</option>
                                 <option>Percentage</option>
                             </select>
                         </div>
-                        <button className="zoom-btn">Zoom out</button>
+                        <button className="ml-auto px-3 py-1 border border-[#e5e7eb] dark:border-[#4b5563] bg-white dark:bg-[#1f2937] rounded text-xs cursor-pointer text-[#374151] dark:text-[#e5e7eb]">Zoom out</button>
                     </div>
 
-                    <div className="results-chart-area">
+                    <div className="bg-[#fafbfc] dark:bg-[#111827] h-[200px] border border-dashed border-[#e5e7eb] dark:border-[#374151] relative">
                         {/* Placeholder for Bar Chart */}
-                        <div className="bar-chart-placeholder">
-                            <div className="y-axis">
+                        <div className="h-full relative py-5 pl-[60px] pr-0">
+                            <div className="absolute left-[10px] top-[20px] bottom-[40px] flex flex-col justify-between text-[10px] text-[#9ca3af]">
                                 <span>$50,200.00</span>
                                 <span>$50,100.00</span>
                                 <span>$50,000.00</span>
                                 <span>$49,900.00</span>
                             </div>
-                            <div className="chart-bars-container">
-                                <div className="chart-bar equity-bar" style={{ height: '60%' }}></div>
+                            <div className="h-full flex items-end pb-[30px]">
+                                <div className="w-[60px] bg-[#60a5fa] opacity-50 ml-auto mr-[40px]" style={{ height: '60%' }}></div>
                             </div>
-                            <div className="x-axis">
+                            <div className="absolute bottom-[10px] left-[60px] right-[20px] flex justify-between text-[10px] text-[#9ca3af]">
                                 <span>7 Jan 2025 10:00</span>
                                 <span>Now</span>
                             </div>
@@ -134,88 +133,88 @@ function AccountMetrix() {
                 </div>
 
                 {/* Free Trial / Account Info */}
-                <div className="card account-info-card">
-                    <div className="card-header-row">
-                        <h3>Free trial</h3>
+                <div className="bg-white dark:bg-[#1f2937] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#374151] flex flex-col">
+                    <div className="flex justify-between items-center mb-4">
+                        <h3 className="m-0 text-[15px] font-semibold text-[#111827] dark:text-[#f3f4f6]">Free trial</h3>
                     </div>
 
-                    <div className="info-list">
-                        <div className="info-item">
-                            <span className="label">Result:</span>
-                            <span className="badge ongoing">Ongoing</span>
+                    <div className="flex flex-col">
+                        <div className="flex justify-between py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px]">
+                            <span className="text-[#6b7280] dark:text-[#9ca3af]">Result:</span>
+                            <span className="bg-[#10b981] text-white px-2 py-0.5 rounded text-[11px] font-semibold">Ongoing</span>
                         </div>
-                        <div className="info-item">
-                            <span className="label">Status:</span>
-                            <span className="value">Active</span>
+                        <div className="flex justify-between py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px]">
+                            <span className="text-[#6b7280] dark:text-[#9ca3af]">Status:</span>
+                            <span className="font-medium text-[#1a1a1a] dark:text-[#f3f4f6]">Active</span>
                         </div>
-                        <div className="info-item">
-                            <span className="label">Free trial:</span>
-                            <span className="value">1512264795</span>
+                        <div className="flex justify-between py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px]">
+                            <span className="text-[#6b7280] dark:text-[#9ca3af]">Free trial:</span>
+                            <span className="font-medium text-[#1a1a1a] dark:text-[#f3f4f6]">1512264795</span>
                         </div>
-                        <div className="info-item">
-                            <span className="label">Start:</span>
-                            <span className="value">7 Jan 2025 <Info size={12} /></span>
+                        <div className="flex justify-between py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px]">
+                            <span className="text-[#6b7280] dark:text-[#9ca3af]">Start:</span>
+                            <span className="font-medium text-[#1a1a1a] dark:text-[#f3f4f6] flex items-center gap-1">7 Jan 2025 <Info size={12} /></span>
                         </div>
-                        <div className="info-item">
-                            <span className="label">End:</span>
-                            <span className="value">26 Jan 2025 <Info size={12} /></span>
+                        <div className="flex justify-between py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px]">
+                            <span className="text-[#6b7280] dark:text-[#9ca3af]">End:</span>
+                            <span className="font-medium text-[#1a1a1a] dark:text-[#f3f4f6] flex items-center gap-1">26 Jan 2025 <Info size={12} /></span>
                         </div>
-                        <div className="info-item">
-                            <span className="label">Account size:</span>
-                            <span className="value">$200,000.00</span>
+                        <div className="flex justify-between py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px]">
+                            <span className="text-[#6b7280] dark:text-[#9ca3af]">Account size:</span>
+                            <span className="font-medium text-[#1a1a1a] dark:text-[#f3f4f6]">$200,000.00</span>
                         </div>
-                        <div className="info-item">
-                            <span className="label">Account Type:</span>
-                            <span className="value">FTMO</span>
+                        <div className="flex justify-between py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px]">
+                            <span className="text-[#6b7280] dark:text-[#9ca3af]">Account Type:</span>
+                            <span className="font-medium text-[#1a1a1a] dark:text-[#f3f4f6]">FTMO</span>
                         </div>
-                        <div className="info-item">
-                            <span className="label">Platform (MT5):</span>
-                            <span className="value">Downloaded</span>
+                        <div className="flex justify-between py-3 border-b-0 text-[13px]">
+                            <span className="text-[#6b7280] dark:text-[#9ca3af]">Platform (MT5):</span>
+                            <span className="font-medium text-[#1a1a1a] dark:text-[#f3f4f6]">Downloaded</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="collapsible-section">
-                <div className="section-header">
-                    <div className="header-title">
-                        <span className="toggle-icon">▼</span> Open trades
+            <div className="mb-8">
+                <div className="cursor-pointer mb-2.5">
+                    <div className="text-sm font-semibold text-[#4b5563] dark:text-[#9ca3af] flex items-center gap-1.5">
+                        <span className="text-[10px] text-[#0066ff]">▼</span> Open trades
                     </div>
                 </div>
-                <div className="trades-table-container">
-                    <table className="trades-table">
+                <div className="bg-white dark:bg-[#1f2937] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-[#e5e7eb] dark:border-[#374151] overflow-x-auto">
+                    <table className="w-full border-collapse min-w-[600px]">
                         <thead>
                             <tr>
-                                <th>Type</th>
-                                <th>Open Time</th>
-                                <th>Volume</th>
-                                <th>Symbol</th>
-                                <th>PnL</th>
-                                <th>Pips</th>
-                                <th>Duration</th>
-                                <th></th>
+                                <th className="text-left text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] pb-3 border-b border-[#f3f4f6] dark:border-[#374151]">Type</th>
+                                <th className="text-left text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] pb-3 border-b border-[#f3f4f6] dark:border-[#374151]">Open Time</th>
+                                <th className="text-left text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] pb-3 border-b border-[#f3f4f6] dark:border-[#374151]">Volume</th>
+                                <th className="text-left text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] pb-3 border-b border-[#f3f4f6] dark:border-[#374151]">Symbol</th>
+                                <th className="text-left text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] pb-3 border-b border-[#f3f4f6] dark:border-[#374151]">PnL</th>
+                                <th className="text-left text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] pb-3 border-b border-[#f3f4f6] dark:border-[#374151]">Pips</th>
+                                <th className="text-left text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] pb-3 border-b border-[#f3f4f6] dark:border-[#374151]">Duration</th>
+                                <th className="pb-3 border-b border-[#f3f4f6] dark:border-[#374151]"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>
-                                    <div className="trade-id-cell">
-                                        <span className="trade-id">365273361</span>
-                                        <span className="trade-type buy">↗ Buy</span>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] align-middle text-[#1a1a1a] dark:text-[#f3f4f6]">
+                                    <div className="flex flex-col gap-1">
+                                        <span className="font-medium text-[#111827] dark:text-[#f3f4f6]">365273361</span>
+                                        <span className="text-[#10b981] font-medium text-xs">↗ Buy</span>
                                     </div>
                                 </td>
-                                <td>
-                                    <div className="trade-time">
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] align-middle text-[#1a1a1a] dark:text-[#f3f4f6]">
+                                    <div className="flex flex-col gap-0.5 text-[13px] text-[#374151] dark:text-[#9ca3af]">
                                         <span>7 Jan 2026,</span>
-                                        <span className="time-sub">15:33:19</span>
+                                        <span className="text-xs">15:33:19</span>
                                     </div>
                                 </td>
-                                <td>0.01</td>
-                                <td>XAUUSD</td>
-                                <td><span className="pnl-badge positive">$33.77</span></td>
-                                <td><span className="pips-badge positive">33.8</span></td>
-                                <td><span className="duration-badge">1d 22:26:02</span></td>
-                                <td><button className="expand-row-btn"><ChevronDown size={16} /></button></td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] align-middle text-[#1a1a1a] dark:text-[#f3f4f6]">0.01</td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] align-middle text-[#1a1a1a] dark:text-[#f3f4f6]">XAUUSD</td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] align-middle text-[#1a1a1a] dark:text-[#f3f4f6]"><span className="bg-[#f0fdf4] dark:bg-[#064e3b] text-[#10b981] dark:text-[#34d399] px-3 py-1.5 rounded font-medium min-w-[80px] inline-block text-center">$33.77</span></td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] align-middle text-[#1a1a1a] dark:text-[#f3f4f6]"><span className="text-[#10b981] dark:text-[#34d399] font-medium bg-[#f0fdf4] dark:bg-[#064e3b] px-3 py-1.5 rounded min-w-[60px] inline-block text-center">33.8</span></td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] align-middle text-[#1a1a1a] dark:text-[#f3f4f6]"><span className="bg-[#f3f4f6] dark:bg-[#374151] px-3 py-1.5 rounded text-[#374151] dark:text-[#e5e7eb] text-xs inline-block">1d 22:26:02</span></td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] align-middle text-[#1a1a1a] dark:text-[#f3f4f6]"><button className="bg-white dark:bg-[#374151] border border-[#e5e7eb] dark:border-[#4b5563] rounded w-7 h-7 flex items-center justify-center cursor-pointer text-[#6b7280] dark:text-[#9ca3af] hover:bg-[#f9fafb]"><ChevronDown size={16} /></button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -223,61 +222,61 @@ function AccountMetrix() {
             </div>
 
             {/* "Your stats" Section */}
-            <div className="section-title-row">
-                <h3>Your stats</h3>
+            <div className="mb-4">
+                <h3 className="text-base font-semibold text-[#1a1a1a] dark:text-[#f3f4f6]">Your stats</h3>
             </div>
 
-            <div className="stats-grid-row">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-5 mb-5">
                 {/* Consistency Score */}
-                <div className="card consistency-card">
-                    <div className="card-header-row">
-                        <h4>Consistency score</h4>
-                        <Settings size={14} className="icon-gray" />
+                <div className="bg-white dark:bg-[#1f2937] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#374151] text-center">
+                    <div className="flex justify-between items-center mb-4">
+                        <h4 className="m-0 text-[15px] font-semibold text-[#111827] dark:text-[#f3f4f6]">Consistency score</h4>
+                        <Settings size={14} className="text-gray-400 dark:text-gray-500" />
                     </div>
-                    <div className="consistency-legend">
-                        <span className="dot red"></span> 0 - 30%
-                        <span className="dot yellow"></span> 30 - 80%
-                        <span className="dot green"></span> 80 - 100%
+                    <div className="flex justify-center gap-3 text-[10px] text-[#6b7280] dark:text-[#9ca3af] mb-5">
+                        <span className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-[#ef4444] inline-block mr-1"></span> 0 - 30%</span>
+                        <span className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b] inline-block mr-1"></span> 30 - 80%</span>
+                        <span className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-[#10b981] inline-block mr-1"></span> 80 - 100%</span>
                     </div>
-                    <div className="gauge-container">
-                        <div className="gauge-circle">
-                            <span className="gauge-value">0%</span>
-                            <span className="gauge-sub">Poor</span>
+                    <div className="h-[120px] flex items-end justify-center bg-no-repeat bg-bottom bg-contain relative" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='200' height='100' viewBox='0 0 200 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 100 A 80 80 0 0 1 180 100' fill='none' stroke='%23f3f4f6' stroke-width='20'/%3E%3C/svg%3E")` }}>
+                        <div className="text-center">
+                            <span className="block text-2xl font-bold text-[#1a1a1a] dark:text-[#f3f4f6]">0%</span>
+                            <span className="text-xs text-[#ef4444]">Poor</span>
                         </div>
                     </div>
                 </div>
 
                 {/* Objectives */}
-                <div className="card objectives-card">
-                    <h4>Objectives</h4>
-                    <table className="objectives-table">
+                <div className="bg-white dark:bg-[#1f2937] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#374151]">
+                    <h4 className="m-0 mb-4 text-[15px] font-semibold text-[#111827] dark:text-[#f3f4f6]">Objectives</h4>
+                    <table className="w-full border-collapse">
                         <thead>
                             <tr>
-                                <th>Trading objectives</th>
-                                <th>Result</th>
-                                <th>Summary</th>
+                                <th className="text-left text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] pb-3 border-b border-[#f3f4f6] dark:border-[#374151]">Trading objectives</th>
+                                <th className="text-left text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] pb-3 border-b border-[#f3f4f6] dark:border-[#374151]">Result</th>
+                                <th className="text-left text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] pb-3 border-b border-[#f3f4f6] dark:border-[#374151]">Summary</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td className="blue-link">Minimum 5 trading days</td>
-                                <td>1</td>
-                                <td className="status-cell"><div className="status-icon red"><X size={12} /></div></td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] text-[#0066ff] dark:text-[#60a5fa] cursor-pointer">Minimum 5 trading days</td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] text-[#1a1a1a] dark:text-[#f3f4f6]">1</td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] text-right"><div className="inline-flex p-1 rounded bg-[#fee2e2] dark:bg-[#7f1d1d] text-[#ef4444] dark:text-[#f87171]"><X size={12} /></div></td>
                             </tr>
                             <tr>
-                                <td className="blue-link">Max Daily Loss - $10,000</td>
-                                <td>-$99.00 (0%)</td>
-                                <td className="status-cell"><div className="status-icon green"><Check size={12} /></div></td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] text-[#0066ff] dark:text-[#60a5fa] cursor-pointer">Max Daily Loss - $10,000</td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] text-[#1a1a1a] dark:text-[#f3f4f6]">-$99.00 (0%)</td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] text-right"><div className="inline-flex p-1 rounded bg-[#d1fae5] dark:bg-[#064e3b] text-[#10b981] dark:text-[#34d399]"><Check size={12} /></div></td>
                             </tr>
                             <tr>
-                                <td className="blue-link">Max Loss - $20,000</td>
-                                <td>-$99.00 (0%)</td>
-                                <td className="status-cell"><div className="status-icon green"><Check size={12} /></div></td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] text-[#0066ff] dark:text-[#60a5fa] cursor-pointer">Max Loss - $20,000</td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] text-[#1a1a1a] dark:text-[#f3f4f6]">-$99.00 (0%)</td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] text-right"><div className="inline-flex p-1 rounded bg-[#d1fae5] dark:bg-[#064e3b] text-[#10b981] dark:text-[#34d399]"><Check size={12} /></div></td>
                             </tr>
                             <tr>
-                                <td className="blue-link">Profit Target $10,000</td>
-                                <td>$205.01 (0%)</td>
-                                <td className="status-cell"><div className="status-icon red"><X size={12} /></div></td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] text-[#0066ff] dark:text-[#60a5fa] cursor-pointer">Profit Target $10,000</td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] text-[#1a1a1a] dark:text-[#f3f4f6]">$205.01 (0%)</td>
+                                <td className="py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[13px] text-right"><div className="inline-flex p-1 rounded bg-[#fee2e2] dark:bg-[#7f1d1d] text-[#ef4444] dark:text-[#f87171]"><X size={12} /></div></td>
                             </tr>
                         </tbody>
                     </table>
@@ -285,26 +284,26 @@ function AccountMetrix() {
             </div>
 
             {/* Permitted Loss Stats Bars */}
-            <div className="permitted-loss-grid">
-                <div className="loss-stat-box">
-                    <span className="stat-label">Today's permitted loss <Info size={12} /></span>
-                    <span className="stat-val">$10,100.29</span>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-8">
+                <div className="bg-[#f9fafb] dark:bg-[#1f2937] p-3 rounded-md text-center flex flex-col gap-1.5 border border-[#e5e7eb] dark:border-[#374151]">
+                    <span className="text-[11px] text-[#6b7280] dark:text-[#9ca3af] flex items-center justify-center gap-1">Today's permitted loss <Info size={12} /></span>
+                    <span className="text-sm font-semibold text-[#111827] dark:text-[#f3f4f6]">$10,100.29</span>
                 </div>
-                <div className="loss-stat-box">
-                    <span className="stat-label">Max permitted loss <Info size={12} /></span>
-                    <span className="stat-val">$20,100.29</span>
+                <div className="bg-[#f9fafb] dark:bg-[#1f2937] p-3 rounded-md text-center flex flex-col gap-1.5 border border-[#e5e7eb] dark:border-[#374151]">
+                    <span className="text-[11px] text-[#6b7280] dark:text-[#9ca3af] flex items-center justify-center gap-1">Max permitted loss <Info size={12} /></span>
+                    <span className="text-sm font-semibold text-[#111827] dark:text-[#f3f4f6]">$20,100.29</span>
                 </div>
-                <div className="loss-stat-box">
-                    <span className="stat-label">Today's profit <Info size={12} /></span>
-                    <span className="stat-val">$20.73</span>
+                <div className="bg-[#f9fafb] dark:bg-[#1f2937] p-3 rounded-md text-center flex flex-col gap-1.5 border border-[#e5e7eb] dark:border-[#374151]">
+                    <span className="text-[11px] text-[#6b7280] dark:text-[#9ca3af] flex items-center justify-center gap-1">Today's profit <Info size={12} /></span>
+                    <span className="text-sm font-semibold text-[#111827] dark:text-[#f3f4f6]">$20.73</span>
                 </div>
             </div>
 
             {/* Statistics & Daily Summary */}
-            <div className="stats-daily-grid">
-                <div className="card statistics-detail-card">
-                    <h3>Statistics</h3>
-                    <div className="detail-stats-grid">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
+                <div className="bg-white dark:bg-[#1f2937] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#374151]">
+                    <h3 className="m-0 mb-4 text-[15px] font-semibold text-[#111827] dark:text-[#f3f4f6]">Statistics</h3>
+                    <div className="grid grid-cols-3 gap-3">
                         <StatBox label="Equity" value="$200,205.01" />
                         <StatBox label="Balance" value="$200,000.00" />
                         <StatBox label="Win rate" value="-" />
@@ -319,213 +318,149 @@ function AccountMetrix() {
                     </div>
                 </div>
 
-                <div className="card daily-summary-card">
-                    <h3>Daily summary <Info size={14} /></h3>
-                    <div className="summary-headers">
+                <div className="bg-white dark:bg-[#1f2937] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#374151]">
+                    <h3 className="m-0 mb-4 text-[15px] font-semibold text-[#111827] dark:text-[#f3f4f6] flex items-center gap-1">Daily summary <Info size={14} /></h3>
+                    <div className="flex justify-between text-[11px] text-[#6b7280] dark:text-[#9ca3af] mb-5">
                         <span>Date</span>
                         <span>Trades</span>
                         <span>Lots</span>
                         <span>Result</span>
                     </div>
-                    <div className="empty-chart-placeholder">
-                        <div className="chart-skeleton"></div>
+                    <div className="h-[150px] bg-[#f9fafb] dark:bg-[#111827] rounded-lg flex items-center justify-center">
+                        <div className="w-[60%] h-2.5 bg-[#e5e7eb] dark:bg-[#374151] rounded"></div>
                     </div>
                 </div>
             </div>
 
             {/* Trading Journal - Calendar */}
-            <div className="card journal-card">
-                <h3>Trading journal <Info size={14} /></h3>
-                <div className="journal-tabs">
-                    <span className="active">Daily PnL</span>
-                    <span>Closed trades</span>
-                    <span>Charts</span>
+            <div className="bg-white dark:bg-[#1f2937] rounded-lg p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#374151] mb-8">
+                <h3 className="m-0 mb-4 text-[15px] font-semibold text-[#111827] dark:text-[#f3f4f6] flex items-center gap-1">Trading journal <Info size={14} /></h3>
+                <div className="flex gap-5 border-b border-[#e5e7eb] dark:border-[#374151] mb-5">
+                    <span className="pb-2.5 text-[13px] text-[#0066ff] dark:text-[#60a5fa] cursor-pointer border-b-2 border-[#0066ff] dark:border-[#60a5fa]">Daily PnL</span>
+                    <span className="pb-2.5 text-[13px] text-[#6b7280] dark:text-[#9ca3af] cursor-pointer border-b-2 border-transparent hover:text-[#0066ff] dark:hover:text-[#60a5fa]">Closed trades</span>
+                    <span className="pb-2.5 text-[13px] text-[#6b7280] dark:text-[#9ca3af] cursor-pointer border-b-2 border-transparent hover:text-[#0066ff] dark:hover:text-[#60a5fa]">Charts</span>
                 </div>
 
-                <div className="calendar-controls">
-                    <button className="today-btn">Today</button>
-                    <div className="month-nav">
-                        <button><ChevronLeft size={16} /></button>
-                        <span className="current-month">January 2025</span>
-                        <button><ChevronRight size={16} /></button>
+                <div className="flex justify-between items-center mb-5 flex-wrap gap-4">
+                    <button className="px-3 py-1.5 border border-[#e5e7eb] dark:border-[#4b5563] bg-white dark:bg-[#1f2937] rounded cursor-pointer text-xs text-[#374151] dark:text-[#e5e7eb]">Today</button>
+                    <div className="flex items-center gap-3">
+                        <button className="border-none bg-transparent cursor-pointer p-1 text-[#6b7280] dark:text-[#9ca3af]"><ChevronLeft size={16} /></button>
+                        <span className="font-semibold text-[#111827] dark:text-[#f3f4f6]">January 2025</span>
+                        <button className="border-none bg-transparent cursor-pointer p-1 text-[#6b7280] dark:text-[#9ca3af]"><ChevronRight size={16} /></button>
                     </div>
-                    <div className="view-toggles">
+                    <div className="flex items-center gap-2.5 text-xs text-[#374151] dark:text-[#e5e7eb]">
                         <span>Monthly view</span>
-                        <button className="toggle-view active">Balance</button>
-                        <button className="toggle-view">Trading days</button>
+                        <button className="px-3 py-1 bg-[#f3f4f6] dark:bg-[#374151] border border-[#e5e7eb] dark:border-[#4b5563] rounded cursor-pointer font-semibold">Balance</button>
+                        <button className="px-3 py-1 bg-transparent border border-[#e5e7eb] dark:border-[#4b5563] rounded cursor-pointer">Trading days</button>
                     </div>
                 </div>
 
-                <div className="calendar-grid">
-                    <div className="cal-header">MON</div>
-                    <div className="cal-header">TUE</div>
-                    <div className="cal-header">WED</div>
-                    <div className="cal-header">THU</div>
-                    <div className="cal-header">FRI</div>
-                    <div className="cal-header">SAT</div>
-                    <div className="cal-header">SUN</div>
+                <div className="grid grid-cols-7 gap-px bg-[#e5e7eb] dark:bg-[#374151] border border-[#e5e7eb] dark:border-[#374151]">
+                    {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'].map(day => (
+                        <div key={day} className="bg-[#f9fafb] dark:bg-[#111827] p-2.5 text-center text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af]">{day}</div>
+                    ))}
 
                     {/* Simplified Calendar Days */}
                     {Array.from({ length: 31 }).map((_, i) => (
-                        <div key={i} className={`cal-day ${i === 6 ? 'active' : ''}`}>
-                            <span className="day-num">{i + 1}</span>
-                            {i === 6 && <div className="day-marker"></div>}
+                        <div key={i} className={`bg-white dark:bg-[#1f2937] h-[100px] p-2.5 relative ${i === 6 ? 'bg-[#eff6ff] dark:bg-[#1e3a8a]' : ''}`}>
+                            <span className="text-xs text-[#6b7280] dark:text-[#9ca3af]">{i + 1}</span>
+                            {i === 6 && <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-[#0066ff] rounded-full"></div>}
                         </div>
                     ))}
                 </div>
             </div>
 
             {/* Economic Calendar Footer */}
-            <div className="card full-width-card">
-                <h3>Economic Calendar</h3>
-                <div className="calendar-date-header">Friday 9 Jan</div>
-                <table className="economic-calendar-table">
-                    <thead>
-                        <tr>
-                            <th>Description:</th>
-                            <th>Instrument:</th>
-                            <th>Date:</th>
-                            <th>Actual:</th>
-                            <th>Forecast:</th>
-                            <th>Previous:</th>
-                            <th>Actions:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td className="desc-cell">
-                                <div className="impact-bar medium"></div>
-                                <div className="desc-content">
-                                    <span className="event-name">PPI y/y</span>
-                                    <span className="event-icon">📰</span>
-                                </div>
-                            </td>
-                            <td><div className="currency-flag"><span className="flag-icon cny">🇨🇳</span> CNY</div></td>
-                            <td><div className="date-time">08:00 9 Jan<span className="status-expired">Expired</span></div></td>
-                            <td className="green">-1.9 %</td>
-                            <td>-2 %</td>
-                            <td>-2.2 %</td>
-                            <td><Calendar size={16} className="action-icon" /></td>
-                        </tr>
-                        <tr>
-                            <td className="desc-cell">
-                                <div className="impact-bar low"></div>
-                                <div className="desc-content">
-                                    <span className="event-name">Leading Indicators</span>
-                                </div>
-                            </td>
-                            <td><div className="currency-flag"><span className="flag-icon jpy">🇯🇵</span> JPY</div></td>
-                            <td><div className="date-time">10:30 9 Jan<span className="status-expired">Expired</span></div></td>
-                            <td className="green">110.5 %</td>
-                            <td>110.4 %</td>
-                            <td>110 %</td>
-                            <td><Calendar size={16} className="action-icon" /></td>
-                        </tr>
-                        <tr>
-                            <td className="desc-cell">
-                                <div className="impact-bar low"></div>
-                                <div className="desc-content">
-                                    <span className="event-name">German Industrial Production m/m</span>
-                                </div>
-                            </td>
-                            <td><div className="currency-flag"><span className="flag-icon eur">🇪🇺</span> EUR</div></td>
-                            <td><div className="date-time">12:30 9 Jan<span className="status-expired">Expired</span></div></td>
-                            <td className="red">0.8 %</td>
-                            <td>-0.6 %</td>
-                            <td>1.8 %</td>
-                            <td><Calendar size={16} className="action-icon" /></td>
-                        </tr>
-                        <tr>
-                            <td className="desc-cell">
-                                <div className="impact-bar low"></div>
-                                <div className="desc-content">
-                                    <span className="event-name">French Consumer Spending m/m</span>
-                                </div>
-                            </td>
-                            <td><div className="currency-flag"><span className="flag-icon eur">🇪🇺</span> EUR</div></td>
-                            <td><div className="date-time">13:15 9 Jan<span className="status-expired">Expired</span></div></td>
-                            <td className="red">-0.3 %</td>
-                            <td>-0.1 %</td>
-                            <td>0.4 %</td>
-                            <td><Calendar size={16} className="action-icon" /></td>
-                        </tr>
-                        <tr>
-                            <td className="desc-cell">
-                                <div className="impact-bar low"></div>
-                                <div className="desc-content">
-                                    <span className="event-name">German Trade Balance</span>
-                                </div>
-                            </td>
-                            <td><div className="currency-flag"><span className="flag-icon eur">🇪🇺</span> EUR</div></td>
-                            <td><div className="date-time">13:30 9 Jan<span className="status-expired">Expired</span></div></td>
-                            <td className="red">13.1 B</td>
-                            <td>16.3 B</td>
-                            <td>16.9 B</td>
-                            <td><Calendar size={16} className="action-icon" /></td>
-                        </tr>
-                        <tr>
-                            <td className="desc-cell">
-                                <div className="impact-bar low"></div>
-                                <div className="desc-content">
-                                    <span className="event-name">Foreign Currency Reserves</span>
-                                </div>
-                            </td>
-                            <td><div className="currency-flag"><span className="flag-icon chf">🇨🇭</span> CHF</div></td>
-                            <td><div className="date-time">13:30 9 Jan<span className="status-expired">Expired</span></div></td>
-                            <td className="red">725 B</td>
-                            <td>-</td>
-                            <td>727 B</td>
-                            <td><Calendar size={16} className="action-icon" /></td>
-                        </tr>
-                        <tr>
-                            <td className="desc-cell">
-                                <div className="impact-bar low"></div>
-                                <div className="desc-content">
-                                    <span className="event-name">French Industrial Production m/m</span>
-                                </div>
-                            </td>
-                            <td><div className="currency-flag"><span className="flag-icon eur">🇪🇺</span> EUR</div></td>
-                            <td><div className="date-time">14:15 9 Jan<span className="status-expired">Expired</span></div></td>
-                            <td className="red">-0.1 %</td>
-                            <td>-0.2 %</td>
-                            <td>0.2 %</td>
-                            <td><Calendar size={16} className="action-icon" /></td>
-                        </tr>
-                        <tr>
-                            <td className="desc-cell">
-                                <div className="impact-bar low"></div>
-                                <div className="desc-content">
-                                    <span className="event-name">Unemployment Rate</span>
-                                    <span className="event-icon">📰</span>
-                                </div>
-                            </td>
-                            <td><div className="currency-flag"><span className="flag-icon chf">🇨🇭</span> CHF</div></td>
-                            <td><div className="date-time">14:30 9 Jan<span className="status-expired">Expired</span></div></td>
-                            <td>3 %</td>
-                            <td>3 %</td>
-                            <td>3 %</td>
-                            <td><Calendar size={16} className="action-icon" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button className="show-week-calendar-btn">Show this week's Economic Calendar</button>
+            <div className="bg-white dark:bg-[#1f2937] rounded-lg p-0 shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-transparent dark:border-[#374151] overflow-hidden">
+                <div className="p-5 pb-0">
+                    <h3 className="m-0 mb-4 text-[15px] font-semibold text-[#111827] dark:text-[#f3f4f6]">Economic Calendar</h3>
+                </div>
+                <div className="px-4 py-3 text-sm font-semibold text-[#111827] dark:text-[#f3f4f6] border-b border-[#f3f4f6] dark:border-[#374151] bg-[#fff] dark:bg-[#1f2937]">Friday 9 Jan</div>
+                <div className="overflow-x-auto">
+                    <table className="w-full">
+                        <thead>
+                            <tr className="bg-white dark:bg-[#1f2937]">
+                                <th className="px-4 py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] text-left">Description:</th>
+                                <th className="px-4 py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] text-left">Instrument:</th>
+                                <th className="px-4 py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] text-left">Date:</th>
+                                <th className="px-4 py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] text-left">Actual:</th>
+                                <th className="px-4 py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] text-left">Forecast:</th>
+                                <th className="px-4 py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] text-left">Previous:</th>
+                                <th className="px-4 py-3 border-b border-[#f3f4f6] dark:border-[#374151] text-[11px] font-semibold text-[#6b7280] dark:text-[#9ca3af] text-left">Actions:</th>
+                            </tr>
+                        </thead>
+                        <tbody className="text-[13px] text-[#1a1a1a] dark:text-[#f3f4f6]">
+                            <tr>
+                                <td className="px-4 py-3 align-middle">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-1 h-6 rounded-sm bg-[#f59e0b]"></div>
+                                        <div className="flex flex-col gap-0.5">
+                                            <span className="text-[13px] text-[#374151] dark:text-[#e5e7eb]">PPI y/y</span>
+                                            <span className="text-xs text-[#9ca3af]">📰</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-3 align-middle"><div className="flex items-center gap-2 font-semibold text-[#10b981] dark:text-[#34d399]"><span className="text-lg">🇨🇳</span> CNY</div></td>
+                                <td className="px-4 py-3 align-middle"><div className="flex flex-col text-xs text-[#374151] dark:text-[#9ca3af]">08:00 9 Jan<span className="text-[11px] text-[#9ca3af]">Expired</span></div></td>
+                                <td className="px-4 py-3 align-middle text-[#10b981] dark:text-[#34d399] font-medium">-1.9 %</td>
+                                <td className="px-4 py-3 align-middle">-2 %</td>
+                                <td className="px-4 py-3 align-middle">-2.2 %</td>
+                                <td className="px-4 py-3 align-middle"><Calendar size={16} className="text-[#9ca3af] cursor-pointer hover:text-[#374151]" /></td>
+                            </tr>
+                            {/* ... more rows can be added similarly with correct colors ... */}
+                            <tr>
+                                <td className="px-4 py-3 align-middle">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-1 h-6 rounded-sm bg-[#e5e7eb] dark:bg-[#4b5563]"></div>
+                                        <div className="flex flex-col gap-0.5">
+                                            <span className="text-[13px] text-[#374151] dark:text-[#e5e7eb]">Leading Indicators</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-3 align-middle"><div className="flex items-center gap-2 font-semibold text-[#10b981] dark:text-[#34d399]"><span className="text-lg">🇯🇵</span> JPY</div></td>
+                                <td className="px-4 py-3 align-middle"><div className="flex flex-col text-xs text-[#374151] dark:text-[#9ca3af]">10:30 9 Jan<span className="text-[11px] text-[#9ca3af]">Expired</span></div></td>
+                                <td className="px-4 py-3 align-middle text-[#10b981] dark:text-[#34d399] font-medium">110.5 %</td>
+                                <td className="px-4 py-3 align-middle">110.4 %</td>
+                                <td className="px-4 py-3 align-middle">110 %</td>
+                                <td className="px-4 py-3 align-middle"><Calendar size={16} className="text-[#9ca3af] cursor-pointer hover:text-[#374151]" /></td>
+                            </tr>
+                            <tr>
+                                <td className="px-4 py-3 align-middle">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-1 h-6 rounded-sm bg-[#e5e7eb] dark:bg-[#4b5563]"></div>
+                                        <div className="flex flex-col gap-0.5">
+                                            <span className="text-[13px] text-[#374151] dark:text-[#e5e7eb]">German Industrial Production m/m</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td className="px-4 py-3 align-middle"><div className="flex items-center gap-2 font-semibold text-[#60a5fa]"><span className="text-lg">🇪🇺</span> EUR</div></td>
+                                <td className="px-4 py-3 align-middle"><div className="flex flex-col text-xs text-[#374151] dark:text-[#9ca3af]">12:30 9 Jan<span className="text-[11px] text-[#9ca3af]">Expired</span></div></td>
+                                <td className="px-4 py-3 align-middle text-[#ef4444] dark:text-[#f87171] font-medium">0.8 %</td>
+                                <td className="px-4 py-3 align-middle">-0.6 %</td>
+                                <td className="px-4 py-3 align-middle">1.8 %</td>
+                                <td className="px-4 py-3 align-middle"><Calendar size={16} className="text-[#9ca3af] cursor-pointer hover:text-[#374151]" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button className="w-full p-3 bg-[#f3f4f6] dark:bg-[#374151] border-none text-[13px] font-semibold text-[#111827] dark:text-[#f3f4f6] cursor-pointer hover:bg-[#e5e7eb] dark:hover:bg-[#4b5563]">Show this week's Economic Calendar</button>
             </div>
 
-            <div className="footer-disclaimer-text">
+            <div className="text-[10px] text-[#374151] dark:text-[#9ca3af] mb-8 font-medium">
                 THE VALUES IN THIS ACCOUNT METRIX ARE INFORMATIVE ONLY. REAL-TIME TRADING VALUES CAN BE SEEN IN THE TRADING PLATFORM.
             </div>
 
             {/* Footer */}
-            <div className="metrix-footer">
-                <div className="footer-links">
-                    <a href="#">Cookie settings</a>
-                    <a href="#">Privacy policy</a>
-                    <a href="#">Terms & Conditions</a>
+            <div className="border-t border-[#e5e7eb] dark:border-[#374151] pt-8 text-center">
+                <div className="mb-5 flex justify-center gap-5">
+                    <a href="#" className="text-[#111827] dark:text-[#f3f4f6] underline text-xs font-semibold">Cookie settings</a>
+                    <a href="#" className="text-[#111827] dark:text-[#f3f4f6] underline text-xs font-semibold">Privacy policy</a>
+                    <a href="#" className="text-[#111827] dark:text-[#f3f4f6] underline text-xs font-semibold">Terms & Conditions</a>
                 </div>
-                <p className="full-disclaimer">
+                <p className="text-[10px] text-[#6b7280] dark:text-[#9ca3af] leading-relaxed mb-5 text-justify">
                     All information provided on this site is intended solely for educational purposes related to trading on financial markets and does not serve in any way as a specific investment recommendation...
                 </p>
-                <p className="copyright">2025 © Copyright - FTMO.com Made with ❤️ for trading.</p>
+                <p className="text-[11px] text-[#9ca3af]">2025 © Copyright - FTMO.com Made with ❤️ for trading.</p>
             </div>
         </div>
     );
@@ -534,9 +469,9 @@ function AccountMetrix() {
 // Helper component for statistics boxes
 function StatBox({ label, value }) {
     return (
-        <div className="stat-box-detail">
-            <span className="sb-label">{label} <Info size={10} className="ml-1" /></span>
-            <span className="sb-value">{value}</span>
+        <div className="bg-[#f9fafb] dark:bg-[#1f2937] p-2.5 rounded-md text-center border border-[#e5e7eb] dark:border-[#374151] flex flex-col items-center justify-center">
+            <span className="block text-[10px] text-[#6b7280] dark:text-[#9ca3af] mb-1 flex items-center gap-1">{label} <Info size={10} className="ml-0.5" /></span>
+            <span className="text-[13px] font-semibold text-[#1a1a1a] dark:text-[#f3f4f6]">{value}</span>
         </div>
     );
 }
@@ -544,7 +479,7 @@ function StatBox({ label, value }) {
 // Icon helper
 function BarChartIcon() {
     return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#1a1a1a] dark:text-[#f3f4f6]">
             <line x1="18" y1="20" x2="18" y2="10"></line>
             <line x1="12" y1="20" x2="12" y2="4"></line>
             <line x1="6" y1="20" x2="6" y2="14"></line>

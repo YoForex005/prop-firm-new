@@ -23,118 +23,56 @@ function GoogleAuthMock() {
     if (loading) return null;
 
     return (
-        <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-            fontFamily: 'Roboto, arial, sans-serif',
-            backgroundColor: '#fff',
-            color: '#202124'
-        }}>
-            <div style={{
-                border: '1px solid #dadce0',
-                borderRadius: '8px',
-                padding: '48px 40px 36px',
-                width: '450px',
-                textAlign: 'center'
-            }}>
+        <div className="flex justify-center items-center h-screen font-sans bg-white text-[#202124]">
+            <div className="border border-[#dadce0] rounded-lg pt-12 px-10 pb-9 w-[450px] text-center">
                 <img
                     src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
                     alt="Google"
                     height="24"
-                    style={{ marginBottom: '16px' }}
+                    className="mb-4 inline-block h-6"
                 />
-                <h1 style={{
-                    fontSize: '24px',
-                    fontWeight: '400',
-                    margin: '0 0 16px'
-                }}>
+                <h1 className="text-2xl font-normal m-0 mb-4">
                     Sign in
                 </h1>
-                <p style={{ fontSize: '16px', margin: '0 0 40px' }}>
+                <p className="text-base m-0 mb-10">
                     to continue to YoPips
                 </p>
 
                 {/* Mock Account List */}
-                <div style={{ textAlign: 'left' }}>
+                <div className="text-left">
                     <div
                         onClick={() => handleAccountSelect('user@example.com')}
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            padding: '12px 0',
-                            borderTop: '1px solid #dadce0',
-                            cursor: 'pointer',
-                            transition: 'background 0.2s'
-                        }}
+                        className="flex items-center py-3 border-t border-[#dadce0] cursor-pointer hover:bg-gray-50 transition-colors duration-200"
                     >
-                        <div style={{
-                            width: '32px',
-                            height: '32px',
-                            borderRadius: '50%',
-                            backgroundColor: '#8e24aa',
-                            color: 'white',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginRight: '12px',
-                            fontSize: '14px'
-                        }}>Y</div>
+                        <div className="w-8 h-8 rounded-full bg-[#8e24aa] text-white flex items-center justify-center mr-3 text-sm shrink-0">Y</div>
                         <div>
-                            <div style={{ fontWeight: '500', fontSize: '14px' }}>Yo Forex</div>
-                            <div style={{ color: '#5f6368', fontSize: '12px' }}>yoforex@example.com</div>
+                            <div className="font-medium text-sm">Yo Forex</div>
+                            <div className="text-[#5f6368] text-xs">yoforex@example.com</div>
                         </div>
                     </div>
 
                     <div
                         onClick={() => handleAccountSelect('another@example.com')}
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            padding: '12px 0',
-                            borderTop: '1px solid #dadce0',
-                            cursor: 'pointer'
-                        }}
+                        className="flex items-center py-3 border-t border-[#dadce0] cursor-pointer hover:bg-gray-50 transition-colors duration-200"
                     >
-                        <div style={{
-                            width: '32px',
-                            height: '32px',
-                            borderRadius: '50%',
-                            backgroundColor: '#039be5',
-                            color: 'white',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginRight: '12px',
-                            fontSize: '14px'
-                        }}>A</div>
+                        <div className="w-8 h-8 rounded-full bg-[#039be5] text-white flex items-center justify-center mr-3 text-sm shrink-0">A</div>
                         <div>
-                            <div style={{ fontWeight: '500', fontSize: '14px' }}>Another User</div>
-                            <div style={{ color: '#5f6368', fontSize: '12px' }}>another.user@example.com</div>
+                            <div className="font-medium text-sm">Another User</div>
+                            <div className="text-[#5f6368] text-xs">another.user@example.com</div>
                         </div>
                     </div>
 
                     <div
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            padding: '12px 0',
-                            borderTop: '1px solid #dadce0',
-                            cursor: 'pointer',
-                            color: '#5f6368',
-                            fontSize: '14px',
-                            fontWeight: '500'
-                        }}
+                        className="flex items-center py-3 border-t border-[#dadce0] cursor-pointer text-[#5f6368] text-sm font-medium hover:bg-gray-50 transition-colors duration-200"
                     >
-                        <div style={{ marginRight: '16px' }}>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="#5f6368"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" /></svg>
+                        <div className="mr-4">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" /></svg>
                         </div>
                         Use another account
                     </div>
                 </div>
 
-                <p style={{ fontSize: '14px', color: '#5f6368', marginTop: '40px' }}>
+                <p className="text-sm text-[#5f6368] mt-10">
                     To continue, Google will share your name, email address, and language preference with YoPips.
                 </p>
             </div>

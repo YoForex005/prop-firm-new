@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { X, Lock, Copy, Facebook, Linkedin, Twitter, Check } from 'lucide-react';
-import './ShareModal.css';
 
 function ShareModal({ onClose, shareLink }) {
     const [copied, setCopied] = useState(false);
@@ -86,35 +85,35 @@ function ShareModal({ onClose, shareLink }) {
     );
 
     return (
-        <div className="modal-overlay" onClick={onClose}>
-            <div className="share-modal-content" onClick={e => e.stopPropagation()}>
-                <div className="share-modal-header">
-                    <h3>Sharing</h3>
-                    <button className="close-btn" onClick={onClose}>
+        <div className="fixed top-0 left-0 w-full h-full bg-black/50 flex justify-center items-center z-[1000] animate-[fadeIn_0.15s_ease-out]" onClick={onClose}>
+            <div className="bg-white dark:bg-[#1f2937] w-[600px] max-w-[90vw] rounded-lg shadow-md overflow-hidden animate-[scaleIn_0.2s_ease-out]" onClick={e => e.stopPropagation()}>
+                <div className="flex justify-between items-center p-5 px-6 border-b border-[#e5e7eb] dark:border-[#374151]">
+                    <h3 className="text-lg font-bold text-[#111827] dark:text-[#f3f4f6] m-0">Sharing</h3>
+                    <button className="bg-transparent border-none text-[#6b7280] dark:text-[#9ca3af] cursor-pointer p-1 flex items-center justify-center hover:text-[#111827] dark:hover:text-[#f3f4f6] transition-colors" onClick={onClose}>
                         <X size={20} />
                     </button>
                 </div>
 
-                <div className="share-modal-body">
-                    <p className="share-description">
+                <div className="p-6">
+                    <p className="text-sm text-[#111827] dark:text-[#f3f4f6] mb-6 leading-[1.5]">
                         This page is private. You can publicly share it with other traders using link below.
                     </p>
 
-                    <div className="share-url-section">
-                        <label className="url-label">URL</label>
-                        <div className="url-input-container">
+                    <div className="mb-6">
+                        <label className="block text-xs font-semibold text-[#374151] dark:text-[#9ca3af] mb-2">URL</label>
+                        <div className="relative flex items-center">
                             <input
                                 type="text"
                                 value={shareLink}
                                 readOnly
-                                className="url-input"
+                                className="w-full bg-[#f9fafb] dark:bg-[#374151] border border-[#e5e7eb] dark:border-[#4b5563] rounded-md py-3 pl-3 pr-9 font-mono text-[13px] text-[#9ca3af] dark:text-[#d1d5db] outline-none"
                             />
-                            <Lock size={14} className="input-lock-icon" />
+                            <Lock size={14} className="absolute right-3 text-[#9ca3af]" />
                         </div>
                     </div>
 
-                    <div className="share-actions-row">
-                        <button className="copy-btn" onClick={handleCopy}>
+                    <div className="flex gap-3 mb-[30px]">
+                        <button className="bg-[#e5e7eb] dark:bg-[#374151] text-[#111827] dark:text-[#e5e7eb] border-none px-5 py-2.5 rounded-md text-sm font-semibold cursor-pointer hover:bg-[#d1d5db] dark:hover:bg-[#4b5563] transition-colors" onClick={handleCopy}>
                             {copied ? (
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <Check size={16} style={{ marginRight: '6px' }} /> Copied!
@@ -123,21 +122,21 @@ function ShareModal({ onClose, shareLink }) {
                                 "Copy URL"
                             )}
                         </button>
-                        <button className="stop-sharing-btn" onClick={handleStopSharing}>
+                        <button className="bg-[#ff3b30] hover:bg-[#dc2626] text-white border-none px-5 py-2.5 rounded-md text-sm font-semibold cursor-pointer transition-colors" onClick={handleStopSharing}>
                             Stop sharing
                         </button>
                     </div>
 
-                    <div className="social-share-section">
-                        <p className="social-label">Or share via:</p>
-                        <div className="social-icons">
-                            <button className="social-btn facebook" onClick={() => openSocialShare('facebook')}><Facebook size={16} fill="white" /></button>
-                            <button className="social-btn x-twitter" onClick={() => openSocialShare('twitter')}><Twitter size={16} fill="white" /></button>
-                            <button className="social-btn pinterest" onClick={() => openSocialShare('pinterest')}><PinterestIcon /></button>
-                            <button className="social-btn linkedin" onClick={() => openSocialShare('linkedin')}><Linkedin size={16} fill="white" /></button>
-                            <button className="social-btn whatsapp" onClick={() => openSocialShare('whatsapp')}><WhatsAppIcon /></button>
-                            <button className="social-btn telegram" onClick={() => openSocialShare('telegram')}><TelegramIcon /></button>
-                            <button className="social-btn line" onClick={() => openSocialShare('line')}><LineIcon /></button>
+                    <div className="pt-6 border-t border-[#f3f4f6] dark:border-[#374151]">
+                        <p className="text-sm text-[#6b7280] dark:text-[#9ca3af] mb-3">Or share via:</p>
+                        <div className="flex gap-3">
+                            <button className="w-9 h-9 rounded-full border-none flex items-center justify-center cursor-pointer hover:opacity-90 bg-[#1877f2]" onClick={() => openSocialShare('facebook')}><Facebook size={16} fill="white" /></button>
+                            <button className="w-9 h-9 rounded-full border-none flex items-center justify-center cursor-pointer hover:opacity-90 bg-black dark:bg-[#000000]" onClick={() => openSocialShare('twitter')}><Twitter size={16} fill="white" /></button>
+                            <button className="w-9 h-9 rounded-full border-none flex items-center justify-center cursor-pointer hover:opacity-90 bg-[#e60023]" onClick={() => openSocialShare('pinterest')}><PinterestIcon /></button>
+                            <button className="w-9 h-9 rounded-full border-none flex items-center justify-center cursor-pointer hover:opacity-90 bg-[#0a66c2]" onClick={() => openSocialShare('linkedin')}><Linkedin size={16} fill="white" /></button>
+                            <button className="w-9 h-9 rounded-full border-none flex items-center justify-center cursor-pointer hover:opacity-90 bg-[#25d366]" onClick={() => openSocialShare('whatsapp')}><WhatsAppIcon /></button>
+                            <button className="w-9 h-9 rounded-full border-none flex items-center justify-center cursor-pointer hover:opacity-90 bg-[#24a1de]" onClick={() => openSocialShare('telegram')}><TelegramIcon /></button>
+                            <button className="w-9 h-9 rounded-full border-none flex items-center justify-center cursor-pointer hover:opacity-90 bg-[#00c300]" onClick={() => openSocialShare('line')}><LineIcon /></button>
                         </div>
                     </div>
                 </div>

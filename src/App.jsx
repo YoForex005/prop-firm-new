@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar/Sidebar';
-import TopNavbar from './components/TopNavbar/TopNavbar';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Academy from './pages/Academy/Academy';
 import NewChallenge from './pages/NewChallenge/NewChallenge';
@@ -61,6 +59,11 @@ function App() {
 
     useEffect(() => {
         document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+        if (darkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
     }, [darkMode]);
 
     const toggleTheme = () => {
@@ -75,22 +78,22 @@ function App() {
                 <Route path="/google-auth" element={<GoogleAuthMock />} />
                 <Route path="*" element={
                     <>
-                        <div className="app-container">
+                        <div className="flex min-h-screen max-md:flex-col">
                             <Sidebar
                                 darkMode={darkMode}
                                 toggleTheme={toggleTheme}
                                 openChat={() => setIsChatOpen(true)}
                             />
-                            <div className="main-content">
+                            <div className="flex-1 flex flex-col overflow-y-auto">
                                 {bannerVisible && (
-                                    <div className="top-banner-orange">
-                                        <div className="banner-content-static">
-                                            <span>🎉 Special Deal! $100,000 Yo Pips Challenge for €430 <span className="save-badge">Save €100</span></span>
+                                    <div className="bg-[#ff8c00] text-white flex justify-center items-center py-3 px-6 relative text-sm font-semibold">
+                                        <div className="flex items-center gap-2">
+                                            <span>🎉 Special Deal! $100,000 Yo Pips Challenge for €430 <span className="bg-white text-[#ff8c00] px-2 py-0.5 rounded-xl text-xs font-bold ml-2">Save €100</span></span>
                                         </div>
-                                        <button className="banner-close" onClick={() => setBannerVisible(false)}>✕</button>
+                                        <button className="absolute right-6 bg-transparent border-none text-white text-lg cursor-pointer" onClick={() => setBannerVisible(false)}>✕</button>
                                     </div>
                                 )}
-                                <div className="content-body">
+                                <div className="px-[40px] pb-[32px] pl-[24px]">
                                     <Routes>
                                         <Route path="/" element={<Dashboard />} />
                                         <Route path="/academy" element={<Academy />} />

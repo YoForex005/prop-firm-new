@@ -1,5 +1,4 @@
 import React from 'react';
-import './DailyPerformance.css';
 
 function DailyPerformance() {
     const performanceData = [
@@ -11,37 +10,37 @@ function DailyPerformance() {
     ];
 
     return (
-        <div className="daily-performance-card">
-            <h3 className="card-title">Daily Performance</h3>
-            <div className="performance-list">
+        <div className="bg-[#1a1a2e] rounded-xl p-6 mb-5 shadow-[0_4px_12px_rgba(0,0,0,0.15)]">
+            <h3 className="text-white text-lg font-semibold mb-5">Daily Performance</h3>
+            <div className="mb-5">
                 {performanceData.map((day, index) => (
-                    <div key={index} className="performance-item">
-                        <span className="day-label">{day.day}</span>
-                        <div className="performance-bars">
-                            <div className="profit-bar" style={{ width: `${(day.profit / 400) * 100}%` }}>
-                                <span className="bar-value">${day.profit}</span>
+                    <div key={index} className="flex items-center mb-3 last:mb-0">
+                        <span className="text-[#a0a0a0] text-sm font-medium w-10 mr-3">{day.day}</span>
+                        <div className="flex-1 flex gap-1">
+                            <div className="h-7 rounded-md flex items-center justify-end px-2 transition-all duration-300 bg-gradient-to-br from-[#10b981] to-[#059669]" style={{ width: `${(day.profit / 400) * 100}%` }}>
+                                <span className="text-white text-xs font-semibold">${day.profit}</span>
                             </div>
                             {day.loss && (
-                                <div className="loss-bar" style={{ width: `${(Math.abs(day.loss) / 400) * 100}%` }}>
-                                    <span className="bar-value">${day.loss}</span>
+                                <div className="h-7 rounded-md flex items-center justify-end px-2 transition-all duration-300 bg-gradient-to-br from-[#ef4444] to-[#dc2626]" style={{ width: `${(Math.abs(day.loss) / 400) * 100}%` }}>
+                                    <span className="text-white text-xs font-semibold">${day.loss}</span>
                                 </div>
                             )}
                         </div>
                     </div>
                 ))}
             </div>
-            <div className="performance-summary">
-                <div className="summary-item profit">
-                    <span className="summary-label">Weekly Profit</span>
-                    <span className="summary-value">$1,360</span>
+            <div className="flex justify-between pt-4 border-t border-white/10">
+                <div className="text-center">
+                    <span className="block text-[#a0a0a0] text-xs mb-1">Weekly Profit</span>
+                    <span className="block text-base font-bold text-[#10b981]">$1,360</span>
                 </div>
-                <div className="summary-item loss">
-                    <span className="summary-label">Weekly Loss</span>
-                    <span className="summary-value">-$500</span>
+                <div className="text-center">
+                    <span className="block text-[#a0a0a0] text-xs mb-1">Weekly Loss</span>
+                    <span className="block text-base font-bold text-[#ef4444]">-$500</span>
                 </div>
-                <div className="summary-item net">
-                    <span className="summary-label">Net</span>
-                    <span className="summary-value">$860</span>
+                <div className="text-center">
+                    <span className="block text-[#a0a0a0] text-xs mb-1">Net</span>
+                    <span className="block text-base font-bold text-[#6366f1]">$860</span>
                 </div>
             </div>
         </div>

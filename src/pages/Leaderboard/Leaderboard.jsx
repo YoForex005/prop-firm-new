@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Trophy, Award, Coins, Wallet } from 'lucide-react';
-import './Leaderboard.css';
 
 function Leaderboard() {
     const [activeFilter, setActiveFilter] = useState('All');
@@ -29,18 +28,21 @@ function Leaderboard() {
     const filters = ['5k', '10k', '25k', '50k', '100k', 'All'];
 
     return (
-        <div className="leaderboard-container">
-            <div className="page-header">
-                <div className="user-greeting">
-                    <div className="avatar">Y</div>
-                    <h1>Hey, Yo</h1>
+        <div className="p-10 bg-[var(--bg-color)] min-h-screen box-border max-sm:p-4">
+            {/* Header with Glassmorphism Filter */}
+            <div className="flex justify-between items-center mb-10 max-sm:flex-col max-sm:items-start max-sm:gap-6">
+                <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-white dark:bg-[#262626] rounded-2xl flex items-center justify-center font-bold text-xl text-[#333] dark:text-white shadow-sm border border-[#eee] dark:border-[#333]">Y</div>
+                    <div>
+                        <h1 className="text-2xl font-bold m-0 text-[#1a1a1a] dark:text-[#f3f4f6]">Leaderboard</h1>
+                        <p className="text-xs text-[#666] dark:text-[#888] font-medium mt-1">Top traders of the month</p>
+                    </div>
                 </div>
-                <div className="account-size-filter">
-                    <span className="filter-label">Account Size:</span>
+                <div className="flex items-center gap-1 p-1.5 bg-white dark:bg-[#1a1a1a] border border-[#e5e7eb] dark:border-[#333] rounded-xl shadow-sm overflow-x-auto max-w-full">
                     {filters.map(filter => (
                         <button
                             key={filter}
-                            className={`filter-btn ${activeFilter === filter ? 'active' : ''}`}
+                            className={`px-4 py-2 rounded-lg text-xs font-semibold cursor-pointer transition-all duration-300 whitespace-nowrap ${activeFilter === filter ? 'bg-[#1d1d1f] text-white shadow-md transform scale-105 dark:bg-white dark:text-black' : 'text-[#666] dark:text-[#999] hover:bg-[#f3f4f6] dark:hover:bg-[#262626] hover:text-[#333] dark:hover:text-[#ccc]'}`}
                             onClick={() => setActiveFilter(filter)}
                         >
                             {filter}
@@ -49,106 +51,136 @@ function Leaderboard() {
                 </div>
             </div>
 
-            {/* Top Stats Cards */}
-            <div className="stats-row">
-                <div className="stat-card-blue">
-                    <div className="stat-icon-wrapper">
-                        <Trophy size={28} color="#FFD700" fill="#FFD700" />
+            {/* Top Stats Cards with Gradients & Hover Effects */}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
+                <div className="bg-gradient-to-br from-[#2563eb] to-[#4f46e5] rounded-2xl p-6 text-white shadow-[0_8px_30px_rgba(37,99,235,0.25)] relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                    <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <Trophy size={80} />
                     </div>
-                    <div className="stat-content">
-                        <div className="stat-label">HIGHEST TOTAL REWARDS</div>
-                        <div className="stat-value">$8,240.00</div>
-                        <div className="stat-sub">Sunil W 🇮🇳</div>
-                    </div>
-                </div>
-
-                <div className="stat-card-blue">
-                    <div className="stat-icon-wrapper">
-                        <Award size={28} color="#FFD700" fill="#FFD700" />
-                    </div>
-                    <div className="stat-content">
-                        <div className="stat-label">LONGEST MASTER ACC DURATION</div>
-                        <div className="stat-value">773 days</div>
-                        <div className="stat-sub">Chas-chan H 🇮🇳</div>
+                    <div className="relative z-10 flex flex-col h-full justify-between">
+                        <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4 shadow-inner">
+                            <Trophy size={24} className="text-yellow-300" />
+                        </div>
+                        <div>
+                            <div className="text-[10px] font-bold uppercase tracking-widest opacity-80 mb-1">Highest Total Rewards</div>
+                            <div className="text-2xl font-bold mb-2 tracking-tight">$8,240.00</div>
+                            <div className="text-xs font-medium bg-white/20 self-start inline-block px-2.5 py-1 rounded-full backdrop-blur-md">Sunil W 🇮🇳</div>
+                        </div>
                     </div>
                 </div>
 
-                <div className="stat-card-blue">
-                    <div className="stat-icon-wrapper">
-                        <Coins size={28} color="#FFD700" fill="#FFD700" />
+                <div className="bg-gradient-to-br from-[#7c3aed] to-[#9333ea] rounded-2xl p-6 text-white shadow-[0_8px_30px_rgba(124,58,237,0.25)] relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                    <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <Award size={80} />
                     </div>
-                    <div className="stat-content">
-                        <div className="stat-label">HIGHEST SINGLE REWARD</div>
-                        <div className="stat-value">$8,240.00</div>
-                        <div className="stat-sub">Sunil W 🇮🇳</div>
+                    <div className="relative z-10 flex flex-col h-full justify-between">
+                        <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4 shadow-inner">
+                            <Award size={24} className="text-purple-200" />
+                        </div>
+                        <div>
+                            <div className="text-[10px] font-bold uppercase tracking-widest opacity-80 mb-1">Longest Duration</div>
+                            <div className="text-2xl font-bold mb-2 tracking-tight">773 days</div>
+                            <div className="text-xs font-medium bg-white/20 self-start inline-block px-2.5 py-1 rounded-full backdrop-blur-md">Chas-chan H 🇮🇳</div>
+                        </div>
                     </div>
                 </div>
 
-                <div className="stat-card-blue">
-                    <div className="stat-icon-wrapper">
-                        <Wallet size={28} color="#FFD700" fill="#FFD700" />
+                <div className="bg-gradient-to-br from-[#059669] to-[#10b981] rounded-2xl p-6 text-white shadow-[0_8px_30px_rgba(5,150,105,0.25)] relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                    <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <Coins size={80} />
                     </div>
-                    <div className="stat-content">
-                        <div className="stat-label">HIGHEST TOTAL REWARDS COUNT</div>
-                        <div className="stat-value">19</div>
-                        <div className="stat-sub">Layla Z 🇨🇳</div>
+                    <div className="relative z-10 flex flex-col h-full justify-between">
+                        <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4 shadow-inner">
+                            <Coins size={24} className="text-emerald-200" />
+                        </div>
+                        <div>
+                            <div className="text-[10px] font-bold uppercase tracking-widest opacity-80 mb-1">Highest Single Reward</div>
+                            <div className="text-2xl font-bold mb-2 tracking-tight">$8,240.00</div>
+                            <div className="text-xs font-medium bg-white/20 self-start inline-block px-2.5 py-1 rounded-full backdrop-blur-md">Sunil W 🇮🇳</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-[#ea580c] to-[#f97316] rounded-2xl p-6 text-white shadow-[0_8px_30px_rgba(234,88,12,0.25)] relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                    <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <Wallet size={80} />
+                    </div>
+                    <div className="relative z-10 flex flex-col h-full justify-between">
+                        <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4 shadow-inner">
+                            <Wallet size={24} className="text-orange-200" />
+                        </div>
+                        <div>
+                            <div className="text-[10px] font-bold uppercase tracking-widest opacity-80 mb-1">Most Rewards Count</div>
+                            <div className="text-2xl font-bold mb-2 tracking-tight">19</div>
+                            <div className="text-xs font-medium bg-white/20 self-start inline-block px-2.5 py-1 rounded-full backdrop-blur-md">Layla Z 🇨🇳</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div className="leaderboard-header">
-                <h2><div className="icon-gold"><Trophy size={16} /></div> Leaderboard</h2>
+            <div className="mb-5 flex items-center justify-between">
+                <h2 className="text-lg font-bold m-0 flex items-center gap-2 text-[#1a1a1a] dark:text-[#f3f4f6]">
+                    <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400">
+                        <Trophy size={16} />
+                    </span>
+                    Rankings
+                </h2>
             </div>
 
-            <div className="leaderboard-table-container">
-                <table className="full-table">
-                    <thead>
-                        <tr>
-                            <th>RANK</th>
-                            {/* <br> to stack or just small font */}
-                            <th>TRADER</th>
-                            <th>PROFIT</th>
-                            <th>PROFIT %</th>
-                            <th>WIN RATIO</th>
-                            <th>PAIR</th>
-                            <th>AVG. WIN</th>
-                            <th>AVG. LOSS</th>
-                            <th>AVG. DURATION</th>
-                            <th>TRADES</th>
-                            <th>LOSING STREAK</th>
-                            <th>WINNING STREAK</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.map((row) => (
-                            <tr key={row.rank}>
-                                <td>
-                                    <div className="rank-cell">
-                                        <div className={`rank-icon ${row.rank <= 3 ? `top-${row.rank}` : ''}`}>
-                                            {row.rank === 1 && <Trophy size={12} fill="#B8860B" />}
-                                            {row.rank === 2 && <Award size={12} fill="#C0C0C0" />}
-                                            {row.rank === 3 && <Award size={12} fill="#CD7F32" />}
-                                            {row.rank > 3 && row.rank}
-                                        </div>
-                                    </div>
-                                </td>
-                                <td style={{ fontWeight: 500 }}>{row.name}</td>
-                                <td className="text-green">{row.profit}</td>
-                                <td className="text-green">{row.profitP}</td>
-                                <td>{row.win}</td>
-                                <td><span className="pair-tag">{row.pair}</span></td>
-                                <td className="text-green">{row.avgWin}</td>
-                                <td className="text-red">{row.avgLoss}</td>
-                                <td>{row.dur}</td>
-                                <td>{row.trades}</td>
-                                <td className="text-red">{row.lossS}</td>
-                                <td className="text-green">{row.winS}</td>
+            {/* Enhanced Table */}
+            <div className="bg-white dark:bg-[#1a1a1a] rounded-2xl border border-[#e5e7eb] dark:border-[#333] shadow-sm overflow-hidden">
+                <div className="overflow-x-auto">
+                    <table className="w-full border-collapse text-sm min-w-[1200px]">
+                        <thead>
+                            <tr className="bg-[#f9fafb] dark:bg-[#262626] border-b border-[#e5e7eb] dark:border-[#333]">
+                                <th className="text-left px-6 py-4 text-[#6b7280] dark:text-[#9ca3af] font-bold text-[11px] uppercase tracking-wider sticky left-0 bg-[#f9fafb] dark:bg-[#262626] z-10">Rank</th>
+                                <th className="text-left px-6 py-4 text-[#6b7280] dark:text-[#9ca3af] font-bold text-[11px] uppercase tracking-wider sticky left-[80px] bg-[#f9fafb] dark:bg-[#262626] z-10">Trader</th>
+                                <th className="text-right px-6 py-4 text-[#6b7280] dark:text-[#9ca3af] font-bold text-[11px] uppercase tracking-wider">Profit</th>
+                                <th className="text-right px-6 py-4 text-[#6b7280] dark:text-[#9ca3af] font-bold text-[11px] uppercase tracking-wider">Gain</th>
+                                <th className="text-center px-6 py-4 text-[#6b7280] dark:text-[#9ca3af] font-bold text-[11px] uppercase tracking-wider">Win Rate</th>
+                                <th className="text-center px-6 py-4 text-[#6b7280] dark:text-[#9ca3af] font-bold text-[11px] uppercase tracking-wider">Pair</th>
+                                <th className="text-right px-6 py-4 text-[#6b7280] dark:text-[#9ca3af] font-bold text-[11px] uppercase tracking-wider">Avg Win</th>
+                                <th className="text-right px-6 py-4 text-[#6b7280] dark:text-[#9ca3af] font-bold text-[11px] uppercase tracking-wider">Avg Loss</th>
+                                <th className="text-center px-6 py-4 text-[#6b7280] dark:text-[#9ca3af] font-bold text-[11px] uppercase tracking-wider">Duration</th>
+                                <th className="text-center px-6 py-4 text-[#6b7280] dark:text-[#9ca3af] font-bold text-[11px] uppercase tracking-wider">Trades</th>
+                                <th className="text-center px-6 py-4 text-[#6b7280] dark:text-[#9ca3af] font-bold text-[11px] uppercase tracking-wider">Loss Streak</th>
+                                <th className="text-center px-6 py-4 text-[#6b7280] dark:text-[#9ca3af] font-bold text-[11px] uppercase tracking-wider">Win Streak</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {data.map((row) => (
+                                <tr key={row.rank} className="border-b border-[#f3f4f6] dark:border-[#2a2a2a] last:border-b-0 hover:bg-[#f9fafb] dark:hover:bg-[#262626] transition-colors group">
+                                    <td className="px-6 py-4 sticky left-0 bg-white dark:bg-[#1a1a1a] group-hover:bg-[#f9fafb] dark:group-hover:bg-[#262626] transition-colors z-10">
+                                        <div className={`w-8 h-8 flex items-center justify-center font-bold rounded-lg text-sm ${row.rank === 1 ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400' : row.rank === 2 ? 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300' : row.rank === 3 ? 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400' : 'text-[#6b7280] dark:text-[#9ca3af]'}`}>
+                                            {row.rank <= 3 ? <Trophy size={14} /> : row.rank}
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-4 font-semibold text-[#111827] dark:text-[#f3f4f6] sticky left-[80px] bg-white dark:bg-[#1a1a1a] group-hover:bg-[#f9fafb] dark:group-hover:bg-[#262626] transition-colors z-10 whitespace-nowrap">{row.name}</td>
+                                    <td className="px-6 py-4 text-right font-bold text-[#10b981]">{row.profit}</td>
+                                    <td className="px-6 py-4 text-right font-medium text-[#10b981] bg-[#ecfdf5] dark:bg-[#064e3b]/20 rounded-lg">{row.profitP}</td>
+                                    <td className="px-6 py-4 text-center">
+                                        <div className="flex items-center justify-center gap-2">
+                                            <div className="w-16 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                                <div className="h-full bg-blue-500 rounded-full" style={{ width: row.win }}></div>
+                                            </div>
+                                            <span className="text-xs font-medium text-[#6b7280] dark:text-[#9ca3af] w-8">{row.win}</span>
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-4 text-center"><span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400 border border-blue-100 dark:border-blue-900/30">{row.pair}</span></td>
+                                    <td className="px-6 py-4 text-right text-[#10b981] font-medium">{row.avgWin}</td>
+                                    <td className="px-6 py-4 text-right text-[#ef4444] font-medium">{row.avgLoss}</td>
+                                    <td className="px-6 py-4 text-center text-[#6b7280] dark:text-[#9ca3af]">{row.dur}</td>
+                                    <td className="px-6 py-4 text-center font-medium text-[#374151] dark:text-[#e5e7eb]">{row.trades}</td>
+                                    <td className="px-6 py-4 text-center text-[#ef4444] font-semibold">{row.lossS}</td>
+                                    <td className="px-6 py-4 text-center text-[#10b981] font-semibold">{row.winS}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+
     );
 }
 
